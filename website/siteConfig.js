@@ -44,6 +44,8 @@ const siteConfig = {
     {blog: true, label: 'Blog'},
   ],
 
+  editUrl: 'https://github.com/Fleisch/test-site/tree/master/docs',
+
   // If you have users set above, you add it here:
   users,
 
