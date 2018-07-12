@@ -1,3 +1,7 @@
+---
+id: registerClock
+title: Register Clock
+---
 <!---
 Expected path/category (can I just use folders or is it more involved): 
   SST Core > SST::Component > [this page]

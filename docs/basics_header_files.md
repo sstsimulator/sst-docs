@@ -1,3 +1,7 @@
+---
+id: basics_header_files
+title: Basics Header Files
+---
 <!---
 Expected path/category (can I just use folders or is it more involved): 
   Getting Started > [this page]
