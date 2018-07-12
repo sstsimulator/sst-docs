@@ -12,11 +12,15 @@ Expected path/category (can I just use folders or is it more involved):
 ## Component Class
 
 For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally the header files:
+
 - Register the component with SST
 - Register params, ports, subcomponents and statistics with SST.
 - Varibale and function declarations
+
 ### Syntax
+
 <!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
+
 ```java
 //include guard
 #ifndef _INSERT_CLASS_NAME_H
@@ -115,8 +119,8 @@ public:
 \
 ```
 
-
 ### Examples
+
 #### Example 1 - Simple
 
 ```java
@@ -163,7 +167,9 @@ private:
 } // namespace exA_hello
 #endif
 ```
+
 #### Example 2 - More Complex
+
 ```java
 #ifndef _carWash_H
 #define _carWash_H
@@ -291,6 +297,7 @@ private:
 ```
 
 ## Subcomponent Class
+
 The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT. 
 
 ### Syntax / Example

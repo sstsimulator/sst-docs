@@ -9,13 +9,13 @@ Expected path/category (can I just use folders or is it more involved):
 
 # SST::Component SST_ELI_REGISTER_COMPONENT
 
-### Requirements
+## Requirements
 
 ```c++
 #include <sst/core/elementinfo.h>
 ```
 
-### Syntax
+## Syntax
 
 <!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
 
@@ -30,7 +30,7 @@ SST_ELI_REGISTER_COMPONENT(
 )
 ```
 
-### Parameters
+## Parameters
 
 **class** - this is the class itself and not just the class name
 
@@ -58,19 +58,19 @@ SST_ELI_REGISTER_COMPONENT(
 
 ```java
 public:
-    // ... SNIP ...  public declarations
-	// Register the component
-	SST_ELI_REGISTER_COMPONENT(
-		carGenerator, // class
-		"exC_carWash", // element library
-		"carGenerator", // component
-		SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), //version
-		"Car Generator for the carwash", //description
-		COMPONENT_CATEGORY_UNCATEGORIZED //category
-	)
+  // ... SNIP ...  public declarations
+  // Register the component
+  SST_ELI_REGISTER_COMPONENT(
+  carGenerator, // class
+  "exC_carWash", // element library
+  "carGenerator", // component
+  SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), //version
+  "Car Generator for the carwash", //description
+  COMPONENT_CATEGORY_UNCATEGORIZED //category
+)
 ```
 
-### See Also
+## See Also
 
 - [Basics: Header (.h) Files](TBA)
 - [Basics: Makefile](TBA)
