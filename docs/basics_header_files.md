@@ -21,7 +21,7 @@ For the most part header files are just like any other C++ header file. There ar
 
 <!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
 
-```java
+```cpp
 //include guard
 #ifndef _INSERT_CLASS_NAME_H
 #define _INSERT_CLASS_NAME_H
@@ -123,7 +123,7 @@ public:
 
 #### Example 1 - Simple
 
-```java
+```cpp
 #ifndef _hello_H
 #define _hello_H
 
@@ -170,7 +170,7 @@ private:
 
 #### Example 2 - More Complex
 
-```java
+```cpp
 #ifndef _carWash_H
 #define _carWash_H
 
@@ -302,7 +302,7 @@ The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUB
 
 ### Syntax / Example
 
-```java
+```cpp
 // Register the subcomponent
 	SST_ELI_REGISTER_SUBCOMPONENT(
 		bay, // class
