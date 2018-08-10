@@ -1,15 +1,9 @@
 ---
 id: basics_header_files
-title: Basics: Header Files
+title: Basics: Header (.h) Files
 ---
-<!---
-Expected path/category (can I just use folders or is it more involved): 
-  Getting Started > [this page]
---->
 
-# Basics: Header (.h) Files
-
-## Component Class
+## SST::Component Subclass
 
 For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally the header files:
 
@@ -296,7 +290,7 @@ private:
 
 ```
 
-## Subcomponent Class
+## SST::Subcomponent Subclass
 
 The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT. 
 
