@@ -1,25 +1,17 @@
 ---
-id: template_function
-title: Template Function
+id: function_name
+title: SST::class_name function_name
 ---
-<!---
-Expected path/category (can I just use folders or is it more involved): 
-  SST Core > SST::Component > 
---->
-
-# SST::Component registerClock
 
 ## Requirements
 
-```c++
-
+```cpp
+ #include <sst/core/component.h>
 ```
 
 ## Syntax
 
-[comment]: # (java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best)
-
-```java
+```cpp
 
 ```
 
@@ -27,11 +19,19 @@ Expected path/category (can I just use folders or is it more involved):
 
 **param** - description
 
+**param** - description
+
+## Return Value
+
+**ret** - description
+
+**ret** - description
+
 ### Remarks
 
 ### Examples
 
-```java
+```cpp
 
 ```
 

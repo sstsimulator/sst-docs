@@ -1,7 +1,10 @@
 {
   "docs": {
-    "Getting Started": ["doc1"],
-    "SST": ["template_function","basics_header_files","registerClock","sst_eli_register_component"]
+    "Getting Started": ["gettingStarted/basics_header_files"
+                        ,"gettingStarted/basics_makefile"],
+    "SST::Clock": ["core/clock/clock_handler"],
+    "SST::Component": ["core/component/registerClock"],
+    "ELI": ["core/eli/sst_eli_register_component"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
