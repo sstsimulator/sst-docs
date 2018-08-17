@@ -1,6 +1,6 @@
 ---
 id: finish
-title: SST::Component finish()
+title: finish()
 ---
 
 ## Requirements

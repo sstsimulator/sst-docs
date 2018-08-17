@@ -1,6 +1,6 @@
 ---
 id: primaryComponentDoNotEndSim
-title: SST::Component primaryComponentDoNotEndSim()
+title: primaryComponentDoNotEndSim()
 ---
 
 ## Requirements

@@ -1,6 +1,6 @@
 ---
 id: promaryComponentOKToEndSim
-title: SST::Component promaryComponentOKToEndSim()
+title: promaryComponentOKToEndSim()
 ---
 
 ## Requirements

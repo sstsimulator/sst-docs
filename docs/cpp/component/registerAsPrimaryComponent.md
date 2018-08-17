@@ -1,6 +1,6 @@
 ---
 id: registerAsPrimaryComponent
-title: SST::Component registerAsPrimaryComponent()
+title: registerAsPrimaryComponent()
 ---
 
 ## Requirements

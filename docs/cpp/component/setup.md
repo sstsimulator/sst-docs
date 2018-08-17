@@ -1,6 +1,6 @@
 ---
 id: setup
-title: SST::Component setup()
+title: setup()
 ---
 
 ## Requirements

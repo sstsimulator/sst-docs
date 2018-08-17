@@ -1,6 +1,6 @@
 ---
 id: constructor
-title: SST::Component constructor
+title: constructor
 ---
 
 ## Requirements

@@ -4,20 +4,20 @@
       ,"gettingStarted/basics_makefile"]
   },
   "C++": {
-    "SST::Clock": ["core/clock/clock_handler"],
-    "SST::Component": ["core/component/constructor"
-                    , "core/component/configureLink"
-                    , "core/component/finish"
-                    , "core/component/primaryComponentDoNotEndSim"
-                    , "core/component/promaryComponentOKToEndSim"
-                    , "core/component/registerAsPrimaryComponent"
-                    , "core/component/registerClock"
-                    , "core/component/setup"],
-    "ELI": ["core/eli/sst_eli_document_params"
-           , "core/eli/sst_eli_document_ports"
-           , "core/eli/sst_eli_document_statistics"
-           , "core/eli/sst_eli_doument_subcomponent_slots"
-           , "core/eli/sst_eli_register_component"
-           , "core/eli/sst_eli_register_subcomponent"]
+    "SST::Clock": ["cpp/clock/clock_handler"],
+    "SST::Component": ["cpp/component/constructor"
+                    , "cpp/component/configureLink"
+                    , "cpp/component/finish"
+                    , "cpp/component/primaryComponentDoNotEndSim"
+                    , "cpp/component/promaryComponentOKToEndSim"
+                    , "cpp/component/registerAsPrimaryComponent"
+                    , "cpp/component/registerClock"
+                    , "cpp/component/setup"],
+    "ELI": ["cpp/eli/sst_eli_document_params"
+           , "cpp/eli/sst_eli_document_ports"
+           , "cpp/eli/sst_eli_document_statistics"
+           , "cpp/eli/sst_eli_doument_subcomponent_slots"
+           , "cpp/eli/sst_eli_register_component"
+           , "cpp/eli/sst_eli_register_subcomponent"]
   }
 }

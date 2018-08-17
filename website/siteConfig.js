@@ -39,7 +39,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'gettingStarted/basics_header_files', label: 'Guides'},
-    {doc: 'core/component/registerClock', label: 'C++'},
+    {doc: 'cpp/component/registerClock', label: 'C++'},
     {doc: 'projectDriver/helpUs', label: 'Project Driver'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},

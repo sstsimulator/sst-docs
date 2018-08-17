@@ -12,30 +12,40 @@ title: SST_ELI_DOCUMENT_STATISTICS
 ## Syntax
 
 ```cpp
-
+// Statistic name, description, unit, enable level
+SST_ELI_DOCUMENT_STATISTICS(
+    { "stat1_NAME", "stat1_DESCRIPTION", "stat1_UNITS", stat1_ENABLE_LEVEL },
+    { "stat2_NAME", "stat2_DESCRIPTION", "stat2_UNITS", stat2_ENABLE_LEVEL },
+    { "stat3_NAME", "stat3_DESCRIPTION", "stat3_UNITS", stat3_ENABLE_LEVEL },
+    ...
+    { "statN_NAME", "statN_DESCRIPTION", "statN_UNITS", statN_ENABLE_LEVEL }
+)
 ```
 
 ## Parameters
 
-**param** - description
+**stat1_NAME** - A unique name for the statistic.
 
-**param** - description
+**stat1_DESCRIPTION** - A description of the stat. stat1_ENABLE_LEVEL
 
-## Return Value
+**stat1_UNITS** - The plural name for the units the stat is collecting.
 
-**ret** - description
-
-**ret** - description
+**stat1_ENABLE_LEVEL** - An integer value used to enable/disable stat collection. You can specify a system statistic load level, that will collect all stats with an enable level less than the system level. So if the system statistic load level is 5 then all stats with an enable level 4 or less will be enabled.
 
 ### Remarks
+
+Document and register statistics for a component or subcomponent.
 
 ### Examples
 
 ```cpp
-
+SST_ELI_DOCUMENT_STATISTICS(
+    { "carsWashed", "Number of cars washed", "cars", 1 },
+    { "idleTime", "Time spent not washing cars", "ticks", 1 }
+)
 ```
 
 ## See Also
 
-- [Link_Name](TBA)
+- [Statistics API Documentation](http://sst-simulator.org/SSTPages/SSTDeveloperSSTStatisticsAPI/)
 - [Link_Name](TBA)

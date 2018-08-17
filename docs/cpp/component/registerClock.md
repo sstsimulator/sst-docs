@@ -1,6 +1,6 @@
 ---
 id: registerClock
-title: SST::Component registerClock()
+title: registerClock()
 ---
 
 ## Requirements

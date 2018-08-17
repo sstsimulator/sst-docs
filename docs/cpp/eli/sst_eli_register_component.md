@@ -2,10 +2,6 @@
 id: sst_eli_register_component
 title: SST_ELI_REGISTER_COMPONENT
 ---
-<!---
-Expected path/category (can I just use folders or is it more involved): 
-  SST Core > ELI > [this page]
---->
 
 ## Requirements
 
@@ -15,32 +11,30 @@ Expected path/category (can I just use folders or is it more involved):
 
 ## Syntax
 
-<!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
-
 ```cpp
 SST_ELI_REGISTER_COMPONENT(
-    carGenerator, // class (not just the class name)
-    "exC_carWash", // element library
-    "carGenerator", // component
-    SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), //version
-    "Car Generator for the carwash", //description
-    COMPONENT_CATEGORY_UNCATEGORIZED //category
+    CLASS_NAME, 
+    "ELEMENT_LIBRARY",
+    "CLASS_NAME_STRING",
+    SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), 
+    "DESCRIPTION", 
+    CATEGORY
 )
 ```
 
 ## Parameters
 
-**class** - this is the class itself and not just the class name
+**CLASS_NAME** - this is the class itself and not just the class name
 
-**element library** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the makefile.
+**ELEMENT_LIBRARY** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the makefile.
 
-**component** - a string representation of the class name
+**CLASS_NAME_STRING** - a string representation of the class name
 
-**version** - the version of component in the form SST_ELI_ELEMENT_VERSION( [major], [minor], [revision/build] )
+**SST_ELI_ELEMENT_VERSION( 1, 0, 0 )** - A version in the form SST_ELI_ELEMENT_VERSION( [major], [minor], [revision/build] )
 
-**description** - a description of the component.
+**DESCRIPTION** - a description of the component.
 
-**category** - the category for the component. One of:
+**CATEGORY** - the category for the component. One of:
 
 - COMPONENT_CATEGORY_UNCATEGORIZED
 - COMPONENT_CATEGORY_PROCESSOR

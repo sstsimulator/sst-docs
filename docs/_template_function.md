@@ -1,6 +1,6 @@
 ---
 id: function_name
-title: SST::class_name function_name
+title: function_name()
 ---
 
 ## Requirements

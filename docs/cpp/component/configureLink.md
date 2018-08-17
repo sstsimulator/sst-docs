@@ -1,6 +1,6 @@
 ---
 id: configureLink
-title: SST::Component configureLink()
+title: configureLink()
 ---
 
 ## Requirements
