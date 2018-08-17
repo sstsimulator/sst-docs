@@ -1,7 +1,7 @@
 {
   "Guides": {
-    "Element Library Files": ["gettingStarted/basics_header_files"
-      ,"gettingStarted/basics_makefile"]
+    "Files": ["guides/files/basics_header_files"
+      ,"guides/files/basics_makefile"]
   },
   "C++": {
     "SST::Clock": ["cpp/clock/clock_handler"],
