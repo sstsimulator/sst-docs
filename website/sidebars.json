@@ -1,12 +1,23 @@
 {
-  "docs": {
-    "Getting Started": ["gettingStarted/basics_header_files"
-                        ,"gettingStarted/basics_makefile"],
-    "SST::Clock": ["core/clock/clock_handler"],
-    "SST::Component": ["core/component/registerClock"],
-    "ELI": ["core/eli/sst_eli_register_component"]
+  "Guides": {
+    "Element Library Files": ["gettingStarted/basics_header_files"
+      ,"gettingStarted/basics_makefile"]
   },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+  "C++": {
+    "SST::Clock": ["core/clock/clock_handler"],
+    "SST::Component": ["core/component/constructor"
+                    , "core/component/configureLink"
+                    , "core/component/finish"
+                    , "core/component/primaryComponentDoNotEndSim"
+                    , "core/component/promaryComponentOKToEndSim"
+                    , "core/component/registerAsPrimaryComponent"
+                    , "core/component/registerClock"
+                    , "core/component/setup"],
+    "ELI": ["core/eli/sst_eli_document_params"
+           , "core/eli/sst_eli_document_ports"
+           , "core/eli/sst_eli_document_statistics"
+           , "core/eli/sst_eli_doument_subcomponent_slots"
+           , "core/eli/sst_eli_register_component"
+           , "core/eli/sst_eli_register_subcomponent"]
   }
 }
