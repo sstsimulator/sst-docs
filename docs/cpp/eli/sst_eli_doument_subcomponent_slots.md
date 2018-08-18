@@ -3,6 +3,10 @@ id: sst_eli_doument_subcomponent_slots
 title: SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS
 ---
 
+### Remarks
+
+Specifies one or more slots for subcomponents. Each slot can have 1 or more object in it.
+
 ## Requirements
 
 ```cpp
@@ -28,11 +32,7 @@ title: SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS
 
 **DESCRIPTION** - A description of this subcomponent slot
 
-**SLOT_TYPE** - The class/interface the slot expects the subcomponent to support.
-
-### Remarks
-
-Specifies one or more slots for subcomponents. Each slot can have 1 or more object in it. 
+**SLOT_TYPE** - The class/interface the slot expects the subcomponent to support. 
 
 ### Examples
 

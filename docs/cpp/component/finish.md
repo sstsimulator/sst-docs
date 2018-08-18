@@ -3,6 +3,8 @@ id: finish
 title: finish()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: finish()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

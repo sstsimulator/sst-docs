@@ -3,6 +3,10 @@ id: sst_eli_document_ports
 title: SST_ELI_DOCUMENT_PORTS
 ---
 
+### Remarks
+
+Document and register ports on a component.
+
 ## Requirements
 
 ```cpp
@@ -29,10 +33,6 @@ SST_ELI_DOCUMENT_PORTS(
 **port1_DESCRIPTION** - A description on what is communication along the port. This value is shown when you run sst-info in the command line.
 
 **port1_EVENT_TYPE** - The fully qualified class name of events that are sent from/to the port
-
-### Remarks
-
-Document and register ports on a component.
 
 ### Examples
 

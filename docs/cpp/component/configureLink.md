@@ -3,6 +3,10 @@ id: configureLink
 title: configureLink()
 ---
 
+### Remarks
+
+Configure a link that is attached to a port. You must configure the link on both ends. If you want to setup a link from a component to itself use [configureSelfLink](cpp/component/configureSelfLink).
+
 ## Requirements
 
 ```cpp
@@ -12,27 +16,56 @@ title: configureLink()
 ## Syntax
 
 ```cpp
+// #1 using a TimeConvert class for time_base
+Link* configureLink (std::string  name, TimeConverter *  time_base, Event::HandlerBase *  handler = NULL)
 
+// #2 using a string for time_base
+Link* configureLink (std::string  name, std::string  time_base, Event::HandlerBase *  handler = NULL)
+
+// #3 Use default time_base, usually set by a call to registerClock()
+Link* SST::BaseComponent::configureLink (std::string  name, Event::HandlerBase *  handler = NULL) 
 ```
 
 ## Parameters
 
-**param** - description
+**name** - Port Name on which the link to configure is attached
 
-**param** - description
+**time_base** - Used to add aditional delay when sending events.
+
+**handler** - (optional) a Handler to be call when an Event is received.
 
 ## Return Value
 
-**ret** - description
+**Link\*** - A pointer to the configured link, or NULL if an error occured.
 
-**ret** - description
-
-### Remarks
-
-### Examples
+#### Examples 1
 
 ```cpp
+// #1 using a TimeConvert class for time_base
+TimeConverter *tc = registerClock(params.find<std::string>("clockRate", "1 GHz"),
+             new Clock::Handler<DMAEngine>(this, &DMAEngine::clock));
+     commandLink = configureLink("cmdLink", tc, NULL);
+```
+#### Example 2
+```cpp
+// #2 using a string for time_base
+m_link = configureLink( "memoryHeap", "0ps",
+             new Event::Handler<MemoryHeapLink>(
+                     this,&MemoryHeapLink::eventHandler ) );  
+```
 
+#### Example 3
+```cpp
+// #3 Use default time_base, usually set by a call to registerClock()
+link = configureLink("recvPort",
+             new Event::Handler<SubCompReceiver>(this, &SubCompReceiver::handleEvent));
+```
+
+#### Examples 4
+
+```cpp
+// #3 Use default time_base, usually set by a call to registerClock()
+northBus = configureLink("northBus");
 ```
 
 ## See Also

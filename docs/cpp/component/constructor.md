@@ -3,6 +3,8 @@ id: constructor
 title: constructor
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: constructor
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

@@ -3,6 +3,10 @@ id: sst_eli_document_statistics
 title: SST_ELI_DOCUMENT_STATISTICS 
 ---
 
+### Remarks
+
+Document and register statistics for a component or subcomponent.
+
 ## Requirements
 
 ```cpp
@@ -31,10 +35,6 @@ SST_ELI_DOCUMENT_STATISTICS(
 **stat1_UNITS** - The plural name for the units the stat is collecting.
 
 **stat1_ENABLE_LEVEL** - An integer value used to enable/disable stat collection. You can specify a system statistic load level, that will collect all stats with an enable level less than the system level. So if the system statistic load level is 5 then all stats with an enable level 4 or less will be enabled.
-
-### Remarks
-
-Document and register statistics for a component or subcomponent.
 
 ### Examples
 

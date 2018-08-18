@@ -3,6 +3,10 @@ id: sst_eli_register_subcomponent
 title: SST_ELI_REGISTER_SUBCOMPONENT
 ---
 
+### Remarks
+
+ This is placed in the public section of a .h to register the subcomponent with SST.
+ 
 ## Requirements
 
 ```cpp
@@ -35,10 +39,6 @@ SST_ELI_REGISTER_SUBCOMPONENT(
 **DESCRIPTION** - A description of this subcomponent
 
 **SUB_COMPONENT_SLOT** - The class/interface the a subcomponent slot must have to use this subcomponent
-
-### Remarks
-
- This is placed in the public section of a .h to register the subcomponent with SST.
 
 ### Examples
 

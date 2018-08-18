@@ -10,6 +10,7 @@
     "cpp/clock/registerHandler": "registerHandler()",
     "cpp/clock/unregisterHandler": "unregisterHandler()",
     "cpp/component/configureLink": "configureLink()",
+    "cpp/component/configureSelfLink": "configureSelfLink()",
     "cpp/component/constructor": "constructor",
     "cpp/component/finish": "finish()",
     "cpp/component/primaryComponentDoNotEndSim": "primaryComponentDoNotEndSim()",

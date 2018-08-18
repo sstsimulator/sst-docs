@@ -3,6 +3,8 @@ id: primaryComponentDoNotEndSim
 title: primaryComponentDoNotEndSim()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: primaryComponentDoNotEndSim()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

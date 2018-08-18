@@ -3,6 +3,10 @@ id: sst_eli_register_component
 title: SST_ELI_REGISTER_COMPONENT
 ---
 
+### Remarks
+
+  This is placed in the public section of a .h to register the component with SST.
+
 ## Requirements
 
 ```cpp
@@ -41,10 +45,6 @@ SST_ELI_REGISTER_COMPONENT(
 - COMPONENT_CATEGORY_MEMORY
 - COMPONENT_CATEGORY_NETWORK
 - COMPONENT_CATEGORY_SYSTEM
-
-### Remarks
-
-  This is placed in the public section of a .h to register the component with SST.
 
 ### Examples
 

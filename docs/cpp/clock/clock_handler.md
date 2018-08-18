@@ -2,6 +2,9 @@
 id: clock_handler
 title: Clock::Handler
 ---
+### Remarks
+
+This wraps a function to be called at regular intervals. This passes the current cycle and optionally extra data to the function.
 
 ## Requirements
 
@@ -34,10 +37,6 @@ SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  me
   bool tick(Cycle_t cycle, argT data) { ... }
 ```
 **data** - additional data to pass to the tick function
-
-### Remarks
-
-This wraps a function to be called at regular intervals. This passes the current cycle and optionally extra data to the function.
 
 ### Examples
 

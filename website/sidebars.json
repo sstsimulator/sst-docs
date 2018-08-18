@@ -7,6 +7,7 @@
     "SST::Clock": ["cpp/clock/clock_handler"],
     "SST::Component": ["cpp/component/constructor"
                     , "cpp/component/configureLink"
+                    , "cpp/component/configureSelfLink"
                     , "cpp/component/finish"
                     , "cpp/component/primaryComponentDoNotEndSim"
                     , "cpp/component/promaryComponentOKToEndSim"

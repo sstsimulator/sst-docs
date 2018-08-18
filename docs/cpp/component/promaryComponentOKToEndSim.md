@@ -3,6 +3,8 @@ id: promaryComponentOKToEndSim
 title: promaryComponentOKToEndSim()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: promaryComponentOKToEndSim()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

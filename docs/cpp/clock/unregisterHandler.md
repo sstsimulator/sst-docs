@@ -3,6 +3,8 @@ id: unregisterHandler
 title: unregisterHandler()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: unregisterHandler()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

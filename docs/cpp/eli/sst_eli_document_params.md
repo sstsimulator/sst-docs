@@ -3,6 +3,10 @@ id: sst_eli_document_params
 title: SST_ELI_DOCUMENT_PARAMS
 ---
 
+### Remarks
+
+Document and register all the parameters a component or subcomponent has.
+
 ## Requirements
 
 ```cpp
@@ -28,10 +32,6 @@ SST_ELI_DOCUMENT_PARAMS(
 **parm1_DESCRIPTION** - A description of the param. This value is shown when you run sst-info in the command line.
 
 **parm1_DEFAULT_VALUE** - Shows or describes the default value for the parameter.
-
-### Remarks
-
-Document and register all the parameters a component or subcomponent has.
 
 ### Examples
 

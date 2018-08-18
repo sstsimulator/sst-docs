@@ -3,6 +3,8 @@ id: registerHandler
 title: registerHandler()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: registerHandler()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

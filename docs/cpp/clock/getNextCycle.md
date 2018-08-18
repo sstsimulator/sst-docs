@@ -9,6 +9,8 @@ title: getNextCycle()
  #include <sst/core/component.h>
 ```
 
+### Remarks
+
 ## Syntax
 
 ```cpp
@@ -26,8 +28,6 @@ title: getNextCycle()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

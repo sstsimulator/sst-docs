@@ -3,6 +3,8 @@ id: setup
 title: setup()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: setup()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 

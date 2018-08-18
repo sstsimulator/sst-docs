@@ -3,6 +3,8 @@ id: function_name
 title: function_name()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -27,10 +29,9 @@ title: function_name()
 
 **ret** - description
 
-### Remarks
-
 ### Examples
 
+#### Example 1
 ```cpp
 
 ```

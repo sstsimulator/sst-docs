@@ -3,6 +3,8 @@ id: registerAsPrimaryComponent
 title: registerAsPrimaryComponent()
 ---
 
+### Remarks
+
 ## Requirements
 
 ```cpp
@@ -26,8 +28,6 @@ title: registerAsPrimaryComponent()
 **ret** - description
 
 **ret** - description
-
-### Remarks
 
 ### Examples
 
