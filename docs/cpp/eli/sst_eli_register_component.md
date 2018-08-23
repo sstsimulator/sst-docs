@@ -64,5 +64,5 @@ public:
 
 ## See Also
 
-- [Basics: Header (.h) Files](gettingStarted/basics_header_files.md)
-- [Basics: Makefile](gettingStarted/basics_makefile.md)
+- [Basics: Header (.h) Files](guides/files/basics_header_files.md)
+- [Basics: Makefile](guides/files/basics_makefile.md)

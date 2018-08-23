@@ -84,4 +84,4 @@ bool simpleCarWash::Clock2Tick(SST::Cycle_t CycleNum, uint32_t Param)
 
 ## See Also
 
-- [Component::registerClock](core/component/registerClock.md)
+- [Component::registerClock](vpp/component/registerClock.md)

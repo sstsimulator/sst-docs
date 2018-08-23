@@ -70,4 +70,4 @@ registerClock( cpu_clock, new Clock::Handler<Opal>(this, &Opal::tick ) );
 
 ## See Also
 
-- [Clock::Handler](core/clock/clock_handler.md)
+- [Clock::Handler](cpp/clock/clock_handler.md)
