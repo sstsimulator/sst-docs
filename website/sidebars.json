@@ -10,7 +10,7 @@
                     , "cpp/component/configureSelfLink"
                     , "cpp/component/finish"
                     , "cpp/component/primaryComponentDoNotEndSim"
-                    , "cpp/component/promaryComponentOKToEndSim"
+                    , "cpp/component/primaryComponentOKToEndSim"
                     , "cpp/component/registerAsPrimaryComponent"
                     , "cpp/component/registerClock"
                     , "cpp/component/setup"],

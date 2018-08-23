@@ -39,10 +39,12 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'guides/files/basics_header_files', label: 'Guides'},
-    {doc: 'cpp/component/registerClock', label: 'C++'},
+    {doc: 'cpp/component/registerClock', label: 'C++ API'},
     {doc: 'projectDriver/helpUs', label: 'Project Driver'},
+    {doc: 'projectDriver/helpUs', label: 'Tools'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {href: "http://sst-simulator.org/", label: 'Forum'},
   ],
 
   editUrl: 'https://github.com/Fleisch/test-site/edit/master/docs/',
