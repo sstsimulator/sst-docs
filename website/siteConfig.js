@@ -26,12 +26,12 @@ const siteConfig = {
   //url: 'https://your-docusaurus-test-site.com' /* your website url */,
   //baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
-  url: 'https://fleisch.github.io',
-  baseUrl: '/test-site/',
+  url: 'https://gpstrategiescorp.github.io',
+  baseUrl: '/SST-website/',
 
   // Used for publishing and more
-  projectName: 'test-site',
-  organizationName: 'fleisch',
+  projectName: 'SST-website',
+  organizationName: 'GPStrategiesCorp',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -47,7 +47,7 @@ const siteConfig = {
     {href: "http://sst-simulator.org/", label: 'Forum'},
   ],
 
-  editUrl: 'https://github.com/Fleisch/test-site/edit/master/docs/',
+  editUrl: 'https://github.com/GPStrategiesCorp/SST-website/edit/master/docs/',
 
   // If you have users set above, you add it here:
   users,
