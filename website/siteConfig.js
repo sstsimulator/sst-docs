@@ -41,7 +41,7 @@ const siteConfig = {
     {doc: 'guides/files/basics_header_files', label: 'Guides'},
     {doc: 'cpp/component/registerClock', label: 'C++ API'},
     {doc: 'projectDriver/helpUs', label: 'Project Driver'},
-    {doc: 'projectDriver/helpUs', label: 'Tools'},
+    {doc: 'tools/helpUs', label: 'Tools'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
     {href: "http://sst-simulator.org/", label: 'Forum'},

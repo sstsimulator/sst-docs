@@ -2,6 +2,10 @@
 id: sst_eli_register_component
 title: SST_ELI_REGISTER_COMPONENT
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_REGISTER_COMPONENT(cls,lib,name,version,desc,cat)
+```
 
 ### Remarks
 
@@ -46,8 +50,9 @@ SST_ELI_REGISTER_COMPONENT(
 - COMPONENT_CATEGORY_NETWORK
 - COMPONENT_CATEGORY_SYSTEM
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 public:
   // ... SNIP ...  public declarations

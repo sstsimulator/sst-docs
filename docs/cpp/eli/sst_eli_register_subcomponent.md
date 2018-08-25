@@ -2,6 +2,10 @@
 id: sst_eli_register_subcomponent
 title: SST_ELI_REGISTER_SUBCOMPONENT
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_REGISTER_SUBCOMPONENT(cls,lib,name,version,desc,interface)
+```
 
 ### Remarks
 
@@ -40,8 +44,9 @@ SST_ELI_REGISTER_SUBCOMPONENT(
 
 **SUB_COMPONENT_SLOT** - The class/interface the a subcomponent slot must have to use this subcomponent
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 SST_ELI_REGISTER_SUBCOMPONENT(
     bay, // class

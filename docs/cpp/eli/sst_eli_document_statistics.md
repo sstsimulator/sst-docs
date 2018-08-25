@@ -2,6 +2,10 @@
 id: sst_eli_document_statistics
 title: SST_ELI_DOCUMENT_STATISTICS 
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_DOCUMENT_STATISTICS( ... )
+```
 
 ### Remarks
 
@@ -36,8 +40,9 @@ SST_ELI_DOCUMENT_STATISTICS(
 
 **stat1_ENABLE_LEVEL** - An integer value used to enable/disable stat collection. You can specify a system statistic load level, that will collect all stats with an enable level less than the system level. So if the system statistic load level is 5 then all stats with an enable level 4 or less will be enabled.
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 SST_ELI_DOCUMENT_STATISTICS(
     { "carsWashed", "Number of cars washed", "cars", 1 },

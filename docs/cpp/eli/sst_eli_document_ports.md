@@ -2,6 +2,10 @@
 id: sst_eli_document_ports
 title: SST_ELI_DOCUMENT_PORTS
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_DOCUMENT_PORTS( ... )
+```
 
 ### Remarks
 
@@ -34,8 +38,9 @@ SST_ELI_DOCUMENT_PORTS(
 
 **port1_EVENT_TYPE** - The fully qualified class name of events that are sent from/to the port
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 SST_ELI_DOCUMENT_PORTS(
 { "port", "Port on which cars are sent", {"sst.Interfaces.StringEvent"}}

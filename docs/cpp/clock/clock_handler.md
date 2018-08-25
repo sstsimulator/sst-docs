@@ -2,6 +2,13 @@
 id: clock_handler
 title: Clock::Handler
 ---
+## Fully Qualified Name
+```cpp
+SST::Clock::Handler< classT, argT >
+// classT - The object that contains the handler
+// argT - (optional) the type of additional data sent to the handler, if any 
+```
+
 ### Remarks
 
 This wraps a function to be called at regular intervals. This passes the current cycle and optionally extra data to the function.
@@ -38,7 +45,7 @@ SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  me
 ```
 **data** - additional data to pass to the tick function
 
-### Examples
+## Examples
 
 ### Example 1
 ```cpp

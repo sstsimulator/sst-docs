@@ -2,6 +2,10 @@
 id: configureLink
 title: configureLink()
 ---
+## Fully Qualified Name
+```cpp
+SST::BaseComponent::configureLink()
+```
 
 ### Remarks
 
@@ -38,7 +42,9 @@ Link* SST::BaseComponent::configureLink (std::string  name, Event::HandlerBase *
 
 **Link\*** - A pointer to the configured link, or NULL if an error occured.
 
-#### Examples 1
+## Examples
+
+### Examples 1
 
 ```cpp
 // #1 using a TimeConvert class for time_base
@@ -46,7 +52,7 @@ TimeConverter *tc = registerClock(params.find<std::string>("clockRate", "1 GHz")
              new Clock::Handler<DMAEngine>(this, &DMAEngine::clock));
      commandLink = configureLink("cmdLink", tc, NULL);
 ```
-#### Example 2
+### Example 2
 ```cpp
 // #2 using a string for time_base
 m_link = configureLink( "memoryHeap", "0ps",
@@ -54,14 +60,14 @@ m_link = configureLink( "memoryHeap", "0ps",
                      this,&MemoryHeapLink::eventHandler ) );  
 ```
 
-#### Example 3
+### Example 3
 ```cpp
 // #3 Use default time_base, usually set by a call to registerClock()
 link = configureLink("recvPort",
              new Event::Handler<SubCompReceiver>(this, &SubCompReceiver::handleEvent));
 ```
 
-#### Examples 4
+### Examples 4
 
 ```cpp
 // #3 Use default time_base, usually set by a call to registerClock()
@@ -69,6 +75,3 @@ northBus = configureLink("northBus");
 ```
 
 ## See Also
-
-- [Link_Name](TBA)
-- [Link_Name](TBA)

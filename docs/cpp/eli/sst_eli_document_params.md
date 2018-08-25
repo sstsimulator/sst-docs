@@ -2,6 +2,10 @@
 id: sst_eli_document_params
 title: SST_ELI_DOCUMENT_PARAMS
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_DOCUMENT_PARAMS	( ... )	
+```
 
 ### Remarks
 
@@ -33,8 +37,9 @@ SST_ELI_DOCUMENT_PARAMS(
 
 **parm1_DEFAULT_VALUE** - Shows or describes the default value for the parameter.
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 SST_ELI_DOCUMENT_PARAMS(
 		{ "size", "Size of the bay (1 = small, 2 = large)", "1" },

@@ -2,6 +2,10 @@
 id: registerClock
 title: registerClock()
 ---
+## Fully Qualified Name
+```cpp
+SST::BaseComponent::registerClock()
+```
 
 ## Remarks
 
