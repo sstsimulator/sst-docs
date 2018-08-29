@@ -21,7 +21,12 @@
            , "cpp/eli/sst_eli_document_statistics"
            , "cpp/eli/sst_eli_doument_subcomponent_slots"
            , "cpp/eli/sst_eli_register_component"
-           , "cpp/eli/sst_eli_register_subcomponent"]
+           , "cpp/eli/sst_eli_register_subcomponent"],
+    "SST::Output": ["cpp/output/debug"
+                   ,"cpp/output/fatal"
+                   ,"cpp/output/init"
+                   ,"cpp/output/output"
+                   ,"cpp/output/verbose"]
   },
   "ProjectDriver": {
     "Contribute": ["projectDriver/helpUs"]

@@ -22,6 +22,11 @@
     "cpp/eli/sst_eli_register_component": "SST_ELI_REGISTER_COMPONENT",
     "cpp/eli/sst_eli_register_subcomponent": "SST_ELI_REGISTER_SUBCOMPONENT",
     "cpp/helpUs": "Help Us",
+    "cpp/output/debug": "debug()",
+    "cpp/output/fatal": "fatal()",
+    "cpp/output/init": "init()",
+    "cpp/output/output": "output()",
+    "cpp/output/verbose": "verbose()",
     "guides/files/basics_header_files": "Basics: Header (.h) Files",
     "guides/files/basics_makefile": "Basics: Makefile",
     "guides/helpUs": "Help Us",
@@ -38,7 +43,8 @@
     "Files": "Files",
     "SST::Clock": "SST::Clock",
     "SST::Component": "SST::Component",
-    "ELI": "ELI"
+    "ELI": "ELI",
+    "SST::Output": "SST::Output"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",
