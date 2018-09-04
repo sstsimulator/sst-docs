@@ -15,6 +15,7 @@
                     , "cpp/component/primaryComponentOKToEndSim"
                     , "cpp/component/registerAsPrimaryComponent"
                     , "cpp/component/registerClock"
+                    , "cpp/component/registerStatistic"
                     , "cpp/component/setup"],
     "ELI": ["cpp/eli/sst_eli_document_params"
            , "cpp/eli/sst_eli_document_ports"
@@ -22,11 +23,16 @@
            , "cpp/eli/sst_eli_doument_subcomponent_slots"
            , "cpp/eli/sst_eli_register_component"
            , "cpp/eli/sst_eli_register_subcomponent"],
+    "SST::Link": ["cpp/link/configureLink"
+                 , "cpp/link/configureSelfLink"
+                 , "cpp/link/send"],
     "SST::Output": ["cpp/output/debug"
                    ,"cpp/output/fatal"
                    ,"cpp/output/init"
                    ,"cpp/output/output"
-                   ,"cpp/output/verbose"]
+                   ,"cpp/output/verbose"],
+    "SST::Statistics": ["cpp/statistics/addData"
+                        ,"cpp/statistics/registerStatistic"]
   },
   "ProjectDriver": {
     "Contribute": ["projectDriver/helpUs"]

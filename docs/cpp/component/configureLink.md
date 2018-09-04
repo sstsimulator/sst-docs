@@ -9,7 +9,7 @@ SST::BaseComponent::configureLink()
 
 ### Remarks
 
-Configure a link that is attached to a port. You must configure the link on both ends. If you want to setup a link from a component to itself use [configureSelfLink](cpp/component/configureSelfLink).
+Configure a link that is attached to a port. You must configure the link on both ends. If you want to setup a link from a component to itself use [configureSelfLink](cpp/component/configureSelfLink.md).
 
 ## Requirements
 
@@ -75,3 +75,5 @@ northBus = configureLink("northBus");
 ```
 
 ## See Also
+- [SST::Component::configureSelfLink()](cpp/component/configureSelfLink.md)
+- [SST::Link::send()](cpp/link/send.md)
