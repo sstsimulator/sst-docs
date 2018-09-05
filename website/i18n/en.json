@@ -49,6 +49,10 @@
     "projectDriver/sst/enableAllStatisticsForAllComponents": "sst.enableAllStatisticsForAllComponents()",
     "projectDriver/sst/link": "sst.Link()",
     "projectDriver/sst/setStatisticLoadLevel": "sst.setStatisticLoadLevel()",
+    "tools/applications/gui": "GUI",
+    "tools/commandLine/sst-config": "sst-config",
+    "tools/commandLine/sst-info": "sst-info",
+    "tools/commandLine/sst-register": "sst-register",
     "tools/helpUs": "Help Us",
     "Guides": "Guides",
     "C++ API": "C++ API",
@@ -68,7 +72,9 @@
     "SST::Statistics": "SST::Statistics",
     "Component/SubComponent": "Component/SubComponent",
     "Link": "Link",
-    "SST": "SST"
+    "SST": "SST",
+    "Applications": "Applications",
+    "Command Line": "Command Line"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

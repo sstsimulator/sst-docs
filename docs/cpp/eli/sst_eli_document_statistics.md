@@ -38,7 +38,7 @@ SST_ELI_DOCUMENT_STATISTICS(
 
 **stat1_UNITS** - The plural name for the units the stat is collecting.
 
-**stat1_ENABLE_LEVEL** - An integer value used to enable/disable stat collection. You can specify a system statistic load level, that will collect all stats with an enable level less than the system level. So if the system statistic load level is 5 then all stats with an enable level 4 or less will be enabled.
+**stat1_ENABLE_LEVEL** - An integer value used to enable/disable stat collection. You can specify a system statistic load level, that will collect all stats with an enable level less than the system level. So if the system statistic load level is 5 then all stats with an enable level 5 or less will be enabled.
 
 ## Examples
 

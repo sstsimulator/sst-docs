@@ -25,7 +25,7 @@ sst.setStatisticLoadLevel(loadLevel)
 
 ## Parameters
 
-**loadLevel** - An integer value used to enable/disable stat collection. If the load level is 5 then all stats with an enable level 4 or less will be enabled.
+**loadLevel** - An integer value used to enable/disable stat collection. If the load level is 5 then all stats with an enable level 5 or less will be enabled.
 
 ## Return Value
 

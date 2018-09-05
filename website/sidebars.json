@@ -49,6 +49,10 @@
              , "projectDriver/sst/setStatisticLoadLevel"]
   },
   "Tools": {
-    "Contribute": ["tools/helpUs"]
+    "Contribute": ["tools/helpUs"],
+    "Applications": ["tools/applications/gui"],
+    "Command Line": ["tools/commandLine/sst-config"
+                    , "tools/commandLine/sst-info"
+                    , "tools/commandLine/sst-register"]
   }
 }
