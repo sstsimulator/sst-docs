@@ -30,9 +30,9 @@ Statistic<T>* SST::BaseComponent::registerStatistic(const char* statName, const 
 
 ## Parameters
 
-**statName** - description
+**statName** - Primary name of the statistic. This name must match the defined ElementInfoStatistic in the component, and must also be enabled in the Python input file. 
 
-**statSubId** - description
+**statSubId** - An additional substitute name for the statistic
 
 ## Return Value
 
@@ -46,6 +46,15 @@ char* subID = (char*) malloc(sizeof(char) * 32);
 sprintf(subID, "%" PRIu32, thisCoreID);
 
 Statistic<uint64_t>* statReadRequests  = own->registerStatistic<uint64_t>( "read_requests", subID );
+```
+
+###
+```cpp
+smallCarsWashed = registerStatistic<int>("smallCarsWashed");
+	largeCarsWashed = registerStatistic<int>("largeCarsWashed");
+	noCarEvents = registerStatistic<int>("noCarEvents");
+	smallCarsWaiting = registerStatistic<int>("smallCarsWaiting");
+	largeCarsWaiting = registerStatistic<int>("largeCarsWaiting");
 ```
 
 ## See Also

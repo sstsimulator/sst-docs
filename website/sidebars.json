@@ -1,6 +1,7 @@
 {
   "Guides": {
     "Contribute": ["guides/helpUs"],
+    "External": ["guides/external/projectDriver"],
     "Files": ["guides/files/basics_header_files"
       ,"guides/files/basics_makefile"]
   },
@@ -35,7 +36,17 @@
                         ,"cpp/statistics/registerStatistic"]
   },
   "ProjectDriver": {
-    "Contribute": ["projectDriver/helpUs"]
+    "Contribute": ["projectDriver/helpUs"],
+    "Component/SubComponent": ["projectDriver/component/addParams"
+                      , "projectDriver/component/component"
+                      , "projectDriver/component/enableAllStatistics"
+                      , "projectDriver/component/setSubComponent"],
+      "Link": ["projectDriver/link/connect"
+              , "projectDriver/link/link"],
+      "SST": ["projectDriver/sst/component"
+             , "projectDriver/sst/enableAllStatisticsForAllComponents"
+             , "projectDriver/sst/link"
+             , "projectDriver/sst/setStatisticLoadLevel"]
   },
   "Tools": {
     "Contribute": ["tools/helpUs"]

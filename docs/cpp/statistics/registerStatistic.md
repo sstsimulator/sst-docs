@@ -4,7 +4,7 @@ title: registerStatistic()
 ---
 ## Fully Qualified Name
 ```cpp
-SST::
+SST::BaseComponent::registerStatistic()
 ```
 
 ### Remarks
