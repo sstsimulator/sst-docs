@@ -46,8 +46,3 @@ SST_ELI_DOCUMENT_PORTS(
 { "port", "Port on which cars are sent", {"sst.Interfaces.StringEvent"}}
 )
 ```
-
-## See Also
-
-- [Link_Name](TBA)
-- [Link_Name](TBA)

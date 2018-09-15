@@ -9,7 +9,7 @@ SST::BaseComponent::configureSelfLink()
 
 ### Remarks
 
-Used in a Component to attach a link to itself. If you want to setup a link between two components use [configureSelfLink](cpp/component/configureLink.md).
+Used in a Component to attach a link to itself. If you want to setup a link between two components use [configureLink](cpp/component/configureLink.md).
 
 ## Requirements
 

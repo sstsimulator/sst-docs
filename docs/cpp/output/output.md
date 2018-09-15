@@ -82,7 +82,7 @@ schedout.fatal(CALL_INFO, 1, "Could not find deep copy for %s\nwhen copying Stat
 
 ## See Also
 
-- [output()](cpp/output/output.md)
+- [init()](cpp/output/init.md)
 - [debug()](cpp/output/debug.md)
 - [verbose()](cpp/output/verbose.md)
 - [fatal()](cpp/output/fatal.md)

@@ -13,5 +13,5 @@ This function is documented in [SST::Component > configureLink()](cpp/component/
 
 
 ## See Also
-- [SST::Component::configureLink()](cpp/component/configureLink)
-- [SST::Component::configureSelfLink()](cpp/component/configureSelfLink)
+- [SST::Component::configureLink()](cpp/component/configureLink.md)
+- [SST::Component::configureSelfLink()](cpp/component/configureSelfLink.md)

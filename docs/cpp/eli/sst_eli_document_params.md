@@ -47,8 +47,3 @@ SST_ELI_DOCUMENT_PARAMS(
 		{ "largeCarWashTime", "How long to wash a large car (ticks)", "5" }
 	)
 ```
-
-## See Also
-
-- [Link_Name](TBA)
-- [Link_Name](TBA)

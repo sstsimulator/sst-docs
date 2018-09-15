@@ -36,4 +36,3 @@ sst.setStatisticLoadLevel(1)
 sst.enableAllStatisticsForAllComponents()
 ```
 
-## See Also

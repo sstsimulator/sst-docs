@@ -65,5 +65,3 @@ SST::SubComponentSlotInfo* info = getSubComponentSlotInfo("bay");
 }
 
 ```
-
-## See Also

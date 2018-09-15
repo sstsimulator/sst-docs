@@ -70,5 +70,3 @@ StringEvent myEventCopy = new StringEvent(myEvent);
 StringEvent myEvent = new StringEvent("Hello");
 std::string str = myEvent.getString();
 ```
-
-## See Also

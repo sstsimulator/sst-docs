@@ -91,4 +91,4 @@ PendingRtns->addData(pending_rtns);
 
 ## See Also
 
-[SST::Component::registerStatistic()](cpp/component/registerStatistic.md)
+- [SST::Component::registerStatistic()](cpp/component/registerStatistic.md)

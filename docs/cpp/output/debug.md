@@ -72,7 +72,7 @@ schedout.debug(CALL_INFO, 7, 0, "Allocating %s \n", job -> toString().c_str());
 
 ## See Also
 
+- [init()](cpp/output/init.md)
 - [output()](cpp/output/output.md)
-- [debug()](cpp/output/debug.md)
 - [verbose()](cpp/output/verbose.md)
 - [fatal()](cpp/output/fatal.md)

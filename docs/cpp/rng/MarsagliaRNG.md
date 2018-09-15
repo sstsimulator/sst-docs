@@ -163,5 +163,3 @@ SST::RNG::MarsagliaRNG rng = new SST::RNG::MarsagliaRNG(11, 201010101);
 uint64_t selectA = (rng.generateNextUInt64() % pageCount);
 uint64_t selectB = (rng.generateNextUInt64() % pageCount);
 ```
-
-## See Also

@@ -32,5 +32,3 @@ link = sst.Link("linkName")
 link = sst.Link("MyLink")
 ```
 
-## See Also
-

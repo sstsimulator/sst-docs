@@ -65,7 +65,7 @@ output->verbose(CALL_INFO, 1, 0, "Configuring for %" PRIu32 " memory levels; def
 
 ## See Also
 
+- [init()](cpp/output/init.md)
 - [output()](cpp/output/output.md)
 - [debug()](cpp/output/debug.md)
-- [verbose()](cpp/output/verbose.md)
 - [fatal()](cpp/output/fatal.md)

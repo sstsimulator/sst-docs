@@ -41,5 +41,5 @@ carWashComponent.enableAllStatistics()
 
 ## See Also
 
-- [enableAllStatisticsForAllComponents](projectDriver/sst/enableAllStatisticsForAllComponents.md)
+- [sst.enableAllStatisticsForAllComponents](projectDriver/sst/enableAllStatisticsForAllComponents.md)
 - [sst.Component](projectDriver/sst/component.md)

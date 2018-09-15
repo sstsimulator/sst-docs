@@ -43,5 +43,3 @@ link_cpu_tracer.connect((comp_cpu, "mem_link", "100ps"), (comp_tracer, "northBus
 ```python
 sst.Link("MyLink").connect( (carWashComponent, "port", "1ps"), (carGeneratorComponent, "port", "1ps") )
 ```
-
-## See Also

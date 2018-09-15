@@ -69,4 +69,4 @@ void DirectoryController::setup (void)
 
 ## See Also
 
-- [setup](cpp/component/finish.md)
+- [finish](cpp/component/finish.md)

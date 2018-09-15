@@ -75,7 +75,7 @@
     "SST::Output": "SST::Output",
     "SST::RNG": "SST::RNG",
     "SST::Statistics": "SST::Statistics",
-    "Component/SubComponent": "Component/SubComponent",
+    "Component & SubComponent": "Component & SubComponent",
     "Link": "Link",
     "SST": "SST",
     "Applications": "Applications",

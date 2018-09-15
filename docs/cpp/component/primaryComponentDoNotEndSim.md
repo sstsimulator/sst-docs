@@ -51,5 +51,5 @@ carWash::carWash( SST::ComponentId_t id, SST::Params& params ) : SST::Component(
 
 ## See Also
 
-- [primaryComponentDoNotEndSim](cpp/component/primaryComponentDoNotEndSim.md)
+- [primaryComponentOKToEndSim](cpp/component/primaryComponentOKToEndSim.md)
 - [registerAsPrimaryComponent](cpp/component/registerAsPrimaryComponent.md)

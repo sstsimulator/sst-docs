@@ -63,7 +63,7 @@ output->fatal(CALL_INFO, -1, "Opal: address :%lld requested with fileId:%d has n
 
 ## See Also
 
+- [init()](cpp/output/init.md)
 - [output()](cpp/output/output.md)
 - [debug()](cpp/output/debug.md)
 - [verbose()](cpp/output/verbose.md)
-- [fatal()](cpp/output/fatal.md)

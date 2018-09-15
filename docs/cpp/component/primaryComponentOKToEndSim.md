@@ -62,5 +62,5 @@ bool carWash::tick( SST::Cycle_t currentCycle )
 
 ## See Also
 
-- [primaryComponentOKToEndSim](cpp/component/primaryComponentOKToEndSim.md)
+- [primaryComponentDoNotEndSim](cpp/component/primaryComponentDoNotEndSim.md)
 - [registerAsPrimaryComponent](cpp/component/registerAsPrimaryComponent.md)
