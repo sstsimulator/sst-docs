@@ -20,7 +20,7 @@ Tasks that are often performed:
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax

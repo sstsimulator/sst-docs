@@ -8,12 +8,12 @@ SST::Statistics::addData()
 ```
 
 ### Remarks
-Add data to the Statistic.
+Add data to the statistic.
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -24,7 +24,7 @@ void SST::Statistics::Statistic<T>::addData(T data)
 
 ## Parameters
 
-**data** - the data to add to the Statistic. This is a number, that can represent a count, size, time, etc.
+**data** - the data to add to the Statistic. Usually this is a number, that can represent a count, size, time, etc.
 
 ## Return Value
 

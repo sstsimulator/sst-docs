@@ -34,7 +34,7 @@ SST_ELI_REGISTER_COMPONENT(
 
 **CLASS_NAME** - this is the class itself and not just the class name
 
-**ELEMENT_LIBRARY** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the makefile.
+**ELEMENT_LIBRARY** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the [makefile](guides/files/basics_makefile.md).
 
 **CLASS_NAME_STRING** - a string representation of the class name
 

@@ -9,19 +9,19 @@ SST::Output::output()
 
 ### Remarks
 
-Print a message during execution.
+Print a message during execution. If called with the CALL_INFO macro it will prepended the message with the expanded prefix set in the call to the [init function](cpp/output/init.md). If called with just a string it will not prepend anything.
 
 ## Requirements
 
 Main definition
 ```cpp
- #include <sst/core/output.h>
+#include <sst/core/output.h>
 ```
 
 Also included in the following
 ```cpp
- #include <sst/core/simulation.h>
- #include <sst/core/component.h>
+#include <sst/core/simulation.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -45,7 +45,7 @@ void SST::Output::output(const char* format, ... )
 
 **format** - Format string. All valid formats for printf are available
 
-**...** - Argument strings for format
+**...** - Arguments for format
 
 ## Return Value
 
@@ -53,7 +53,7 @@ void SST::Output::output(const char* format, ... )
 
 ## Examples
 
-### Example 2
+### Example 1
 ```cpp
 //#1
 m_dbg.output(CALL_INFO,"Warn addr %" PRIx64 " ignored\n", vec[i].addr);

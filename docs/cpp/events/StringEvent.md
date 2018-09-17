@@ -9,10 +9,12 @@ SST::Interfaces::StringEvent
 
 ### Remarks
 
+A simple event to pass a string between two ports.
+
 ## Requirements
 
 ```cpp
- #include <sst/core/interfaces/stringEvent.h>
+#include <sst/core/interfaces/stringEvent.h>
 ```
 
 ## Functions
@@ -31,17 +33,17 @@ StringEvent(const StringEvent* me)
 
 #### Parameters
 
-**str** - The String contents of this event
+**str** - The string contents of this event
 
 **me** - the StringEvent to Copy
 
 #### Return Value
 
-**SST::Interfaces::StringEvent** - The new StringEvent
+**None**
 
 ### getString
 ```cpp
-getString()
+const std::string& getString()
 ```
 
 #### Parameters

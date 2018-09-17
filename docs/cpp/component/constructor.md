@@ -4,13 +4,13 @@ title: constructor
 ---
 ## Fully Qualified Name
 ```cpp
-SST::Component()
+SST::Component
 ```
 
 ### Remarks
-Typically not called directly. SST will build and connect components.
+Typically not called directly. SST will build and call the constructor.
 
-Tasks typically performed in the constructor:
+Typical tasks:
 - read params from the project driver
 - process params
 - initialize SubComponents
@@ -21,7 +21,7 @@ Tasks typically performed in the constructor:
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -37,13 +37,13 @@ MyComponent::MyComponent (SST::ComponentId_t id, SST::Params& params) : SST::Com
 
 ## Parameters
 
-**id** - the id for the component, this is passed in by SST. Usually just need to pass it to the SST::Component constructor.
+**id** - the id for the component, this is passed in by SST. Usually just need to pass it to the base SST::Component constructor.
 
 **SST::Params&** - the params set by the project driver.
 
 ## Return Value
 
-**SST::Component** - a component ready to be used by SST.
+**None**
 
 ## Examples
 

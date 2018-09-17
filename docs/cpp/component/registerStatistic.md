@@ -10,12 +10,12 @@ SST::BaseComponent::registerStatistic()
 ### Remarks
 Registers a statistic.
 
-If Statistic is allowed to run (controlled by Python runtime parameters), then a statistic will be created and returned. If not allowed to run, then a NullStatistic will be returned. In either case, the returned value should be used for all future Statistic calls. The type of Statistic and the Collection Rate is set by Python runtime parameters. If no type is defined, then an Accumulator Statistic will be provided by default. If rate set to 0 or not provided, then the statistic will output results only at end of sim (if output is enabled).
+If statistics are allowed to run (controlled by [Project Driver](guides/external/projectDriver.md)), then a statistic will be created and returned. If not allowed to run, then a NullStatistic will be returned. In either case, the returned value should be used for all future statistic calls. The type of Statistic and the Collection Rate is set by [Project Driver](guides/external/projectDriver.md) parameters. If no type is defined, then an Accumulator Statistic will be provided by default. If rate set to 0 or not provided, then the statistic will output results only at end of sim (if output is enabled).
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -30,13 +30,13 @@ Statistic<T>* SST::BaseComponent::registerStatistic(const char* statName, const 
 
 ## Parameters
 
-**statName** - Primary name of the statistic. This name must match the defined ElementInfoStatistic in the component, and must also be enabled in the Python input file. 
+**statName** - Primary name of the statistic. This name must match the defined ElementInfoStatistic in the component, and must also be enabled in the [Project Driver](guides/external/projectDriver.md). 
 
-**statSubId** - An additional substitute name for the statistic
+**statSubId** - An additional substitute name for the statistic.
 
 ## Return Value
 
-**Statistic<T>\*** - Either a created statistic of desired type or a NullStatistic depending upon runtime settings
+**Statistic<T>\*** - Either a created statistic of the desired type or a NullStatistic depending upon runtime settings.
 
 ## Examples
 
@@ -60,3 +60,7 @@ smallCarsWashed = registerStatistic<int>("smallCarsWashed");
 ## See Also
 
 - [SST::Statistics::addData()](cpp/statistics/addData.md)
+- Project Driver Functions
+  - [sst.setStatisticLoadLevel](projectDriver/sst/setStatisticLoadLevel.md)
+  - [sst.enableAllStatisticsForAllComponents](projectDriver/sst/enableAllStatisticsForAllComponents.md)
+  - [enableAllStatistics](projectDriver/component/enableAllStatistics.md)

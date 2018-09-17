@@ -15,7 +15,7 @@ This must be called during simulation wireup (i.e during the constructor for the
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax

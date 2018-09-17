@@ -8,21 +8,23 @@ SST::Output::fatal()
 ```
 
 ### Remarks
-Output the fatal message with formatting as specified by the format parameter.
+Output the fatal message with formatting as specified by the format parameter and **end the simulation**.
 
-Message will be sent to the output location and to stderr. The output will be prepended with the expanded prefix set in the object. NOTE: fatal() will call MPI_Abort(exit_code) to terminate simulation.
+The message will be sent to the output location and to stderr. The output will be prepended with the expanded prefix set in the call to the [init function](cpp/output/init.md). 
+
+**NOTE**: fatal() will call MPI_Abort(exit_code) to terminate simulation.
 
 ## Requirements
 
 Main definition
 ```cpp
- #include <sst/core/output.h>
+#include <sst/core/output.h>
 ```
 
 Also included in the following
 ```cpp
- #include <sst/core/simulation.h>
- #include <sst/core/component.h>
+#include <sst/core/simulation.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -43,7 +45,7 @@ void SST::Output::fatal(uint32_t line, const char* file, const char* func, uint3
 
 **format** - Format string. All valid formats for printf are available
 
-**...** - Argument strings for format
+**...** - Argument for format
 
 ## Return Value
 

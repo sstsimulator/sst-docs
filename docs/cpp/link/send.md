@@ -13,7 +13,7 @@ Send an event over the link with an optional additional delay.
 ## Requirements
 
 ```cpp
- #include <sst/core/link.h>
+#include <sst/core/link.h>
 ```
 
 ## Syntax

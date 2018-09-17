@@ -18,13 +18,13 @@ Typical tasks done:
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
 
 ```cpp
-void SST::BaseComponent::setup ()
+void SST::BaseComponent::setup()
 ```
 
 ## Parameters

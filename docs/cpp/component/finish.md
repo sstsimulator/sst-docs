@@ -10,14 +10,15 @@ SST::BaseComponent::finish()
 ### Remarks
 Called after simulation completes, but before objects are destroyed.
 
-Perform any tasks that need to be done at the end of a simulation, such as:
+Perform any tasks that need to be done at the end of a simulation.
+
+Many components don't do anything. Some components might:
 - finalize statistics
-- Many components don't do anything at all.
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax

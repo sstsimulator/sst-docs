@@ -3,16 +3,16 @@ id: projectDriver
 title: Basics: Project Driver
 ---
 
-The project driver is a python file. It defines what components, subcomponents, links, and sets params.
+The project driver is a python file. It defines what elements (components, subcomponents, and links) are in a simulation. It also sets params and enables statics on these elements.
 
 You are only required to create one component, though most simulations will contain many elements.
 
-To start import the SST functions.
+To start, create a new python file and import the SST functions.
 ```python
 import sst
 ```
 
-Use the [SST functions](projectDriver/sst/component.md) to build your simulation.
+Below are some examples. For more information on the functions see the [Project Driver](projectDriver/sst/component.md) section.
 
 
 ## Examples
@@ -88,4 +88,5 @@ sst.Link("MyLink").connect( (carWashComponent, "port", "1ps"), (carGeneratorComp
 
 ## See Also
 
+- [Project Driver](projectDriver/sst/component.md) - View this section of the site for more information on the functions used to build a simulation.
 - [http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/](http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/) - View more info on the sst-simulator.org site.

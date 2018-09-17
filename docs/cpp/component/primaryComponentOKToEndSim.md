@@ -10,14 +10,14 @@ SST::Component::primaryComponentOKToEndSim()
 ### Remarks
 The component should be [registered as a primary component](cpp/component/registerAsPrimaryComponent.md) before calling.
 
-Tells the simulation that it is now OK to end simulation.
+If [primaryComponentDoNotEndSim()](cpp/component/primaryComponentDoNotEndSim.md) was called, this tells the simulation that it is now OK to end simulation.
 
-Simulation will not end until all primary components have called this function.
+The simulation will not end until all primary components are in the OKToEndSim state.
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -62,5 +62,5 @@ bool carWash::tick( SST::Cycle_t currentCycle )
 
 ## See Also
 
-- [primaryComponentDoNotEndSim](cpp/component/primaryComponentDoNotEndSim.md)
 - [registerAsPrimaryComponent](cpp/component/registerAsPrimaryComponent.md)
+- [primaryComponentDoNotEndSim](cpp/component/primaryComponentDoNotEndSim.md)

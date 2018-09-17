@@ -14,13 +14,13 @@ Used in a Component to attach a link to itself. If you want to setup a link betw
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
 
 ```cpp
-// #1 using a TimeConvert class for time_base
+// #1 using a TimeConverter class for time_base
 Link * SST::BaseComponent::configureSelfLink (std::string  name, TimeConverter *  time_base, Event::HandlerBase *  handler = NULL)
 
 // #2 using a string for time_base
@@ -46,7 +46,7 @@ Link * SST::BaseComponent::configureSelfLink (std::string  name, Event::HandlerB
 
 ### Examples 1
 ```cpp
-// #1 using a TimeConvert class for time_base
+// #1 using a TimeConverter class for time_base
 TimeConverter* base_tc = registerTimeBase("1ps",false);
 timing_link = configureSelfLink("timing_link", base_tc, new Event::Handler<OfferedLoad>(this, &OfferedLoad::output_timing));
 ```

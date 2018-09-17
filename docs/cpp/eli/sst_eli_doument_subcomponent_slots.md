@@ -9,13 +9,12 @@ title: SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS
 
 ### Remarks
 
-Specifies one or more slots for subcomponents. Each slot can have 1 or more object in it.
+Specifies one or more slots for subcomponents. Each slot can have 1 or more subcomponents assigned to it.
 
 ## Requirements
 
 ```cpp
 #include <sst/core/elementinfo.h>
-
 ```
 
 ## Syntax
@@ -32,11 +31,11 @@ Specifies one or more slots for subcomponents. Each slot can have 1 or more obje
 
 ## Parameters
 
-**NAME** - the name of the subcomponent slot.
+**slotN_NAME** - the name of the subcomponent slot.
 
-**DESCRIPTION** - A description of this subcomponent slot
+**slotN_DESCRIPTION** - A description of this subcomponent slot
 
-**SLOT_TYPE** - The class/interface the slot expects the subcomponent to support. 
+**slotN_SLOT_TYPE** - The fully qualified class/interface the slot expects the subcomponent to support. 
 
 ## Examples
 

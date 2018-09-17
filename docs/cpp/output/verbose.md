@@ -10,19 +10,19 @@ SST::Output::verbose()
 ### Remarks
 Output the verbose message with formatting as specified by the format parameter.
 
-Output will only occur if specified output_level and output_bits meet criteria defined by object. The output will be prepended with the expanded prefix set in the object.
+Output will only occur if specified output_level and output_bits meet criteria defined in the call to the [init function](cpp/output/init.md). The output will also be prepended with the expanded prefix set iin the call to the [init function](cpp/output/init.md).
 
 ## Requirements
 
 Main definition
 ```cpp
- #include <sst/core/output.h>
+#include <sst/core/output.h>
 ```
 
 Also included in the following
 ```cpp
- #include <sst/core/simulation.h>
- #include <sst/core/component.h>
+#include <sst/core/simulation.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -39,13 +39,13 @@ void SST::Output::verbose(uint32_t line, const char* file, const char* func, uin
 
 **func** - Function name calling function (use CALL_INFO macro)
 
-**output_level** - For output to occur, output_level must be less than or equal to verbose_level set in object
+**output_level** - For output to occur, output_level must be less than or equal to verbose_level set in the call to the [init function](cpp/output/init.md).
 
-**output_bits** -The Output object will only output the message if the set bits of the output_bits parameter are set in the verbose_mask of the object. It uses this logic: if (~verbose_mask & output_bits == 0) then output is enabled.
+**output_bits** - The Output object will only output the message if the set bits of the output_bits parameter are set in the verbose_mask (see the [init function](cpp/output/init.md)). It uses this logic: if (~verbose_mask & output_bits == 0) then output is enabled.
 
 **format** - Format string. All valid formats for printf are available
 
-**...** - Argument strings for format
+**...** - Argument for format
 
 ## Return Value
 

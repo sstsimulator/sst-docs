@@ -17,7 +17,7 @@ The component will remain in this state until a call to [primaryComponentOKToEnd
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -51,5 +51,5 @@ carWash::carWash( SST::ComponentId_t id, SST::Params& params ) : SST::Component(
 
 ## See Also
 
-- [primaryComponentOKToEndSim](cpp/component/primaryComponentOKToEndSim.md)
 - [registerAsPrimaryComponent](cpp/component/registerAsPrimaryComponent.md)
+- [primaryComponentOKToEndSim](cpp/component/primaryComponentOKToEndSim.md)

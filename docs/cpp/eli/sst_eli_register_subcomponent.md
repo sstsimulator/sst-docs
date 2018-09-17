@@ -42,7 +42,7 @@ SST_ELI_REGISTER_SUBCOMPONENT(
 
 **DESCRIPTION** - A description of this subcomponent
 
-**SUB_COMPONENT_SLOT** - The class/interface the a subcomponent slot must have to use this subcomponent
+**SUB_COMPONENT_SLOT** - The fully qualified class/interface the a subcomponent slot must have to use this subcomponent
 
 ## Examples
 
@@ -57,3 +57,9 @@ SST_ELI_REGISTER_SUBCOMPONENT(
     "SST::exC_carWash::carWashBay" // subcomponent slot
 )
 ```
+
+## See Also
+
+- [SST_ELI_REGISTER_COMPONENT](cpp/eli/sst_eli_register_subcomponent.md)
+- [Basics: Header (.h) Files](guides/files/basics_header_files.md)
+- [Basics: Makefile](guides/files/basics_makefile.md)

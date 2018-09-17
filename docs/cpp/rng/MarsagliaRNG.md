@@ -15,7 +15,7 @@ This method is computationally cheap and provides a reasonable distribution of r
 ## Requirements
 
 ```cpp
- #include <sst/core/rng/marsaglia.h>
+#include <sst/core/rng/marsaglia.h>
 ```
 
 ## Functions
@@ -37,11 +37,11 @@ MarsagliaRNG::MarsagliaRNG(unsigned int initial_z, unsigned int initial_w )
 
 #### Return Value
 
-**MarsagliaRNG** - A new MarsagliaRNG object.
+**None**
 
 ### generateNextInt32()
 ```cpp
-generateNextInt32()
+int32_t generateNextInt32()
 ```
 
 #### Parameters
@@ -55,7 +55,7 @@ generateNextInt32()
 
 ### generateNextInt64()
 ```cpp
-generateNextInt64()
+int64_t generateNextInt64()
 ```
 
 #### Parameters
@@ -68,7 +68,7 @@ generateNextInt64()
 
 ### generateNextUInt32()
 ```cpp
-generateNextUInt32()
+uint32_t generateNextUInt32()
 ```
 
 #### Parameters
@@ -77,11 +77,11 @@ generateNextUInt32()
 
 #### Return Value
 
-**int32_t** - the next unsigned 32-bit integer
+**uint32_t** - the next unsigned 32-bit integer
 
 ### generateNextUInt64()
 ```cpp
-generateNextUInt64()
+uint64_t generateNextUInt64()
 ```
 
 #### Parameters
@@ -90,24 +90,11 @@ generateNextUInt64()
 
 #### Return Value
 
-**int32_t** - the next unsigned 64-bit integer
-
-### generateNextInt32()
-```cpp
-generateNextInt32()
-```
-
-#### Parameters
-
-**None**
-
-#### Return Value
-
-**int32_t** - the next signed 32-bit integer
+**uint64_t** - the next unsigned 64-bit integer
 
 ### nextUniform()
 ```cpp
-nextUniform()
+double  nextUniform()
 ```
 
 #### Parameters
@@ -121,7 +108,7 @@ nextUniform()
 ### restart()
 Restart the random number generator with new seeds.
 ```cpp
-restart(unsigned int new_z, unsigned int new_w)
+void restart(unsigned int new_z, unsigned int new_w)
 ```
 
 #### Parameters

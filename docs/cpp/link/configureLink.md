@@ -9,7 +9,7 @@ SST::BaseComponent::configureLink()
 
 ### Remarks
 
-This function is documented in [SST::Component > configureLink()](cpp/component/configureLink).
+This function is documented in [SST::Component > configureLink()](cpp/component/configureLink.md).
 
 
 ## See Also
