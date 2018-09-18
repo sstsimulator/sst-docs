@@ -89,4 +89,4 @@ sst.Link("MyLink").connect( (carWashComponent, "port", "1ps"), (carGeneratorComp
 ## See Also
 
 - [Project Driver](projectDriver/sst/component.md) - View this section of the site for more information on the functions used to build a simulation.
-- [http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/](http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/) - View more info on the sst-simulator.org site.
+<!-- - [http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/](http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/) - View more info on the sst-simulator.org site. -->
