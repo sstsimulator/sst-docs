@@ -10,7 +10,7 @@ Create a component.
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax

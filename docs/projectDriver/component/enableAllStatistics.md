@@ -10,7 +10,7 @@ Enables all statistics in a component.
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax
@@ -41,5 +41,6 @@ carWashComponent.enableAllStatistics()
 
 ## See Also
 
-- [sst.enableAllStatisticsForAllComponents](projectDriver/sst/enableAllStatisticsForAllComponents.md)
-- [sst.Component](projectDriver/sst/component.md)
+- [sst.setStatisticLoadLevel()](projectDriver/sst/setStatisticLoadLevel.md)
+- [sst.enableAllStatisticsForAllComponents()](projectDriver/sst/enableAllStatisticsForAllComponents.md)
+- [sst.Component()](projectDriver/sst/component.md)

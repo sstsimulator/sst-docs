@@ -5,14 +5,14 @@ title: sst-info
 
 ### Remarks
 
-List documented Components, SubComponents, Events, Modules, Partitioners, and Generators within an Element Library. Additionally sst-info will include more information for each of the types above:
+The command line utility, sst-info, lists documented Components, SubComponents, Events, Modules, Partitioners, and Generators within an Element Library. Additionally sst-info will include more information for each of the types above:
 
 - Components
   - Describes the Components in the Element Library.
   - **Parameters**: Includes the parameter name, description, and default value
   - **Ports**: Includes the port name, description, and what events the port accepts.
-  - **Statistics**: Includes the statistics name, plural name for the units the stat collects, description, and the statistic's enable level.
-  - **SubComponent Slots**: Includes the slot's name, description, and what interface the SubComponents should provide.
+  - **Statistics**: Includes the statistic name, plural name for the units the statistic collects, description, and the statistic's enable level.
+  - **SubComponent Slots**: Includes the slot's name, description, and what interface the SubComponent should provide.
 - SubComponents
   - Describes what SubComponents are defined in the Element Library. These SubComponents can be placed in the SubComponent slot of a Component.
   - **Provides Interface**: the interface the SubComponent expects to be communicated with. The SubComponent slot in the Component should be the same as this interface.

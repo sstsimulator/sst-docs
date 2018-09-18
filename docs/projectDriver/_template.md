@@ -8,7 +8,7 @@ title: function_name()
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax

@@ -5,10 +5,14 @@ title: sst.Link()
 
 ### Remarks
 
+Creates a Link. Links connect two ports and sends Events between the two ports.
+
+**NOTE**: This only creates and names the link. A call to [connect()](projectDriver/link/connect.md) is required to complete setting up the link.
+
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax
@@ -31,4 +35,8 @@ link = sst.Link("linkName")
 ```python
 link = sst.Link("MyLink")
 ```
+
+## See Also
+
+- [connect()](projectDriver/link/connect.md)
 

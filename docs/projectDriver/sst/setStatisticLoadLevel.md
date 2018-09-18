@@ -14,7 +14,7 @@ The statistic's enable level is set using [SST_ELI_DOCUMENT_STATISTICS](cpp/eli/
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax
@@ -38,3 +38,7 @@ sst.setStatisticLoadLevel(loadLevel)
 sst.setStatisticLoadLevel(1)
 ```
 
+## See Also
+
+- [sst.enableAllStatisticsForAllComponents()](projectDriver/sst/enableAllStatisticsForAllComponents.md)
+- [enableAllStatistics()](projectDriver/component/enableAllStatistics.md)

@@ -10,7 +10,7 @@ Sets all parameters for a Component or SubComponent.
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax
@@ -27,9 +27,9 @@ addParams({
 
 ## Parameters
 
-**param** - the name of the param to set
+**paramN** - the name of the param to set
 
-**value** - the string value to set.
+**valueN** - the string value to set.
 
 ## Return Value
 

@@ -5,7 +5,9 @@ title: sst-config
 
 ## Remarks
 
-sst-config holds information on how the SST Core was compiled and what compiler and flags elements should be compiled with. 
+The command line utility, sst-config, retrieves information on how the SST Core was compiled. 
+
+Most often it is used when compiling elements. It is called in the makefile to get the correct compiler and flags to use.
 
 ## Syntax
 ```bash
@@ -43,3 +45,14 @@ sst-config --ELEMENT_CXXFLAGS
 ```bash
 sst-config --ELEMENT_LDFLAGS
 ```
+
+### In a makefile
+```makefile
+CXX=$(shell sst-config --CXX)
+CXXFLAGS=$(shell sst-config --ELEMENT_CXXFLAGS)
+LDFLAGS=$(shell sst-config --ELEMENT_LDFLAGS)
+```
+
+## See Also
+
+- [Basics: Makefile](guides/files/basics_makefile.md)

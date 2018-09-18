@@ -10,7 +10,7 @@ Add a SubComponent to a Component's SubComponent slot
 ## Requirements
 
 ```python
- import sst
+import sst
 ```
 
 ## Syntax
