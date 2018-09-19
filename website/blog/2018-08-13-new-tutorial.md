@@ -5,4 +5,4 @@ authorURL:
 authorFBID: 
 ---
 
-The SST Tutorial from July 2018 is now available and can be downloaded here
+The SST Tutorial from July 2018 is now available and can be downloaded [here](http://sst-simulator.org/SSTPages/SSTTopDocTutorial/)
