@@ -2,6 +2,10 @@
 id: sst_eli_register_component
 title: SST_ELI_REGISTER_COMPONENT
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_REGISTER_COMPONENT(cls,lib,name,version,desc,cat)
+```
 
 ### Remarks
 
@@ -30,7 +34,7 @@ SST_ELI_REGISTER_COMPONENT(
 
 **CLASS_NAME** - this is the class itself and not just the class name
 
-**ELEMENT_LIBRARY** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the makefile.
+**ELEMENT_LIBRARY** - the name of the element library the component belongs to. This should match the first parameter passed to sst-register in the [makefile](guides/files/basics_makefile.md).
 
 **CLASS_NAME_STRING** - a string representation of the class name
 
@@ -46,8 +50,9 @@ SST_ELI_REGISTER_COMPONENT(
 - COMPONENT_CATEGORY_NETWORK
 - COMPONENT_CATEGORY_SYSTEM
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 public:
   // ... SNIP ...  public declarations
@@ -64,5 +69,5 @@ public:
 
 ## See Also
 
-- [Basics: Header (.h) Files](gettingStarted/basics_header_files.md)
-- [Basics: Makefile](gettingStarted/basics_makefile.md)
+- [Basics: Header (.h) Files](guides/files/basics_header_files.md)
+- [Basics: Makefile](guides/files/basics_makefile.md)

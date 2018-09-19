@@ -2,10 +2,14 @@
 id: sst_eli_document_params
 title: SST_ELI_DOCUMENT_PARAMS
 ---
+## Fully Qualified Name
+```cpp
+#define SST_ELI_DOCUMENT_PARAMS	( ... )	
+```
 
 ### Remarks
 
-Document and register all the parameters a component or subcomponent has.
+Document and register all the parameters of a component or subcomponent.
 
 ## Requirements
 
@@ -27,14 +31,15 @@ SST_ELI_DOCUMENT_PARAMS(
 
 ## Parameters
 
-**parm1_NAME** - The name of the parameter. This the value passed into the addParams function in the Project Driver.
+**parmN_NAME** - The name of the parameter. This is the value passed into the [addParams](projectDriver/component/addParams.md) function in the Project Driver.
 
-**parm1_DESCRIPTION** - A description of the param. This value is shown when you run sst-info in the command line.
+**parmN_DESCRIPTION** - A description of the param. This value is shown when you run sst-info in the command line.
 
-**parm1_DEFAULT_VALUE** - Shows or describes the default value for the parameter.
+**parmN_DEFAULT_VALUE** - Shows or describes the default value for the parameter.
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 SST_ELI_DOCUMENT_PARAMS(
 		{ "size", "Size of the bay (1 = small, 2 = large)", "1" },
@@ -45,5 +50,4 @@ SST_ELI_DOCUMENT_PARAMS(
 
 ## See Also
 
-- [Link_Name](TBA)
-- [Link_Name](TBA)
+- [addParams](projectDriver/component/addParams.md)

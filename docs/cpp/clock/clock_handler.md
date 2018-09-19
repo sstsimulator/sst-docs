@@ -2,6 +2,13 @@
 id: clock_handler
 title: Clock::Handler
 ---
+## Fully Qualified Name
+```cpp
+SST::Clock::Handler<classT, argT>
+// classT - The object that contains the handler
+// argT - (optional) the type of additional data sent to the handler, if any 
+```
+
 ### Remarks
 
 This wraps a function to be called at regular intervals. This passes the current cycle and optionally extra data to the function.
@@ -9,16 +16,16 @@ This wraps a function to be called at regular intervals. This passes the current
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
 
 ```cpp
-//#1 create a clock handler with a reference to an object and a pointer to it a tick function
+//#1 - no data - create a clock handler with a reference to an object and a pointer to it a tick function
 SST::Clock::Handler<classT>::Handler (classT *const object, PtrMember member)
 
-//#2 provide additional data to the tick function
+//#2 - with data - provide additional data to the tick function
 SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  member, argT  data)
 ```
 
@@ -30,19 +37,19 @@ SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  me
 - **Returns true** if the Handler should stop 
 - **Returns false** if the Handler should continue.
 ```cpp
-  //#1 no data
+  //#1 - no data
   bool tick(Cycle_t cycle) { ... }
 
-  //#2 with data
+  //#2 - with data
   bool tick(Cycle_t cycle, argT data) { ... }
 ```
 **data** - additional data to pass to the tick function
 
-### Examples
+## Examples
 
 ### Example 1
 ```cpp
-//#1 no data
+//#1 - no data
 Clock::Handler<MemController>* clockHandler = new Clock::Handler<MemController>(this, &MemController::clock);
 
 bool MemController::clock(Cycle_t cycle) {
@@ -64,7 +71,7 @@ bool MemController::clock(Cycle_t cycle) {
 ```
 ### Example 2
 ```cpp
-//#2 with data
+//#2 - with data
 Clock::Handler<MemController>* clockHandler = new Clock::Handler<simpleCarWash, uint32_t>(this, &simpleCarWash::Clock2Tick, 222)
 
 bool simpleCarWash::Clock2Tick(SST::Cycle_t CycleNum, uint32_t Param)
@@ -84,4 +91,4 @@ bool simpleCarWash::Clock2Tick(SST::Cycle_t CycleNum, uint32_t Param)
 
 ## See Also
 
-- [Component::registerClock](core/component/registerClock.md)
+- [Component::registerClock](cpp/component/registerClock.md)

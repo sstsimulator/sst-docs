@@ -2,6 +2,10 @@
 id: registerClock
 title: registerClock()
 ---
+## Fully Qualified Name
+```cpp
+SST::BaseComponent::registerClock()
+```
 
 ## Remarks
 
@@ -16,7 +20,7 @@ Tasks that are often performed:
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -70,4 +74,4 @@ registerClock( cpu_clock, new Clock::Handler<Opal>(this, &Opal::tick ) );
 
 ## See Also
 
-- [Clock::Handler](core/clock/clock_handler.md)
+- [Clock::Handler](cpp/clock/clock_handler.md)

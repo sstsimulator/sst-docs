@@ -1,14 +1,18 @@
 ---
-id: promaryComponentOKToEndSim
-title: promaryComponentOKToEndSim()
+id: function_name
+title: function_name()
 ---
+## Fully Qualified Name
+```cpp
+SST::
+```
 
 ### Remarks
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
@@ -29,8 +33,9 @@ title: promaryComponentOKToEndSim()
 
 **ret** - description
 
-### Examples
+## Examples
 
+### Example 1
 ```cpp
 
 ```

@@ -1,19 +1,19 @@
 ---
-id: registerHandler
-title: registerHandler()
+id: function_name
+title: function_name()
 ---
 
 ### Remarks
 
 ## Requirements
 
-```cpp
- #include <sst/core/component.h>
+```python
+import sst
 ```
 
 ## Syntax
 
-```cpp
+```python
 
 ```
 
@@ -29,9 +29,10 @@ title: registerHandler()
 
 **ret** - description
 
-### Examples
+## Examples
 
-```cpp
+### Example 1
+```python
 
 ```
 

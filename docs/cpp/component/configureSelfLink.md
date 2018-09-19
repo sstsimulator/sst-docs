@@ -2,21 +2,25 @@
 id: configureSelfLink
 title: configureSelfLink()
 ---
+## Fully Qualified Name
+```cpp
+SST::BaseComponent::configureSelfLink()
+```
 
 ### Remarks
 
-Used in a Component to attach a link to itself. If you want to setup a link between two components use [configureSelfLink](cpp/component/configureLink).
+Used in a Component to attach a link to itself. If you want to setup a link between two components use [configureLink](cpp/component/configureLink.md).
 
 ## Requirements
 
 ```cpp
- #include <sst/core/component.h>
+#include <sst/core/component.h>
 ```
 
 ## Syntax
 
 ```cpp
-// #1 using a TimeConvert class for time_base
+// #1 using a TimeConverter class for time_base
 Link * SST::BaseComponent::configureSelfLink (std::string  name, TimeConverter *  time_base, Event::HandlerBase *  handler = NULL)
 
 // #2 using a string for time_base
@@ -38,16 +42,16 @@ Link * SST::BaseComponent::configureSelfLink (std::string  name, Event::HandlerB
 
 **Link\*** - A pointer to the configured link, or NULL if an error occured.
 
-### Examples
+## Examples
 
-#### Examples 1
+### Examples 1
 ```cpp
-// #1 using a TimeConvert class for time_base
+// #1 using a TimeConverter class for time_base
 TimeConverter* base_tc = registerTimeBase("1ps",false);
 timing_link = configureSelfLink("timing_link", base_tc, new Event::Handler<OfferedLoad>(this, &OfferedLoad::output_timing));
 ```
 
-#### Examples 2
+### Examples 2
 ```cpp
 // #2 using a string for time_base
 self_link = configureSelfLink("complete_link", "2GHz", new Event::Handler<bisection_test>(this,&bisection_test::handle_complete));
@@ -61,6 +65,5 @@ selfLink = configureSelfLink( "linkToSelf", new Event::Handler<faultInjectionCom
 ```
 
 ## See Also
-
-- [Link_Name](TBA)
-- [Link_Name](TBA)
+- [SST::Component::configureLink()](cpp/component/configureLink.md)
+- [SST::Link::send()](cpp/link/send.md)

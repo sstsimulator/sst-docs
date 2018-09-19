@@ -5,10 +5,10 @@ title: Basics: Header (.h) Files
 
 ## SST::Component Subclass
 
-For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally the header files:
+For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally this includes:
 
-- Register the component with SST
-- Register params, ports, subcomponents and statistics with SST.
+- Registering the component with SST
+- Registering params, ports, subcomponents, statistics, etc. with SST.
 - Varibale and function declarations
 
 ### Syntax
@@ -31,7 +31,7 @@ For the most part header files are just like any other C++ header file. There ar
 #include <sst/core/subcomponent.h>
 
 //generally a good idea to have a namespace
-namespace exA_hello {
+namespace SOME_NAMESPACE {
 
 class INSERT_CLASS_NAME : public SST::Component {
 
@@ -46,7 +46,7 @@ public:
 	void setup();
 	void finish();
 
-    //not required, but almost all components will register a clock and do something on a clock tick
+    //not required, but almost all components will register a clock and do something on a clock tick. The function name can be anything.
     bool clockTick( SST::Cycle_t currentCycle );
 
 //Register pieces of the component with SST.
@@ -294,8 +294,6 @@ private:
 
 The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT. 
 
-### Syntax / Example
-
 ```cpp
 // Register the subcomponent
 	SST_ELI_REGISTER_SUBCOMPONENT(
@@ -306,4 +304,117 @@ The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUB
 		"Bay subcomponent for the carwash", //description
 		"SST::exC_carWash::carWashBay" // type of objects that subcomponent slots will have
 	)
+```
+
+### Syntax 
+
+```cpp
+#ifndef _INSERT_CLASS_NAME_H
+#define _INSERT_CLASS_NAME_H
+
+#include "INSERT_COMPONENT_WITH_SUBCOMPONENT_DEFINITION.h"
+
+//generally a good idea to have a namespace
+namespace SOME_NAMESPACE {
+
+class INSERT_CLASS_NAME : public INSERT_PARENT_CLASS_NAME {
+
+public:
+	INSERT_CLASS_NAME( SST::Component *owningComponent, SST::Params& params );
+	~INSERT_CLASS_NAME();
+
+	//public interface functions. 
+	// - pass in data from events the main component gets
+	// - functions to run on each clock tick of the main component
+	// - other getters/setters
+
+	// Register the subcomponent
+	SST_ELI_REGISTER_SUBCOMPONENT(
+		INSERT_CLASS_NAME, // class
+		"exC_carWash", // element library
+		"INSERT_CLASS_NAME", // subcomponent
+		SST_ELI_ELEMENT_VERSION( 1, 0, 0 ),
+		"Bay subcomponent for the carwash",
+		"SST::SOME_NAMESPACE::INSERT_PARENT_CLASS_NAME" // subcomponent slot
+	)
+
+	// Parameter name, description, default value
+	SST_ELI_DOCUMENT_PARAMS(
+		{ "size", "Size of the bay (1 = small, 2 = large)", "1" },
+		{ "smallCarWashTime", "How long to wash a small car (ticks)", "3" },
+		{ "largeCarWashTime", "How long to wash a large car (ticks)", "5" }
+	)
+	
+	// Statistic name, description, unit, enable level
+	SST_ELI_DOCUMENT_STATISTICS(
+        { "carsWashed", "Number of cars washed", "cars", 1 },
+        { "idleTime", "Time spent not washing cars", "ticks", 1 }
+    )
+
+
+private:
+	//private variables, functions, etc.
+};
+} // namespace SOME_NAMESPACE
+#endif
+```
+
+### Examples
+
+#### Example 1
+```cpp
+#ifndef _bay_H
+#define _bay_H
+
+#include "carWash.h"
+
+namespace exC_carWash {
+
+class bay : public carWashBay {
+
+public:
+	bay( SST::Component *owningComponent, SST::Params& params );
+	~bay();
+
+	bool newCar(int CarType);
+	int baySize();
+	int isOccupied();
+	void tick();
+
+	// Register the subcomponent
+	SST_ELI_REGISTER_SUBCOMPONENT(
+		bay, // class
+		"exC_carWash", // element library
+		"bay", // subcomponent
+		SST_ELI_ELEMENT_VERSION( 1, 0, 0 ),
+		"Bay subcomponent for the carwash",
+		"SST::exC_carWash::carWashBay" // subcomponent slot
+	)
+
+	// Parameter name, description, default value
+	SST_ELI_DOCUMENT_PARAMS(
+		{ "size", "Size of the bay (1 = small, 2 = large)", "1" },
+		{ "smallCarWashTime", "How long to wash a small car (ticks)", "3" },
+		{ "largeCarWashTime", "How long to wash a large car (ticks)", "5" }
+	)
+	
+	// Statistic name, description, unit, enable level
+	SST_ELI_DOCUMENT_STATISTICS(
+        { "carsWashed", "Number of cars washed", "cars", 1 },
+        { "idleTime", "Time spent not washing cars", "ticks", 1 }
+    )
+
+
+private:
+	SST::Output output;
+	int bay_size;
+	int smallTime;
+	int largeTime;
+	int occupied;
+	int timeToOccupy;
+	Statistic<uint32_t>* carsWashed;
+	Statistic<uint32_t>* idleTime;
+};
+} // namespace exC_carWash
+#endif
 ```

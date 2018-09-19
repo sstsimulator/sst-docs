@@ -39,10 +39,12 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'guides/files/basics_header_files', label: 'Guides'},
-    {doc: 'cpp/component/registerClock', label: 'C++'},
-    {doc: 'projectDriver/helpUs', label: 'Project Driver'},
+    {doc: 'cpp/component/registerClock', label: 'C++ API'},
+    {doc: 'projectDriver/sst/component', label: 'Project Driver'},
+    {doc: 'tools/commandLine/sst-info', label: 'Tools'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {href: "http://sst-simulator.org/", label: 'Forum'},
   ],
 
   editUrl: 'https://github.com/GPStrategiesCorp/SST-website/edit/master/docs/',
