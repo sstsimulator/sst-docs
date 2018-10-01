@@ -3,4 +3,4 @@ id: helpUs
 title: Help Us
 ---
 
-This section is under construction. Help us document SST.
+Help us document SST. Visit the [Get Involved](contribute/get-involved.md) page to learn more.
