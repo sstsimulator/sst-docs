@@ -5,11 +5,11 @@ title: Basics: Header (.h) Files
 
 ## SST::Component Subclass
 
-For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally this includes:
+For the most part header files are just like any other C++ header file. There are only a few required pieces. Generally this includes:
 
 - Registering the component with SST
 - Registering params, ports, subcomponents, statistics, etc. with SST.
-- Varibale and function declarations
+- Variable and function declarations
 
 ### Syntax
 
@@ -61,7 +61,7 @@ public:
 		"Simple model that prints Hello World!", //description
 		COMPONENT_CATEGORY_UNCATEGORIZED //category
 	)
-    //if you wnat to accept params from the Project Driver
+    //if you want to accept params from the Project Driver
     //           This text will be used to generate the sst-info documentation.
 	SST_ELI_DOCUMENT_PARAMS(
         // Parameter name, description, default value
@@ -154,7 +154,7 @@ public:
 
 private:
 	SST::Output output;
-	SST::Cycle_t maxRepeats; //number of repititions to make
+	SST::Cycle_t maxRepeats; //number of repetitions to make
 	SST::Cycle_t repeats; //number of repitions printed already
 
 };

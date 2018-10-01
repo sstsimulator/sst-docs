@@ -9,12 +9,12 @@ SST::BaseComponent::registerClock()
 
 ## Remarks
 
-This sets up a function to be called at regular intervals. Often these Clock::Handler funtions are where a good portion of the work is done.
+This sets up a function to be called at regular intervals. Often these Clock::Handler functions are where a good portion of the work is done.
 
 Tasks that are often performed:
 
 - Handle data queued by event handlers
-- Send envents
+- Send events
 - Simulate the next step 
 
 ## Requirements
@@ -46,7 +46,7 @@ Cycle_t reregisterClock (TimeConverter *freq, Clock::HandlerBase *handler)
 
 **TimeConverter** - an object to convert between the component's view of time and the simulation's view of time.
 
-**Cycle_t** - then next time the handler willl fire
+**Cycle_t** - the next time the handler will fire
 
 ## Examples
 
