@@ -9,7 +9,7 @@ TODO: Link file on GitHub that contains requirements coming soon. Most likely it
 
 ## Remarks
 
-This is the SST Model Creation Tool it will assist your in devoloping:
+This is the SST Model Creation Tool. It will assist you in developing:
  - New Components
  - New Subcomponents
  - Project Drivers

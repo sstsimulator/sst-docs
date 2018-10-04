@@ -155,7 +155,7 @@ public:
 private:
 	SST::Output output;
 	SST::Cycle_t maxRepeats; //number of repetitions to make
-	SST::Cycle_t repeats; //number of repitions printed already
+	SST::Cycle_t repeats; //number of repetitions printed already
 
 };
 } // namespace exA_hello

@@ -10,7 +10,7 @@ SST::Output::verbose()
 ### Remarks
 Output the verbose message with formatting as specified by the format parameter.
 
-Output will only occur if specified output_level and output_bits meet criteria defined in the call to the [init function](cpp/output/init.md). The output will also be prepended with the expanded prefix set iin the call to the [init function](cpp/output/init.md).
+Output will only occur if specified output_level and output_bits meet criteria defined in the call to the [init function](cpp/output/init.md). The output will also be prepended with the expanded prefix set in the call to the [init function](cpp/output/init.md).
 
 ## Requirements
 

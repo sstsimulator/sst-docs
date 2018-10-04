@@ -34,13 +34,13 @@ Link * SST::BaseComponent::configureSelfLink (std::string  name, Event::HandlerB
 
 **name** - Port Name on which the link to configure is attached
 
-**time_base** - Used to add aditional delay when sending events.
+**time_base** - Used to add additional delay when sending events.
 
 **handler** - (optional) a Handler to be call when an Event is received.
 
 ## Return Value
 
-**Link\*** - A pointer to the configured link, or NULL if an error occured.
+**Link\*** - A pointer to the configured link, or NULL if an error occurred.
 
 ## Examples
 
