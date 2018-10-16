@@ -76,9 +76,9 @@
     "SST::Output": "SST::Output",
     "SST::RNG": "SST::RNG",
     "SST::Statistics": "SST::Statistics",
+    "SST": "SST",
     "Component & SubComponent": "Component & SubComponent",
     "Link": "Link",
-    "SST": "SST",
     "Applications": "Applications",
     "Command Line": "Command Line"
   },

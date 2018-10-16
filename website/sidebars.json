@@ -39,16 +39,16 @@
   },
   "ProjectDriver": {
     "Contribute": ["projectDriver/helpUs"],
+    "SST": ["projectDriver/sst/component"
+      , "projectDriver/sst/enableAllStatisticsForAllComponents"
+      , "projectDriver/sst/link"
+      , "projectDriver/sst/setStatisticLoadLevel"],
     "Component & SubComponent": ["projectDriver/component/addParams"
                       , "projectDriver/component/component"
                       , "projectDriver/component/enableAllStatistics"
                       , "projectDriver/component/setSubComponent"],
       "Link": ["projectDriver/link/connect"
-              , "projectDriver/link/link"],
-      "SST": ["projectDriver/sst/component"
-             , "projectDriver/sst/enableAllStatisticsForAllComponents"
-             , "projectDriver/sst/link"
-             , "projectDriver/sst/setStatisticLoadLevel"]
+              , "projectDriver/link/link"]
   },
   "Tools": {
     "Contribute": ["tools/helpUs"],
