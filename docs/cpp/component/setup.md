@@ -11,9 +11,9 @@ SST::BaseComponent::setup()
 Called after all components have been constructed and initialization has completed, but before simulation time has begun.
 
 Typical tasks done:
-- Initialize variables
-- Perform checks to make sure the Component is setup correctly.
-- Other tasks to do before starting the simulation.
+- Initialize variables.
+- Perform checks to make sure the Component is set up correctly.
+- Perform any other tasks to do before starting the simulation.
 
 ## Requirements
 
@@ -52,7 +52,7 @@ void carWash::setup() {
 }
 ```
 
-#### Example 2
+### Example 2
 ```cpp
 
 void DirectoryController::setup (void)

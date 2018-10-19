@@ -9,7 +9,7 @@ SST::Output::output()
 
 ### Remarks
 
-Print a message during execution. If called with the CALL_INFO macro it will prepended the message with the expanded prefix set in the call to the [init function](cpp/output/init.md). If called with just a string it will not prepend anything.
+Print a message during execution. If called with the CALL_INFO macro, it will prepended the message with the expanded prefix set in the call to the [init function](cpp/output/init.md). If called with just a string, it will not prepend anything.
 
 ## Requirements
 
@@ -37,19 +37,19 @@ void SST::Output::output(const char* format, ... )
 
 ## Parameters
 
-**line** - Line number of calling function (use CALL_INFO macro)
+**line** - Line number of calling function (use CALL_INFO macro).
 
-**file** - File name calling function (use CALL_INFO macro)
+**file** - File name calling function (use CALL_INFO macro).
 
-**func** - Function name calling function (use CALL_INFO macro)
+**func** - Function name calling function (use CALL_INFO macro).
 
-**format** - Format string. All valid formats for printf are available
+**format** - Format string. All valid formats for printf are available.
 
-**...** - Arguments for format
+**...** - Arguments for format.
 
 ## Return Value
 
-**NONE**
+**None**
 
 ## Examples
 

@@ -5,7 +5,7 @@ title: Basics: Header (.h) Files
 
 ## SST::Component Subclass
 
-For the most part header files are just like any other C++ header file. There are only a few required pieces. Generally this includes:
+For the most part, header files are just like any other C++ header file. There are only a few required pieces. Generally, these includes:
 
 - Registering the component with SST
 - Registering params, ports, subcomponents, statistics, etc. with SST.
@@ -115,7 +115,7 @@ public:
 
 ### Examples
 
-#### Example 1 - Simple
+#### Example 1: Simple
 
 ```cpp
 #ifndef _hello_H
@@ -162,7 +162,7 @@ private:
 #endif
 ```
 
-#### Example 2 - More Complex
+#### Example 2: More Complex
 
 ```cpp
 #ifndef _carWash_H

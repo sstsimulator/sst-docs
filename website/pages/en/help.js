@@ -29,12 +29,12 @@ class Help extends React.Component {
         title: 'Browse Docs',
       },
       {
-        content: 'Ask questions about the documentation and project',
-        title: 'Join the community',
+        content: 'Ask questions about the documentation and project.',
+        title: 'Join the Community',
       },
       {
-        content: "Find out what's new with this project",
-        title: 'Stay up to date',
+        content: "Find out what's new with this project.",
+        title: 'Stay Up to Date',
       },
     ];
 
@@ -43,7 +43,7 @@ class Help extends React.Component {
         <Container className="mainContainer documentContainer postContainer">
           <div className="post">
             <header className="postHeader">
-              <h2>Need help?</h2>
+              <h2>Need Help?</h2>
             </header>
             <p>This project is maintained by a dedicated group of people.</p>
             <GridBlock contents={supportLinks} layout="threeColumn" />

@@ -9,24 +9,24 @@ The command line utility, sst-info, lists documented Components, SubComponents, 
 
 - Components
   - Describes the Components in the Element Library.
-  - **Parameters**: Includes the parameter name, description, and default value
-  - **Ports**: Includes the port name, description, and what events the port accepts.
-  - **Statistics**: Includes the statistic name, plural name for the units the statistic collects, description, and the statistic's enable level.
-  - **SubComponent Slots**: Includes the slot's name, description, and what interface the SubComponent should provide.
+  - **Parameters** - Includes the parameter name, description, and default value.
+  - **Ports** - Includes the port name, description, and what events the port accepts.
+  - **Statistics** - Includes the statistic name, plural name for the units the statistic collects, description, and the statistic's enable level.
+  - **SubComponent Slots** - Includes the slot's name, description, and what interface the SubComponent should provide.
 - SubComponents
   - Describes what SubComponents are defined in the Element Library. These SubComponents can be placed in the SubComponent slot of a Component.
-  - **Provides Interface**: the interface the SubComponent expects to be communicated with. The SubComponent slot in the Component should be the same as this interface.
-  - **Parameters**: Includes the parameter name, description, and default value
-  - **Ports**: Includes the port name, description, and what events the port accepts.
-  - **Statistics**: Includes the statistics name, plural name for the units the stat collects, description, and the statistic's enable level.
-  - **SubComponent Slots**: Includes the slot's name, description, and what interface the SubComponents should provide.
+  - **Provides Interface** - The interface the SubComponent expects to be communicated with. The SubComponent slot in the Component should be the same as this interface.
+  - **Parameters** - Includes the parameter name, description, and default value.
+  - **Ports** - Includes the port name, description, and what events the port accepts.
+  - **Statistics** - Includes the statistics name, plural name for the units the stat collects, description, and the statistic's enable level.
+  - **SubComponent Slots** - Includes the slot's name, description, and what interface the SubComponents should provide.
 - Events
-  - Lists any custom events defined in the Element Library
-- Modules (**Not recommended for use, may be deprecated in the future - Use SubComponents instead**)
-  - **Parameters**: Includes the parameter name, description, and default value
-- Partitioners (**Not recommended for use, may be deprecated in the future**)
-  - name of the partitioner, description of the partitioner
-- Generators (**Not recommended for use, may be deprecated in the future**)
+  - Lists any custom events defined in the Element Library.
+- Modules - **Not recommended for use, may be deprecated in the future, Use SubComponents instead.**
+  - **Parameters** - Includes the parameter name, description, and default value.
+- Partitioners - **Not recommended for use, may be deprecated in the future.**
+  - Name of the partitioner, description of the partitioner.
+- Generators - **Not recommended for use, may be deprecated in the future.**
 
 ## Syntax
 
@@ -36,18 +36,18 @@ sst-info [<element[.component|subcomponent]>]  [options]
 
 ## Parameters
 
-**element** - Element Library Name
+**element** - Element Library Name.
 
-**component|subcomponent** - Either a Component or SubComponent defined in the Elelement Library.
+**component|subcomponent** - Either a Component or SubComponent defined in the Element Library.
 
 **options**:
-- **-h, --help** - Print Help Message
-- **-v, --version** - Print SST Package Release Version
-- **-l, --libs=LIBS** - {all, <element>, <element[.component|subcomponent]>} - Element Library9(s) to process
-- **-n, --nodisplay** - Do not display output - default is off
-- **-x, --xml** - Generate XML data - default is off
-- **-o, --outputxml=FILE** - File path to XML file. Default is SSTInfo.xml
-- **-d, --debug** - Enabled debugging messages
+- **-h, --help** - Print help message.
+- **-v, --version** - Print SST Package Release Version.
+- **-l, --libs=LIBS** - {all, <element>, <element[.component|subcomponent]>} - Element Library9(s) to process.
+- **-n, --nodisplay** - Do not display output. Default is off.
+- **-x, --xml** - Generate XML data. Default is off.
+- **-o, --outputxml=FILE** - File path to XML file. Default is SSTInfo.xml.
+- **-d, --debug** - Enabled debugging messages.
 
 ## Examples
 
@@ -80,7 +80,7 @@ sst-info ariel.ariel
 sst-info ariel.MemoryManagerMalloc
 ```
 
-### List specific ElementLibraries, Components, SubComponents
+### List Specific Element Libraries, Components, SubComponents
 ```bash
 sst-info -l {ariel,miranda}
 ```

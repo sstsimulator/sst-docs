@@ -10,7 +10,7 @@ SST::RNG::MarsagliaRNG
 ### Remarks
 Implements a random number generator using the Marsaglia method.
 
-This method is computationally cheap and provides a reasonable distribution of random numbers. If you need additional strength in the random numbers you may want to consider the Mersenne RNG.
+This method is computationally cheap and provides a reasonable distribution of random numbers. If you need additional strength in the random numbers, you may want to consider the Mersenne RNG.
 
 ## Requirements
 
@@ -50,7 +50,7 @@ int32_t generateNextInt32()
 
 #### Return Value
 
-**int32_t** - the next signed 32-bit integer
+**int32_t** - The next signed 32-bit integer.
 
 
 ### generateNextInt64()
@@ -64,7 +64,7 @@ int64_t generateNextInt64()
 
 #### Return Value
 
-**int64_t** - the next signed 64-bit integer
+**int64_t** - The next signed 64-bit integer.
 
 ### generateNextUInt32()
 ```cpp
@@ -77,7 +77,7 @@ uint32_t generateNextUInt32()
 
 #### Return Value
 
-**uint32_t** - the next unsigned 32-bit integer
+**uint32_t** - The next unsigned 32-bit integer.
 
 ### generateNextUInt64()
 ```cpp
@@ -90,7 +90,7 @@ uint64_t generateNextUInt64()
 
 #### Return Value
 
-**uint64_t** - the next unsigned 64-bit integer
+**uint64_t** - The next unsigned 64-bit integer.
 
 ### nextUniform()
 ```cpp

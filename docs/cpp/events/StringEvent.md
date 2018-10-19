@@ -33,9 +33,9 @@ StringEvent(const StringEvent* me)
 
 #### Parameters
 
-**str** - The string contents of this event
+**str** - The string contents of this event.
 
-**me** - the StringEvent to Copy
+**me** - The StringEvent to copy.
 
 #### Return Value
 
@@ -52,7 +52,7 @@ const std::string& getString()
 
 #### Return Value
 
-**const std::string&** - The contents of the StringEvent
+**const std::string&** - The contents of the StringEvent.
 
 ## Examples
 

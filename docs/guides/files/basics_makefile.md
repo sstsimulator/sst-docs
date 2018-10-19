@@ -5,12 +5,12 @@ title: Basics: Makefile
 
 ## Remarks
 
-This is intended to only give a general idea of what is required in a makefile for an SST Element. This is not meant to be an introduction to makefiles in general.
+This is intended only to give a general idea of what is required in a makefile for an SST Element. This is not meant to be an introduction to makefiles in general.
 
 ## Syntax
 
 ### Overview
-Places where you will need to replace are in double brackets, example: [[some label]].
+Content you need to replace appears in double brackets - for example: [[some label]].
 
 ```makefile
 CXX=$(shell sst-config --CXX)
@@ -32,14 +32,14 @@ clean:
 
 ### Breakdown
 
-The top line get the compiler and flags that are used to compile SST and it's elements
+The top line gets the compiler and flags that are used to compile SST and its elements
 ```makefile
 CXX=$(shell sst-config --CXX)
 CXXFLAGS=$(shell sst-config --ELEMENT_CXXFLAGS)
 LDFLAGS=$(shell sst-config --ELEMENT_LDFLAGS)
 ```
 
-Compile and register the element with SST
+Compile and register the element with SST.
 ```makefile
 all: [[library name]].so install
 
@@ -50,7 +50,7 @@ install:
 	sst-register [[element name]] [[element name]]_LIBDIR=$(CURDIR)
 ```
 
-What to delete before doing a clean compile.
+The last couple of lines are tasks to do before doing a clean compile.
 ```makefile
 clean:
 	rm -f *.o tests/*.dot tests/*.jpg [[library name]].so

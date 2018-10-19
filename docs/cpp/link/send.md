@@ -31,11 +31,11 @@ void SST::Link::send(Event* event)
 
 ## Parameters
 
-**delay** - additional delay
+**delay** - Additional delay.
 
-**tc** - time converter to specify units for the additional delay
+**tc** - Time converter to specify units for the additional delay.
 
-**event** - the Event to send
+**event** - The Event to send.
 
 ## Return Value
 

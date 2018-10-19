@@ -9,7 +9,7 @@ SST::BaseComponent::registerClock()
 
 ## Remarks
 
-This sets up a function to be called at regular intervals. Often these Clock::Handler functions are where a good portion of the work is done.
+This sets up a function to be called at regular intervals. Often, these Clock::Handler functions are where a good portion of the work is done.
 
 Tasks that are often performed:
 
@@ -38,13 +38,13 @@ Cycle_t reregisterClock (TimeConverter *freq, Clock::HandlerBase *handler)
 
 **freq** - How often the handler should be called. This can be either the time between calls ("50ms") or a frequency ("1GHz").
 
-**handler** - a Clock::HandlerBase that wraps a function to be called
+**handler** - A Clock::HandlerBase that wraps a function to be called.
 
-**regAll** (optional) - Should this clock period be used as the default time base for all of the links connected to this component
+**regAll** (optional) - If true this clock period will be used as the default time base for all of the links connected to this component.
 
 ## Return Value
 
-**TimeConverter** - an object to convert between the component's view of time and the simulation's view of time.
+**TimeConverter** - An object to convert between the component's view of time and the simulation's view of time.
 
 **Cycle_t** - the next time the handler will fire
 

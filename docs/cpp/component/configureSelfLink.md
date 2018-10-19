@@ -9,7 +9,7 @@ SST::BaseComponent::configureSelfLink()
 
 ### Remarks
 
-Used in a Component to attach a link to itself. If you want to setup a link between two components use [configureLink](cpp/component/configureLink.md).
+Used in a Component to attach a link to itself. If you want to set up a link between two components, use [configureLink](cpp/component/configureLink.md).
 
 ## Requirements
 
@@ -32,11 +32,11 @@ Link * SST::BaseComponent::configureSelfLink (std::string  name, Event::HandlerB
 
 ## Parameters
 
-**name** - Port Name on which the link to configure is attached
+**name** - Port Name on which the link to configure is attached.
 
 **time_base** - Used to add additional delay when sending events.
 
-**handler** - (optional) a Handler to be call when an Event is received.
+**handler** (optional) - An Event::Handler to be call when an Event is received.
 
 ## Return Value
 

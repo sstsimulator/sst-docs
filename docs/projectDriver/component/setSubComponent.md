@@ -5,7 +5,7 @@ title: setSubComponent()
 
 ### Remarks
 
-Add a SubComponent to a Component's SubComponent slot
+Add a SubComponent to a Component's SubComponent slot.
 
 ## Requirements
 
@@ -21,17 +21,17 @@ subComponent = setSubComponent("subComponentSlotName", "elementLibrary.SubCompon
 
 ## Parameters
 
-**subComponentSlotName** - the name of the slot to add a SubComponent.
+**subComponentSlotName** - The name of the slot to add a SubComponent.
 
 **elementLibrary** - The element library that contains the SubComponent to create.
 
 **SubComponentClass** - The SubComponent class within the library to create.
 
-**index** - Start at 0 and increment by 1 for each SubComonent added to subComponentSlotName. The index within the subComponentSlotName slot to add the SubComponent. 
+**index** - Start at 0 and increment by 1 for each SubComponent added to subComponentSlotName. The index within the subComponentSlotName slot to add the SubComponent. 
 
 ## Return Value
 
-**subComponent** Use this to add params.
+**subComponent** - Use this to add params.
 
 ## Examples
 

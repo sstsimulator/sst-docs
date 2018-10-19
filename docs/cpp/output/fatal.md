@@ -35,21 +35,21 @@ void SST::Output::fatal(uint32_t line, const char* file, const char* func, uint3
 
 ## Parameters
 
-**line** - Line number of calling function (use CALL_INFO macro)
+**line** - Line number of calling function (use CALL_INFO macro).
 
-**file** - File name calling function (use CALL_INFO macro)
+**file** - File name calling function (use CALL_INFO macro).
 
-**func** - Function name calling function (use CALL_INFO macro)
+**func** - Function name calling function (use CALL_INFO macro).
 
-**exit_code** - The exit code used for termination of simulation. will be passed to MPI_Abort()
+**exit_code** - The exit code used for termination of simulation. Will be passed to MPI_Abort().
 
-**format** - Format string. All valid formats for printf are available
+**format** - Format string. All valid formats for printf are available.
 
-**...** - Argument for format
+**...** - Argument for format.
 
 ## Return Value
 
-**NONE**
+**None**
 
 ## Examples
 

@@ -21,11 +21,11 @@ link.connect( (component1, "port1", "delay1"), (component2, "port2", "delay2") )
 
 ## Parameters
 
-**component1** & **component2** - A component created using [sst.Component](projectDriver/sst/component.md)
+**component1** & **component2** - A component created using [sst.Component](projectDriver/sst/component.md).
 
-**port1** & **port2** - The port within the component to connect to
+**port1** & **port2** - The port within the component to connect to.
 
-**delay1** & **delay2**  - The time it take to send event from one component to the other. Usually delay1 and delay2 are the same but can be different if events need to move faster/slower between the two components.
+**delay1** & **delay2**  - The time it takes to send event from one component to the other. Usually delay1 and delay2 are the same but can be different if events need to move faster/slower between the two components.
 
 ## Return Value
 

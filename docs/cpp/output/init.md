@@ -41,11 +41,11 @@ void SST::Output::init(const std::string& prefix, uint32_t verbose_level, uint32
 - **@R** - MPI rank of the calling process. Will be 0 if MPI_COMM_WORLD size is 1.
 - **@i** - Thread Id of the calling process. Will be empty if number of threads is 1.
 - **@I** - Thread Id of the calling process. Will be 0 if number of threads is 1.
-- **@x** - Rank information of the calling process. Will be empty if number of MPI ranks and number of threads are both 1 Same as [@r:@i]
-- **@X** - Rank information of the calling process. Will be [0.0] if number of MPI ranks and number of threads are both 1 Same as [@R:@I]
+- **@x** - Rank information of the calling process. Will be empty if number of MPI ranks and number of threads are both 1. Same as **[@r:@i]**.
+- **@X** - Rank information of the calling process. Will be [0.0] if number of MPI ranks and number of threads are both 1. Same as **[@R:@I]**.
 - **@t** - Simulation time. Will be the raw simulation cycle time retrieved from SST Core.
 
-**verbose_level** - 	Debugging output level. Calls to [debug()](cpp/output/debug.md), and [verbose()](cpp/output/verbose.md) are only output if their output_level parameter is less than or equal to the verbose_level currently set for this object.
+**verbose_level** - 	Debugging output level. Calls to [debug()](cpp/output/debug.md), and [verbose()](cpp/output/verbose.md) are outputted only if their output_level parameter is less than or equal to the verbose_level currently set for this object.
 
 **verbose_mask** - Bitmask of allowed message types for [debug()](cpp/output/debug.md), and [verbose()](cpp/output/verbose.md). The Output object will only output the message if the set bits of the output_bits parameter are set in the verbose_mask of the object. It uses this logic: if (~verbose_mask & output_bits == 0) then output is enabled.
 
@@ -61,7 +61,7 @@ One of:
 
 ## Return Value
 
-**NONE**
+**None**
 
 ## Examples
 

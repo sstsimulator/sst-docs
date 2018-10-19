@@ -11,12 +11,12 @@ SST::Component
 Typically not called directly. SST will build and call the constructor.
 
 Typical tasks:
-- read params from the project driver
-- process params
-- initialize SubComponents
-- register one or more clocks
-- configure ports
-- setup statistics
+- Read params from the project driver.
+- Process params.
+- Initialize SubComponents.
+- Register one or more clocks.
+- Configure ports.
+- Setup statistics.
 
 ## Requirements
 
@@ -37,9 +37,9 @@ MyComponent::MyComponent (SST::ComponentId_t id, SST::Params& params) : SST::Com
 
 ## Parameters
 
-**id** - the id for the component, this is passed in by SST. Usually just need to pass it to the base SST::Component constructor.
+**id** - The id for the component, this is passed in by SST. Usually just need to pass it to the base SST::Component constructor.
 
-**SST::Params&** - the params set by the project driver.
+**SST::Params&** - The params set by the project driver.
 
 ## Return Value
 

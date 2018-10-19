@@ -9,7 +9,7 @@ SST::BaseComponent::configureLink()
 
 ### Remarks
 
-Configure a link that is attached to a port. You must configure the link on both ends. If you want to setup a link from a component to itself use [configureSelfLink](cpp/component/configureSelfLink.md).
+Configure a link that is attached to a port. You must configure the link on both ends. If you want to set up a link from a component to itself use [configureSelfLink](cpp/component/configureSelfLink.md).
 
 ## Requirements
 
@@ -32,11 +32,11 @@ Link* SST::BaseComponent::configureLink(std::string  name, Event::HandlerBase * 
 
 ## Parameters
 
-**name** - Port Name on which the link to configure is attached
+**name** - Port Name on which the link to configure is attached.
 
 **time_base** - Used to add an additional delay when sending events.
 
-**handler** - (optional) a Handler to be call when an Event is received.
+**handler** (optional) - An Event::Handler to be call when an Event is received.
 
 ## Return Value
 

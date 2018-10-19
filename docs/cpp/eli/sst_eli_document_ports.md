@@ -32,7 +32,7 @@ SST_ELI_DOCUMENT_PORTS(
 
 ## Parameters
 
-**portN_NAME** - A unique name for the port
+**portN_NAME** - A unique name for the port.
 
 **portN_DESCRIPTION** - A description on what is communicated along the port. This value is shown when you run sst-info in the command line.
 

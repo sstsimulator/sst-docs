@@ -31,9 +31,9 @@ Specifies one or more slots for subcomponents. Each slot can have 1 or more subc
 
 ## Parameters
 
-**slotN_NAME** - the name of the subcomponent slot.
+**slotN_NAME** - The name of the subcomponent slot.
 
-**slotN_DESCRIPTION** - A description of this subcomponent slot
+**slotN_DESCRIPTION** - A description of this subcomponent slot.
 
 **slotN_SLOT_TYPE** - The fully qualified class/interface the slot expects the subcomponent to support. 
 

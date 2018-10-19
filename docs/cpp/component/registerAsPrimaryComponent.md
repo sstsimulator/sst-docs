@@ -10,7 +10,7 @@ SST::Component::registerAsPrimaryComponent()
 ### Remarks
 Register as a primary component, which allows the component to specify when it is and is not OK to end simulation.
 
-This must be called during simulation wireup (i.e during the constructor for the component). By default, the state of the primary component is set to OKToEndSim.
+This must be called during simulation wireup (i.e. during the constructor for the component). By default, the state of the primary component is set to OKToEndSim.
 
 ## Requirements
 

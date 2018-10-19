@@ -5,7 +5,7 @@ title: sst-register
 
 ## Remarks
 
-The command line utility, sst-register, is used to register an element library. Most often it is called within the makefile as the part of the build process.
+The command line utility, sst-register, is used to register an Element Library. Most often it is called within the makefile as the part of the build process.
 
 ## Syntax
 ```bash

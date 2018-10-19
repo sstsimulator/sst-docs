@@ -5,7 +5,7 @@ title: sst.Link()
 
 ### Remarks
 
-Creates a Link. Links connect two ports and sends Events between the two ports.
+Creates a Link. A Link connects two ports and sends Events between the two ports.
 
 **NOTE**: This only creates and names the link. A call to [connect()](projectDriver/link/connect.md) is required to complete setting up the link.
 

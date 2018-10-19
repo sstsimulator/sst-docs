@@ -27,9 +27,9 @@ addParams({
 
 ## Parameters
 
-**paramN** - the name of the param to set
+**paramN** - The name of the param to set.
 
-**valueN** - the string value to set.
+**valueN** - The string value to set.
 
 ## Return Value
 

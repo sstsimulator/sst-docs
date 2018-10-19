@@ -24,7 +24,7 @@ void SST::Statistics::Statistic<T>::addData(T data)
 
 ## Parameters
 
-**data** - the data to add to the Statistic. Usually this is a number that can represent a count, size, time, etc.
+**data** - The data to add to the Statistic. Usually this is a number that can represent a count, size, time, etc.
 
 ## Return Value
 

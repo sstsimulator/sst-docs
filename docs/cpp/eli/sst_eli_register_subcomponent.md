@@ -34,15 +34,15 @@ SST_ELI_REGISTER_SUBCOMPONENT(
 
 **CLASS_NAME** - The name of the class without quotes.
 
-**ELEMENT_LIBRARY** - The name of the library name
+**ELEMENT_LIBRARY** - The name of the library name.
 
-**CLASS_NAME_STRING** - the class name as a string
+**CLASS_NAME_STRING** - The class name as a string.
 
-**SST_ELI_ELEMENT_VERSION( 1, 0, 0 )** - A version in the form SST_ELI_ELEMENT_VERSION( [major], [minor], [revision/build] )
+**SST_ELI_ELEMENT_VERSION( 1, 0, 0 )** - A version in the form SST_ELI_ELEMENT_VERSION( [major], [minor], [revision/build] ).
 
-**DESCRIPTION** - A description of this subcomponent
+**DESCRIPTION** - A description of this subcomponent.
 
-**SUB_COMPONENT_SLOT** - The fully qualified class/interface the a subcomponent slot must have to use this subcomponent
+**SUB_COMPONENT_SLOT** - The fully qualified class/interface the a subcomponent slot must have to use this subcomponent.
 
 ## Examples
 

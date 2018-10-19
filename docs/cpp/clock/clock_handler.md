@@ -11,7 +11,7 @@ SST::Clock::Handler<classT, argT>
 
 ### Remarks
 
-This wraps a function to be called at regular intervals. This passes the current cycle and optionally extra data to the function.
+This wraps a function to be called at regular intervals. This passes the current cycle, and optionally, extra data to the function.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ This wraps a function to be called at regular intervals. This passes the current
 ## Syntax
 
 ```cpp
-//#1 - no data - create a clock handler with a reference to an object and a pointer to it a tick function
+//#1 - no data - create a clock handler with a reference to an object and a pointer to its tick function
 SST::Clock::Handler<classT>::Handler (classT *const object, PtrMember member)
 
 //#2 - with data - provide additional data to the tick function
@@ -34,7 +34,7 @@ SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  me
 **object** - A reference to the object, most often it is this.
 
 **member** - Pointer to the tick function. The tick function signature depends on what constructor was used.
-- **Returns true** if the Handler should stop 
+- **Returns true** if the Handler should stop.
 - **Returns false** if the Handler should continue.
 ```cpp
   //#1 - no data
@@ -43,7 +43,7 @@ SST::Clock::Handler<classT, argT>::Handler (classT *const  object, PtrMember  me
   //#2 - with data
   bool tick(Cycle_t cycle, argT data) { ... }
 ```
-**data** - additional data to pass to the tick function
+**data** - Additional data to pass to the tick function.
 
 ## Examples
 
