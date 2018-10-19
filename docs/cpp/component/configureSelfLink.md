@@ -58,7 +58,7 @@ self_link = configureSelfLink("complete_link", "2GHz", new Event::Handler<bisect
 
 ```
 
-#### Examples 3
+### Examples 3
 ```cpp
 // #3 Use default time_base, usually set by a call to registerClock()
 selfLink = configureSelfLink( "linkToSelf", new Event::Handler<faultInjectionComponent>( this, &faultInjectionComponent::handleSelfLink ) );
