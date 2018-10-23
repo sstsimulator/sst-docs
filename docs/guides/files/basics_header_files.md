@@ -162,7 +162,7 @@ private:
 #endif
 ```
 
-#### Example <span style="font-size:20px">2: More Complex</span>
+#### <span style="font-size:20px">Example 2: More Complex</span>
 
 ```cpp
 #ifndef _carWash_H

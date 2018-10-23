@@ -13,9 +13,9 @@ This sets up a function to be called at regular intervals. Often, these Clock::H
 
 Tasks that are often performed:
 
-- Handle data queued by event handlers
-- Send events
-- Simulate the next step 
+- Handle data queued by event handlers.
+- Send events.
+- Simulate the next step.
 
 ## Requirements
 
