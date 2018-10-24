@@ -26,12 +26,12 @@ const siteConfig = {
   //url: 'https://your-docusaurus-test-site.com' /* your website url */,
   //baseUrl: '/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
-  url: 'https://gpstrategiescorp.github.io',
+  url: 'https://sstsimulator.github.io',
   baseUrl: '/SST-website/',
 
   // Used for publishing and more
   projectName: 'SST-website',
-  organizationName: 'GPStrategiesCorp',
+  organizationName: 'sstsimulator',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -46,7 +46,7 @@ const siteConfig = {
     {blog: true, label: 'Blog'},
   ],
 
-  editUrl: 'https://github.com/GPStrategiesCorp/SST-website/edit/master/docs/',
+  editUrl: 'https://github.com/sstsimulator/sst-website/edit/master/docs/',
 
   // If you have users set above, you add it here:
   users,
@@ -78,7 +78,7 @@ const siteConfig = {
   copyright:
     'Copyright © ' +
     new Date().getFullYear() +
-    ' Your Name or Your Company Name',
+    ' SST',
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
