@@ -80,8 +80,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href="getting-started.html">Getting Started</Button>
-            <Button href="downloads.html">Downloads</Button>
-            <Button href="http://206.189.227.0/">Discuss</Button>
+            <Button target="_blank" href="http://sst-simulator.org/SSTPages/SSTMainDownloads/">Downloads</Button>
             <Button href="docs/contribute/get-involved.html">Get Involved</Button>
           </PromoSection>
         </div>

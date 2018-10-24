@@ -115,7 +115,7 @@ public:
 
 ### Examples
 
-#### <span style="font-size:20px">Example 1: Simple</span>
+#### Example 1: Simple
 
 ```cpp
 #ifndef _hello_H
@@ -162,7 +162,7 @@ private:
 #endif
 ```
 
-#### <span style="font-size:20px">Example 2: More Complex</span>
+#### Example 2: More Complex
 
 ```cpp
 #ifndef _carWash_H
@@ -361,7 +361,7 @@ private:
 
 ### Examples
 
-#### <span style="font-size:20px">Example 1<span>
+#### Example 1
 ```cpp
 #ifndef _bay_H
 #define _bay_H

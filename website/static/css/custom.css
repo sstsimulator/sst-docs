@@ -33,3 +33,6 @@
 .gp p {
     max-width: inherit !important;
 }
+h4 {
+    font-size: 18px;
+}

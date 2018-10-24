@@ -29,13 +29,13 @@ MarsagliaRNG::MarsagliaRNG()
 MarsagliaRNG::MarsagliaRNG(unsigned int initial_z, unsigned int initial_w )
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **initial_z** - One of two seeds. Using the same seeds will result in the same series of numbers being produced. Change one or both seeds to change the series of numbers.
 
 **initial_w** - One of two seeds. Using the same seeds will result in the same series of numbers being produced. Change one or both seeds to change the series of numbers.
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **None**
 
@@ -44,11 +44,11 @@ MarsagliaRNG::MarsagliaRNG(unsigned int initial_z, unsigned int initial_w )
 int32_t generateNextInt32()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **int32_t** - The next signed 32-bit integer.
 
@@ -58,11 +58,11 @@ int32_t generateNextInt32()
 int64_t generateNextInt64()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **int64_t** - The next signed 64-bit integer.
 
@@ -71,11 +71,11 @@ int64_t generateNextInt64()
 uint32_t generateNextUInt32()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **uint32_t** - The next unsigned 32-bit integer.
 
@@ -84,11 +84,11 @@ uint32_t generateNextUInt32()
 uint64_t generateNextUInt64()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **uint64_t** - The next unsigned 64-bit integer.
 
@@ -97,11 +97,11 @@ uint64_t generateNextUInt64()
 double  nextUniform()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **double** - The next double within the range 0 to 1.
 
@@ -111,14 +111,14 @@ Restart the random number generator with new seeds.
 void restart(unsigned int new_z, unsigned int new_w)
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **new_z** - One of two seeds. Using the same seeds will result in the same series of numbers being produced. Change one or both seeds to change the series of numbers.
 
 **new_w** - One of two seeds. Using the same seeds will result in the same series of numbers being produced. Change one or both seeds to change the series of numbers.
 
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **None**
 

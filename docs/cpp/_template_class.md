@@ -22,13 +22,13 @@ SST::
 
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **param** - description
 
 **param** - description
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **ret** - description
 
@@ -39,13 +39,13 @@ SST::
 
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **param** - description
 
 **param** - description
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **ret** - description
 
@@ -56,13 +56,13 @@ SST::
 
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **param** - description
 
 **param** - description
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value</span>
 
 **ret** - description
 

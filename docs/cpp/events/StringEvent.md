@@ -31,13 +31,13 @@ StringEvent(const StringEvent* me)
 
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **str** - The string contents of this event.
 
 **me** - The StringEvent to copy.
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **None**
 
@@ -46,11 +46,11 @@ StringEvent(const StringEvent* me)
 const std::string& getString()
 ```
 
-#### <span style="font-size:20px">Parameters</span>
+#### Parameters
 
 **None**
 
-#### <span style="font-size:20px">Return Value</span>
+#### Return Value
 
 **const std::string&** - The contents of the StringEvent.
 

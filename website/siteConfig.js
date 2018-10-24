@@ -44,7 +44,6 @@ const siteConfig = {
     {doc: 'tools/commandLine/sst-info', label: 'Tools'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
-    {href: "http://sst-simulator.org/", label: 'Forum'},
   ],
 
   editUrl: 'https://github.com/GPStrategiesCorp/SST-website/edit/master/docs/',
