@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Basics: Header (.h) Files · The Structural Simulation Toolkit</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## SST::Component Subclass"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Basics: Header (.h) Files · The Structural Simulation Toolkit"/><meta property="og:type" content="website"/><meta property="og:url" content="https://sstsimulator.github.io/SST-website/index.html"/><meta property="og:description" content="## SST::Component Subclass"/><meta property="og:image" content="https://sstsimulator.github.io/SST-website/img/sst-logo-small.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://sstsimulator.github.io/SST-website/img/sst-logo-small.png"/><link rel="shortcut icon" href="/SST-website/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://sstsimulator.github.io/SST-website/blog/atom.xml" title="The Structural Simulation Toolkit Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://sstsimulator.github.io/SST-website/blog/feed.xml" title="The Structural Simulation Toolkit Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/SST-website/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/SST-website/"><img class="logo" src="/SST-website/img/sst-logo-small.png" alt="The Structural Simulation Toolkit"/><h2 class="headerTitleWithLogo">The Structural Simulation Toolkit</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/SST-website/docs/guides/external/projectDriver.html" target="_self">Guides</a></li><li class=""><a href="/SST-website/docs/cpp/component/registerClock.html" target="_self">C++ API</a></li><li class=""><a href="/SST-website/docs/projectDriver/sst/component.html" target="_self">Project Driver</a></li><li class=""><a href="/SST-website/docs/tools/commandLine/sst-info.html" target="_self">Tools</a></li><li class=""><a href="/SST-website/help.html" target="_self">Help</a></li><li class=""><a href="/SST-website/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Files</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Contribute</h3><ul><li class="navListItem"><a class="navItem" href="/SST-website/docs/guides/helpUs.html">Help Us</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">External</h3><ul><li class="navListItem"><a class="navItem" href="/SST-website/docs/guides/external/projectDriver.html">Basics: Project Driver</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Files</h3><ul><li class="navListItem navListItemActive"><a class="navItem" href="/SST-website/docs/guides/files/basics_header_files.html">Basics: Header (.h) Files</a></li><li class="navListItem"><a class="navItem" href="/SST-website/docs/guides/files/basics_makefile.html">Basics: Makefile</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/sstsimulator/sst-website/edit/master/docs/guides/files/basics_header_files.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Basics: Header (.h) Files</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="sst-component-subclass"></a><a href="#sst-component-subclass" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SST::Component Subclass</h2>
+<p>For the most part, header files are just like any other C++ header file. There are only a few required pieces. Generally, these includes:</p>
+<ul>
+<li>Registering the component with SST</li>
+<li>Registering params, ports, subcomponents, statistics, etc. with SST.</li>
+<li>Variable and function declarations</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="syntax"></a><a href="#syntax" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax</h3>
+<!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
+<pre><code class="hljs css language-cpp"><span class="hljs-comment">//include guard</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _INSERT_CLASS_NAME_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _INSERT_CLASS_NAME_H</span>
+
+<span class="hljs-comment">//required</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
+
+<span class="hljs-comment">//if you have a port on your component</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/link.h&gt;</span></span>
+
+<span class="hljs-comment">//if you have a subcomponent</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/subcomponent.h&gt;</span></span>
+
+<span class="hljs-comment">//generally a good idea to have a namespace</span>
+<span class="hljs-keyword">namespace</span> SOME_NAMESPACE {
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">INSERT_CLASS_NAME</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
+
+<span class="hljs-keyword">public</span>:
+
+    <span class="hljs-comment">//required, constructor/destructor</span>
+    INSERT_CLASS_NAME( SST::ComponentId_t id, SST::Params&amp; params );
+    ~INSERT_CLASS_NAME();
+
+    <span class="hljs-comment">//required, functions to run at the start and end of the simulation.</span>
+    <span class="hljs-comment">//  can just be functions that do nothing</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">//not required, but almost all components will register a clock and do something on a clock tick. The function name can be anything.</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">clockTick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
+
+<span class="hljs-comment">//Register pieces of the component with SST.</span>
+
+    <span class="hljs-comment">//required</span>
+    <span class="hljs-comment">// Register the component</span>
+    SST_ELI_REGISTER_COMPONENT(
+        INSERT_CLASS_NAME, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exA_helloSST"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"INSERT_CLASS_NAME"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ), <span class="hljs-comment">//version</span>
+        <span class="hljs-string">"Simple model that prints Hello World!"</span>, <span class="hljs-comment">//description</span>
+        COMPONENT_CATEGORY_UNCATEGORIZED <span class="hljs-comment">//category</span>
+    )
+    <span class="hljs-comment">//if you want to accept params from the Project Driver</span>
+    <span class="hljs-comment">//           This text will be used to generate the sst-info documentation.</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        <span class="hljs-comment">// Parameter name, description, default value</span>
+        { <span class="hljs-string">"repeats"</span>, <span class="hljs-string">"Number of repetitions to make"</span>, <span class="hljs-string">"10"</span> },
+        { <span class="hljs-string">"param"</span>, <span class="hljs-string">"description"</span>, <span class="hljs-string">"default"</span> }
+    )
+
+    <span class="hljs-comment">//if you want to collect statistics</span>
+    SST_ELI_DOCUMENT_STATISTICS(
+        <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
+        { <span class="hljs-string">"smallCarsWashed"</span>, <span class="hljs-string">"Number of small cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },  
+        { <span class="hljs-string">"largeCarsWashed"</span>, <span class="hljs-string">"Number of large cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"noCarEvents"</span>, <span class="hljs-string">"Number of no car generated events"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">2</span> },
+        { <span class="hljs-string">"smallCarsWaiting"</span>, <span class="hljs-string">"Number of small cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"largeCarsWaiting"</span>, <span class="hljs-string">"Number of large cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> }
+    )
+    
+    <span class="hljs-comment">//if you have subcomponents</span>
+    SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
+        <span class="hljs-comment">// Slot name, description, slot type</span>
+        { <span class="hljs-string">"bay"</span>, <span class="hljs-string">"Car Wash Bay"</span>, <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> }
+    )
+
+    <span class="hljs-comment">//if you have ports</span>
+    SST_ELI_DOCUMENT_PORTS(
+        <span class="hljs-comment">// Port name, description, event type</span>
+        { <span class="hljs-string">"port"</span>, <span class="hljs-string">"Port on which to receive cars"</span>, {<span class="hljs-string">"sst.Interfaces.StringEvent"</span>} }
+    )
+
+    <span class="hljs-keyword">private</span>:
+    
+    <span class="hljs-comment">//private variables, functions, etc.</span>
+    
+    <span class="hljs-comment">//if you have subcomponents</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;SUBCOMPONENT_CLASS_NAME*&gt; subComps;
+
+    <span class="hljs-comment">//if you have a port</span>
+    SST::Link *port;
+    
+    <span class="hljs-comment">// if you have statistics</span>
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* noCarEvents;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWaiting;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWaiting;
+};
+} <span class="hljs-comment">// namespace exC_carWash</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+\
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<h4><a class="anchor" aria-hidden="true" id="example-1-simple"></a><a href="#example-1-simple" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 1: Simple</h4>
+<pre><code class="hljs css language-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _hello_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _hello_H</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
+
+<span class="hljs-keyword">namespace</span> exA_hello {
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hello</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
+
+<span class="hljs-keyword">public</span>:
+    hello( SST::ComponentId_t id, SST::Params&amp; params );
+    ~hello();
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">clockTick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
+
+    <span class="hljs-comment">// Register the component</span>
+    SST_ELI_REGISTER_COMPONENT(
+        hello, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exA_helloSST"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"hello"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"Simple model that prints Hello World!"</span>,
+        COMPONENT_CATEGORY_UNCATEGORIZED
+    )
+
+    <span class="hljs-comment">// Parameter name, description, default value</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        { <span class="hljs-string">"repeats"</span>, <span class="hljs-string">"Number of repetitions to make"</span>, <span class="hljs-string">"10"</span> }
+    )
+
+<span class="hljs-keyword">private</span>:
+    SST::Output output;
+    SST::Cycle_t maxRepeats; <span class="hljs-comment">//number of repetitions to make</span>
+    SST::Cycle_t repeats; <span class="hljs-comment">//number of repetitions printed already</span>
+
+};
+} <span class="hljs-comment">// namespace exA_hello</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="example-2-more-complex"></a><a href="#example-2-more-complex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 2: More Complex</h4>
+<pre><code class="hljs css language-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _carWash_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _carWash_H</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/link.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/subcomponent.h&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WASH_BAY_EMPTY 0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WASH_BAY_FULL 1</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NO_CAR 0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SMALL_CAR 1</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LARGE_CAR 2</span>
+
+<span class="hljs-keyword">namespace</span> exC_carWash {
+<span class="hljs-comment">// carWash subcomponent prototype</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">carWashBay</span> :</span> <span class="hljs-keyword">public</span> SST::SubComponent {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// constructor and destructor cannot be virtual, all other functions must be</span>
+    carWashBay(SST::Component *owningComponent) : SubComponent(owningComponent) {};
+    ~carWashBay() {};
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">newCar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> CarType)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">baySize</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">isOccupied</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tick</span><span class="hljs-params">()</span> </span>{};
+};
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">carWash</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
+
+<span class="hljs-keyword">public</span>:
+    carWash( SST::ComponentId_t id, SST::Params&amp; params );
+    ~carWash();
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">tick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
+
+    <span class="hljs-comment">//handle events on the port</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handleEvent</span><span class="hljs-params">(SST::Event *ev)</span></span>;
+    
+    <span class="hljs-comment">// Link list entry; used to store the cars as they are queued for service</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CAR_RECORD_T</span> {</span>
+        <span class="hljs-keyword">int</span> CarSize; <span class="hljs-comment">// 0 == Small Car; 1 == Large Car</span>
+        CAR_RECORD_T *ptrNext; <span class="hljs-comment">// The next Car in the linked list   </span>
+    } CAR_RECORD;
+
+    <span class="hljs-comment">// Record to track how many cars have been washed</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+        <span class="hljs-keyword">int</span> currentTime; <span class="hljs-comment">// Time (ticks) since the epoch of the day</span>
+        <span class="hljs-keyword">int</span> smallCarsWashed;
+        <span class="hljs-keyword">int</span> largeCarsWashed;
+    } CARS_WASHED;
+    
+    <span class="hljs-comment">// Record to track how many cars arrived in the past hour</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+        <span class="hljs-keyword">int</span> smallCarsArrived;
+        <span class="hljs-keyword">int</span> largeCarsArrived;
+        <span class="hljs-keyword">int</span> noCarsArrived;
+    } CAR_WASH_JOURNAL;
+    
+    <span class="hljs-comment">// Register the component</span>
+    SST_ELI_REGISTER_COMPONENT(
+        carWash, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"carWash"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"carWash main simulator. Accepts car inputs from a carGenerator component, then queues and washes cars using bay subcomponents"</span>,
+        COMPONENT_CATEGORY_UNCATEGORIZED
+    )
+
+    <span class="hljs-comment">// Parameter name, description, default value</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        { <span class="hljs-string">"simulationTime"</span>, <span class="hljs-string">"How long to run simulation (hours)"</span>, <span class="hljs-string">"24"</span> }
+    )
+    
+    <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
+    SST_ELI_DOCUMENT_STATISTICS(
+        { <span class="hljs-string">"smallCarsWashed"</span>, <span class="hljs-string">"Number of small cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },  
+        { <span class="hljs-string">"largeCarsWashed"</span>, <span class="hljs-string">"Number of large cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"noCarEvents"</span>, <span class="hljs-string">"Number of no car generated events"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">2</span> },
+        { <span class="hljs-string">"smallCarsWaiting"</span>, <span class="hljs-string">"Number of small cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"largeCarsWaiting"</span>, <span class="hljs-string">"Number of large cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> }
+    )
+    
+    <span class="hljs-comment">// Slot name, description, slot type</span>
+    SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
+        { <span class="hljs-string">"bay"</span>, <span class="hljs-string">"Car Wash Bay"</span>, <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> }
+    )
+
+    <span class="hljs-comment">// Port name, description, event type</span>
+    SST_ELI_DOCUMENT_PORTS(
+        { <span class="hljs-string">"port"</span>, <span class="hljs-string">"Port on which to receive cars"</span>, {<span class="hljs-string">"sst.Interfaces.StringEvent"</span>} }
+    )
+
+<span class="hljs-keyword">private</span>:
+    SST::Output output;
+    CAR_RECORD *ptrCarRecordList;
+    CARS_WASHED CarWash;
+    CAR_WASH_JOURNAL HourlyReport;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QueueACar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> carSize)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CarWashClockTick</span><span class="hljs-params">()</span></span>;
+    
+    <span class="hljs-keyword">int</span> CarWashTick;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> clock;
+    <span class="hljs-keyword">float</span> ticksPerHour;
+    <span class="hljs-keyword">int64_t</span> runTime;
+    <span class="hljs-keyword">int</span> CarType;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;carWashBay*&gt; subComps;
+    SST::Link *port;
+    
+    <span class="hljs-comment">// Statistics</span>
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* noCarEvents;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWaiting;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWaiting;
+};
+} <span class="hljs-comment">// namespace exC_carWash</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="sst-subcomponent-subclass"></a><a href="#sst-subcomponent-subclass" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SST::Subcomponent Subclass</h2>
+<p>The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT.</p>
+<pre><code class="hljs css language-cpp"><span class="hljs-comment">// Register the subcomponent</span>
+    SST_ELI_REGISTER_SUBCOMPONENT(
+        bay, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"bay"</span>, <span class="hljs-comment">// subcomponent</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ), <span class="hljs-comment">//version</span>
+        <span class="hljs-string">"Bay subcomponent for the carwash"</span>, <span class="hljs-comment">//description</span>
+        <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> <span class="hljs-comment">// type of objects that subcomponent slots will have</span>
+    )
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="syntax-1"></a><a href="#syntax-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax</h3>
+<pre><code class="hljs css language-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _INSERT_CLASS_NAME_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _INSERT_CLASS_NAME_H</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"INSERT_COMPONENT_WITH_SUBCOMPONENT_DEFINITION.h"</span></span>
+
+<span class="hljs-comment">//generally a good idea to have a namespace</span>
+<span class="hljs-keyword">namespace</span> SOME_NAMESPACE {
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">INSERT_CLASS_NAME</span> :</span> <span class="hljs-keyword">public</span> INSERT_PARENT_CLASS_NAME {
+
+<span class="hljs-keyword">public</span>:
+    INSERT_CLASS_NAME( SST::Component *owningComponent, SST::Params&amp; params );
+    ~INSERT_CLASS_NAME();
+
+    <span class="hljs-comment">//public interface functions. </span>
+    <span class="hljs-comment">// - pass in data from events the main component gets</span>
+    <span class="hljs-comment">// - functions to run on each clock tick of the main component</span>
+    <span class="hljs-comment">// - other getters/setters</span>
+
+    <span class="hljs-comment">// Register the subcomponent</span>
+    SST_ELI_REGISTER_SUBCOMPONENT(
+        INSERT_CLASS_NAME, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"INSERT_CLASS_NAME"</span>, <span class="hljs-comment">// subcomponent</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"Bay subcomponent for the carwash"</span>,
+        <span class="hljs-string">"SST::SOME_NAMESPACE::INSERT_PARENT_CLASS_NAME"</span> <span class="hljs-comment">// subcomponent slot</span>
+    )
+
+    <span class="hljs-comment">// Parameter name, description, default value</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        { <span class="hljs-string">"size"</span>, <span class="hljs-string">"Size of the bay (1 = small, 2 = large)"</span>, <span class="hljs-string">"1"</span> },
+        { <span class="hljs-string">"smallCarWashTime"</span>, <span class="hljs-string">"How long to wash a small car (ticks)"</span>, <span class="hljs-string">"3"</span> },
+        { <span class="hljs-string">"largeCarWashTime"</span>, <span class="hljs-string">"How long to wash a large car (ticks)"</span>, <span class="hljs-string">"5"</span> }
+    )
+    
+    <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
+    SST_ELI_DOCUMENT_STATISTICS(
+        { <span class="hljs-string">"carsWashed"</span>, <span class="hljs-string">"Number of cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"idleTime"</span>, <span class="hljs-string">"Time spent not washing cars"</span>, <span class="hljs-string">"ticks"</span>, <span class="hljs-number">1</span> }
+    )
+
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">//private variables, functions, etc.</span>
+};
+} <span class="hljs-comment">// namespace SOME_NAMESPACE</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="examples-1"></a><a href="#examples-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<h4><a class="anchor" aria-hidden="true" id="example-1"></a><a href="#example-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 1</h4>
+<pre><code class="hljs css language-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _bay_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _bay_H</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"carWash.h"</span></span>
+
+<span class="hljs-keyword">namespace</span> exC_carWash {
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">bay</span> :</span> <span class="hljs-keyword">public</span> carWashBay {
+
+<span class="hljs-keyword">public</span>:
+    bay( SST::Component *owningComponent, SST::Params&amp; params );
+    ~bay();
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">newCar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> CarType)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">baySize</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">isOccupied</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tick</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// Register the subcomponent</span>
+    SST_ELI_REGISTER_SUBCOMPONENT(
+        bay, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"bay"</span>, <span class="hljs-comment">// subcomponent</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"Bay subcomponent for the carwash"</span>,
+        <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> <span class="hljs-comment">// subcomponent slot</span>
+    )
+
+    <span class="hljs-comment">// Parameter name, description, default value</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        { <span class="hljs-string">"size"</span>, <span class="hljs-string">"Size of the bay (1 = small, 2 = large)"</span>, <span class="hljs-string">"1"</span> },
+        { <span class="hljs-string">"smallCarWashTime"</span>, <span class="hljs-string">"How long to wash a small car (ticks)"</span>, <span class="hljs-string">"3"</span> },
+        { <span class="hljs-string">"largeCarWashTime"</span>, <span class="hljs-string">"How long to wash a large car (ticks)"</span>, <span class="hljs-string">"5"</span> }
+    )
+    
+    <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
+    SST_ELI_DOCUMENT_STATISTICS(
+        { <span class="hljs-string">"carsWashed"</span>, <span class="hljs-string">"Number of cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"idleTime"</span>, <span class="hljs-string">"Time spent not washing cars"</span>, <span class="hljs-string">"ticks"</span>, <span class="hljs-number">1</span> }
+    )
+
+
+<span class="hljs-keyword">private</span>:
+    SST::Output output;
+    <span class="hljs-keyword">int</span> bay_size;
+    <span class="hljs-keyword">int</span> smallTime;
+    <span class="hljs-keyword">int</span> largeTime;
+    <span class="hljs-keyword">int</span> occupied;
+    <span class="hljs-keyword">int</span> timeToOccupy;
+    Statistic&lt;<span class="hljs-keyword">uint32_t</span>&gt;* carsWashed;
+    Statistic&lt;<span class="hljs-keyword">uint32_t</span>&gt;* idleTime;
+};
+} <span class="hljs-comment">// namespace exC_carWash</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/SST-website/docs/guides/external/projectDriver.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/SST-website/docs/guides/files/basics_makefile.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#sst-component-subclass">SST::Component Subclass</a><ul class="toc-headings"><li><a href="#syntax">Syntax</a></li><li><a href="#examples">Examples</a></li></ul></li><li><a href="#sst-subcomponent-subclass">SST::Subcomponent Subclass</a><ul class="toc-headings"><li><a href="#syntax-1">Syntax</a></li><li><a href="#examples-1">Examples</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/SST-website/" class="nav-home"><img src="/SST-website/img/sst-logo-small.png" alt="The Structural Simulation Toolkit" width="66" height="58"/></a><div><h5>Docs</h5><a href="/SST-website/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/SST-website/docs/en/doc2.html">Guides (or other categories)</a><a href="/SST-website/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/SST-website/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/SST-website/blog">Blog</a><a href="https://github.com/sstsimulator">GitHub</a><a class="github-button" href="https://github.com/sstsimulator/sst-core" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/SST-website/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 SST</section></footer></div></body></html>
