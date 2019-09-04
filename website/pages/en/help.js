@@ -23,17 +23,15 @@ class Help extends React.Component {
     const supportLinks = [
       {
         content: `Learn more using the [documentation on this site.](${docUrl(
-          'doc1.html',
-          language
-        )})`,
+          'guides/external/projectDriver.html', language )})`,
         title: 'Browse Docs',
       },
       {
-        content: 'Ask questions about the documentation and project.',
+          content: '[Ask questions](http://sst-simulator.org/SSTPages/SSTMainSupport) about the documentation and project.',
         title: 'Join the Community',
       },
       {
-        content: "Find out what's new with this project.",
+          content: "Find out [what's new](http://sst-simulator.org/SSTPages/SSTTopDocAnnouncements) with this project.",
         title: 'Stay Up to Date',
       },
     ];

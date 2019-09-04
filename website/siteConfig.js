@@ -38,12 +38,13 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
+    {href: 'https://sstsimulator.github.io', label: 'Main'},
     {doc: 'guides/external/projectDriver', label: 'Guides'},
     {doc: 'cpp/component/registerClock', label: 'C++ API'},
     {doc: 'projectDriver/sst/component', label: 'Project Driver'},
     {doc: 'tools/commandLine/sst-info', label: 'Tools'},
     {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+   // {blog: true, label: 'Blog'},
   ],
 
   editUrl: 'https://github.com/sstsimulator/sst-website/edit/master/docs/',
@@ -57,9 +58,11 @@ const siteConfig = {
   favicon: 'img/favicon.png',
 
   /* colors for website */
+  /* Was 2E8555 */
+    /*secondaryColor: '#205C3B',*/
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#005376',
+    secondaryColor: '#003359',
   },
 
   /* custom fonts for website */

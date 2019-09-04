@@ -169,12 +169,12 @@
       }
     },
     "links": {
+      "Main": "Main",
       "Guides": "Guides",
       "C++ API": "C++ API",
       "Project Driver": "Project Driver",
       "Tools": "Tools",
-      "Help": "Help",
-      "Blog": "Blog"
+      "Help": "Help"
     },
     "categories": {
       "Contribute": "Contribute",
