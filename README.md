@@ -1,17 +1,21 @@
 # sst-website
-This repo provides the [Docusaurus](https://docusaurus.io/en/) source code for sst-website.  This website is **NOT the main SST Website**, but a subsidiary website containing documentation focusing on usage of SST.  
+This repo provides the [Docusaurus](https://docusaurus.io/en/) source code for sst-website.  This website is **NOT THE MAIN SST WEBSITE**, but a subsidiary website containing documentation focusing on usage of SST.  
 
    * The main website is located at http://sst-simulator.org/
-   * This subsidiary is located at http://sst-simulator.org/sst-website
+   * This subsidiary website is located at http://sst-simulator.org/sst-website
 
-This website is developed using [Docusaurus](https://docusaurus.io/en/), refer to that products documentaion for details on the how to develop content and the file structure of the source code.
+This subsidiary website is developed using [Docusaurus](https://docusaurus.io/en/), refer to that [Docusaurus Documentation](https://docusaurus.io/docs/en/installation) documentation for details on the how to develop content and the file structure of the source code.
 
-The layout of the repo follows:
+The branches of the repo have the following purposes:
 
    * The **master** branch of this repo contains [Docusaurus](https://docusaurus.io/en/) source for the website.
    * The **gh-pages** branch contains the _built_ static website that is automatically created by Docusaurus operations.
 
-General operations when updating the sst-website content:
+---
+
+## How to develop content
+
+**General operations when updating the sst-website content:**
    * Ensure Node is installed on develoment machine.
    * Clone the sst-website repository.  
    * Create a feature branch from master on your local repo.
@@ -32,8 +36,9 @@ General operations when updating the sst-website content:
       * Generate 
    
 **SST-Team Tasks**
-When a pull request to master from a feature branch is generated:
+
+When a pull request to **master** branch from a feature branch is generated:
    * Following the general operations above and test/review the changes to the website
-   * Review changes and merge the pull request into **master** if acceptable.
-   * run the following command from the sst-websit/website directory:
+   * Review changes and merge the pull request into **master** branch if acceptable.
+   * run the following command from the sst-website/website directory:
       * ```> GIT_USER=<github_user_name> CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages```
