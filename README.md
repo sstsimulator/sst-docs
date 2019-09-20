@@ -33,7 +33,7 @@ The branches of the repo have the following purposes:
    * Generate a pull request from your feature branch to the **master** branch of [sst-website repo](https://github.com/sstsimulator/sst-website)
    * Members of the SST team will:
       * Review changes and merge the changes into the **master** branch.
-      * Generate 
+      * Build the website and push it to the **gh-pages** branch.
    
 **SST-Team Tasks**
 
@@ -42,3 +42,4 @@ When a pull request to **master** branch from a feature branch is generated:
    * Review changes and merge the pull request into **master** branch if acceptable.
    * run the following command from the sst-website/website directory:
       * ```> GIT_USER=<github_user_name> CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages```
+   * Wait approx 30-60 seconds and check that content is updated at http://sst-simulator.org/sst-website
