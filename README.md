@@ -16,7 +16,7 @@ The branches of the repo have the following purposes:
 ## How to develop content
 
 **General operations when updating the sst-website content:**
-   * Ensure Node is installed on develoment machine.
+   * Ensure Node is installed on development machine.
    * Clone the sst-website repository.  
    * Create a feature branch from master on your local repo.
    * cd into sst-website/website 

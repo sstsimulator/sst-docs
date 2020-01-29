@@ -101,6 +101,11 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/sstsimulator/sst-core',
+
+  algolia: {
+    apiKey: '53f2da5fc13d9dd966072e5a21cf7883',
+    indexName: 'sst-simulator',
+  },
 };
 
 module.exports = siteConfig;
