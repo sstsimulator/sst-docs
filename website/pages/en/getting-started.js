@@ -44,7 +44,7 @@ class GettingStarted extends React.Component {
             <p>If you encounter difficulties, refer to the <a href="http://sst-simulator.org/SSTPages/SSTBuildAndInstall9dot0dot0SeriesDetailedBuildInstructions">Detailed SST Build and Install Instructions</a> or go to the <a href="http://sst-simulator.org/SSTPages/SSTMainSupport">SST Support</a> page</p>
 
             <h2>Introduction</h2>
-            <img src="img/video.png"/>
+            <iframe width="800" height="450" src="https://www.youtube.com/embed/videoseries?list=PLgehegDe4T2y1badxrxcuvIsX42V64t2x" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </Container>
       </div>
