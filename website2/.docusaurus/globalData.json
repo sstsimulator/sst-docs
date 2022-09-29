@@ -1,0 +1,300 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/sst-website/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/sst-website/docs",
+          "mainDocId": "guides/helpUs",
+          "docs": [
+            {
+              "id": "contribute/get-involved",
+              "path": "/sst-website/docs/contribute/get-involved"
+            },
+            {
+              "id": "cpp/clock/clock_handler",
+              "path": "/sst-website/docs/cpp/clock/clock_handler",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/configureLink",
+              "path": "/sst-website/docs/cpp/component/configureLink",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/configureSelfLink",
+              "path": "/sst-website/docs/cpp/component/configureSelfLink",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/constructor",
+              "path": "/sst-website/docs/cpp/component/constructor",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/finish",
+              "path": "/sst-website/docs/cpp/component/finish",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/primaryComponentDoNotEndSim",
+              "path": "/sst-website/docs/cpp/component/primaryComponentDoNotEndSim",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/primaryComponentOKToEndSim",
+              "path": "/sst-website/docs/cpp/component/primaryComponentOKToEndSim",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/registerAsPrimaryComponent",
+              "path": "/sst-website/docs/cpp/component/registerAsPrimaryComponent",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/registerClock",
+              "path": "/sst-website/docs/cpp/component/registerClock",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/registerStatistic",
+              "path": "/sst-website/docs/cpp/component/registerStatistic",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/component/setup",
+              "path": "/sst-website/docs/cpp/component/setup",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_document_params",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_document_params",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_document_ports",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_document_ports",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_document_statistics",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_document_statistics",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_doument_subcomponent_slots",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_doument_subcomponent_slots",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_register_component",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_register_component",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/eli/sst_eli_register_subcomponent",
+              "path": "/sst-website/docs/cpp/eli/sst_eli_register_subcomponent",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/events/StringEvent",
+              "path": "/sst-website/docs/cpp/events/StringEvent",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/helpUs",
+              "path": "/sst-website/docs/cpp/helpUs",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/link/configureLink",
+              "path": "/sst-website/docs/cpp/link/configureLink",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/link/configureSelfLink",
+              "path": "/sst-website/docs/cpp/link/configureSelfLink",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/link/send",
+              "path": "/sst-website/docs/cpp/link/send",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/output/debug",
+              "path": "/sst-website/docs/cpp/output/debug",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/output/fatal",
+              "path": "/sst-website/docs/cpp/output/fatal",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/output/init",
+              "path": "/sst-website/docs/cpp/output/init",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/output/output",
+              "path": "/sst-website/docs/cpp/output/",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/output/verbose",
+              "path": "/sst-website/docs/cpp/output/verbose",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/rng/MarsagliaRNG",
+              "path": "/sst-website/docs/cpp/rng/MarsagliaRNG",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/statistics/addData",
+              "path": "/sst-website/docs/cpp/statistics/addData",
+              "sidebar": "C++"
+            },
+            {
+              "id": "cpp/statistics/registerStatistic",
+              "path": "/sst-website/docs/cpp/statistics/registerStatistic",
+              "sidebar": "C++"
+            },
+            {
+              "id": "guides/external/projectDriver",
+              "path": "/sst-website/docs/guides/external/projectDriver",
+              "sidebar": "Guides"
+            },
+            {
+              "id": "guides/files/basics_header_files",
+              "path": "/sst-website/docs/guides/files/basics_header_files",
+              "sidebar": "Guides"
+            },
+            {
+              "id": "guides/files/basics_makefile",
+              "path": "/sst-website/docs/guides/files/basics_makefile",
+              "sidebar": "Guides"
+            },
+            {
+              "id": "guides/helpUs",
+              "path": "/sst-website/docs/guides/helpUs",
+              "sidebar": "Guides"
+            },
+            {
+              "id": "projectDriver/component/addParams",
+              "path": "/sst-website/docs/projectDriver/component/addParams",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/component/component",
+              "path": "/sst-website/docs/projectDriver/component/",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/component/enableAllStatistics",
+              "path": "/sst-website/docs/projectDriver/component/enableAllStatistics",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/component/setSubComponent",
+              "path": "/sst-website/docs/projectDriver/component/setSubComponent",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/helpUs",
+              "path": "/sst-website/docs/projectDriver/helpUs",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/link/connect",
+              "path": "/sst-website/docs/projectDriver/link/connect",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/link/link",
+              "path": "/sst-website/docs/projectDriver/link/",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/sst/component",
+              "path": "/sst-website/docs/projectDriver/sst/component",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/sst/enableAllStatisticsForAllComponents",
+              "path": "/sst-website/docs/projectDriver/sst/enableAllStatisticsForAllComponents",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/sst/link",
+              "path": "/sst-website/docs/projectDriver/sst/link",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "projectDriver/sst/setStatisticLoadLevel",
+              "path": "/sst-website/docs/projectDriver/sst/setStatisticLoadLevel",
+              "sidebar": "ProjectDriver"
+            },
+            {
+              "id": "tools/applications/gui",
+              "path": "/sst-website/docs/tools/applications/gui",
+              "sidebar": "Tools"
+            },
+            {
+              "id": "tools/commandLine/sst-config",
+              "path": "/sst-website/docs/tools/commandLine/sst-config",
+              "sidebar": "Tools"
+            },
+            {
+              "id": "tools/commandLine/sst-info",
+              "path": "/sst-website/docs/tools/commandLine/sst-info",
+              "sidebar": "Tools"
+            },
+            {
+              "id": "tools/commandLine/sst-register",
+              "path": "/sst-website/docs/tools/commandLine/sst-register",
+              "sidebar": "Tools"
+            },
+            {
+              "id": "tools/helpUs",
+              "path": "/sst-website/docs/tools/helpUs",
+              "sidebar": "Tools"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "Guides": {
+              "link": {
+                "path": "/sst-website/docs/guides/helpUs",
+                "label": "guides/helpUs"
+              }
+            },
+            "C++": {
+              "link": {
+                "path": "/sst-website/docs/cpp/helpUs",
+                "label": "cpp/helpUs"
+              }
+            },
+            "ProjectDriver": {
+              "link": {
+                "path": "/sst-website/docs/projectDriver/helpUs",
+                "label": "projectDriver/helpUs"
+              }
+            },
+            "Tools": {
+              "link": {
+                "path": "/sst-website/docs/tools/helpUs",
+                "label": "tools/helpUs"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

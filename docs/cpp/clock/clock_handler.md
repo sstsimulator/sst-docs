@@ -1,6 +1,6 @@
 ---
 id: clock_handler
-title: Clock::Handler
+title: "Clock::Handler"
 ---
 ## Fully Qualified Name
 ```cpp

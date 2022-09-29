@@ -1,6 +1,6 @@
 ---
 id: projectDriver
-title: Basics: Project Driver
+title: "Basics: Project Driver"
 ---
 
 The project driver is a python file. It defines what elements (components, subcomponents, and links) are in a simulation. It also sets params and enables statics on these elements.

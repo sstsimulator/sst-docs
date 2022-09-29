@@ -1,0 +1,26 @@
+{
+  "unversionedId": "guides/files/basics_makefile",
+  "id": "guides/files/basics_makefile",
+  "title": "Basics: Makefile",
+  "description": "Remarks",
+  "source": "@site/../docs/guides/files/basics_makefile.md",
+  "sourceDirName": "guides/files",
+  "slug": "/guides/files/basics_makefile",
+  "permalink": "/sst-website/docs/guides/files/basics_makefile",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/guides/files/basics_makefile.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "basics_makefile",
+    "title": "Basics: Makefile"
+  },
+  "sidebar": "Guides",
+  "previous": {
+    "title": "Basics: Header (.h) Files",
+    "permalink": "/sst-website/docs/guides/files/basics_header_files"
+  }
+}

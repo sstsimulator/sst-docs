@@ -1,0 +1,30 @@
+{
+  "unversionedId": "projectDriver/component/component",
+  "id": "projectDriver/component/component",
+  "title": "sst.Component()",
+  "description": "Remarks",
+  "source": "@site/../docs/projectDriver/component/component.md",
+  "sourceDirName": "projectDriver/component",
+  "slug": "/projectDriver/component/",
+  "permalink": "/sst-website/docs/projectDriver/component/",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/projectDriver/component/component.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "component",
+    "title": "sst.Component()"
+  },
+  "sidebar": "ProjectDriver",
+  "previous": {
+    "title": "addParams()",
+    "permalink": "/sst-website/docs/projectDriver/component/addParams"
+  },
+  "next": {
+    "title": "enableAllStatistics()",
+    "permalink": "/sst-website/docs/projectDriver/component/enableAllStatistics"
+  }
+}

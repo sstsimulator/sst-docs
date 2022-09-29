@@ -1,6 +1,6 @@
 ---
 id: basics_makefile
-title: Basics: Makefile
+title: "Basics: Makefile"
 ---
 
 ## Remarks

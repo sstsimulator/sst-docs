@@ -1,0 +1,30 @@
+{
+  "unversionedId": "tools/applications/gui",
+  "id": "tools/applications/gui",
+  "title": "GUI",
+  "description": "Requirements",
+  "source": "@site/../docs/tools/applications/gui.md",
+  "sourceDirName": "tools/applications",
+  "slug": "/tools/applications/gui",
+  "permalink": "/sst-website/docs/tools/applications/gui",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/tools/applications/gui.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "gui",
+    "title": "GUI"
+  },
+  "sidebar": "Tools",
+  "previous": {
+    "title": "Help Us",
+    "permalink": "/sst-website/docs/tools/helpUs"
+  },
+  "next": {
+    "title": "sst-config",
+    "permalink": "/sst-website/docs/tools/commandLine/sst-config"
+  }
+}

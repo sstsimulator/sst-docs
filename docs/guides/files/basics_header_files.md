@@ -1,6 +1,6 @@
 ---
 id: basics_header_files
-title: Basics: Header (.h) Files
+title: "Basics: Header (.h) Files"
 ---
 
 ## SST::Component Subclass

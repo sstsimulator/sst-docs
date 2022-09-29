@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/component/primaryComponentOKToEndSim",
+  "id": "cpp/component/primaryComponentOKToEndSim",
+  "title": "primaryComponentOKToEndSim()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/component/primaryComponentOKToEndSim.md",
+  "sourceDirName": "cpp/component",
+  "slug": "/cpp/component/primaryComponentOKToEndSim",
+  "permalink": "/sst-website/docs/cpp/component/primaryComponentOKToEndSim",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/component/primaryComponentOKToEndSim.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "primaryComponentOKToEndSim",
+    "title": "primaryComponentOKToEndSim()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "primaryComponentDoNotEndSim()",
+    "permalink": "/sst-website/docs/cpp/component/primaryComponentDoNotEndSim"
+  },
+  "next": {
+    "title": "registerAsPrimaryComponent()",
+    "permalink": "/sst-website/docs/cpp/component/registerAsPrimaryComponent"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/component/configureLink",
+  "id": "cpp/component/configureLink",
+  "title": "configureLink()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/component/configureLink.md",
+  "sourceDirName": "cpp/component",
+  "slug": "/cpp/component/configureLink",
+  "permalink": "/sst-website/docs/cpp/component/configureLink",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/component/configureLink.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "configureLink",
+    "title": "configureLink()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "constructor",
+    "permalink": "/sst-website/docs/cpp/component/constructor"
+  },
+  "next": {
+    "title": "configureSelfLink()",
+    "permalink": "/sst-website/docs/cpp/component/configureSelfLink"
+  }
+}

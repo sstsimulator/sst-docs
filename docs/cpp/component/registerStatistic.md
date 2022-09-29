@@ -5,7 +5,7 @@ title: registerStatistic()
 ## Fully Qualified Name
 ```cpp
 SST::BaseComponent::registerStatistic()
-```
+```cpp
 
 ### Remarks
 Registers a statistic.
@@ -16,7 +16,7 @@ If statistics are allowed to run (controlled by [Project Driver](guides/external
 
 ```cpp
 #include <sst/core/component.h>
-```
+```cpp
 
 ## Syntax
 
@@ -26,7 +26,7 @@ Statistic<T>* SST::BaseComponent::registerStatistic(std::string statName, std::s
 
 // #2 - same as #1, but automatically converts char* to std::string
 Statistic<T>* SST::BaseComponent::registerStatistic(const char* statName, const char* statSubId = "")
-```
+```cpp
 
 ## Parameters
 
@@ -46,7 +46,7 @@ char* subID = (char*) malloc(sizeof(char) * 32);
 sprintf(subID, "%" PRIu32, thisCoreID);
 
 Statistic<uint64_t>* statReadRequests  = own->registerStatistic<uint64_t>( "read_requests", subID );
-```
+```cpp
 
 ###
 ```cpp
@@ -55,7 +55,7 @@ smallCarsWashed = registerStatistic<int>("smallCarsWashed");
 	noCarEvents = registerStatistic<int>("noCarEvents");
 	smallCarsWaiting = registerStatistic<int>("smallCarsWaiting");
 	largeCarsWaiting = registerStatistic<int>("largeCarsWaiting");
-```
+```cpp
 
 ## See Also
 

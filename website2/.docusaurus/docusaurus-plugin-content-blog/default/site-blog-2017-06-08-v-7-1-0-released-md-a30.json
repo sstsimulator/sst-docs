@@ -1,0 +1,29 @@
+{
+  "permalink": "/sst-website/blog/2017/06/08/v7.1.0-released",
+  "source": "@site/blog/2017-06-08-v7.1.0-released.md",
+  "title": "SST v7.1.0 Released",
+  "description": "SST v7.1.0 is now available and can be downloaded here",
+  "date": "2017-06-08T00:00:00.000Z",
+  "formattedDate": "June 8, 2017",
+  "tags": [],
+  "readingTime": 1.055,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "SST Development Team"
+    }
+  ],
+  "frontMatter": {
+    "title": "SST v7.1.0 Released",
+    "author": "SST Development Team",
+    "authorFBID": ""
+  },
+  "prevItem": {
+    "title": "SST v7.2.0 Released",
+    "permalink": "/sst-website/blog/2017/12/11/v7.2.0-released"
+  },
+  "nextItem": {
+    "title": "SST v7.0.0 Released",
+    "permalink": "/sst-website/blog/2017/05/10/v7.0.0-released"
+  }
+}

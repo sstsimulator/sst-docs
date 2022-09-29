@@ -1,6 +1,6 @@
 ---
 id: sst_eli_document_statistics
-title: SST_ELI_DOCUMENT_STATISTICS 
+title: SST_ELI_DOCUMENT_STATISTICS
 ---
 ## Fully Qualified Name
 ```cpp

@@ -1,0 +1,26 @@
+{
+  "unversionedId": "tools/commandLine/sst-register",
+  "id": "tools/commandLine/sst-register",
+  "title": "sst-register",
+  "description": "Remarks",
+  "source": "@site/../docs/tools/commandLine/sst-register.md",
+  "sourceDirName": "tools/commandLine",
+  "slug": "/tools/commandLine/sst-register",
+  "permalink": "/sst-website/docs/tools/commandLine/sst-register",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/tools/commandLine/sst-register.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "sst-register",
+    "title": "sst-register"
+  },
+  "sidebar": "Tools",
+  "previous": {
+    "title": "sst-info",
+    "permalink": "/sst-website/docs/tools/commandLine/sst-info"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/component/constructor",
+  "id": "cpp/component/constructor",
+  "title": "constructor",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/component/constructor.md",
+  "sourceDirName": "cpp/component",
+  "slug": "/cpp/component/constructor",
+  "permalink": "/sst-website/docs/cpp/component/constructor",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/component/constructor.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "constructor",
+    "title": "constructor"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "Clock::Handler",
+    "permalink": "/sst-website/docs/cpp/clock/clock_handler"
+  },
+  "next": {
+    "title": "configureLink()",
+    "permalink": "/sst-website/docs/cpp/component/configureLink"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "projectDriver/component/enableAllStatistics",
+  "id": "projectDriver/component/enableAllStatistics",
+  "title": "enableAllStatistics()",
+  "description": "Remarks",
+  "source": "@site/../docs/projectDriver/component/enableAllStatistics.md",
+  "sourceDirName": "projectDriver/component",
+  "slug": "/projectDriver/component/enableAllStatistics",
+  "permalink": "/sst-website/docs/projectDriver/component/enableAllStatistics",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/projectDriver/component/enableAllStatistics.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "enableAllStatistics",
+    "title": "enableAllStatistics()"
+  },
+  "sidebar": "ProjectDriver",
+  "previous": {
+    "title": "sst.Component()",
+    "permalink": "/sst-website/docs/projectDriver/component/"
+  },
+  "next": {
+    "title": "setSubComponent()",
+    "permalink": "/sst-website/docs/projectDriver/component/setSubComponent"
+  }
+}

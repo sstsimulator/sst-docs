@@ -31,7 +31,7 @@ The command line utility, sst-info, lists documented Components, SubComponents, 
 
 ```bash
 sst-info [<element[.component|subcomponent]>]  [options]
-```
+```bash
 
 ## Parameters
 
@@ -53,49 +53,49 @@ sst-info [<element[.component|subcomponent]>]  [options]
 ### List All
 ```bash
 sst-info
-```
+```bash
 
 ### List All To XML File
 ```bash
 sst-info -x -o MyInfoFile.xml
-```
+```bash
 OR
 ```bash
 sst-info --xml --outputxml=MyInfoFile.xml
-```
+```bash
 
 ### Element Library
 ```bash
 sst-info ariel
-```
+```bash
 
 ### Component
 ```bash
 sst-info ariel.ariel
-```
+```bash
 
 ### SubComponent
 ```bash
 sst-info ariel.MemoryManagerMalloc
-```
+```bash
 
 ### List Specific Element Libraries, Components, SubComponents
 ```bash
 sst-info -l {ariel,miranda}
-```
+```bash
 OR
 ```bash
 sst-info -l ariel -l miranda
-```
+```bash
 OR
 ```bash
 sst-info --libs={ariel,miranda}
-```
+```bash
 OR
 ```bash
 sst-info --libs=ariel --libs=miranda
-```
+```bash
 OR
 ```bash
 sst-info -l {ariel,miranda.ReverseSingleStreamGenerator}
-```
+```bash

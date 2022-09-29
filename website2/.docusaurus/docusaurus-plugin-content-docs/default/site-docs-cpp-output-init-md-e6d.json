@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/output/init",
+  "id": "cpp/output/init",
+  "title": "init()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/output/init.md",
+  "sourceDirName": "cpp/output",
+  "slug": "/cpp/output/init",
+  "permalink": "/sst-website/docs/cpp/output/init",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/output/init.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "init",
+    "title": "init()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "fatal()",
+    "permalink": "/sst-website/docs/cpp/output/fatal"
+  },
+  "next": {
+    "title": "output()",
+    "permalink": "/sst-website/docs/cpp/output/"
+  }
+}
