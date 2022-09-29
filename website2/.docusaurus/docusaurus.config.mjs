@@ -42,7 +42,9 @@ export default {
           "path": "blog"
         },
         "theme": {
-          "customCss": "./src/css/customTheme.css"
+          "customCss": [
+            "/Users/jpkenny/src/sst-website/website2/src/css/customTheme.css"
+          ]
         }
       }
     ]
@@ -59,6 +61,7 @@ export default {
   ],
   "themeConfig": {
     "navbar": {
+      "style": "primary",
       "title": "The Structural Simulation Toolkit",
       "logo": {
         "src": "img/sst-logo-small.png"
@@ -99,12 +102,12 @@ export default {
     },
     "image": "img/sst-logo-small.png",
     "footer": {
+      "style": "dark",
       "links": [],
       "copyright": "Copyright © 2022 SST",
       "logo": {
         "src": "img/sst-logo-small.png"
-      },
-      "style": "light"
+      }
     },
     "colorMode": {
       "defaultMode": "light",
