@@ -71,13 +71,18 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "docs/cpp/component/registerClock",
-          "label": "C++ API",
+          "to": "docs/cpp/component/constructor",
+          "label": "SST-Core API",
           "position": "left"
         },
         {
-          "to": "docs/projectDriver/sst/component",
-          "label": "Project Driver",
+          "to": "docs/guides/external/projectDriver",
+          "label": "Configuration",
+          "position": "left"
+        },
+        {
+          "to": "docs/elements/ember/QuickStart",
+          "label": "Elements",
           "position": "left"
         },
         {
