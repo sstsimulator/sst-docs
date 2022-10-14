@@ -91,7 +91,7 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "/help",
+          "to": "help",
           "label": "Help",
           "position": "left"
         }
