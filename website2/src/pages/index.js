@@ -7,8 +7,9 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
-    return ( <header> <h1>The Structural Simulation Toolkit</h1> </header>);
+    return ( <header> <h1>Welcome the to documentation headquarters for the Structural Simulation Toolkit</h1> </header>);
 }
+
 
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
@@ -16,10 +17,25 @@ export default function Home() {
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: '5%',
+        }}>
+        <HomepageHeader />
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <main>
+          <HomepageFeatures />
+        </main>
+      </div>
     </Layout>
   );
 }
