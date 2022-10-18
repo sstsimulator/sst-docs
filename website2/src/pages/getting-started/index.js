@@ -4,7 +4,12 @@ import Layout from '@theme/Layout';
 export default function GettingStarted() {
   return (
     <Layout title="Getting Started" description="Getting Started Page">
-    <div>
+      <div
+       style={{
+               justifyContent: 'center',
+               alignItems: 'center',
+               margin: '20px',
+       }}>
       <h2>Getting Started</h2>
       <p>
       SST is an open source, cross platform simulation platform that provides a framework to connect multiple simulated hardware objects including CPUs, network, memory, etc. Simulations using the toolkit can be run either on a single node or run on multiple nodes via MPI. The toolkit provides a parallel discrete event core as well as several programming interfaces, including classes to manage random number generation, statistics handling, simulation output, and efficient memory pooling for simulation events. The most recent performance evaluation has shown that SST can scale to simulate beyond 1.5M objects and operate efficiently on simulations up to 128 dual-processor nodes.
