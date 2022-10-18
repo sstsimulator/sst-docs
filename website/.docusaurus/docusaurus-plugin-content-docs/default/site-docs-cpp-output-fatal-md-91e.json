@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/output/fatal",
+  "id": "cpp/output/fatal",
+  "title": "fatal()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/output/fatal.md",
+  "sourceDirName": "cpp/output",
+  "slug": "/cpp/output/fatal",
+  "permalink": "/sst-website/docs/cpp/output/fatal",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/output/fatal.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "fatal",
+    "title": "fatal()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "debug()",
+    "permalink": "/sst-website/docs/cpp/output/debug"
+  },
+  "next": {
+    "title": "init()",
+    "permalink": "/sst-website/docs/cpp/output/init"
+  }
+}

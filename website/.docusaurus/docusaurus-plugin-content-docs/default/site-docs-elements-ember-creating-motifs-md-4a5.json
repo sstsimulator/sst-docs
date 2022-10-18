@@ -1,0 +1,27 @@
+{
+  "unversionedId": "elements/ember/CreatingMotifs",
+  "id": "elements/ember/CreatingMotifs",
+  "title": "C++ Ember Motifs",
+  "description": "Ember",
+  "source": "@site/../docs/elements/ember/CreatingMotifs.md",
+  "sourceDirName": "elements/ember",
+  "slug": "/elements/ember/CreatingMotifs",
+  "permalink": "/sst-website/docs/elements/ember/CreatingMotifs",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/elements/ember/CreatingMotifs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "elements",
+  "previous": {
+    "title": "What is an Ember Motif?",
+    "permalink": "/sst-website/docs/elements/ember/QuickStart"
+  },
+  "next": {
+    "title": "Ember Python Configurations",
+    "permalink": "/sst-website/docs/elements/ember/RunningMotifs"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/statistics/addData",
+  "id": "cpp/statistics/addData",
+  "title": "addData()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/statistics/addData.md",
+  "sourceDirName": "cpp/statistics",
+  "slug": "/cpp/statistics/addData",
+  "permalink": "/sst-website/docs/cpp/statistics/addData",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/statistics/addData.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "addData",
+    "title": "addData()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "MarsagliaRNG",
+    "permalink": "/sst-website/docs/cpp/rng/MarsagliaRNG"
+  },
+  "next": {
+    "title": "registerStatistic()",
+    "permalink": "/sst-website/docs/cpp/statistics/registerStatistic"
+  }
+}

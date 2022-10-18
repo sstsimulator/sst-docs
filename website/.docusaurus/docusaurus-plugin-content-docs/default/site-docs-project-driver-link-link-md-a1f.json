@@ -1,0 +1,26 @@
+{
+  "unversionedId": "projectDriver/link/link",
+  "id": "projectDriver/link/link",
+  "title": "sst.Link()",
+  "description": "Remarks",
+  "source": "@site/../docs/projectDriver/link/link.md",
+  "sourceDirName": "projectDriver/link",
+  "slug": "/projectDriver/link/",
+  "permalink": "/sst-website/docs/projectDriver/link/",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/projectDriver/link/link.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "link",
+    "title": "sst.Link()"
+  },
+  "sidebar": "ProjectDriver",
+  "previous": {
+    "title": "connect()",
+    "permalink": "/sst-website/docs/projectDriver/link/connect"
+  }
+}

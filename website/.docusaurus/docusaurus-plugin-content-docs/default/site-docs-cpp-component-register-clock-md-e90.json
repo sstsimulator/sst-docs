@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/component/registerClock",
+  "id": "cpp/component/registerClock",
+  "title": "registerClock()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/component/registerClock.md",
+  "sourceDirName": "cpp/component",
+  "slug": "/cpp/component/registerClock",
+  "permalink": "/sst-website/docs/cpp/component/registerClock",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/component/registerClock.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "registerClock",
+    "title": "registerClock()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "registerAsPrimaryComponent()",
+    "permalink": "/sst-website/docs/cpp/component/registerAsPrimaryComponent"
+  },
+  "next": {
+    "title": "registerStatistic()",
+    "permalink": "/sst-website/docs/cpp/component/registerStatistic"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "unversionedId": "elements/ember/QuickStart",
+  "id": "elements/ember/QuickStart",
+  "title": "What is an Ember Motif?",
+  "description": "Ember Motifs provide representative workloads and then estimate performance on hardware using SST simulations.",
+  "source": "@site/../docs/elements/ember/QuickStart.md",
+  "sourceDirName": "elements/ember",
+  "slug": "/elements/ember/QuickStart",
+  "permalink": "/sst-website/docs/elements/ember/QuickStart",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/elements/ember/QuickStart.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {},
+  "sidebar": "elements",
+  "previous": {
+    "title": "Help Us",
+    "permalink": "/sst-website/docs/projectDriver/helpUs"
+  },
+  "next": {
+    "title": "C++ Ember Motifs",
+    "permalink": "/sst-website/docs/elements/ember/CreatingMotifs"
+  }
+}

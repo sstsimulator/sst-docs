@@ -50,6 +50,12 @@
       "Link": ["projectDriver/link/connect"
               , "projectDriver/link/link"]
   },
+  "elements": {
+    "Contribute": ["projectDriver/helpUs"],
+    "Ember": ["elements/ember/QuickStart"
+             ,"elements/ember/CreatingMotifs"
+             ,"elements/ember/RunningMotifs"]
+  },
   "Tools": {
     "Contribute": ["tools/helpUs"],
     "Applications": ["tools/applications/gui"],

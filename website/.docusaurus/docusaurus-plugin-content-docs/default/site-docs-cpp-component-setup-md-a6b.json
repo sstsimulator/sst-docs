@@ -1,0 +1,30 @@
+{
+  "unversionedId": "cpp/component/setup",
+  "id": "cpp/component/setup",
+  "title": "setup()",
+  "description": "Fully Qualified Name",
+  "source": "@site/../docs/cpp/component/setup.md",
+  "sourceDirName": "cpp/component",
+  "slug": "/cpp/component/setup",
+  "permalink": "/sst-website/docs/cpp/component/setup",
+  "draft": false,
+  "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/../docs/cpp/component/setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "Oct 14, 2018",
+  "frontMatter": {
+    "id": "setup",
+    "title": "setup()"
+  },
+  "sidebar": "C++",
+  "previous": {
+    "title": "registerStatistic()",
+    "permalink": "/sst-website/docs/cpp/component/registerStatistic"
+  },
+  "next": {
+    "title": "SST_ELI_DOCUMENT_PARAMS",
+    "permalink": "/sst-website/docs/cpp/eli/sst_eli_document_params"
+  }
+}
