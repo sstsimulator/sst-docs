@@ -7,7 +7,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
-    return ( <header> <h1>Welcome the to documentation headquarters for the Structural Simulation Toolkit</h1> </header>);
+    return ( <header> <h1>Welcome to the documentation headquarters for the Structural Simulation Toolkit</h1> </header>);
 }
 
 function HomepageText() {
