@@ -58,7 +58,6 @@
   },
   "Tools": {
     "Contribute": ["tools/helpUs"],
-    "Applications": ["tools/applications/gui"],
     "Command Line": ["tools/commandLine/sst-config"
                     , "tools/commandLine/sst-info"
                     , "tools/commandLine/sst-register"]
