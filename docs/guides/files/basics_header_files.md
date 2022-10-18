@@ -61,7 +61,7 @@ public:
 		"Simple model that prints Hello World!", //description
 		COMPONENT_CATEGORY_UNCATEGORIZED //category
 	)
-    //if you want to accept params from the Project Driver
+    //if you want to accept params from the Configuration file
     //           This text will be used to generate the sst-info documentation.
 	SST_ELI_DOCUMENT_PARAMS(
         // Parameter name, description, default value

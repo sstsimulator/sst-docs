@@ -11,7 +11,7 @@ SST::Component
 Typically not called directly. SST will build and call the constructor.
 
 Typical tasks:
-- Read params from the project driver.
+- Read params from the simulation configuration.
 - Process params.
 - Initialize SubComponents.
 - Register one or more clocks.
@@ -39,7 +39,7 @@ MyComponent::MyComponent (SST::ComponentId_t id, SST::Params& params) : SST::Com
 
 **id** - The id for the component, this is passed in by SST. Usually just need to pass it to the base SST::Component constructor.
 
-**SST::Params&** - The params set by the project driver.
+**SST::Params&** - The params set by the simulation configuration.
 
 ## Return Value
 
@@ -53,7 +53,7 @@ carWash::carWash( SST::ComponentId_t id, SST::Params& params ) : SST::Component(
 
 	output.init("carWash-" + getName() + "-> ", 1, 0, SST::Output::STDOUT);
 
-	// read params from the project driver
+	// read params from the simulation configuration
 	runTime = params.find<int64_t>("simulationTime", 24);
 	clock = params.find<std::string>("tickFreq", "60s");
 	

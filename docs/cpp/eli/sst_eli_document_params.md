@@ -31,7 +31,7 @@ SST_ELI_DOCUMENT_PARAMS(
 
 ## Parameters
 
-**parmN_NAME** - The name of the parameter. This is the value passed into the [addParams](projectDriver/component/addParams.md) function in the Project Driver.
+**parmN_NAME** - The name of the parameter. This is the value passed into the [addParams](projectDriver/component/addParams.md) function in the Configuration.
 
 **parmN_DESCRIPTION** - A description of the param. This value is shown when you run sst-info in the command line.
 

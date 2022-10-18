@@ -1,23 +1,23 @@
 ---
 id: projectDriver
-title: "Basics: Project Driver"
+title: "Basics: Simulation Configuration File"
 ---
 
-The project driver is a python file. It defines what elements (components, subcomponents, and links) are in a simulation. It also sets params and enables statics on these elements.
+The simulation configuration file is typically written in Python, although other formats are possible. It defines what elements (components, subcomponents, and links) are in a simulation. It also sets params and enables statics on these elements.
 
 You are required to create at least one component, though most simulations will contain many elements.
 
-To start, create a new python file and import the SST functions.
+To start, create a new Python file and import the SST functions.
 ```python
 import sst
 ```
 
-Below are some examples. For more information on the functions, see the [Project Driver](projectDriver/sst/component.md) section.
+Below are some examples. For more information on the functions, see the [Configuration](projectDriver/sst/component.md) section.
 
 
 ## Examples
 
-### Example 1: Minimal Project Driver
+### Example 1: Minimal Configuration File
 
 ```python
 import sst
@@ -29,7 +29,7 @@ helloComponent.addParams({
 	})
 ```
 
-### Example 2: Project Driver
+### Example 2: Configuration File
 
 ```python
 import sst
@@ -88,5 +88,5 @@ sst.Link("MyLink").connect( (carWashComponent, "port", "1ps"), (carGeneratorComp
 
 ## See Also
 
-- [Project Driver](projectDriver/sst/component.md) - View this section of the site for more information on the functions used to build a simulation.
+- [Configuration](projectDriver/sst/component.md) - View this section of the site for more information on the functions used to build a simulation.
 <!-- - [http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/](http://sst-simulator.org/SSTPages/SSTUserPythonFileFormat/) - View more info on the sst-simulator.org site. -->

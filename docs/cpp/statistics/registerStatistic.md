@@ -14,7 +14,7 @@ This function is documented in [SST::Component > registerStatistic()](cpp/compon
 ## See Also
 
 - [SST::Statistics::addData()](cpp/statistics/addData.md)
-- Project Driver Functions
+- Configuration Functions
   - [sst.setStatisticLoadLevel](projectDriver/sst/setStatisticLoadLevel.md)
   - [sst.enableAllStatisticsForAllComponents](projectDriver/sst/enableAllStatisticsForAllComponents.md)
   - [enableAllStatistics](projectDriver/component/enableAllStatistics.md)
