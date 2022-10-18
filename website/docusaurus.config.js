@@ -5,10 +5,12 @@ module.exports={
   "baseUrl": "/sst-website/",
   "organizationName": "sstsimulator",
   "projectName": "sst-website",
+  "deploymentBranch": "gh-pages",
+  "trailingSlash": false,
   "scripts": [
     "https://buttons.github.io/buttons.js"
   ],
-  "favicon": "img/favicon.png",
+  "favicon": "img/sst-logo-small.png",
   "customFields": {
     "users": [
       {
