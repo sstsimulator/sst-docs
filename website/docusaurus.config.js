@@ -68,7 +68,7 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "docs/guides/external/projectDriver",
+          "to": "docs/guides/configuration/pythonConfigGuide",
           "label": "Guides",
           "position": "left"
         },
@@ -78,7 +78,7 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "docs/guides/external/projectDriver",
+          "to": "docs/config/",
           "label": "Configuration",
           "position": "left"
         },

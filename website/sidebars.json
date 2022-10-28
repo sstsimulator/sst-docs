@@ -1,7 +1,8 @@
 {
   "Guides": {
     "Contribute": ["guides/helpUs"],
-    "External": ["guides/external/projectDriver"],
+    "Configuration": ["guides/configuration/pythonConfigGuide"],
+    "Running" : ["guides/runningSST"],
     "Files": ["guides/files/basics_header_files"
       ,"guides/files/basics_makefile"]
   },
@@ -37,21 +38,52 @@
     "SST::Statistics": ["cpp/statistics/addData"
                         ,"cpp/statistics/registerStatistic"]
   },
-  "ProjectDriver": {
-    "Contribute": ["projectDriver/helpUs"],
-    "SST": ["projectDriver/sst/component"
-      , "projectDriver/sst/enableAllStatisticsForAllComponents"
-      , "projectDriver/sst/link"
-      , "projectDriver/sst/setStatisticLoadLevel"],
-    "Component & SubComponent": ["projectDriver/component/addParams"
-                      , "projectDriver/component/component"
-                      , "projectDriver/component/enableAllStatistics"
-                      , "projectDriver/component/setSubComponent"],
-      "Link": ["projectDriver/link/connect"
-              , "projectDriver/link/link"]
+  "Configuration": {
+    "General" : [
+      "config/config"
+    , "config/general/setProgramOption"
+    , "config/general/getProgramOptions"
+    , "config/general/getMPIRankCount"
+    , "config/general/getSSTThreadCount"
+    , "config/general/setSSTThreadCount"
+    , "config/general/pushNamePrefix"
+    , "config/general/popNamePrefix"
+    , "config/general/exit"
+    , "config/general/findComponentByName"
+    ],
+    "Statistics" : [
+      "config/stats/overview"
+      , "config/stats/enableAllStatisticsForAllComponents"
+      , "config/stats/enableAllStatisticsForComponentName"
+      , "config/stats/enableStatisticForComponentName"
+      , "config/stats/enableStatisticsForComponentName"
+      , "config/stats/enableAllStatisticsForComponentType"
+      , "config/stats/enableStatisticForComponentType"
+      , "config/stats/enableStatisticsForComponentType"
+      , "config/stats/setStatisticLoadLevelForComponentName"
+      , "config/stats/setStatisticLoadLevelForComponentType"
+      , "config/stats/setStatisticLoadLevel"
+      , "config/stats/setStatisticOutput"
+      , "config/stats/setStatisticOutputOption"
+      , "config/stats/setStatisticOutputOptions"
+    ],
+    "Component" : [
+      "config/component/classes"
+      , "config/component/component"
+      , "config/component/setSubComponent"
+      , "config/component/addParam"
+      , "config/component/addParams"
+      , "config/component/addLink"
+      , "config/component/getFullName"
+      , "config/component/getType"
+      , "config/component/setStatistic"
+    ],
+    "Link" : [
+      "config/link/link"
+      , "config/link/connect"
+    ]
   },
   "elements": {
-    "Contribute": ["projectDriver/helpUs"],
     "Ember": ["elements/ember/QuickStart"
              ,"elements/ember/CreatingMotifs"
              ,"elements/ember/RunningMotifs"]

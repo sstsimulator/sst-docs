@@ -22,7 +22,6 @@ For the most part, header files are just like any other C++ header file. There a
 
 //required
 #include <sst/core/component.h>
-#include <sst/core/elementinfo.h>
 
 //if you have a port on your component
 #include <sst/core/link.h>

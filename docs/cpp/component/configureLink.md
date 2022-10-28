@@ -44,7 +44,7 @@ Link* SST::BaseComponent::configureLink(std::string  name, Event::HandlerBase * 
 
 ## Examples
 
-### Examples 1
+### Example 1
 
 ```cpp
 // #1 using a TimeConverter class for time_base
@@ -67,7 +67,7 @@ link = configureLink("recvPort",
              new Event::Handler<SubCompReceiver>(this, &SubCompReceiver::handleEvent));
 ```
 
-### Examples 4
+### Example 4
 
 ```cpp
 // #3 Use default time_base, usually set by a call to registerClock()

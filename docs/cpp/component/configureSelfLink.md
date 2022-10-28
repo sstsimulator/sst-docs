@@ -44,21 +44,21 @@ Link * SST::BaseComponent::configureSelfLink (std::string  name, Event::HandlerB
 
 ## Examples
 
-### Examples 1
+### Example 1
 ```cpp
 // #1 using a TimeConverter class for time_base
 TimeConverter* base_tc = registerTimeBase("1ps",false);
 timing_link = configureSelfLink("timing_link", base_tc, new Event::Handler<OfferedLoad>(this, &OfferedLoad::output_timing));
 ```
 
-### Examples 2
+### Example 2
 ```cpp
 // #2 using a string for time_base
 self_link = configureSelfLink("complete_link", "2GHz", new Event::Handler<bisection_test>(this,&bisection_test::handle_complete));
 
 ```
 
-### Examples 3
+### Example 3
 ```cpp
 // #3 Use default time_base, usually set by a call to registerClock()
 selfLink = configureSelfLink( "linkToSelf", new Event::Handler<faultInjectionComponent>( this, &faultInjectionComponent::handleSelfLink ) );

@@ -10,7 +10,7 @@ SST::BaseComponent::registerStatistic()
 ### Remarks
 Registers a statistic.
 
-If statistics are allowed to run (controlled by [Configuration](guides/external/projectDriver.md)), then a statistic will be created and returned. If not allowed to run, then a NullStatistic will be returned. In either case, the returned value should be used for all future statistic calls. The type of Statistic and the Collection Rate is set by [Configuration](guides/external/projectDriver.md) parameters. If no type is defined, then an Accumulator Statistic will be provided by default. If the rate is set to 0 or not provided, then the statistic will output results only at end of sim (if output is enabled).
+If statistics are allowed to run (controlled by [Configuration](guides/configuration/pythonConfigGuide.md)), then a statistic will be created and returned. If not allowed to run, then a NullStatistic will be returned. In either case, the returned value should be used for all future statistic calls. The type of Statistic and the Collection Rate is set by [Configuration](guides/configuration/pythonConfigGuide.md) parameters. If no type is defined, then an Accumulator Statistic will be provided by default. If the rate is set to 0 or not provided, then the statistic will output results only at end of sim (if output is enabled).
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Statistic<T>* SST::BaseComponent::registerStatistic(const char* statName, const 
 
 ## Parameters
 
-**statName** - Primary name of the statistic. This name must match the defined ElementInfoStatistic in the component, and must also be enabled in the [Configuration](guides/external/projectDriver.md). 
+**statName** - Primary name of the statistic. This name must match the defined ElementInfoStatistic in the component, and must also be enabled in the [Configuration](guides/configuration/pythonConfigGuide.md). 
 
 **statSubId** - An additional substitute name for the statistic.
 

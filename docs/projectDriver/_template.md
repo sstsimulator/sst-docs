@@ -3,37 +3,28 @@ id: function_name
 title: function_name()
 ---
 
-### Remarks
-
-## Requirements
-
-```python
-import sst
-```
+Description.
 
 ## Syntax
-
 ```python
 
 ```
 
 ## Parameters
-
-**param** - description
-
-**param** - description
-
-## Return Value
-
-**ret** - description
-
-**ret** - description
+* **param** description
+* **param** description
+* **returns** description
 
 ## Examples
 
 ### Example 1
 ```python
 
+```
+
+## Import
+```python
+import sst
 ```
 
 ## See Also
