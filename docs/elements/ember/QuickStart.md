@@ -1,6 +1,9 @@
-# What is an Ember Motif?
+---
+title: QuickStart Motif Guide
+---
 
-Ember Motifs provide representative workloads and then estimate performance on hardware using SST simulations.
+## What is an Ember motif?
+Ember Motifs are a high-level represenation of a workload's communication patterns. They are used to estimate performance on hardware at scale in SST simulations.
 This guide provides a directions on how to:
 
 *   Implement a empty motif.
@@ -8,15 +11,18 @@ This guide provides a directions on how to:
 
 Implementing and running Ember Motifs requires three different files:
 
-1.  Python File
-    Provides information on the hardware to be simulated when running an Ember Motif
+1.  [Configuration](../../config/)
+
+    A python file that provides information on the hardware to be simulated when running an Ember Motif
     This directs SST on the available hardware components and how they are set up.
 2.  C++ file
+
     Decides how the computation is structured and computed.
 3.  C++ header file
+
     The header file contains primarily naming information
 
-# Quick Start Guide
+## Quick Start Guide
 
 This guide gives a simple example of how to create and run a simple Motif.
 
@@ -28,7 +34,7 @@ First, create a new directory to hold our example Motif.
 `mkdir ExampleMotif`
 
 Next, create a `ExampleMotif/exampleMotif.h` file
-```
+```cpp
     #ifndef _H_EMBER_EXAMPLE
     #define _H_EMBER_EXAMPLE
 
@@ -88,18 +94,16 @@ The SST Document Statistics provides tracking for initialization and various MPI
 
 Motifs are executed as follows:
 
-
-
-1) The motif generator is initialized (The contructor)
-2) The generate function is invoked and returns either true or false
-3) The events on the eventQueue are processed.
-4) If the generate function in step 2 returned false, return to step 2, otherwise the motif is complete.
+1. The motif generator is initialized (the contructor).
+1. The generate function is invoked and returns either true or false.
+1. The events on the eventQueue are processed.
+1. If the generate function in step 2 returned false, return to step 2, otherwise the motif is complete.
 
 Here is a motif that returns without doing any additional work.
 
 Then we create a file `ExampleMotif/Example.cc` with the contents:
 
-```
+```cpp
     #include <sst_config.h>
     #include "Example.h"
 
@@ -130,16 +134,16 @@ Each Motif generator has an constructor and generate function.
 Then we add the `.cc` and `.h` file to `Makefile.am`
 
 i.e.
-```
+```sh
      embermemoryev.h \
      ExampleMotif/example.h \
      ExampleMotif/example.cc \
      libs/emberLib.h \
 ```
 
-Finally, a python file `example.py` needs to be created:
+Finally, a python file, `example.py`, needs to be created:
 
-```
+```py
     from email.mime import base
     import sst
     from sst.merlin.base import *
@@ -200,7 +204,7 @@ This follows common python syntax.
 The hardware variables (topology, router and network interface) are created through assignment of a constructor
 The fields of the variables are accessed using a dot operator.
 Topology, router, and network interface variables need to be created for a simulation. More detailed descriptions of configuration options is in RunningMotifs.md. 
-Next an endpoint is created and given the motif to be used using a ep.addMotif("MotifName")call
+Next an endpoint is created and given the motif to be used using a ep.addMotif("MotifName") call
 Note multiple motifs can be added the same endpoint. The intended use for each motif to simulate an entire application. The event queue is used to simulate MPI events and computational workloads. Adding multiple motifs is useful for simulating workflows of a series of applications. 
 
 Finally, a system variable is created and 'built'
@@ -209,7 +213,7 @@ Remake SST-elements.
 
 To run the python script
 
-```
+```sh
 sst example.py
 ```
 

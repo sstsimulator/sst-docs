@@ -1,40 +1,43 @@
 ---
-id: connect
 title: connect
 ---
 
-Connect ports from two components with a link.
+<!---
+SAND2022-6843 O
+Source: sst-documentation/manuals/python
+--->
+
+Connects two ports using the link object. 
+
+Actual parameters are two tuples representing the information for the ports to be connected. The fields in the tuple are (comp, port, latency) as describe in the parameter description. 
+
 
 ## Syntax
 ```python
-port_tuple_1 = (component_handle_1, port_name_1, delay_1)
-port_tuple_2 = (component_handle_2, port_name_2, delay_2)
+port_tuple_1 = (component_handle_1, port_name_1, latency_1=default)
+port_tuple_2 = (component_handle_2, port_name_2, latency_2=default)
 link_handle.connect( port_tuple_1, port_tuple_2 )
 ```
 
 ## Parameters
-* **port_tuple_1** (type: tuple) tuple identifying the first port to connect. Syntax for the tuple is `(component_handle, port_name, delay)` as shown above.
-  * **component_handle** (type: component object) Python handle for the component to connect
-  * **port_name** (type: string) name of the port within the component to connect the link to
-  * **delay** (type: string) time it takes to send an event from this port to the port on the other side of the link. Often delays are symmetric, but different delays can be specified if needed. Additional delay can also be added (but not removed) by components during simulation.
-* **port_tuple_2** (type: tuple) tuple identifying the second port to connect.
+* **comp** (type: Component or SubComponent) Component or SubComponent object that the port belongs to.
+* **port** (type: string) Port to connect to.
+* **latency** (type: string or UnitAlgebra) Latency of link from the perspective of the corresponding Component/SubComponent sending an event. This is optional, and if not specified, the default latency of the link will be used. If no latency is set, either in the call or as a default, the call will fatal. 
 * **returns** none
+
 
 ## Examples
 
 ### Example 1
 ```python
-# comp_cpu and comp_tracer are component handles generated from sst.Component(...)
-link_cpu_tracer = sst.Link("link_cpu_tracer")
-link_cpu_tracer.connect((comp_cpu, "mem_link", "100ps"), (comp_tracer, "northBus", "100ps"))
-```
+import sst
 
-### Example 2
-```python
-# carWashComponent, carGeneratorComponent are component handles generated from sst.Component(...)
-port0 = (carWashComponent, "port", "1ps")
-port1 = (carGeneratorComponent, "port", "1ps")
-sst.Link("MyLink").connect( port0, port1 )
+component0 = sst.Component("c0", "simpleElementExample.example0")
+component1 = sst.Component("c1", "simpleElementExample.example0")
+
+link = sst.Link("component_link")
+# Connect components via their ports which are named 'port'
+link.connect( (component0, "port", "1ns"), (component1, "port", "1ns") )
 ```
 
 ## Import

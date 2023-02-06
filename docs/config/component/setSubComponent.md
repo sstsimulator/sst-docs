@@ -12,7 +12,7 @@ A SubComponent is created by calling setSubComponent() on either a Component or 
 
 ## Syntax
 ```python
-setSubComponent(slot_name, element_type, slot_index = 0)
+component.setSubComponent(slot_name, element_type, slot_index = 0)
 ```
 
 ## Parameters

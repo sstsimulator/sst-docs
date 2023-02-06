@@ -16,8 +16,8 @@ Help us document SST by contributing to this site.
 
 **General operations when updating the sst-website content:**
    - Ensure Node is installed on development machine.
-   - Clone the sst-website repository.  
-   - Create a feature branch from master on your local repo.
+   - Fork and then clone the sst-website repository.  
+   - Create a feature branch from your fork's master branch on your local repo.
    - cd into sst-website/website 
    - Initialize Docusaurus 
       - ```> npm install```
@@ -28,5 +28,5 @@ Help us document SST by contributing to this site.
    - Make changes to the source and test with local hosting      
       - ```> npm start``` 
    - Add/Commit final changes back to the feature branch of your local repo
-   - Push feature branch upto the [sst-website repo](https://github.com/sstsimulator/sst-website)
+   - Push feature branch up to your fork
    - Generate a pull request from your feature branch to the **master** branch of [sst-website repo](https://github.com/sstsimulator/sst-website)

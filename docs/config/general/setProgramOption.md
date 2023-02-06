@@ -1,6 +1,6 @@
 ---
 id: setProgramOption
-title: setProgramOption(option, value)
+title: setProgramOption
 ---
 
 <!---

@@ -3,6 +3,10 @@ id: runningSST
 title: How to Run SST
 ---
 
+:::caution
+This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
+:::
+
 ## Running SST 
 Before running SST, make sure your `$LD_LIBRARY_PATH` environment variable include the location of the dependency and component libraries so that it is searched for shared libraries at runtime. For example, it you followed the wiki page to build and install SST, the `$HOME/local/lib` should be included in your `$LD_LIBRARY_PATH` environment variable.
 

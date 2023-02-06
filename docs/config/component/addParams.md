@@ -1,5 +1,4 @@
 ---
-id: addParams
 title: addParams
 ---
 
@@ -12,9 +11,8 @@ Adds multiple parameters to the Params object for the Component/SubComponent. Th
 
 
 ## Syntax
-
 ```python
-addParams(params)
+component.addParams(params)
 ```
 
 ## Parameters

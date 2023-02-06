@@ -3,6 +3,10 @@ id: sst-info
 title: sst-info
 ---
 
+:::caution
+This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
+:::
+
 ### Remarks
 
 The command line utility, sst-info, lists documented Components, SubComponents, Events, Modules, and Partitioners within an Element Library. See below for more details on what sst-info will include for each of the types.
@@ -31,7 +35,7 @@ The command line utility, sst-info, lists documented Components, SubComponents, 
 
 ```bash
 sst-info [<element[.component|subcomponent]>]  [options]
-```bash
+```
 
 ## Parameters
 
@@ -42,7 +46,7 @@ sst-info [<element[.component|subcomponent]>]  [options]
 **options**:
 - **-h, --help** - Print help message.
 - **-v, --version** - Print SST Package Release Version.
-- **-l, --libs=LIBS** - {all, <element>, <element[.component|subcomponent]>} - Element Library9(s) to process.
+- **-l, --libs=LIBS** - {all, \<element\>, \<element[.component|subcomponent]\>} - Element Library9(s) to process.
 - **-n, --nodisplay** - Do not display output. Default is off.
 - **-x, --xml** - Generate XML data. Default is off.
 - **-o, --outputxml=FILE** - File path to XML file. Default is SSTInfo.xml.
@@ -53,49 +57,49 @@ sst-info [<element[.component|subcomponent]>]  [options]
 ### List All
 ```bash
 sst-info
-```bash
+```
 
 ### List All To XML File
 ```bash
 sst-info -x -o MyInfoFile.xml
-```bash
+```
 OR
 ```bash
 sst-info --xml --outputxml=MyInfoFile.xml
-```bash
+```
 
 ### Element Library
 ```bash
 sst-info ariel
-```bash
+```
 
 ### Component
 ```bash
 sst-info ariel.ariel
-```bash
+```
 
 ### SubComponent
 ```bash
 sst-info ariel.MemoryManagerMalloc
-```bash
+```
 
 ### List Specific Element Libraries, Components, SubComponents
 ```bash
 sst-info -l {ariel,miranda}
-```bash
+```
 OR
 ```bash
 sst-info -l ariel -l miranda
-```bash
+```
 OR
 ```bash
 sst-info --libs={ariel,miranda}
-```bash
+```
 OR
 ```bash
 sst-info --libs=ariel --libs=miranda
-```bash
+```
 OR
 ```bash
 sst-info -l {ariel,miranda.ReverseSingleStreamGenerator}
-```bash
+```

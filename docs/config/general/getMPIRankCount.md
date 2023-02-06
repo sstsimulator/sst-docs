@@ -1,6 +1,6 @@
 ---
 id: getMPIRankCount
-title: getMPIRankCount()
+title: getMPIRankCount
 ---
 
 <!---

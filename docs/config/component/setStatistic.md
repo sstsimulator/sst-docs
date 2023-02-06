@@ -1,5 +1,4 @@
 ---
-id: setStatistic
 title: setStatistic
 ---
 
@@ -9,11 +8,11 @@ Source: sst-documentation/manuals/python
 --->
 
 
- Sets the statistic object to use in the specified statistic slot.
+Sets the statistic object to use in the specified statistic slot. This function appiles to both Components and SubComponents. See [Statistic Objects](../stats/object/statisticObject) for additional functions that can be used on statistic objects.
 
 ## Syntax
 ```python
-setStatistic(stat_name, stat_obj=None)
+component.setStatistic(stat_name, stat_obj=None)
 ```
 
 ## Parameters

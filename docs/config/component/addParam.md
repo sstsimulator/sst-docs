@@ -1,5 +1,4 @@
 ---
-id: addParam
 title: addParam
 ---
 
@@ -12,7 +11,7 @@ Adds a parameter to the Params object for the Component/SubComponent. This funct
 
 ## Syntax
 ```python
-addParam(key, value)
+component.addParam(key, value)
 ```
 
 ## Parameters

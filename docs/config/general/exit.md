@@ -1,6 +1,6 @@
 ---
 id: exit
-title: exit()
+title: exit
 ---
 <!---
 SAND2022-6843 O

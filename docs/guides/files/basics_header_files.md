@@ -3,6 +3,10 @@ id: basics_header_files
 title: "Basics: Header (.h) Files"
 ---
 
+:::caution
+This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
+:::
+
 ## SST::Component Subclass
 
 For the most part, header files are just like any other C++ header file. There are only a few required pieces. Generally, these includes:

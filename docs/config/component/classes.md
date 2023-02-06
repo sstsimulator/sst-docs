@@ -1,5 +1,4 @@
 ---
-id: classes
 title: Component and SubComponent Classes
 ---
 

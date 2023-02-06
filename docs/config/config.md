@@ -1,10 +1,10 @@
 ---
-id: config
 title: Python Configuration File
 ---
 
 <!---
 SAND2022-6843 O
+SAND2023
 Source: sst-documentation/manuals/python
 --->
 
@@ -20,9 +20,15 @@ import sst
 from sst import *
 ```
 
-In addition to general functions, there are five classes available in SST: [Component](component/component), [SubComponent](component/setSubComponent), [Link](link/link), [StatisticGroup](link/link) and [StatisticOutput](link/link). The Component and SubComponent classes share many of the same functions and are both covered under Component.
+In addition to general functions, there are seven classes available in SST: 
+* [Component and SubComponent](config/component/classes)
+* [Link](config/link)
+* [Statistic](config/stats/overview)
+* [StatisticObject](config/stats/object/statisticObject)
+* [StatisticOutput](config/stats/output/statisticOutput)
+* [StatisticGroup](config/stats/group/statisticGroup)
+
+The Component and SubComponent classes share many of the same functions and are both covered under Component.
 
 ## See Also
-- [Python Configuration Guide](guides/configuration/pythonConfigGuide.md)
-
-
+- [Python Configuration Guide](../guides/configuration/pythonConfigGuide)

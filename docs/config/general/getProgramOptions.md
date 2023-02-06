@@ -1,6 +1,6 @@
 ---
 id: getProgramOptions
-title: getProgramOptions()
+title: getProgramOptions
 ---
 
 <!---

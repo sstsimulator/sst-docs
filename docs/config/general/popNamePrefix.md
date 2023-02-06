@@ -1,6 +1,6 @@
 ---
 id: popNamePrefix
-title: popNamePrefix()
+title: popNamePrefix
 ---
 
 <!---

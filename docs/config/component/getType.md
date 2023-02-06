@@ -1,5 +1,4 @@
 ---
-id: getType
 title: getType
 ---
 
@@ -12,7 +11,7 @@ Returns the type of the component in `lib.element` format. This is simply the ty
 
 ## Syntax
 ```python
-getType()
+component.getType()
 ```
 
 ## Parameters

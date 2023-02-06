@@ -1,6 +1,5 @@
 ---
-id: pythonConfigGuide
-title: "Basics: Simulation Configuration File"
+title: "Simulation Configuration File"
 ---
 
 <!---
@@ -23,12 +22,18 @@ from sst import *
 Within this module, there are a number of available classes and global functions. The available classes are: Component, SubComponent, Link, StatisticOutput and StatisticGroup. The global functions are divided between general functions and functions operating on or returning one of the available objects. The links below document the available classes in the SST python module and the global functions. 
 
 **SST Python Module**
-* [SST Python Classes](guides/configuration/pythonClasses.md)
-* [Configuration Functions](config/general)
+* [Global functions](../../config)
+* [Component/SubComponent](../../config/component/classes)
+* [Link](../../config/link)
+* [Statistic](../../config/stats/overview)
+* [StatisticObject](../../config/stats/object/statisticObject)
+* [StatisticOutput](../../config/stats/output/statisticOutput)
+* [StatisticGroup](../../config/stats/group/statisticGroup)
 
 # Usage via a simple example
 
-**Note: This example is based on sst-elements/src/sst/elements/simpleElementExample/tests/example0.py**
+*This example is based on sst-elements/src/sst/elements/simpleElementExample/tests/example0.py*
+
 Full documentation can be found at the links above, this section describes basic usage only. In the following input file, we define a graph consisting of two components, named 'c0' and 'c1', which are connected by a single link. The names are arbitrary, user-selected strings. Links are bidirectional. 
 
 ```py
@@ -128,7 +133,9 @@ Many SST components (although not simpleElementExample.example0) provide statist
 #### Enabling Statistic Generation 
 By default, no statistics are generated. To enable statistics, you must set the statistic load level, as shown above in line 15. Statistics generally range in verbosity from 1 to 7. 0 means all statistics are disabled.
 
-**Note: if Statistic Load Level is not set, all statistics will be disabled**
+:::tip
+If Statistic Load Level is not set, all statistics will be disabled
+:::
 
 #### Statistic Format and Destination
 In the example, statistic output is sent to stdout ("statOutputConsole"). In general, the output can be configured by setting the format and/or destination as follows:
@@ -145,7 +152,9 @@ sst.setStatisticOutputOptions({"param_1" : "value_1",
 sst.setStatisticOutputOption("param", "value")
 ```
 
-**Note: If Statistic Output is not set, the default will be "sst.statOutputConsole"**
+:::tip
+If Statistic Output is not set, the default will be "sst.statOutputConsole"
+:::
 
 For example, to generate CSV statistics you might use this:
 
@@ -165,9 +174,11 @@ In addition to setting the global statistic load level, you must specify which s
    * Individual statistics on component  (by Component Name or by Component Type)
    * All statistics on all components
 
-Functions to enable statistics take an optional parameters list which allows users to configure the output frequency and/or collection type of the statistic (e.g., accumulator, histogram), as well as any statistic type-specific parameters. By default, all statistics are output once at the end of simulation and are of the accumulator type. See [General Notes on Statistics]({{site.baseurl}}/SSTPages/SSTUserPythonGlobalFunctions#sec:gen-notes-stats) for details.
+Functions to enable statistics take an optional parameters list which allows users to configure the output frequency and/or collection type of the statistic (e.g., accumulator, histogram), as well as any statistic type-specific parameters. By default, all statistics are output once at the end of simulation and are of the accumulator type. See [General Notes on Statistics](../../config/stats/overview) for details.
 
-**NOTE: Enabling statistics must occur after the related components are created in the python file.**
+:::caution
+Enabling statistics must occur after the related components are created in the python file.
+:::
 
 
 An example of a more complex statistic enables might look like this:

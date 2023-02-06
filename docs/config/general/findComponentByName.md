@@ -1,6 +1,6 @@
 ---
 id: findComponentByName
-title: findComponentByName(name)
+title: findComponentByName
 ---
 
 <!---

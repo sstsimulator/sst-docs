@@ -1,6 +1,6 @@
 ---
 id: pushNamePrefix
-title: pushNamePrefix(prefix)
+title: pushNamePrefix
 ---
 
 <!---

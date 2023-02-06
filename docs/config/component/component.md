@@ -1,5 +1,4 @@
 ---
-id: component
 title: Component
 ---
 

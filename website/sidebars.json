@@ -1,42 +1,171 @@
 {
   "Guides": {
-    "Contribute": ["guides/helpUs"],
+    "Concepts": ["guides/concepts/time"],
     "Configuration": ["guides/configuration/pythonConfigGuide"],
     "Running" : ["guides/runningSST"],
     "Files": ["guides/files/basics_header_files"
       ,"guides/files/basics_makefile"]
   },
-  "C++": {
-    "Contribute": ["cpp/helpUs"],
-    "SST::Clock": ["cpp/clock/clock_handler"],
-    "SST::Component": ["cpp/component/constructor"
-                    , "cpp/component/configureLink"
-                    , "cpp/component/configureSelfLink"
-                    , "cpp/component/finish"
-                    , "cpp/component/primaryComponentDoNotEndSim"
-                    , "cpp/component/primaryComponentOKToEndSim"
-                    , "cpp/component/registerAsPrimaryComponent"
-                    , "cpp/component/registerClock"
-                    , "cpp/component/registerStatistic"
-                    , "cpp/component/setup"],
-    "ELI": ["cpp/eli/sst_eli_document_params"
-           , "cpp/eli/sst_eli_document_ports"
-           , "cpp/eli/sst_eli_document_statistics"
-           , "cpp/eli/sst_eli_doument_subcomponent_slots"
-           , "cpp/eli/sst_eli_register_component"
-           , "cpp/eli/sst_eli_register_subcomponent"],
-    "Events": ["cpp/events/StringEvent"],
-    "SST::Link": ["cpp/link/configureLink"
-                 , "cpp/link/configureSelfLink"
-                 , "cpp/link/send"],
-    "SST::Output": ["cpp/output/debug"
-                   ,"cpp/output/fatal"
-                   ,"cpp/output/init"
-                   ,"cpp/output/output"
-                   ,"cpp/output/verbose"],
-    "SST::RNG": ["cpp/rng/MarsagliaRNG"],
-    "SST::Statistics": ["cpp/statistics/addData"
-                        ,"cpp/statistics/registerStatistic"]
+  "Core API": {
+    "Clocks": ["core/clock/class"
+              , "core/clock/clock_handler"],
+    "Component":  ["core/component/introduction"
+                  , { "Component" : [
+                    "core/component/component/class"
+                    , "core/component/component/constructor"
+                    , "core/component/component/destructor"
+                    , "core/component/component/registerAsPrimaryComponent"
+                    , "core/component/component/primaryComponentDoNotEndSim"
+                    , "core/component/component/primaryComponentOKToEndSim"
+                  ]}
+                  , { "SubComponent" : [
+                    "core/component/subcomponent/class"
+                    , "core/component/subcomponent/constructor"
+                    , "core/component/subcomponent/destructor"
+                  ]}
+                  , { "ComponentExtension" : [
+                    "core/component/componentext/class"
+                    , "core/component/componentext/constructor"
+                    , "core/component/componentext/destructor"
+                  ]}
+                  , { "LifeCycle" : [
+                    "core/component/lifecycle/init"
+                    , "core/component/lifecycle/setup"
+                    , "core/component/lifecycle/complete"
+                    , "core/component/lifecycle/finish"
+                    , "core/component/lifecycle/emergencyShutdown"
+                    , "core/component/lifecycle/printStatus"
+                  ] }
+                  , { "Introspection" : [
+                    "core/component/info/getId"
+                    , "core/component/info/getName"
+                    , "core/component/info/getType"
+                    , "core/component/info/getNumRanks"
+                    , "core/component/info/getRank"
+                    , "core/component/info/getParentComponentName"
+                    , "core/component/info/isAnonymous"
+                    , "core/component/info/isUser"
+                    , "core/component/info/requireLibrary"
+                    , "core/component/info/getCoordinates"
+                    , "core/component/info/getCurrentPriority"
+                    , "core/component/info/getSimulation"
+                    , "core/component/info/isSimulationRunModeBoth"
+                    , "core/component/info/isSimulationRunModeInit"
+                    , "core/component/info/isSimulationRunModeRun"
+                    ]}
+                  , { "Time, Clocks" : [
+                    "core/component/time/registerClock"
+                    , "core/component/time/unregisterClock"
+                    , "core/component/time/reregisterClock"
+                    , "core/component/time/getNextClockCycle"
+                    , "core/component/time/registerTimeBase"
+                    , "core/component/time/setDefaultTimeBase"
+                    , "core/component/time/getDefaultTimeBase"
+                    , "core/component/time/getTimeConverter"
+                    , "core/component/time/getCoreTimeBase"
+                    , "core/component/time/getCurrentSimCycle"
+                    , "core/component/time/getCurrentSimTime"
+                    , "core/component/time/getCurrentSimTimeMicro"
+                    , "core/component/time/getCurrentSimTimeMilli"
+                    , "core/component/time/getCurrentSimTimeNano"
+                    , "core/component/time/getElapsedSimTime"
+                    , "core/component/time/getEndSimCycle"
+                    , "core/component/time/getEndTime"
+                    , "core/component/time/getInitPhaseElapsedRealTime"
+                    , "core/component/time/getRunPhaseElapsedRealTime"
+                    , "core/component/time/getCompletePhaseElapsedRealTime"
+                  ]}
+                  , { "Links" : [
+                    "core/component/link/configureLink"
+                    , "core/component/link/configureSelfLink"
+                    , "core/component/link/isPortConnected"
+                  ]}
+                  , {"Loadable Objects" : [
+                    "core/component/load/loadUserSubComponent"
+                    , "core/component/load/loadAnonymousSubComponent"
+                    , "core/component/load/getSubComponentSlotInfo"
+                    , "core/component/load/isUserSubComponentLoadableUsingAPI"
+                    , "core/component/load/isSubComponentLoadableUsingAPI"
+                    , "core/component/load/doesSubComponentExist"
+                    , "core/component/load/loadComponentExtension"
+                    , "core/component/load/loadModule"
+                    , "core/component/load/registerProfilePoint"
+                  ]}
+                  , { "Statistics" : [
+                    "core/component/stat/registerStatistic"
+                    , "core/component/stat/registerMultiStatistic"
+                    , "core/component/stat/doesComponentInfoStatisticExist"
+                    , "core/component/stat/getComponentInfoStatisticEnableLevel"
+                    , "core/component/stat/getStatisticLoadLevel"
+                    , "core/component/stat/isStatisticShared"
+                    , "core/component/stat/performGlobalStatisticOutput"
+                    , "core/component/stat/performStatisticOutput"
+                  ]}
+                  , { "Output" : [
+                    "core/component/output/fatal"
+                    , "core/component/output/sst_assert"
+                    , "core/component/output/getSimulationOutput"
+                    , "core/component/output/getOutputDirectory"
+                  ]}
+  ],
+    "ELI": ["core/eli/sst_eli_register_component"
+           , "core/eli/sst_eli_register_subcomponent"
+           , "core/eli/sst_eli_document_params"
+           , "core/eli/sst_eli_document_ports"
+           , "core/eli/sst_eli_document_statistics"
+           , "core/eli/sst_eli_document_subcomponent_slots"],
+    "Events": ["core/events/class"
+              , "core/events/event_handler"
+              , "core/events/constructor"
+              , "core/events/destructor"
+              , "core/events/serialize_order"
+              , "core/events/clone"
+              , "core/events/generateUniqueId"
+              , "core/events/toString"
+              ],
+    "Link": ["core/link/class"
+            , "core/link/send"
+            , "core/link/recv"
+            , "core/link/setFunctor"
+            , "core/link/replaceFunctor"
+            , "core/link/addSendLatency"
+            , "core/link/addRecvLatency"
+            , "core/link/getDefaultTimeBase"
+            , "core/link/setDefaultTimeBase"
+            , "core/link/sendUntimedData"
+            , "core/link/recvUntimedData"
+            , "core/link/sendInitData"
+            , "core/link/recvInitData"
+            , "core/link/getId"
+          ],
+    "Output": ["core/output/class"
+               , "core/output/constructor"
+               , "core/output/destructor"
+               , "core/output/init"
+               , "core/output/fatal"
+               , "core/output/output"
+               , "core/output/verbose"
+               , "core/output/verbosePrefix"
+                , "core/output/debug"
+                , "core/output/debugPrefix"    
+                , "core/output/flush"
+                , "core/output/getOutputLocation"
+                , "core/output/setOutputLocation"
+                , "core/output/setFileName"
+                , "core/output/getPrefix"
+                , "core/output/setPrefix"
+                , "core/output/getVerboseLevel"
+                , "core/output/setVerboseLevel"
+                , "core/output/getVerboseMask"
+                , "core/output/setVerboseMask"
+                , "core/output/getDefaultObject"],
+    "RNG": ["core/rng/MarsagliaRNG"],
+    "Statistics": ["core/statistics/addData"],
+    "TimeConverter" : ["core/timeconverter/class"
+                      , "core/timeconverter/convertFromCoreTime"
+                      , "core/timeconverter/convertToCoreTime"
+                      , "core/timeconverter/getFactor"
+                      , "core/timeconverter/getPeriod"]
   },
   "Configuration": {
     "General" : [
@@ -51,22 +180,6 @@
     , "config/general/exit"
     , "config/general/findComponentByName"
     ],
-    "Statistics" : [
-      "config/stats/overview"
-      , "config/stats/enableAllStatisticsForAllComponents"
-      , "config/stats/enableAllStatisticsForComponentName"
-      , "config/stats/enableStatisticForComponentName"
-      , "config/stats/enableStatisticsForComponentName"
-      , "config/stats/enableAllStatisticsForComponentType"
-      , "config/stats/enableStatisticForComponentType"
-      , "config/stats/enableStatisticsForComponentType"
-      , "config/stats/setStatisticLoadLevelForComponentName"
-      , "config/stats/setStatisticLoadLevelForComponentType"
-      , "config/stats/setStatisticLoadLevel"
-      , "config/stats/setStatisticOutput"
-      , "config/stats/setStatisticOutputOption"
-      , "config/stats/setStatisticOutputOptions"
-    ],
     "Component" : [
       "config/component/classes"
       , "config/component/component"
@@ -77,10 +190,51 @@
       , "config/component/getFullName"
       , "config/component/getType"
       , "config/component/setStatistic"
+      , "config/component/setStatisticLoadLevel"
+      , "config/component/enableAllStatistics"
+      , "config/component/enableStatistics"
+      , "config/component/setCoordinates"
+      , "config/component/setRank"
+      , "config/component/setWeight"
     ],
     "Link" : [
       "config/link/link"
       , "config/link/connect"
+      , "config/link/setNoCut"
+    ],
+    "Statistics" : [
+      "config/stats/overview"
+      , "config/stats/enableAllStatisticsForAllComponents"
+      , "config/stats/enableAllStatisticsForComponentName"
+      , "config/stats/enableAllStatisticsForComponentType"
+      , "config/stats/enableStatisticForComponentName"
+      , "config/stats/enableStatisticsForComponentName"
+      , "config/stats/enableStatisticForComponentType"
+      , "config/stats/enableStatisticsForComponentType"
+      , "config/stats/setStatisticLoadLevel"
+      , "config/stats/getStatisticLoadLevel"
+      , "config/stats/setStatisticLoadLevelForComponentName"
+      , "config/stats/setStatisticLoadLevelForComponentType"
+      , "config/stats/setStatisticOutput"
+      , "config/stats/setStatisticOutputOption"
+      , "config/stats/setStatisticOutputOptions"
+    ],
+    "StatisticObject" : [
+      "config/stats/object/statisticObject"
+      , "config/stats/object/addParam"
+      , "config/stats/object/addParams"
+    ],
+    "StatisticOutput" : [
+      "config/stats/output/statisticOutput"
+      , "config/stats/output/addParam"
+      , "config/stats/output/addParams"
+    ],
+    "StatisticGroup" : [
+      "config/stats/group/statisticGroup"
+      , "config/stats/group/addComponent"
+      , "config/stats/group/addStatistic"
+      , "config/stats/group/setFrequency"
+      , "config/stats/group/setOutput"
     ]
   },
   "elements": {
@@ -89,7 +243,6 @@
              ,"elements/ember/RunningMotifs"]
   },
   "Tools": {
-    "Contribute": ["tools/helpUs"],
     "Command Line": ["tools/commandLine/sst-config"
                     , "tools/commandLine/sst-info"
                     , "tools/commandLine/sst-register"]

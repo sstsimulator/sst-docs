@@ -1,5 +1,4 @@
 ---
-id: overview
 title: Statistics in the SST Python Module
 ---
 
@@ -9,7 +8,6 @@ Source: sst-documentation/manuals/python
 --->
 
 # General Notes on Statistics
-  
 
 There are a number of ways to enable statistics on Components and SubComponents. There are a set of functions that can be called directly on Component/SubComponent handles and a set of functions that are provided by the sst python module that use name or type to find the elements on which to enable statistics. There may also be specific methods provided by element library python modules. 
 

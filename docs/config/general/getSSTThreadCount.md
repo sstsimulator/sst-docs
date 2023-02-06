@@ -1,6 +1,6 @@
 ---
 id: getSSTThreadCount
-title: getSSTThreadCount()
+title: getSSTThreadCount
 ---
 
 <!---

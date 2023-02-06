@@ -1,6 +1,6 @@
 ---
 id: setSSTThreadCount
-title: setSSTThreadCount(threads)
+title: setSSTThreadCount
 ---
 
 <!---
