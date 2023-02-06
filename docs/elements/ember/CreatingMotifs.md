@@ -1,7 +1,10 @@
-# C++ Ember Motifs
+---
+title: Creating Motifs
+---
+
 ## Ember
 
-[Ember](http://sst-simulator.org/SSTPages/SSTElementEmber/) is a library representing various network communications. It is often used in conjunction with motifs.
+[Ember](http://sst-simulator.org/SSTPages/SSTElementEmber/) is a library representing various network communications. It accepts events from *motifs* to drive network activities.
 
 ## Motif
 
@@ -10,20 +13,20 @@ The motif presented here does no real work, but more detailed motifs can be foun
 
 Motifs are executed as follows:
 
-1) The motif generator is initialized (The constructor)
-2) The generate function is invoked, places events on the event queue, and returns either true or false
-3) The events on the event queue are processed.
-4) If the generate function in step 2 returns false, go to step 2. Otherwise, the motif is complete.
+1. The motif generator is initialized (the constructor)
+1. The generate function is invoked, places events on the event queue, and returns either true or false
+1. The events on the event queue are processed.
+1. If the generate function in step 2 returns false, go to step 2. Otherwise, the motif is complete.
 
 Motifs are intended to be run as a 'job submission.'
 The generate function models an entire iteration of an application, using the event queue to mix compute and MPI operations in every iteration.
 
 ### Register Subcomponent
 
-Ember motifs need to be registered as an SST subcomponent. This typically happens in the header file.
+Ember motifs need to be [registered as an SST subcomponent](../../core/eli/sst_eli_register_subcomponent). Motif SubComponents should implement the `SST::Ember::EmberGenerator` API. The ELI registration macro must be placed in a public section of the SubComponent header.
 For example:
-```
-SST_ELI_REGISTER_SUBCOMPONENT_DERIVED(
+```cpp
+SST_ELI_REGISTER_SUBCOMPONENT(
         Example,
         "ember",
         "ExampleMotif",
@@ -35,29 +38,29 @@ SST_ELI_REGISTER_SUBCOMPONENT_DERIVED(
 
 The parameters of this function are:
 
-1) class associated with this Motif
-3) Aspect of elements being used, in the case of Motifs, "ember."
-3) Identifier of the Motif. Note that the end of this parameter must always be Motif
-4) SST elements version,
-5) Comment describing what the motif does
-6) EmberGenerator
+1. Class associated with this Motif
+1. Library that the SubComponent belongs to
+1. Identifier of the Motif. This name, prefixed by the library name ('ember'), will be used by SST to identify the subcomponent. Note that the end of this parameter must alwasy be 'Motif'.
+1. SST elements version
+1. Comment describing what the motif does
+1. EmberGenerator API
 
 ### Writing a constructor
-```
+```cpp
 EmberExample::EmberExample(SST::ComponentId_t id, Params& params) :
 	EmberMessagePassingGenerator(id, params, "Example"),
 
 ```
 
 
-The constructor also reads parameters from the python script. 
+The [constructor](../../core/component/subcomponent/constructor) also reads parameters from the python script. 
 The params are passed through the python file in the form: `ep.addMotif("Example firstParam=100 secondParam=200")`. Note no space is allowed before or after the = operator. Parameters read from the python file will be prepended with "arg." before being passed to the C++ file. i.e. "firstParam" becomes "arg.firstParam".
 The constructor can be used to perform the setup operations necessary for the generating function.
 
 The params can be parsed in the C++ file with `firstParam = params.find<uint32_t>("arg.firstParam", 100);` where the name of the parameter is "firstParam".
 
 ### Writing a generate() function
-```
+```cpp
 bool Example::generate( std::queue<EmberEvent*>& evQ)
 ```
 The generate function is the 'main' function of a Motif. 
@@ -66,9 +69,8 @@ Once the generate function returns, the events queued in the evQ variable will b
 
 The generate function takes an event queue as a parameter. The event queue allows the user to include computation operations and MPI events in the simulation. Motifs are intended to be designed so that every call to generate() mimics an entire iteration of the application. The events that can be added to the event queue are listed in subsequent sections. 
 
-.  
 
-# User-defined events
+## User-defined events
 
 These functions allow the user to control how the simulation estimates computation time.
 
@@ -82,7 +84,7 @@ The first computation operation takes a 64-bit integer as a parameter. This para
 The second compute takes a function as a parameter. When the event is processed, the function is invoked. The function returns the amount of time needed to perform the compute operation. The simulation is delayed by the return value of the function. The time delay could be estimated through a heuristic or measured through representative computation. 
 
 
-# MPI Events
+## MPI Events
 
 
 We list the supported MPI events below. For more detail, see MPI API documentation.

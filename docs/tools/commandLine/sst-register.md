@@ -3,11 +3,10 @@ id: sst-register
 title: sst-register
 ---
 
-## Remarks
+:::caution
+This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
+:::
 
-The command line utility, sst-register, is used to register an Element Library. Most often it is called within the makefile as the part of the build process.
-
-## Syntax
 ```bash
 sst-register <Dependency Name> (<VAR>=<VALUE>)*
 
@@ -18,6 +17,9 @@ sst-register <Dependency Name> (<VAR>=<VALUE>)*
 
                       Example: sst-register DRAMSim CPPFLAGS="-I$PWD/include"
 ```
+
+The command line utility, `sst-register`, is used to register an Element Library with the SST Core.
+
 
 ## Examples
 

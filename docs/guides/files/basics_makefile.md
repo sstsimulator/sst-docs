@@ -3,6 +3,10 @@ id: basics_makefile
 title: "Basics: Makefile"
 ---
 
+:::caution
+This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
+:::
+
 ## Remarks
 
 This is intended only to give a general idea of what is required in a makefile for an SST Element. This is not meant to be an introduction to makefiles in general.

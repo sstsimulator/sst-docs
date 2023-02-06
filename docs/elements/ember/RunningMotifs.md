@@ -1,21 +1,26 @@
-# Ember Python Configurations
+---
+title: Running Motifs
+---
+
+## Ember Python Configuration
 
 The Python file in Ember specifies:
 - How to set up the SST simulation
 - Allows multiple configurations to be specified and run
 - Loads Motifs into the simulation to be performed.
 
-# Running Ember
+## Running Ember
 
 Ember uses a python interpreter built into the SST compiler.
 `sst python-file.py` executes the python script.
 
-# Key Components
+## Key Components
 
 The python file specifies the format of the SST simulation. The python file specifies components of our simulation such as network Topology, Routers, NetworkInterface and the computation to be performed in the form of Motifs.
 
 First, we import the necessary components of merlin and set the Platform to firefly defaults.
 
+```py
     import sst
     from sst.merlin.base import *
     from sst.merlin.endpoint import *
@@ -27,7 +32,7 @@ First, we import the necessary components of merlin and set the Platform to fire
     if __name__ == "__main__":
 
         PlatformDefinition.setCurrentPlatform("firefly-defaults")
-
+```
 Next, we create a topology that our experiment will run on.
 
 `topo = topoDragonFly()`
@@ -35,7 +40,7 @@ Creates a dragonfly topology.
 We can then specify parameters about the topology using a dot-operator. e.g.,
 `topo.num_groups = 4`
 
-# Topologies
+## Topologies
 
 The python file allows the user to specify comparable hardware configurations.
 Four different topologies can be specified with different routing algorithms.
@@ -103,7 +108,7 @@ Here we give a comprehensive list of the topologies and how they can be initiali
         *   `absolute` (default)
         *   `relative`
 
-# Creating a Router
+## Creating a Router
 
 Once the router has been created, the topology needs to be linked to the router. Additionally, the link\_latency can be set in the topology at this point.
 
@@ -152,7 +157,7 @@ Create the network interface:
 
 The ReorderLinkControl() creates a network interface that can handle out-of-order packet arrival. Events are sequenced, and order is reconstructed on receive.
 
-# Specifying Computation
+## Specifying Computation
 
 Initialize the MPIJob to use all the nodes in our topology:
 
@@ -160,27 +165,27 @@ Initialize the MPIJob to use all the nodes in our topology:
 The network interface then needs to be linked to the `ep` variable
 `ep.network_interface = networkif()`
 Then a series of Motifs can be queued for computation.
-```
+```py
     ep.addMotif("Init")
     ep.addMotif("Allreduce")
     ep.addMotif("Fini")
 ```
-The `addMotif` function adds the specified Motif to a queue. The Motif is named through an SST\_ELI\_REGISTER\_SUBCOMPONENT\_DERIVED command in the C++ Motif definition (usually in the include file). The SST\_ELI\_REGISTER\_SUBCOMPONENT\_DERIVED parameter follows the naming convention "ExampleMotif", and to add the Motif to `ep` using `ep.addMotif("Example")` The "Motif" portion is implied in the naming.
+The `addMotif` function adds the specified Motif to a queue. The Motif is named through an [`SST\_ELI\_REGISTER\_SUBCOMPONENT`](../../core/eli/sst_eli_register_subcomponent) command in the C++ Motif definition. The `SST\_ELI\_REGISTER\_SUBCOMPONENT` parameter follows the naming convention "ExampleMotif", and to add the Motif to `ep` using `ep.addMotif("Example")` The "Motif" portion is implied in the naming.
 Parameters can be passed to motifs through the string. The parameters are read as a list of assignments, separated by whitespace. For example, a motif 'Sum' that takes three integers as a parameter named x, y, and z
 The Motif would be invoked `ep.addMotif("Sum x=4 y=5 z=6")` would pass the arguments as args.x, args.y, and args.z with assigned values 4, 5, and 6, respectively. The arguments are passed in a Param object to the motif generator to be parsed. 
 
 Some additional functions that can be called on an endpoint or the `ep` variable:
-* getName()
+* `getName()`
 Returns the name of the ep. i.e., it will return "EmberMPIJob"
-* enableMotifLog()
+* `enableMotifLog()`
 Starts logging the Motifs as they are executed.
 
 Some common MPI-function call motifs that exist in Ember:
 
-# Running the simulation
+## Running the simulation
 
 Finally, we create the 'system', which then runs the simulation. The topology is set with the setTopology function, and the endpoint is specified by system.allocateNodes. Build executes the motifs in the endpoint.
-```
+```py
     system = System()
     system.setTopology(topo)
     system.allocateNodes(ep,"linear")

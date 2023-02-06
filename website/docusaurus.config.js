@@ -2,9 +2,9 @@ module.exports={
   "title": "The Structural Simulation Toolkit",
   "tagline": "Using the supercomputers of today to build the supercomputers of tomorrow",
   "url": "https://sstsimulator.github.io",
-  "baseUrl": "/sst-website/",
+  "baseUrl": "/docs/",
   "organizationName": "sstsimulator",
-  "projectName": "sst-website",
+  "projectName": "sst-docs",
   "deploymentBranch": "gh-pages",
   "trailingSlash": false,
   "scripts": [
@@ -13,12 +13,6 @@ module.exports={
   "favicon": "img/sst-logo-small.png",
   "customFields": {
     "users": [
-      {
-        "caption": "User1",
-        "image": "/img/docusaurus.svg",
-        "infoLink": "https://www.facebook.com",
-        "pinned": true
-      }
     ],
     "repoUrl": "https://github.com/sstsimulator/sst-core"
   },
@@ -31,7 +25,7 @@ module.exports={
         "docs": {
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
-          "editUrl": "https://github.com/sstsimulator/sst-website/edit/master/docs/",
+          "editUrl": "https://github.com/sstsimulator/docs/edit/master/docs/",
           "path": "../docs",
           "sidebarPath": "./sidebars.json"
         },
@@ -52,7 +46,7 @@ module.exports={
           "html"
         ]
       }
-    ]
+    ],
   ],
   "themeConfig": {
     "navbar": {
@@ -68,17 +62,17 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "docs/guides/external/projectDriver",
+          "to": "docs/guides/configuration/pythonConfigGuide",
           "label": "Guides",
           "position": "left"
         },
         {
-          "to": "docs/cpp/component/constructor",
+          "to": "docs/core/component/introduction",
           "label": "SST-Core API",
           "position": "left"
         },
         {
-          "to": "docs/guides/external/projectDriver",
+          "to": "docs/config/",
           "label": "Configuration",
           "position": "left"
         },
@@ -103,7 +97,7 @@ module.exports={
     "footer": {
       "style" : "dark",
       "links": [],
-      "copyright": "Copyright © 2022 SST",
+      "copyright": "Copyright © 2023 SST",
       "logo": {
         "src": "img/sst-logo-small.png"
       }
