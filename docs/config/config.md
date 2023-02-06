@@ -31,4 +31,4 @@ In addition to general functions, there are seven classes available in SST:
 The Component and SubComponent classes share many of the same functions and are both covered under Component.
 
 ## See Also
-- [Python Configuration Guide](../guides/configuration/pythonConfigGuide)
+- [Python Configuration Guide](../docs/guides/configuration/pythonConfigGuide)
