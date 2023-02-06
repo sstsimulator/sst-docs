@@ -41,5 +41,5 @@ When a pull request to **master** branch from a feature branch is generated:
    * Following the general operations above and test/review the changes to the website
    * Review changes and merge the pull request into **master** branch if acceptable.
    * run the following command from the sst-website/website directory:
-      * ```> GIT_USER=<github_user_name> CURRENT_BRANCH=master USE_SSH=true npm run publish-gh-pages```
-   * Wait approx 30-60 seconds and check that content is updated at http://sst-simulator.org/sst-website
+      * ```> GIT_USER=<github_user_name> CURRENT_BRANCH=master USE_SSH=true npm run deploy```
+   * Wait approx 5-10 minutes and check that content is updated at http://sst-simulator.org/sst-website
