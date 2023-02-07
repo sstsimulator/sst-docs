@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="The Structural Simulation Toolkit: A parallel discrete-event simulation framework for modeling next-generation computer architectures.">
       <div
         style={{
           display: 'flex',
