@@ -14,11 +14,11 @@ Help us document SST by contributing to this site.
 
 ## Steps to Download the Git Repo and Submit Changes
 
-**General operations when updating the sst-website content:**
+**General operations when updating the sst-docs content:**
    - Ensure Node is installed on development machine.
-   - Fork and then clone the sst-website repository.  
+   - Fork and then clone the sst-docs repository.  
    - Create a feature branch from your fork's master branch on your local repo.
-   - cd into sst-website/website 
+   - cd into sst-docs/website 
    - Initialize Docusaurus 
       - ```> npm install```
    - Test local hosting operation
@@ -29,4 +29,4 @@ Help us document SST by contributing to this site.
       - ```> npm start``` 
    - Add/Commit final changes back to the feature branch of your local repo
    - Push feature branch up to your fork
-   - Generate a pull request from your feature branch to the **master** branch of [sst-website repo](https://github.com/sstsimulator/sst-website)
+   - Generate a pull request from your feature branch to the **master** branch of [sst-docs repo](https://github.com/sstsimulator/sst-docs)

@@ -2,9 +2,9 @@ module.exports={
   "title": "The Structural Simulation Toolkit",
   "tagline": "Using the supercomputers of today to build the supercomputers of tomorrow",
   "url": "https://sstsimulator.github.io",
-  "baseUrl": "/sst-website/",
+  "baseUrl": "/sst-docs/",
   "organizationName": "sstsimulator",
-  "projectName": "sst-website",
+  "projectName": "sst-docs",
   "deploymentBranch": "gh-pages",
   "trailingSlash": false,
   "scripts": [
