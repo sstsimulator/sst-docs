@@ -3,7 +3,7 @@ title: destructor
 ---
 
 ```cpp
-~Component();
+~ComponentExtension();
 ```
 *Availability*: ComponentExtension
 SST calls each components destructor prior to exiting. Components are responsible for cleaning up internal state but not state registered with SST including links, clock handlers, and statistics. Note that some SSTCore state may have already been cleaned up when the destructor is called and so components should not attempt to call any Component API functions in their destructors.
