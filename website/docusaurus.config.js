@@ -102,9 +102,10 @@ module.exports={
         "src": "img/sst-logo-small.png"
       }
     },
-    //"algolia": {
-    //  "apiKey": "53f2da5fc13d9dd966072e5a21cf7883",
-    //  "indexName": "sst-simulator"
-    //}
+    "algolia": {
+      "appId": "B6IFEXV9WE",
+      "apiKey": "8689e9fe96bad345e20d99e2b3179801", 
+      "indexName": "sst-simulator"
+    }
   }
 }
