@@ -1,6 +1,6 @@
 ---
 title: SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS
-sidebar_label: Document SubComponent Slots
+sidebar_label: SubComponent Slots
 ---
 
 ```cpp
@@ -33,4 +33,10 @@ SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
     "The compute unit that this component will use to operate on events",
     "SST::simpleElementExample::basicSubComponentAPI"}
 )
+```
+
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h>
 ```

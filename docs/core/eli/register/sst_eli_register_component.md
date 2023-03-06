@@ -1,6 +1,6 @@
 ---
 title: SST_ELI_REGISTER_COMPONENT
-sidebar_label: Register Component
+sidebar_label: Component
 ---
 
 ```cpp
@@ -51,4 +51,9 @@ public:
 /* Rest of class */
 };
 
+```
+
+## Header
+```cpp
+#include <src/sst/component.h>
 ```

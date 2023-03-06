@@ -34,6 +34,11 @@ The definition of these macros is:
 #endif
 ```
 
+:::tip Speed Check
+Frequent use of output (whether SST::Output, printf, or cout) can slow down simulation. Using if statements to limit calls to output during performance-critical sections of simulation or even using `#ifdef` constructs to compile out debug output can have a noticeable impact on simulation performance for long-running simulations.
+:::
+
+
 ## Header
 ```cpp
 #include <sst/core/output.h>

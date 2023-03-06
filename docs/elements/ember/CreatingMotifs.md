@@ -23,7 +23,7 @@ The generate function models an entire iteration of an application, using the ev
 
 ### Register Subcomponent
 
-Ember motifs need to be [registered as an SST subcomponent](../../core/eli/sst_eli_register_subcomponent). Motif SubComponents should implement the `SST::Ember::EmberGenerator` API. The ELI registration macro must be placed in a public section of the SubComponent header.
+Ember motifs need to be [registered as an SST subcomponent](../../core/eli/register/sst_eli_register_subcomponent). Motif SubComponents should implement the `SST::Ember::EmberGenerator` API. The ELI registration macro must be placed in a public section of the SubComponent header.
 For example:
 ```cpp
 SST_ELI_REGISTER_SUBCOMPONENT(

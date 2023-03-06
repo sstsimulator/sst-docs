@@ -3,6 +3,7 @@
     "Concepts": ["guides/concepts/time"],
     "Configuration": ["guides/configuration/pythonConfigGuide"],
     "Running" : ["guides/runningSST"],
+    "Tips and Tricks" : ["guides/tips/compilation"],
     "Files": ["guides/files/basics_header_files"
       ,"guides/files/basics_makefile"]
   },
@@ -108,12 +109,43 @@
                     , "core/component/output/getOutputDirectory"
                   ]}
   ],
-    "ELI": ["core/eli/sst_eli_register_component"
-           , "core/eli/sst_eli_register_subcomponent"
-           , "core/eli/sst_eli_document_params"
-           , "core/eli/sst_eli_document_ports"
-           , "core/eli/sst_eli_document_statistics"
-           , "core/eli/sst_eli_document_subcomponent_slots"],
+    "ELI": ["core/eli/overview"
+          , { "Register" : [
+            "core/eli/register/sst_eli_register_component"
+            , "core/eli/register/sst_eli_register_component_base"
+            , "core/eli/register/sst_eli_register_component_derived_base"
+            , "core/eli/register/sst_eli_register_subcomponent"
+            , "core/eli/register/sst_eli_register_subcomponent_api"
+            , "core/eli/register/sst_eli_register_subcomponent_derived_api"
+            , "core/eli/register/sst_eli_register_module"
+            , "core/eli/register/sst_eli_register_module_derived"
+            , "core/eli/register/sst_eli_register_module_api"
+            , "core/eli/register/sst_eli_register_module_derived_api"
+            , "core/eli/register/sst_eli_register_profiletool"
+            , "core/eli/register/sst_eli_register_python_module"
+          ]}
+          , { "Document" : [
+            "core/eli/document/sst_eli_document_attributes"
+            , "core/eli/document/sst_eli_document_params"
+            , "core/eli/document/sst_eli_document_ports"
+            , "core/eli/document/sst_eli_document_profile_points"
+            , "core/eli/document/sst_eli_document_statistics"
+            , "core/eli/document/sst_eli_document_subcomponent_slots"
+          ]}
+          , { "Delete" : [
+            "core/eli/delete/sst_eli_delete_attribute"
+            , "core/eli/delete/sst_eli_delete_param"
+            , "core/eli/delete/sst_eli_delete_port"
+            , "core/eli/delete/sst_eli_delete_profile_point"
+            , "core/eli/delete/sst_eli_delete_stat"
+            , "core/eli/delete/sst_eli_delete_subcomponent_slot"
+          ]}
+          , { "Other" : [
+            "core/eli/other/sst_eli_category_info"            
+            , "core/eli/other/sst_eli_element_version"            
+            , "core/eli/other/sst_eli_export"            
+          ]}
+          ],
     "Events": ["core/events/class"
               , "core/events/event_handler"
               , "core/events/constructor"
@@ -159,13 +191,70 @@
                 , "core/output/getVerboseMask"
                 , "core/output/setVerboseMask"
                 , "core/output/getDefaultObject"],
-    "RNG": ["core/rng/MarsagliaRNG"],
-    "Statistics": ["core/statistics/addData"],
+    "Params": ["core/params/class"
+                , "core/params/constructor"
+                , "core/params/destructor"
+                , "core/params/operatoreq"
+                , "core/params/find"
+                , "core/params/find_array"
+                , "core/params/find_map"
+                , "core/params/find_set"
+                , "core/params/get_scoped_params"
+                , "core/params/getKeys"
+                , "core/params/insert"
+                , "core/params/size"
+                , "core/params/clear"
+                , "core/params/count"
+                , "core/params/contains"
+                , "core/params/empty"
+                , "core/params/is_value_array"
+                , "core/params/print_all_params"],
+    "Random": ["core/rng/rng"
+            , "core/rng/marsaglia"
+            , "core/rng/mersenne"
+            , "core/rng/xorshift"
+            , "core/rng/distrib"
+            , "core/rng/constant"
+            , "core/rng/discrete"
+            , "core/rng/expon"
+            , "core/rng/gaussian"
+            , "core/rng/poisson"
+            , "core/rng/uniform"],
+    "Statistics": ["core/statistics/class"
+                  , "core/statistics/addData"
+                  , "core/statistics/addDataNTimes"],
     "TimeConverter" : ["core/timeconverter/class"
                       , "core/timeconverter/convertFromCoreTime"
                       , "core/timeconverter/convertToCoreTime"
                       , "core/timeconverter/getFactor"
-                      , "core/timeconverter/getPeriod"]
+                      , "core/timeconverter/getPeriod"],
+    "Types" : ["core/types/class"],
+    "UnitAlgebra" : ["core/unitalgebra/class"
+                    , "core/unitalgebra/constructor"
+                    , "core/unitalgebra/destructor"
+                    , "core/unitalgebra/init"
+                    , "core/unitalgebra/operatoreq"
+                    , "core/unitalgebra/operatoradd"
+                    , "core/unitalgebra/operatorsub"
+                    , "core/unitalgebra/operatormul"
+                    , "core/unitalgebra/operatordiv"
+                    , "core/unitalgebra/compeq"
+                    , "core/unitalgebra/compneq"
+                    , "core/unitalgebra/compgt"
+                    , "core/unitalgebra/compgteq"
+                    , "core/unitalgebra/complt"
+                    , "core/unitalgebra/complteq"
+                    , "core/unitalgebra/invert"
+                    , "core/unitalgebra/getDoubleValue"
+                    , "core/unitalgebra/getRoundedValue"
+                    , "core/unitalgebra/getValue"
+                    , "core/unitalgebra/hasUnits"
+                    , "core/unitalgebra/isValueZero"
+                    , "core/unitalgebra/print"
+                    , "core/unitalgebra/printWithBestSI"
+                    , "core/unitalgebra/toString"
+                    , "core/unitalgebra/toStringBestSI"
+                    , "core/unitalgebra/serialize_order"]
   },
   "Configuration": {
     "General" : [

@@ -1,6 +1,6 @@
 ---
 title: SST_ELI_DOCUMENT_PARAMS
-sidebar_label: Document Parameters
+sidebar_label: Parameters
 ---
 
 ```cpp
@@ -24,9 +24,9 @@ This macro must reside in a `public` section of the object's header file.
 
 ## Parameters
 
-**param_nameX** (string) The name of the parameter.
-**description** (string) Description of the parameter. This value is displayed when sst-info is run at the command line.
-**default_value** (string) Optional, a default value that the object assigns the parameter if the parameter is not given in the SST configuration file. If a parameter is required, make this NULL or omit it.
+* **param_nameX** (string) The name of the parameter.
+* **description** (string) Description of the parameter. This value is displayed when sst-info is run at the command line.
+* **default_value** (string) Optional, a default value that the object assigns the parameter if the parameter is not given in the SST configuration file. If a parameter is required, make this NULL or omit it.
 
 ## Examples
 
@@ -49,4 +49,12 @@ SST_ELI_DOCUMENT_PARAMS(
     { "eventsToSend", "How many events this component should send.", NULL},
     { "eventSize",    "Payload size for each event, in bytes.", "16"}
 )
+```
+
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h> // or
+#include <sst/core/module.h> // or
+#include <sst/core/profiletool.h>
 ```

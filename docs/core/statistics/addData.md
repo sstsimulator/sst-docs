@@ -1,37 +1,17 @@
 ---
-id: addData
-title: addData()
+title: addData
 ---
-:::caution
-This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
-:::
-## Fully Qualified Name
 ```cpp
-SST::Statistics::addData()
+template <class... InArgs>
+void addData(InArgs&&... args);
 ```
 
-### Remarks
-Add data to the statistic.
+Adds data to a statistic. This call also increments the number of times data has been added to the statistic by one.
 
-## Requirements
-
-```cpp
-#include <sst/core/component.h>
-```
-
-## Syntax
-
-```cpp
-void SST::Statistics::Statistic<T>::addData(T data)
-```
 
 ## Parameters
-
-**data** - The data to add to the Statistic. Usually this is a number that can represent a count, size, time, etc.
-
-## Return Value
-
-**None**
+* **args** (Varies) The data to add to the Statistic. Type matches the Statistic type which is set when the statistic is registered.
+* **returns** none
 
 ## Examples
 
@@ -90,4 +70,12 @@ PendingReads->addData(pending_reads);
 if( !memSystem->getStats( &pending_rtns, PENDING_RTN_TRANSACTIONS ) ){
 PendingRtns->addData(pending_rtns);
 }
+```
+
+## Header
+The statistic header file is included with any SST object that supports statistics.
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h> // or
+#include <sst/core/componentExtension.h>
 ```

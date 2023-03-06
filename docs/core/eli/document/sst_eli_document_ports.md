@@ -1,6 +1,6 @@
 ---
 title: SST_ELI_DOCUMENT_PORTS
-sidebar_label: Document Ports
+sidebar_label: Ports
 ---
 ```cpp
 #define SST_ELI_DOCUMENT_PORTS( 
@@ -31,4 +31,10 @@ This macro must reside in a `public` section of the object's header file.
 SST_ELI_DOCUMENT_PORTS(
 { "port", "Port on which cars are sent", {"sst.Interfaces.StringEvent"}}
 )
+```
+
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h>
 ```

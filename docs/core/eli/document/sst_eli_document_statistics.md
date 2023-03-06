@@ -1,6 +1,6 @@
 ---
 title: SST_ELI_DOCUMENT_STATISTICS
-sidebar_label: Document Statistics
+sidebar_label: Statistics
 ---
 ```cpp
 #define SST_ELI_DOCUMENT_STATISTICS( 
@@ -11,7 +11,7 @@ sidebar_label: Document Statistics
 )
 ```
 
-*Availability:* Components and SubComponents
+*Availability:* Components, SubComponents
 
 :::info Important
 This macro must reside in a `public` section of the object's header file.
@@ -41,4 +41,10 @@ SST_ELI_DOCUMENT_STATISTICS(
     {"INT64_statistic",  "Statistic that records signed 64-bit values", "unitless", 3},
     {"SUBID_statistic", "Statistic to demonstrate SubIDs to obtain multiple instances of the same statistic name. Type is double.", "unitless", 4},
 )
+```
+
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h>
 ```
