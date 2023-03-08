@@ -105,7 +105,8 @@ module.exports={
     "algolia": {
       "appId": "B6IFEXV9WE",
       "apiKey": "21b099cfb417d9b97f19045cc7c20cfe",
-      "indexName": "sst-simulator"
+      "indexName": "sst-simulator",
+      "placeholder": "Search Docs (not working yet)"
     }
   }
 }
