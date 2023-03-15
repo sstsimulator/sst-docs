@@ -26,7 +26,7 @@ Pull requests on SST Core first go throught a Clang-format check. This is run us
 | Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.0.5   | Pin 3.17         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -k -r 2` |
 | Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.0.5   | Pin 3.17         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 | Rocky 8 | GCC 8.5.9 | 3.6.8 | 4.0.5   | -                | Macro              | Core, Macro | In Macro, `make -j4 check` and `make -j4 installcheck` |
-| OSX 14.2 | Xcode 14 | 3.11 | 4.1.2 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
+| OSX 14.2 | Xcode 14 | 3.10 | 4.1.2 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 
 Note that the "make dist" job first configures and runs make dist on the repositories under test and then runs the test framework on the generated distributions.
 
