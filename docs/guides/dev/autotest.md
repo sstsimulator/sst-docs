@@ -44,6 +44,6 @@ Pull requests on SST Elements are not format checked, as formatting guidelines a
 See the SST-Core section above for a description of "make dist" testing.
 
 ## Local Testing and other Notes
-The test environment can be replicated by replicating a build environment above, building and installing the lsited Core and element libraries, and running the test frameworks as listed. See [SST Testing] for more information about the SST test framework.
+The test environment can be replicated by replicating a build environment above, building and installing the listed Core and element libraries, and running the test frameworks as listed. See [SST Testing] for more information about the SST test framework.
 
 Additionally, note that any tests or testsuites added to the SST test framework in the branch under test will automatically run as part of the AutoTester. There are no additional steps needed to update testing.
