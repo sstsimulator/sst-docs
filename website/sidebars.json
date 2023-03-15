@@ -4,6 +4,9 @@
     "Configuration": ["guides/configuration/pythonConfigGuide"],
     "Running" : ["guides/runningSST"],
     "Tips and Tricks" : ["guides/tips/compilation"],
+    "Development" : ["guides/dev/autotest"
+                    , "guides/dev/testing"
+                    , "guides/dev/testfaq"],
     "Files": ["guides/files/basics_header_files"
       ,"guides/files/basics_makefile"]
   },
