@@ -16,9 +16,9 @@ export default function GettingStarted() {
       </p>
       <p>This quick start guide is intended to get the user up and running with SST as quickly as possible.   It is intended for users with intermediate knowledge in the operation of  Unix/Linux/OSX environments.</p>
 
-       <p>The SST 12.1.x <a href="http://sst-simulator.org/SSTPages/SSTmicroReleaseV12dot1dot0">Release Notes</a> identify what operating systems, compiler, and external component combinations have been tested and proven to work with this version of SST.</p>
+       <p>The SST 12.1.x <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V12dot1dot0">Release Notes</a> identify what operating systems, compiler, and external component combinations have been tested and proven to work with this version of SST.</p>
 
-            <p><strong>NOTE: Using combinations other than what is identified in the <a href="http://sst-simulator.org/SSTPages/SSTmicroReleaseV12dot1dot0">Release Notes</a> may cause build failures and/or unexpected results.</strong></p>
+            <p><strong>NOTE: Using combinations other than what is identified in the <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V12dot1dot0">Release Notes</a> may cause build failures and/or unexpected results.</strong></p>
 
             <p>A detailed list of elements provided with the SST distribution are available at <a href="http://sst-simulator.org/SSTPages/SSTDeveloperElementSummaryInfo">SST Element Summary</a> and  <a href="http://sst-simulator.org/SSTPages/SSTElementReleaseMatrix">SST Element Release Matrix</a>.</p>
 
