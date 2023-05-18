@@ -187,7 +187,9 @@ Finally, a python file, `example.py`, needs to be created:
 
         ep = EmberMPIJob(0,topo.getNumNodes())
         ep.network_interface = networkif
+        ep.addMotif("Init")
         ep.addMotif("Example")
+        ep.addMotif("Fini")
         ep.nic.nic2host_lat= "100ns"
 
         system = System()
@@ -209,11 +211,11 @@ Note multiple motifs can be added the same endpoint. The intended use for each m
 
 Finally, a system variable is created and 'built'
 
-Remake SST-elements.
+Re-run `autogen.sh` and then re-build SST-elements.
 
 To run the python script
 
-```sh
+```
 sst example.py
 ```
 
