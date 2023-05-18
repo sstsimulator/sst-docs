@@ -211,11 +211,11 @@ Note multiple motifs can be added the same endpoint. The intended use for each m
 
 Finally, a system variable is created and 'built'
 
-Remake SST-elements.
+Re-run `autogen.sh` and then re-build SST-elements.
 
 To run the python script
 
-```sh
+```
 sst example.py
 ```
 
