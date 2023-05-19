@@ -9,7 +9,7 @@ Source: sst-documentation/manuals/python
 
 Creates a Link. A Link connects two ports and enables the components on each port to send events across the link.
 
-**NOTE**: This only creates the link. The link must also be connected to ports via [Link.connect()](connect) or [(Sub)Component.addLink()](../component/addLink).
+**NOTE**: This only creates the link. The link must also be connected to ports via [Link.connect()](link/connect) or [(Sub)Component.addLink()](component/addLink).
 
 ## Syntax
 
