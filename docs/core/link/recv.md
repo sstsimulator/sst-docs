@@ -16,9 +16,7 @@ This function cannot be used on a Link that was configured as a callback link (i
 * **returns** An Event if one has arrived (if multiple, returns the one at the head of the queue) or `nullptr` if none have arrived.
 
 
-## Examples
-
-### Example 1
+## Example
 ```cpp
 while (SST::Event* ev = link->recv()) {
     
@@ -26,7 +24,6 @@ while (SST::Event* ev = link->recv()) {
     
     delete ev;
 }
-
 ```
 
 ## Header

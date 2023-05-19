@@ -18,9 +18,8 @@ This function is the same as [`debug()`](debug) except that instead of prependin
 * **...** (variable) Arguments for format string
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 schedout.debugPrefix("DEBUG_1", CALL_INFO, 1, 0, "Initializing MBSAllocator:");
 ```

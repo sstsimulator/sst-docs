@@ -4,13 +4,10 @@ title: SST::Component
 
 A Component is the basic unit of simulation in SST. Components communicate with other components via SST Events sent over SST links. Components can load SubComponents and ComponentExtensions for additional functionality.
 
-## Examples
-
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -45,8 +42,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

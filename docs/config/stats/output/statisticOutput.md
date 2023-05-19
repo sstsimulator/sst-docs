@@ -27,9 +27,8 @@ See the [`addParam()`](addParam) description for information about how key and v
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

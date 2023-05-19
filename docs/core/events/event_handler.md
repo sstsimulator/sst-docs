@@ -15,13 +15,11 @@ Event handlers are used by Links when an event arrives on the Link. The handler 
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicLinks.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicLinks.cc --->
-### Example 1
-```cpp
-/* simpleElementExample/basicLinks.h */
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicLinks.h"
 class basicLinks : public SST::Component
 {
 public:
@@ -35,8 +33,8 @@ private:
     // which link sent the event
     void handleEventWithID(SST::Event* ev, int linknum);
 } 
-
-/* simpleElementExample/basicLinks.cc */
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicLinks.cc"
 basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id)
 {
     // Configure the link connected to our 'port_handler' port to call handleEvent when an event arrives

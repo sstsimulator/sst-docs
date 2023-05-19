@@ -22,18 +22,17 @@ A return value of nullptr indicates the link could not be configured. A common c
 * **returns** (Link*) A handle to the configured link. A return value of nullptr indicates the link could not be configured.
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/example0.cc --->
-### Example 1
-```cpp
+```cpp title="Excerpt from st-elements/src/sst/elements/simpleElementExample/example0.cc"
 #include <sst/core/component.h>
 
-// simpleElementExample/example0.cc
 example0::example0(ComponentId_t id, Params& params) : Component(id) 
 {
     /** Other configuration here */
 
+    //higlight-next-line
     link = configureSelfLink("port", new Event::Handler<example0>(this, &example0::handleEvent));
     sst_assert(link, CALL_INFO, -1, "Error in %s: Link configuration failed\n", getName().c_str());
 

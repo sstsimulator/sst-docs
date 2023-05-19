@@ -22,9 +22,8 @@ sst.enableAllStatisticsForComponentType(comp_type, stat_params_dict, apply_to_ch
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

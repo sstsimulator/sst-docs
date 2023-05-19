@@ -14,10 +14,8 @@ Create a new Params object, either empty or copying from an existing set.
 ## Parameters
 * **old** (Params) An existing set of parameters to duplicate.
 
-## Examples
+## Example
 
-### Example 1
-<!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSubComponent_component.cc --->
 ```cpp
 SST::Params params;
 params.insert("amount", "1");

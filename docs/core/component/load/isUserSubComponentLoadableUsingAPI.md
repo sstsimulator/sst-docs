@@ -1,10 +1,7 @@
 ---
 title: isUserSubComponentLoadableUsingAPI
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 template <class T>
 bool isUserSubComponentLoadableUsingAPI(const std::string& slot_name);
@@ -17,6 +14,7 @@ Check to see if the user-loaded SubComponent (i.e., loaded in the simulation con
 * **slot_name** (string) Name of the SubComponent slot
 * **returns** (bool) Whether the SubComponent is loadable using the template API
 
+<!--- TODO Add example --->
 
 ## Header
 ```cpp

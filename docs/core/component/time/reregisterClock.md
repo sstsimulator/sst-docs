@@ -17,10 +17,9 @@ Re-register a clock at the specified frequency. On each clock cycle, the associa
 * **handler** (Clock::HandlerBase*) Clock handler function to invoke each cycle
 * **returns** (Cycle_t) Cycle count, in terms of clock frequency, that the re-registered clock handler will next be called at 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 /* 
  * Example component. Events toggle the clock registration.
@@ -45,6 +44,7 @@ public:
             unregisterClock(clockTimeConverter, clockHandler);
         } else {
             clockOn = true;
+            //highlight-next-line
             reregisterClock(clockTimeConverter, clockHandler);
         }
         delete ev;

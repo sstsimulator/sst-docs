@@ -19,9 +19,8 @@ sst.setStatisticLoadLevel(level)
 * **level** (type: int) value to set global statistic load level to 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

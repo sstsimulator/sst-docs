@@ -23,9 +23,8 @@ Sets the Output's prefix.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->setPrefix("All output begins with this ");
 ```

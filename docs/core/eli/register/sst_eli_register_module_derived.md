@@ -3,12 +3,16 @@ title: SST_ELI_REGISTER_MODULE_DERIVED
 sidebar_label: Module Derived
 ---
 
+:::caution Deprecated
+This macro is deprecated as of SST 13. Use [SST_ELI_REGISTER_MODULE](SST_ELI_REGISTER_MODULE) instead.
+:::
+
 ```cpp
 SST_ELI_REGISTER_MODULE_DERIVED(class_name, "library", "name", 
     SST_ELI_ELEMENT_VERSION(major, minorX, minorY), "description", api_class_name)
 ```
 
-All modules must register themselves with SST using this macro. The library and name strings provided in this macro will be used by SST to identify the macro as "library.name". The version and description are displayed by `sst-info` to document the purpose and version of the Module. The api_class_name field is used to enable ELI inheritance.
+This macro was used temporarily to facilitate a signature change in `SST_ELI_REGISTER_MODULE` between SST 11 and 13. As of SST 13, it is deprecated and `SST_ELI_REGISTER_MODULE` uses the new signature. Any existing use of this macro can drop the `_DERVIED` in the macro name without any other change.
 
 :::info Important
 This macro must reside in a `public` section of the Module's header file.
@@ -24,9 +28,8 @@ This macro must reside in a `public` section of the Module's header file.
 * **description** (string) A description of the module
 * **api_class_name** (class) The fully qualified name of the module's API class. This is not a string
 
-## Examples
+## Example
 
-### Example 1
 In this example, AModuleAPI is a Module API class. AnActualModule is an SST Module that inherits from AModuleAPI and inherits its ELI parameter as well.
 
 ```cpp
@@ -51,6 +54,7 @@ public:
 
     /* SST_ELI_REGISTER_MODULE is deprecated for the moment so that we can 
      * change its signature, use SST_ELI_REGISTER_MODULE_DERIVED instead */
+     //highlight-start
     SST_ELI_REGISTER_MODULE_DERIVED(
         AnActualModule,                 // Module class
         "exampleLibrary",               // Element library (for Python/library lookup)
@@ -59,6 +63,7 @@ public:
         "Example of ELI inheritance",   // Description
         SST::AModuleAPI                 // Module API
     )
+    //highlight-end
     
     SST_ELI_DOCUMENT_PARAMS(
       { "name", "A name for this module" }

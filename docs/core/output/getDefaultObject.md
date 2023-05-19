@@ -12,9 +12,8 @@ Returns the simulation's default output object.
 * **returns** (Output) The SST Core's default output object
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Output sst_output = component_output->getDefaultObject();
 ```

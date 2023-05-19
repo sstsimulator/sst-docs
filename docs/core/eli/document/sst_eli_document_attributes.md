@@ -27,9 +27,8 @@ This macro must reside in a `public` section of the object's header file.
 * **keyX** (string) A key
 * **valueX** (string) A value
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
  SST_ELI_DOCUMENT_ATTRIBUTES(
     { "for_testing",    "true" }

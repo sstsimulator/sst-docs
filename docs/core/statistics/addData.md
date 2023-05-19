@@ -40,7 +40,6 @@ if ( issue( req ) ) {
 }
 ```
 
-
 ### Example 5
 ```cpp
 if( !memSystem->getStats( &tbandwidth, TOTAL_BANDWIDTH ) ){

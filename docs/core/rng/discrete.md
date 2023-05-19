@@ -24,9 +24,8 @@ Return the next (random) double in the distribution. This will be a double conve
 #### Parameters
 * **returns** (double) The next double in the distribution
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Create a distribution
 // Outcome  | Probability

@@ -18,9 +18,8 @@ This macro must reside in a `public` section of the SubComponent API's header fi
 * **class_name** (class) The fully qualified name of the calling class. This is not a string.
 * **parent_class_name** (class) The fully qualified name of the parent class. This API should also be registered with the SST Core.
 
-## Examples
+## Example
 
-### Example 1
 In this example, ASubComponentAPI is a SubComponent API class. AMoreSpecificSubComponentAPI is another SubComponent API class that inherits from ASubCompponentAPI. AnActualSubComponent is an SST SubComponent that inherits from AMoreSpecificSubComponentAPI. The subcomponent inherits the parameters from both its parent classes.
 
 ```cpp
@@ -42,6 +41,7 @@ public:
 class AMoreSpecificSubComponentAPI : public SST::ASubComponentAPI
 {
 public:
+//highlight-next-line
     SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API(SST::AMoreSpecificSubComponentAPI, SST::ASubComponentAPI)
 
     SST_ELI_DOCUMENT_PARAMS(

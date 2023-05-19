@@ -32,9 +32,8 @@ Return the lambda with which the distribution was created.
 #### Parameters
 * **returns** (double) The distribution's lambda value
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::RNG::ExponentialDistribution* dist = new SST::RNG::ExponentialDistribution(1.5);
 

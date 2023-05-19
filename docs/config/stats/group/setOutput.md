@@ -22,14 +22,14 @@ group.setOutput(output)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
 statGroup = sst.StatisticGroup("StatGroup")
 statisticOutput = sst.StatisticOutput("sst.statOutputConsole")
+#highlight-next-line
 statGroup.setOutput(statisticOutput)
 ```
 

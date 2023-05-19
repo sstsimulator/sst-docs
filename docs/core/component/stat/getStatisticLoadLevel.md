@@ -13,10 +13,9 @@ Return the statistic load level that was assigned to this (Sub)Component in the 
 * **returns** (uint8_t) Load level for this (Sub)Component's statistics
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 uint8_t loadlev = getStatisticLoadLevel();
 ```

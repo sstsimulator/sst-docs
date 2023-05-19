@@ -16,9 +16,8 @@ Insert a key/value pair or a set of parameters into this Params object. In the c
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Params p;
 p.insert("frequency", "2MHz"); 

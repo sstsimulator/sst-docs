@@ -12,12 +12,10 @@ Finds the number of elements with a given key. Because duplicate keys are not al
 * **returns** (size_t) The number of times the key exists in the Params (0 or 1)
 
 
-## Examples
+## Example
 
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/example0.cc"
 // Example Component constructor
-// Based on sst-elements/src/sst/elements/simpleElementExample/example0.cc
 example0::example0(ComponentId_t id, Params& params) : Component(id) {
     int key_found = params.count("eventsToSend");
 }

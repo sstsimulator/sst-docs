@@ -4,7 +4,6 @@ title: Python Configuration File
 
 <!---
 SAND2022-6843 O
-SAND2023
 Source: sst-documentation/manuals/python
 --->
 
@@ -31,4 +30,4 @@ In addition to general functions, there are seven classes available in SST:
 The Component and SubComponent classes share many of the same functions and are both covered under Component.
 
 ## See Also
-- [Python Configuration Guide](../docs/guides/configuration/pythonConfigGuide)
+- [Python Configuration Guide](../guides/configuration/pythonConfigGuide)

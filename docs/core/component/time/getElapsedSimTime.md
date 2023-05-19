@@ -13,10 +13,9 @@ Returns the current simulation time as a time with units.
 * **returns** (UnitAlgebra) Current simulation time
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("The simulation has been running for %s.\n", getElapsedSimTime().toStringBestSI().c_str());
 ```

@@ -12,11 +12,10 @@ A primary component that has previous registered using [registerAsPrimaryCompone
 ## Parameters
 * **returns** None
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 basicSimLifeCycle::basicSimLifeCycle( SST::ComponentId_t id, SST::Params& params ) : SST::Component(id) 
 {
 	// Register as primary and prevent simulation end until we've received all the events we need

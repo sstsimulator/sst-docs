@@ -19,9 +19,8 @@ component.addParams(params)
 * **params** (type: dict) a Python dict of key, value pairs. See [`addParam()`](addParam) description for information about how key and value are used. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
@@ -31,6 +30,7 @@ params = {
 	"eventsToSend" : 50,
 	"eventSize" : 32
 }
+#highlight-next-line
 component0.addParams(params)
 ```
 

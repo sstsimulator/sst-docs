@@ -1,5 +1,5 @@
 ---
-title: Component destructor
+title: destructor
 ---
 
 ```cpp
@@ -12,13 +12,11 @@ SST calls each components destructor prior to exiting. Components are responsibl
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -54,8 +52,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

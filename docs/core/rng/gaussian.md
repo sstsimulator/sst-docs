@@ -42,9 +42,8 @@ Return the standard deviation of the distribution.
 #### Parameters
 * **returns** (double) The mean of the distribution
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::RNG::GaussianDistribution* dist = new SST::RNG::GaussianDistribution(22.5, 1.1);
 

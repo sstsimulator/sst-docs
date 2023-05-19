@@ -12,9 +12,8 @@ Compare if this object is less than or equal to the argument `v`.
 * **v** (UnitAlgebra) Object to compare to  
 * **returns** (bool) Whether this object is less than the argument.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra* num0 = new UnitAlgebra("1bps");
 SST::UnitAlgebra* num1 = new UnitAlgebra("2b/s");

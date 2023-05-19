@@ -16,13 +16,17 @@ This macro must reside in a `public` section of the object's header file.
 ## Parameters
 * **stat** (string) The name of a statistic to remove
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 /* This object only counts sent messages, not received ones */
 SST_ELI_DOCUMENT_STATISTICS(
     SST_ELI_DELETE_STAT("numRecv"),
     {"numSent", "# of messages sent", "", 1}
 )
+```
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h>
 ```

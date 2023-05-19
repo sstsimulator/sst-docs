@@ -11,9 +11,8 @@ Return the value portion of the UnitAlgebra as an sst_big_num, which is a decima
 ## Parameters
 * **returns** (sst_big_num) The value portion of the UnitAlgebra as an int64_t.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra* num = new UnitAlgebra("2GHz");
 sst_big_num hz = num->getRoundedValue();

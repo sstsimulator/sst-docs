@@ -13,12 +13,10 @@ Returns the current simulation time as a time in microseconds.
 * **returns** (SimTime_t) Current simulation time in microseconds
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-
 output.output("The simulated time is %" PRIu64 " us\n", getCurrentSimTimeMicro());
 ```
 

@@ -12,9 +12,8 @@ Assignment operator. Copies a Params object, including any references to global 
 * **returns** (Params) Copied parameters
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {

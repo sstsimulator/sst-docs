@@ -20,9 +20,8 @@ component.setCoordinates(x, y=0.0, z=0.0)
 * **z** (type: float) sets the z position of the element 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

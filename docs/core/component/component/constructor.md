@@ -1,5 +1,5 @@
 ---
-title: Component constructor
+title: constructor
 ---
 
 ```cpp
@@ -16,13 +16,10 @@ SST calls each component's constructor during the simulation construction.
 * **params** (Params&) The parameter set passed into the simulation by the simulation configuration file.
 * **returns** (Component) The newly constructed component
 
-## Examples
-
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -57,8 +54,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

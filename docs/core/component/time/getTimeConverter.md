@@ -14,10 +14,9 @@ Get a time converter object for the specified time base.
 * **base** (string, UnitAlgebra) Time base, with SI units, to generate a time converter for
 * **returns** (TimeConverter*) Handle to the created time converter
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 TimeConverter* tc0 = getTimeConverter("200ms");
 UnitAlgebra ua0 = UnitAlgebra("22GHz");

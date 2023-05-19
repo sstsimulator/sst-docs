@@ -12,9 +12,8 @@ Return whether the UnitAlgebra has the units specified in the parameter.
 * **units** (std::string) Units to compare against
 * **returns** Whether the UnitAlgebra has the specified units.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra* num = new UnitAlgebra("4MB/s");
 

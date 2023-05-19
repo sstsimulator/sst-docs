@@ -12,9 +12,8 @@ Return the Output's [verbose level](class).
 * **returns** (uint32_t) The verbose_level
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 uint32_t level = out->getVerboseLevel();
 ```

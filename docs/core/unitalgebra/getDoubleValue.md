@@ -11,9 +11,8 @@ Return the value portion of the UnitAlgebra as a double. This discards the units
 ## Parameters
 * **returns** (double) The value portion of the UnitAlgebra as a double.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra* num = new UnitAlgebra("5ms");
 double sec = num->getDoubleValue();

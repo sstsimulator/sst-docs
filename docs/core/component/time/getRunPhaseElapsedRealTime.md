@@ -13,12 +13,10 @@ Get the amount of real-time spend executing the run phase of the simulation.
 * **returns** (double) Real time in seconds spend executing the run phase
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-
 output.output("SST spent %d seconds executing the run phase.\n", getRunPhaseElapsedRealTime());
 ```
 

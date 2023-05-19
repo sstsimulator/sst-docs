@@ -12,9 +12,8 @@ Return the Output's [verbose mask](class).
 * **returns** (uint32_t) The verbose_mask
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 uint32_t mask = out->getVerboseMask();
 ```

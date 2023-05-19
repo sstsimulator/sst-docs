@@ -12,9 +12,8 @@ Gets the object's prefix
 * **returns** (std::string) The Output's prefix
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Output* out = new Output("MyPrefix: ", 1, 0, Output::FILE);
 

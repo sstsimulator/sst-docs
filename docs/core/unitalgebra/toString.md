@@ -11,9 +11,8 @@ Return a string representation of the UnitAlgebra.
 ## Parameters
 * **returns** (std::string) A string of the UnitAlgebra.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 
 UnitAlgebra ua("1KiB");

@@ -17,9 +17,7 @@ This function cannot be used on a Link that was configured as a polling link (i.
 * **returns** none
 
 
-## Examples
-
-### Example 1
+## Example
 ```cpp
 // Configure a link connected to a port named 'port' 
 SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));

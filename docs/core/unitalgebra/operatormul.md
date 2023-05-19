@@ -14,9 +14,8 @@ Multiply this UnitAlgebra by the argument. The units will also be multiplied if 
 * **v** (typename T) value to multiply by
 * **returns** (UnitAlgebra&) This UnitAlgebra after the multiplication operation.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Convert from bytes (B) to bits (b)
 SST::UnitAlgebra num0("100B");

@@ -33,9 +33,8 @@ Return the lambda of the distribution.
 #### Parameters
 * **returns** (double) The lambda of the distribution
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::RNG::PoissonDistribution* dist = new SST::RNG::PoissonDistribution(5.0);
 

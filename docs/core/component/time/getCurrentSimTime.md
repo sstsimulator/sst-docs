@@ -17,12 +17,10 @@ Returns the current simulation time as a cycle count. If a clock frequency is pr
 * **returns** (SimTime_t) Current simulation time as a cycle count in terms of either the clock frequency provided to the function, or if none is provided, the (sub)component's default time base
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-
 std::string period = "2ns";
 output.output("For a clock period of 2ns, the cycle count is %" PRIu64 " cycles.\n", getCurrentSimTime(period));
 ```

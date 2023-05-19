@@ -1,10 +1,7 @@
 ---
 title: sst_assert
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 void sst_assert(bool condition, uint32_t line, const char* file, const char* func, 
     int exit_code, const char* format, ...) const __attribute__((format(printf, 6, 7)));
@@ -24,10 +21,9 @@ Convienence function for testing and reporting fatal error conditions. If the co
 * **returns** None
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 sst_assert(fatal_error_condition, CALL_INFO, -1, "Error, something terrible happend to component %s.\n", 
     getName().c_str());

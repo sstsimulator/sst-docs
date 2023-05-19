@@ -15,9 +15,8 @@ Set additional latency to be added to all events that come in on this link.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Configure a link connected to a port named 'port' 
 SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));

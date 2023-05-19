@@ -13,9 +13,8 @@ Set the file the output will print to if the [output location](setOutputLocation
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->setOutputLocation(Output::FILE);
 out->setFileName("simulation_output.txt")

@@ -21,9 +21,8 @@ sst.setStatisticLoadLevelForComponentName(name, level, apply_to_children=False)
 * **apply_to_children** : (type:bool) OPTIONAL. If set to True, will recursively enable specified statistic on all SubComponent descendants. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

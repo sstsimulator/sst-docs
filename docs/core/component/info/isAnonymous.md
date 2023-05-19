@@ -1,10 +1,7 @@
 ---
 title: isAnonymous
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 bool isAnonymous();
 ```
@@ -16,10 +13,9 @@ Returns whether the calling SubComponent was loaded anonymously. When called by 
 * **returns** (bool) Whether the calling (Sub)Component was loaded anonymously
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 if (isAnonymous()) {
     // Handle something one way if we were loaded anonymously

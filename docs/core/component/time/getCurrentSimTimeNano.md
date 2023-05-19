@@ -13,12 +13,10 @@ Returns the current simulation time as a time in nanoseconds.
 * **returns** (SimTime_t) Current simulation time in nanoseconds
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-
 output.output("The simulated time is %" PRIu64 " ns\n", getCurrentSimTimeNano());
 ```
 

@@ -15,11 +15,10 @@ Determine if a port is connected to a link.
 * **returns** (bool) Whether the port is connected
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicLinks.cc --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicLinks.cc"
 #include <sst/core/component.h>
 
 basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id) 
@@ -29,6 +28,7 @@ basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id)
     std::string linkprefix = "port_vector";
     std::string linkname = linkprefix + "0";
     int portunm = 0;
+    //highlight-next-line
     while (isPortConnected(linkname)) {
         SST::Link* link = configureLink(linkname, new Event::Handler<basicLinks,int>(this, &basicLinks::handleWithEventID, portnum));
         sst_assert(link, CALL_INFO, -1, "Error: Link configuration failed\n");

@@ -1,10 +1,7 @@
 ---
 title: registerProfilePoint
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 template <typename T>
 typename T::ProfilePoint* registerProfilePoint(const std::string & pointName);
@@ -17,7 +14,7 @@ Register a profiling point.
 * **pointName** Name of the profiling point to register
 * **returns** Handle to the profiling point or nullptr if the point is not enabled
 
-## Examples
+<!--- TODO Add example --->
 
 ## Header
 ```cpp

@@ -12,22 +12,22 @@ Returns a string representation of the event. This function is inherited from SS
 * **returns** A string representation of the event
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycleEvent.h --->
-### Example 1
-```cpp
-/* Excerpt from simpleElementExample/basicSimLifeCycleEvent.h */
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycleEvent.h"
 class basicLifeCycleEvent : public SST::Event 
 {
 public: 
     /* Constructors, accessors, etc. here */
     
+    //highlight-start
     std::string toString() const override {
         std::stringstream s;
         s << "basicLifeCycleEvent. String='" << str << "' Number='" << num << "'";
         return s.str();
     }
+    //highlight-end
 private:
     std::string str;
     unsigned num;

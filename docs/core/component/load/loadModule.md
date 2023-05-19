@@ -1,10 +1,7 @@
 ---
 title: loadModule
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 template <class T, class... ARGS>
 T* loadModule(const std::string& type, Params& params, ARGS... args);
@@ -19,12 +16,9 @@ Load an SST Module.
 * **args** (ARGS) Additional module-specific arguments for the module's constructor
 * **returns** (bool) A pointer to the newly-created module
 
-## Examples
+## Example
 
-<!--- SOURCE_CODE: sst-elements/src/sst/elements/ariel/arielcore.cc --->
-### Example 1
-```cpp
-// Excerpt from ariel/arielcore.cc
+```cpp title="Excerpt from sst-elements/src/sst/elements/ariel/arielcore.cc"
 ArielCore::ArielCore(ComponentId_t id, Params& params) : Component(id) {
     /** Configuration here */
 
@@ -33,6 +27,7 @@ ArielCore::ArielCore(ComponentId_t id, Params& params) : Component(id) {
 
     if (enableTracing) {
         Params interfaceParams = params.get_scoped_params("tracer");
+        //highlight-next-line
         traceGen = loadModule<ArielTraceGenerator>(traceGenName, interfaceParams);
 
         sst_assert(traceGen, CALL_INFO, -1, "Unable to laod tracing module: \"%s\"\n", traceGenName.c_str());

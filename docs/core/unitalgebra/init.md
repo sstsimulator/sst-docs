@@ -36,7 +36,7 @@ COMPUNIT    := {Hz,hz,Bps,bps,event}
 24 s/B
 ```
 
-### Example 1
+### Code Example
 ```cpp
 // Use default constructor
 // Initialize to 5 milliseconds

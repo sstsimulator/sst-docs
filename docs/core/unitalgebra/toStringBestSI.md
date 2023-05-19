@@ -12,11 +12,9 @@ Return a string representation of the UnitAlgebra and scale the value to a logic
 ## Parameters
 * **returns** (std::string) A string of the UnitAlgebra.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
-
 UnitAlgebra ua("1024B");
 
 std::string ua_string = ua.toStringBestSI();

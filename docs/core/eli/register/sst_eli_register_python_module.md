@@ -20,9 +20,8 @@ This macro must reside in a `public` section of the module's C++ class declarati
 * **library** (string) The name of the library that this Component belongs to. If the library name does not exist, it will be created.
 * **SST_ELI_ELEMENT_VERSION(major, minorX, minorY)** This is a macro that specifies the version of a Component. `major`, `minorX`, and `minorY` are integers that form a version number major.minorX.minorY. For example: SST_ELI_ELEMENT_VERSION(3, 0, 9) yields a version of 3.0.9. Versions are not checked by SST, this is provided for developers to version and manage their libraries.
 
-## Examples
+## Example
 
-### Example 1
 This example comes from SST's Merlin element library.
 ```cpp
 namespace SST {
@@ -31,11 +30,13 @@ namespace Merlin {
 class MerlinPyModule : public SSTElementPythonModule {
 public:
 
+    //highlight-start
     SST_ELI_REGISTER_PYTHON_MODULE(
         SST::Merlin::MerlinPyModule,    // Module class
         "merlin",                       // Library name
         SST_ELI_ELEMENT_VERSION(1,0,0)  // Module version
     )
+    //highlight-end
 
     /* Required for certain compilers because this class is not declared in a header file */
     SST_ELI_EXPORT(SST::Merlin::MerlinPyModule)

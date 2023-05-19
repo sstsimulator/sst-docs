@@ -16,9 +16,7 @@ SubComponents must inherit from a SubComponent API which must in turn inherit fr
 ## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.cc --->
-```cpp
-/* Source: simpleElementExample/basicSubComponent_subcomponent.h */
-
+```cpp title="Excerpt from src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.cc"
 #include <sst/core/subcomponent.h>
 
 // SubComponent API - define an API for a type of subcomponent
@@ -60,8 +58,8 @@ public:
 private:
     int amount;
 };
-
-/* Source: simpleElementExample/basicSubComponent_subcomponent.h */
+```
+```cpp title="Excerpt from src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.h"
 #include <sst_config.h>
 #include <basicSubComponent_subcomponent.h>
 

@@ -12,10 +12,9 @@ Constructor for event. Returns a new SST::Event.
 * **returns** none
 
 
-## Examples
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicEvent.h --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicEvent.h"
 #include <sst/core/event.h>
 
 namespace SST {
@@ -28,6 +27,7 @@ class basicEvent : public SST::Event
 public:
     // Constructor
     // Serializable events need a default constructor
+    //highlight-next-line
     basicEvent() : SST::Event(), last(false) { }
     
     // Example data members

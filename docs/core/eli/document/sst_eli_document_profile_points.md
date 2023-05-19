@@ -29,10 +29,9 @@ This macro must reside in a `public` section of the object's header file.
 * **API** (string) The fully qualified name of the profiler API that can be attached to this point. Any profiler loaded into the slot must implement the named API.
 
 
-## Examples
+## Example
 
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.h"
 /* simpleElementExample/basicParams.h */
  SST_ELI_DOCUMENT_PROFILE_POINTS(
     { "clock_profiler", "A profiler to track time spent in clock handling", "SST::Profile::ClockHandlerProfileTool" }

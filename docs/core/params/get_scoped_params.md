@@ -13,11 +13,9 @@ Both local and global params will be searched but all matching params will be co
 * **scope** (std::string) The scope to search for. A '.' will be appended to the scope for the search.
 * **returns** (Params) A new parameter object with all scoped parameters.
 
-## Examples
+## Example
 
-### Example 1
-```cpp
-/* Excerpt from sst-elements/src/sst/elements/prospero/proscpu.cc */
+```cpp title="Excerpt from sst-elements/src/sst/elements/prospero/proscpu.cc"
 ProsperoComponent::ProsperoComponent(ComponentId_t id, Params& params) : Component(id) 
 {
     /* Some constructor stuff and then: load a subcomponent from the python input configuration if
@@ -30,6 +28,7 @@ ProsperoComponent::ProsperoComponent(ComponentId_t id, Params& params) : Compone
     if (!reader) {
         std::string traceModule = params.find<std::string>("reader", "prospero.ProsperoTextTraceReader");
 
+        //highlight-next-line
         Params readerParams = params.get_scoped_params("readerParams");
         reader = loadAnonymousSubComponent<ProsperoTraceReader>(traceModule, "reader", 0, ComponentInfo::INSERT_STATS, readerParams, output);
     }

@@ -1,11 +1,11 @@
 ---
-id: getSimulation
 title: getSimulation
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
+:::caution Deprecated
+This function is deprecated as of SST 13. All functions previously available through SST `getSimulation()` are now directly available through the component classes.
+:::
+
 ```cpp
 Simulation* getSimulation();
 ```
@@ -13,21 +13,14 @@ Simulation* getSimulation();
 
 Return the SST simulation instance. Most APIs available via the simulation object are also available through the Component API so this function should not generally be neccessary. 
 
-:::caution
-
-This function may be removed in a future release.
-
-:::
 
 ## Parameters
 * **returns** (Simulation*) Pointer to the simulation instance
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/cassini/cacheLineTrack.cc --->
-### Example 1
-```cpp
-// Excerpt from cassini/cacheLineTrack.cc
+```cpp title="Excerpt from sst-elements/src/sst/elements/cassini/cacheLineTrack.cc"
 void cacheLineTrack::notifyAccess(const CacheListenerNotification& notify)
 {
     /** Access handling code here */
@@ -39,6 +32,7 @@ void cacheLineTrack::notifyAccess(const CacheListenerNotification& notify)
             auto iter = cacheLines.find(cacheAddr);
             if (iter == cacheLines.end()) {
                 // insert a new address 
+                //highlight-next-line
                 SimTime_t now = getSimulation()->getCurrentSimCycle();
                 iter = (cacheLines.insert({cacheAddr, lineTrack(now)})).first;
 

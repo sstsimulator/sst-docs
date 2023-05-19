@@ -14,12 +14,10 @@ Return the next cycle count that a clock with the provided frequency would fire.
 * **freq** (TimeConverter*) Frequency of the clock
 * **returns** (Cycle_t) Cycle count that the clock would next be fired at 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-
 void example::handleEvent(SST::Event* ev) {
     
     /** Handle event here */

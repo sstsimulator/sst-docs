@@ -14,9 +14,8 @@ Divide this UnitAlgebra by the argument. The units will also be divided if the a
 * **v** (typename T) value to divide by
 * **returns** (UnitAlgebra&) This UnitAlgebra after the division operation.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra num0("100B");
 SST::UnitAlgebra num1("50s");

@@ -12,9 +12,8 @@ Return whether a Params object contains the provided key.
 * **returns** (bool) True if the key is in the Params object, false otherwise
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Params p;
 p.insert("frequency", "3GHz");

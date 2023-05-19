@@ -18,9 +18,8 @@ component.getType()
 * **returns** type of Component/SubComponent 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

@@ -21,9 +21,8 @@ This macro must reside in a `public` section of the object's header file.
 
 * **param** (string) The name of the parameter to remove.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Assume "clock_period" is part of the object's ELI
 SST_ELI_DOCUMENT_PARAMS(

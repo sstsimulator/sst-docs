@@ -1,10 +1,7 @@
 ---
 title: getType
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 const std::string& getType() const;
 ```
@@ -16,10 +13,9 @@ Returns the type of the (Sub)Component or ComponentExtension. This is the SST ty
 * **returns** (string) Type of Component, SubComponent, or ComponentExtension
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 std::string mytype = getType();
 output.output("I am a component of type %s\n", mytype.c_str());

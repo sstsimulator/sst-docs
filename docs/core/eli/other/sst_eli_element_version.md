@@ -14,9 +14,8 @@ This macro is used inside some of the SST registration macros to assign a versio
 * **minorY** (int) The minor version number
 * **minorZ** (int) An additional minor version number
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 class example1 : public SST::Component
 {

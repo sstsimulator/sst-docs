@@ -14,13 +14,10 @@ Returns whether SST was configured to skip initialization and only execute its r
 * **returns** (bool) Whether SST's run mode is set to RUN
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-#include <sst/core/component.h>
-s
 output.output("SST is%s configured to skip initialization.\n", isSimulationRunModeRun() ? "" : " not");
 ```
 

@@ -23,9 +23,8 @@ sst.enableStatisticsForComponentName(name, stat_list, stat_params_dict, apply_to
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

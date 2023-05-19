@@ -1,5 +1,4 @@
 ---
-id: performGlobalStatisticOutput
 title: performGlobalStatisticOutput
 ---
 
@@ -13,10 +12,9 @@ Trigger the output of all enabled statistics for all Components on this (Sub)Com
 ## Parameters
 * **returns** None
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 performGlobalStatisticOutput();
 ```

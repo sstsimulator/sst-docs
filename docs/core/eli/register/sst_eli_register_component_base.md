@@ -20,9 +20,7 @@ This macro must reside in a `public` section of the class's header file.
 
 * **class_name** (class) The fully qualified name of the class calling the macro. This is not a string.
 
-## Examples
-
-### Example 1
+## Example
 
 In this example, ComponentBaseClass is not itself an SST Component but it has a parameter to take a clock frequency. Its child class, MyComponent, which is an SST Component, will also have the parameter "clockFrequency" because the ELI information will be inherited.
 

@@ -31,9 +31,8 @@ Create a new Output object. If the default constructor is used, [Output::init()]
 * **returns** An SST::Output object
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 
 // Allocate a new output object and send to stdout

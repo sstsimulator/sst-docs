@@ -1,11 +1,7 @@
 ---
-id: getParentComponentName
 title: getParentComponentName
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 const std::string& getParentComponentName() const;
 ```
@@ -17,10 +13,9 @@ When called on a Component, returns the name of the Component. When called on a 
 * **returns** (string) Component name
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("My name is %s\n", getParentComponentName().c_str());
 ```

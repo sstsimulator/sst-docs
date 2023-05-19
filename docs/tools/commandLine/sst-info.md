@@ -1,5 +1,4 @@
 ---
-id: sst-info
 title: sst-info
 ---
 

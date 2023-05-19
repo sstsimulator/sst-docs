@@ -22,15 +22,15 @@ Classes that define a type of SubComponent must use the [`SST_ELI_REGISTER_SUBCO
 
 Another variant of the `SST_ELI_REGISTER_SUBCOMPONENT_API` macro is [`SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API`](register/sst_eli_register_subcomponent_derived_api).
 
-:::info
-The `SST_ELI_REGISTER_SUBCOMPONENT_DERIVED` macro was introduced temporarily to enable a signature change in the `SST_ELI_REGISTER_SUBCOMPONENT` macro. The two macros are now identical and the `SST_ELI_REGISTER_SUBCOMPONENT_DERIVED` macro will be deprecated in an upcoming release.
+:::caution Deprecation
+The `SST_ELI_REGISTER_SUBCOMPONENT_DERIVED` macro was introduced temporarily to enable a signature change in the `SST_ELI_REGISTER_SUBCOMPONENT` macro. The two macros are now identical and `SST_ELI_REGISTER_SUBCOMPONENT_DERIVED` is deprecated as of SST 13.
 :::
 
 ### Modules
-Modules must use the [`SST_ELI_REGISTER_MODULE_DERIVED`](register/sst_eli_register_module_derived) macro to register with the SST Core. Like SubComponents, Modules should implement an API that has also been registerd with the SST Core. The API must use the [`SST_ELI_REGISTER_MODULE_API`](register/sst_eli_register_module_api) or [`SST_ELI_REGISTER_MODULE_DERIVED_API`](register/sst_eli_register_module_derived_api) macro to register itself. Modules cannot have links, statistics, subcomponents, or parameters and so they may not use the documentation macros. 
+Modules must use the [`SST_ELI_REGISTER_MODULE`](register/sst_eli_register_module) macro to register with the SST Core. Like SubComponents, Modules should implement an API that has also been registerd with the SST Core. The API must use the [`SST_ELI_REGISTER_MODULE_API`](register/sst_eli_register_module_api) or [`SST_ELI_REGISTER_MODULE_DERIVED_API`](register/sst_eli_register_module_derived_api) macro to register itself. Modules cannot have links, statistics, subcomponents, or parameters and so they may not use the documentation macros. 
 
-:::info
-The `SST_ELI_REGISTER_MODULE` macro is deprecated in order to move to an API-based registration for Modules. Once deprecation is complete, this macro will be reintroduced and be identical to the `SST_ELI_REGISTER_MODULE_DERIVED` macro.
+:::caution Deprecation
+The `SST_ELI_REGISTER_MODULE_DERIVED` macro was introduced temporarily to enable a signature change in the `SST_ELI_REGISTER_MODULE` macro. The two macros are now identical and `SST_ELI_REGISTER_MODULE_DERIVED` is deprecated as of SST 13.
 :::
 
 ### Profiling Tools

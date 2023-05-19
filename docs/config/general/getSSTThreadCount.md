@@ -1,12 +1,6 @@
 ---
-id: getSSTThreadCount
 title: getSSTThreadCount
 ---
-
-<!---
-SAND2022-6843 O
-Source: sst-documentation/manuals/python
---->
 
 Returns the threads per rank specified for the simulation.
 
@@ -18,9 +12,8 @@ sst.getSSTThreadCount()
 ## Parameters
 * **returns** number of threads per MPI rank in the simulation 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

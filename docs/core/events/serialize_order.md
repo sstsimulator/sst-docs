@@ -16,10 +16,9 @@ to the serializer using the overloaded `&` operation. SST's serializer can seria
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicEvent.h --->
-### Example 1
 ```cpp
 /* simpleElementExample/basicEvent.h */
 class basicEvent : public SST::Event
@@ -34,11 +33,13 @@ public:
 
     // Events must provide a serialization function that serializes
     // all data members of the event
+    //highlight-start
     void serialize_order(SST::Core::Serialization::serializer &ser)  override {
         Event::serialize_order(ser);
         ser & payload;
         ser & last;
     }
+    //highlight-end
 
     // Register this event as serializable
     ImplementSerializable(SST::simpleElementExample::basicEvent);

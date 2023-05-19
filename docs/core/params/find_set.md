@@ -21,9 +21,8 @@ Examples of valid set strings:
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 <!--- SOURCE CODE: None --->
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
@@ -34,6 +33,7 @@ example::example(ComponentId_t id, Params& params) : Component(id)
 
     /* Construct a set that is a list of neighbors' names by interpreting the paramter 'neighbors' as a set */
     std::set<std::string> neighbors;
+    //highlight-next-line
     params.find_set<std::string>("neighbors", neighbors);
 
     out->output("Read a list of the neighbors' names. They are: \n");

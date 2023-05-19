@@ -1,10 +1,7 @@
 ---
 title: isUser
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 bool isUser();
 ```
@@ -16,10 +13,9 @@ Returns whether the calling SubComponent was loaded as a User SubComponent (i.e.
 * **returns** (bool) Whether the calling (Sub)Component was loaded as a User SubComponent
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 if (isUser()) {
     // Handle something one way if we were loaded as a user subcomponent

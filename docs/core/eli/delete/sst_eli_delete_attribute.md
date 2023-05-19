@@ -20,14 +20,13 @@ This macro must reside in a `public` section of the object's header file.
 
 * **key** (string) A key to delete
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
- SST_ELI_DOCUMENT_ATTRIBUTES(
-   SST_ELI_DELETE_ATTRIBUTE("for_testing"), /* Assume we inherited for_testing = false */
+SST_ELI_DOCUMENT_ATTRIBUTES(
+  SST_ELI_DELETE_ATTRIBUTE("for_testing"), /* Assume we inherited for_testing = false */
     { "for_testing", "true" }
- )
+)
 
 ```
 

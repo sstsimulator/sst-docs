@@ -10,12 +10,11 @@ uint8_t getComponentInfoStatisticEnableLevel(const std::string& statisticName) c
 Returns the enable level for the specified statistic
 
 ## Parameters
-* **statisticName** (string)) Name of the statistic
+* **statisticName** (string) Name of the statistic
 * **returns** (uint8_t) The enable level of the statistic
 
 
-## Examples
-
+<!--- TODO add example --->
 
 
 ## Header

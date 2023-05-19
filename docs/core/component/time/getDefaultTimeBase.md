@@ -13,19 +13,17 @@ Return the default time base for the calling (Sub)Component.
 ## Parameters
 * **returns** (TimeConverter*) Default time base
 
-vi m
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/standardInterface.cc --->
-### Example 1
-```cpp
-// Excerpt from memHierarchy/standardInterface.cc
+```cpp title="Excerpt from sst-elements/src/sst/elementsmemHierarchy/standardInterface.cc"
 StandardInterface::StandardInterface(SST::ComponentId_t id, Params& params, TimeConverter* time,
     HandlerBase* handler) : StandardMem(id, params, time, handler)
 {
     /** Begin configuration code here */
 
     // Pass our default time base to our child subcomponent
+    //highlight-next-line
     link_ = loadUserSubComponent<MemLinkBase>("memlink", ComponentInfo::SHARE_NONE, getDefaultTimeBase());
 
     /** Remaining configuration here */

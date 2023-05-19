@@ -20,9 +20,8 @@ Return the Output's [output location](class). `output_location_t` is an `enum` t
 * **returns** (output_location_t) The output location
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 output_location_t location = out->getOutputLocation();
 ```

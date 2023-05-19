@@ -3,13 +3,13 @@ title: How to Run SST
 ---
 
 ## Running SST
-Prior to running SST, ensure that SST Core is built and installed, as well as one or more Element libraries (e.g., sst-elements). Refer to the SST [Build and Install Instructions](http://sst-simulator.org/SSTPages/)
+Prior to running SST, ensure that SST Core is built and installed, as well as one or more Element libraries (e.g., sst-elements). Refer to the SST [Build and Install Instructions](http://sst-simulator.org/SSTPages/SSTMainDocumentation).
 
 ### Usage 
 The SST command line has three parts: the SST binary, options for the binary, and a Python configuration file.
 
 ```sh
-<SST binary> [SST options] <config file>
+$ <SST binary> [SST options] <config file>
 ```
 
 ### SST Options 
@@ -112,7 +112,7 @@ $ sst myConfig.py -- --param0=X --param1=Y
 Within simpleElementExample, the first example, *example0*, demonstrates two components each sending to the other a parameterized number of events (e.g., 50 events). The simulation ends when both components receive the expected events. To run this example:
 
 ```sh
-$ cd $SST_HOME/sst/elements/simpleElementExample/tests
+$ cd $SST_ELEMENTS_HOME/src/sst/elements/simpleElementExample/tests
 $ sst example0.py
 ```
 
@@ -125,7 +125,7 @@ Simulation is complete, simulated time: 52 ns
 ### SimpleElementExample: Example1
 A second example in simpleElementExample adds a statistic to each Example0 component above. The statistic counts the size of each event received. Additionally, the component uses a random number generator to randomly vary the event size. To run this example:
 ```sh
-$ cd $SST_HOME/sst/elements/simpleElementExample/tests
+$ cd $SST_ELEMENTS_HOME/src/sst/elements/simpleElementExample/tests
 $ sst example1.py
 ```
 
@@ -142,15 +142,15 @@ Because the random number generator seed is a hardcoded value in the example1 co
 ### Running Example0 in Parallel
 SST can be run in parallel using MPI:
 ```sh
-mpirun -n 2 sst example0.py
+$ mpirun -n 2 sst example0.py
 ```
 
 Using threads:
 ```sh
-sst -n 2 example0.py
+$ sst -n 2 example0.py
 ```
 
 Or using both, (although the example here has only two components so SST will warn about not using all four threads/ranks):
 ```sh
-mpirun -n 2 sst -n 2 example0.py
+$ mpirun -n 2 sst -n 2 example0.py
 ```

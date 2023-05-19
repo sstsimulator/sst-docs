@@ -32,12 +32,10 @@ Find a key in the Params object and return the corresponding value as template t
 * **returns** (T) The value matching the key, or the default_value if provided and the key is not found
 
 
-## Examples
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicParams.cc --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.cc"
 /* 
- * Excerpt from: sst-elements/src/sst/elements/simpleElementExample/basicParams.cc 
  * This Component has several parameters which are uncreatively named by their type 
  * (e.g., "bool_param" is a bool)
  */
@@ -45,10 +43,12 @@ basicParams::basicParams(ComponentId_t id, Params& params) : Component(id)
 {
     out = new Output("", 1, 0, Output::STDOUT);
 
+    //highlight-start
     bool param0 = params.find<bool>("bool_param", false);
     uint32_t param1 = params.find<uint32_t>("uint32_param", 400);
     double param2 = params.find<double>("double_param", 12.5);
     std:;string param3 = params.find>std::string>("string_param", "hello");
+    //highlight-end
 
     out->output("Found basic parameters: bool_param = %d, uint32_param = %" PRIu32 ", double_param = %f, string_param = %s\n",
             param0, param1, param2, param3.c_str());
@@ -68,8 +68,10 @@ basicParams::basicParams(ComponentId_t id, Params& params) : Component(id)
      * - UnitAlgebra is a class provided by SST
      * - ExampleType is a made up class for this example, see basicParams.h
      */ 
+     //highlight-start
     UnitAlgebra param5 = params.find<UnitAlgebra>("ua_param", "2TB/s");
     ExampleType param6 = params.find<ExampleType>("example_param", "key:5");
+    //highlight-end
 
     out->output("Read ua_param = %s\n", param5.toStringBestSI().c_str());
     out->output("Read example_param. key = %s, value = %d\n", param6.key.c_str(), param6.value);

@@ -1,5 +1,5 @@
 ---
-title: SubComponent destructor
+title: destructor
 ---
 
 ```cpp
@@ -12,12 +12,10 @@ SST calls each subcomponent's destructor prior to exiting. Components should *no
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.h --->
-### Example 1
-```cpp
-/* Source: simpleElementExample/basicSubComponent_subcomponent.h */
+```cpp title="Excerpt from src/sst/elements/simpleElementExample/basicSubComponent_subcomponent.h"
 
 #include <sst/core/subcomponent.h>
 
@@ -29,6 +27,7 @@ public:
     SST_ELI_REGISTER_SUBCOMPONENT_API(SST::simpleElementExample::basicSubComponentAPI)
 
     basicSubComponentAPI(ComponentId_t id, Params& params) : SubComponent(id) {}
+    //highlight-next-line
     virtual ~basicSubComponentAPI() {}
 
     virtual int compute (int num) =0;

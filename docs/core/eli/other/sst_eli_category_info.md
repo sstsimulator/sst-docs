@@ -14,9 +14,8 @@ sidebar_label: Component Categories
 Component categories are a set of common categories that architectural components fall in. Each component must have a category assigned in [`SST_ELI_REGISTER_COMPONENT`](../register/sst_eli_register_component). These categories are used to help document components and are displayed when running `sst-info`. The available categories are shown above.
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 class example1 : public SST::Component
 {

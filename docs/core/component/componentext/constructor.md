@@ -16,14 +16,11 @@ SST calls this constructor when a ComponentExtension is loaded.
 * **...** (Variable) Arguments specific to this class's constructor. These are provided by the Component that loads the extension.
 * **returns** (ComponentExtension*) The newly constructed component
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/mshr.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/mshr.cc --->
-### Example 1
-```cpp
-/* Source: memHierarchy/mshr.h
-
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/mshr.h"
 #include <sst/core/componentextension.h>
 
 /* The MSHR is really just a buffer that a cache uses but it is useful to be able to access
@@ -37,6 +34,7 @@ public:
 
     // id is passed automatically by SST when loaded, the rest of the args are provided by the Component 
     // that loads this extension
+    //highlight-next-line
     MSHR(ComponentId_t id, Output* dbg, int maxSize, std::string cacheName, std::set<Addr> debugAddr);
     virtual ~MSHR() {}
 
@@ -46,8 +44,8 @@ public:
     /* Rest of class here */
 
 };
-
-/* Source: memHierarchy/mshr.cc */
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/mshr.cc"
 #include <sst_config.h>
 #include "mshr.h"
 

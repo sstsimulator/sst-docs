@@ -25,9 +25,9 @@ module.exports={
         "docs": {
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
-          "editUrl": "https://github.com/sstsimulator/docs/edit/master/docs/",
+          "editUrl": "https://github.com/sstsimulator/sst-docs/edit/master/docs/",
           "path": "../docs",
-          "sidebarPath": "./sidebars.json"
+          "sidebarPath": "./sidebars.js"
         },
         "blog": {
           "path": "blog"
@@ -62,29 +62,35 @@ module.exports={
           "position": "left"
         },
         {
-          "to": "docs/guides/configuration/pythonConfigGuide",
+          "to": "docs/guides/runningSST",
           "label": "Guides",
-          "position": "left"
+          "position": "left",
+          sidebarId: 'guides',
+
         },
         {
           "to": "docs/core/component/introduction",
           "label": "SST-Core API",
-          "position": "left"
+          "position": "left",
+          sidebarId: 'core',
         },
         {
           "to": "docs/config/",
           "label": "Configuration",
-          "position": "left"
+          "position": "left",
+          sidebarId: 'config',
         },
         {
           "to": "docs/elements/ember/QuickStart",
           "label": "Elements",
-          "position": "left"
+          "position": "left",
+          sidebarId: 'elements',
         },
         {
           "to": "docs/tools/commandLine/sst-info",
           "label": "Tools",
-          "position": "left"
+          "position": "left",
+          sidebarId: 'tools',
         },
         {
           "to": "help",

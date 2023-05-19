@@ -1,12 +1,6 @@
 ---
-id: popNamePrefix
 title: popNamePrefix
 ---
-
-<!---
-SAND2022-6843 O
-Source: sst-documentation/manuals/python
---->
 
 Pops a prefix from the name stack. See [pushNamePrefix](pushNamePrefix) for how name stacks are used. 
 
@@ -18,9 +12,8 @@ sst.popNamePrefix()
 ## Parameters
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
@@ -30,6 +23,7 @@ sst.pushNamePrefix("base")
 
 comp1 = sst.Component("c1", "simpleElementExample.example0") # Name is 'base.c1'
 
+#highlight-next-line
 sst.popNamePrefix()
 
 comp2 = sst.Component("c2", "simpleElementExample.example0") # Name is 'c2'

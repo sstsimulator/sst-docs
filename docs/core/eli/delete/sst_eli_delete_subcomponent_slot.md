@@ -16,11 +16,16 @@ This macro must reside in a `public` section of the object's header file.
 ## Parameters
 * **slot** (string) The name of the slot to remove
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
     SST_ELI_DELETE_SUBCOMPONENT_SLOT("compute_unit")
 )
+```
+
+## Header
+```cpp
+#include <sst/core/component.h> // or
+#include <sst/core/subcomponent.h>
 ```

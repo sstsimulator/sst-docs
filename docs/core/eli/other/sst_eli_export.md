@@ -19,23 +19,23 @@ This macro must reside in a `public` section of the C++ class declaration.
 
 * **class_name** (class) The fully qualified name of the class. This is not a string.
 
-## Examples
+## Example
 
-### Example 1
 This example comes from SST's Merlin element library.
-```cpp
-/* Excerpt from: sst-elements/src/sst/elements/merlin/merlin.cc */
+```cpp title="Excerpt from sst-elements/src/sst/elements/merlin/merlin.cc"
 namespace SST {
 namespace Merlin {
 
 class MerlinPyModule : public SSTElementPythonModule {
 public:
 
+    //highlight-start
     SST_ELI_REGISTER_PYTHON_MODULE(
         SST::Merlin::MerlinPyModule,    // Module class
         "merlin",                       // Library name
         SST_ELI_ELEMENT_VERSION(1,0,0)  // Module version
     )
+    //highlight-end
 
     /* Required for certain compilers because this class is not declared in a header file */
     SST_ELI_EXPORT(SST::Merlin::MerlinPyModule)

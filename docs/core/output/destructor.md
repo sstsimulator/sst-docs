@@ -12,9 +12,8 @@ Delete an output object.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Output* out = new Output("", 1, 0, Output::STDOUT);
 

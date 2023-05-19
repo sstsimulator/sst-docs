@@ -26,9 +26,8 @@ sst.StatisticGroup(name)
 * **returns** Created StatisticGroup object 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

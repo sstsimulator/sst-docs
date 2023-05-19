@@ -1,11 +1,7 @@
 ---
-id: getRank
 title: getRank
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 RankInfo getRank() const;
 ```
@@ -18,13 +14,13 @@ Returns the RankInfo structure holding rank and thread information for this Comp
 * **returns** (RankInfo) The RankInfo structure containing this omponent's rank and thread
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 
+//highlight-next-line
 RankInfo info = getRank();
 out->output("I am located on rank %u, thread %u\n", info.rank, info.thread);
 ```

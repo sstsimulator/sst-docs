@@ -1,10 +1,7 @@
 ---
 title: fatal
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 void fatal(uint32_t line, const char* file, const char* func, int exit_code, const char* format, ...) const __attribute__((format(printf, 6, 7)));
 ```
@@ -24,10 +21,9 @@ about the (sub)component that called fatal as well as general simulation state.
 * **returns** None
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 if (fatal_error_condition)
     fatal(CALL_INFO, -1, "Error, something terrible happend to component %s.\n", getName().c_str());

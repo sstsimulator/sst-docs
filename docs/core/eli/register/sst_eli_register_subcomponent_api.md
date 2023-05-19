@@ -18,17 +18,17 @@ This macro must reside in a `public` section of the SubComponent API's header fi
 
 * **class_name** (class) The name of the SubComponent API class. This is not a string.
 
-## Examples
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/basicSubComponent_subcomponent.h --->
 
-### Example 1
-```cpp
+```cpp "Excerpt from sst-elements/src/sst/elements/basicSubComponent_subcomponent.h"
 class basicSubComponentAPI : public SST::SubComponent
 {
 public:
     /* 
      * Register this API with SST so that SST can match subcomponent slots to subcomponents 
      */
+     //highlight-next-line
     SST_ELI_REGISTER_SUBCOMPONENT_API(SST::simpleElementExample::basicSubComponentAPI)
  
     basicSubComponentAPI(ComponentId_t id, Params& params) : SubComponent(id) { }

@@ -12,11 +12,10 @@ virtual Event* clone();
 * **returns** A copy of the event 
 
 
-## Examples
+## Example
 
-### Example 1
 <!--- SOURCE_CODE: sst-elements/src/sst/merlin/router.h> --->
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/merlin/router.h"
 // Implement a clone function that can 
 // be used to copy a RtrEvent for broadcasts
 virtual RtrEvent* clone() override {

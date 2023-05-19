@@ -15,13 +15,13 @@ Print all key/value pairs in the Params object to the specified `std::ostream` o
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {
     SST::Output* out = new Output("", 1, 0, Output::STDOUT);
+    //highlight-next-line
     params.print_all_params(out);
 }
 ```

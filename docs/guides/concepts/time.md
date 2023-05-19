@@ -1,10 +1,7 @@
 ---
 title: Time in SST
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 Time in SST is represented by a combination of two values: a *time base* and a *count*. The time
 base represents a quantum of time and is encapsulated in the `TimeConverter` object. The count
 is the number of these quanta stored as an unsigned 64-bit integer (typedef'd as `SimTime t`). For

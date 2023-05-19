@@ -1,5 +1,4 @@
 ---
-id: requireLibrary
 title: requireLibrary
 ---
 
@@ -19,13 +18,10 @@ This function should ** *rarely* ** be required, as most dependencies are automa
 * **returns** None
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-#include <sst/core/component.h>
-
 // Ensure that the merlin library is loaded
 requireLibrary("merlin");
 ```

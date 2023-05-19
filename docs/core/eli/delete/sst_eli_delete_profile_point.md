@@ -20,14 +20,12 @@ This macro must reside in a `public` section of the object's header file.
 
 * **point_name** (string) The name of the profiling point to remove.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
-/* simpleElementExample/basicParams.h */
- SST_ELI_DOCUMENT_PROFILE_POINTS(
+SST_ELI_DOCUMENT_PROFILE_POINTS(
    SST_ELI_DELETE_PROFILE_POINT("clock_profiler")
- )
+)
 ```
 
 ## Header

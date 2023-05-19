@@ -14,13 +14,11 @@ To change status and prevent simulation end, use [primaryComponentDoNoEndSim()](
 ## Parameters
 * **returns** None
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -48,8 +46,8 @@ class basicSimLifeCycle : public SST::Component {
 
 	/** Other private class members here */
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

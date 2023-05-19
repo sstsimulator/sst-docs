@@ -17,9 +17,8 @@ This macro must reside in a `public` section of the object's header file.
 ## Parameters
 * **port** (string) Name of the port to remove
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 /* Remove my parent's port named 'parentPort' and add a new port named 'port' */
 SST_ELI_DOCUMENT_PORTS(

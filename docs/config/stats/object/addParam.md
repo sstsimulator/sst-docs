@@ -19,9 +19,8 @@ statisticObject.addParam(key, value)
 * **value** (type: varies) value of the parameter. This can be almost any Python object and the `__str__` method will be called to get a string representation. A list can be passed to this call when the `find_array` function is used in the class to retrieve the parameters. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

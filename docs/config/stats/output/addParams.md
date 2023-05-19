@@ -22,9 +22,8 @@ statOutput.addParam(params)
 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

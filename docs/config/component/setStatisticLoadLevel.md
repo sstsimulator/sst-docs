@@ -20,9 +20,8 @@ component.setStatisticLoadLevel(level, include_children=False)
 * **include_children** (type: bool) If set to True, will recursively set the specified load level on all currently instanced SubComponent descendants. SubComponents created after this call will not have their load level set. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

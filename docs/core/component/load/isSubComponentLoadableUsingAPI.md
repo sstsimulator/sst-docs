@@ -1,10 +1,7 @@
 ---
 title: isSubComponentLoadableUsingAPI
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 template <class T>
 bool isSubComponentLoadableUsingAPI(const std::string& subcomponent_name);
@@ -17,7 +14,7 @@ Check to see if a SubComponent is loadable using the API specified by the templa
 * **subcomponent_name** (string) Name of the SubComponent in SST's `lib.name` format
 * **returns** (bool) Whether the SubComponent is loadable using the template API
 
-## Examples
+<!--- TODO Add example --->
 
 ## Header
 ```cpp

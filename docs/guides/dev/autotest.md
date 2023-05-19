@@ -26,7 +26,7 @@ Pull requests on SST Core first go throught a Clang-format check. This is run us
 | Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.0.5   | Pin 3.17         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -k -r 2` |
 | Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.0.5   | Pin 3.17         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 | Rocky 8 | GCC 8.5.9 | 3.6.8 | 4.0.5   | -                | Macro              | Core, Macro | In Macro, `make -j4 check` and `make -j4 installcheck` |
-| OSX 14.2 | Xcode 14 | 3.10 | 4.1.2 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
+| OSX 14.2 | Xcode 14 | 3.11 | 4.1.2 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 
 Note that the "make dist" job first configures and runs make dist on the repositories under test and then runs the test framework on the generated distributions.
 
@@ -44,6 +44,6 @@ Pull requests on SST Elements are not format checked, as formatting guidelines a
 See the SST-Core section above for a description of "make dist" testing.
 
 ## Local Testing and other Notes
-The test environment can be replicated by replicating a build environment above, building and installing the listed Core and element libraries, and running the test frameworks as listed. See [SST Testing] for more information about the SST test framework.
+The test environment can be replicated by replicating a build environment above, building and installing the lsited Core and element libraries, and running the test frameworks as listed. See [SST Testing] for more information about the SST test framework.
 
 Additionally, note that any tests or testsuites added to the SST test framework in the branch under test will automatically run as part of the AutoTester. There are no additional steps needed to update testing.

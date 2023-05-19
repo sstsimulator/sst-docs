@@ -2,11 +2,6 @@
 title: connect
 ---
 
-<!---
-SAND2022-6843 O
-Source: sst-documentation/manuals/python
---->
-
 Connects two ports using the link object. 
 
 Actual parameters are two tuples representing the information for the ports to be connected. The fields in the tuple are (comp, port, latency) as describe in the parameter description. 
@@ -26,9 +21,8 @@ link_handle.connect( port_tuple_1, port_tuple_2 )
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
@@ -37,6 +31,7 @@ component1 = sst.Component("c1", "simpleElementExample.example0")
 
 link = sst.Link("component_link")
 # Connect components via their ports which are named 'port'
+#highlight-next-line
 link.connect( (component0, "port", "1ns"), (component1, "port", "1ns") )
 ```
 

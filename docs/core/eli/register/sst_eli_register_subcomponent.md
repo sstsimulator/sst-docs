@@ -25,9 +25,8 @@ This macro must reside in a `public` section of the SubComponent's header file.
 * **description** (string) A description of the SubComponent.
 * **interface** (fully qualified class name) This is the API that the SubComponent impelements.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Register this subcomponent with SST and tell SST that it implements the 'basicSubComponentAPI' API
 SST_ELI_REGISTER_SUBCOMPONENT(

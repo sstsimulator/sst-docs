@@ -12,9 +12,8 @@ Calls `std::fflush` on the output object's location.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->flush();
 ```

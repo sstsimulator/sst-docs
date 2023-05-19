@@ -14,7 +14,7 @@ Once this is done, you should no longer need to perform unnecessary recompilatio
 Please note that you must adjust your configuration for Core, Elements, and any other SST libraries.
 
 ## Ignore particular SST Elements 
-To avoid compiling SST Elements that are not of interest, put a `.ignore` file in the element directory and run `./autogen.sh` followed by configure and make. Note that this may cause some tests to fail if one element has a testing dependency on another that is not built.
+To avoid compiling SST Elements that are not of interest, put a `.ignore` file in the element directory and run `./autogen.sh` followed by configure and make. Note that this may cause some tests to fail if one element has a testing dependency on another that is not built. Additionally, placing a .unignore file in the same directory will override a .ignore file.
 
 For example, to ignore the Ariel library:
 ```sh
@@ -24,3 +24,5 @@ $ ./autogen.sh
 $ ./configure <configure flags>
 $ make all install
 ```
+
+

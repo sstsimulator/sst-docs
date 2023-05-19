@@ -21,9 +21,8 @@ component.setStatistic(stat_name, stat_obj=None)
 * **returns** Statistic object loaded into the specified statistic slot. 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

@@ -11,9 +11,8 @@ Delete a Params object.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Params p = new Params();
 

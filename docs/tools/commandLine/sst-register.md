@@ -1,5 +1,4 @@
 ---
-id: sst-register
 title: sst-register
 ---
 
@@ -21,9 +20,8 @@ sst-register <Dependency Name> (<VAR>=<VALUE>)*
 The command line utility, `sst-register`, is used to register an Element Library with the SST Core.
 
 
-## Examples
+## Example
 
-### Example 1
 ```bash
 sst-register exC_carWash exC_carWash_LIBDIR=$(CURDIR)
 ```

@@ -14,10 +14,9 @@ Determine whether the named statistic is shared with our parent. Returns false i
 * **include_me** (bool) Whether to count the calling component as a sharer
 * **returns** (bool) Whether statistic is shared
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 bool shared = isStatisticShared("num_events_received");
 ```

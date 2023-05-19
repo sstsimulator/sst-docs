@@ -21,10 +21,8 @@ Examples of valid map strings:
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
-<!--- SOURCE CODE: NONE --->
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {
@@ -34,6 +32,7 @@ example::example(ComponentId_t id, Params& params) : Component(id)
 
     // For a paramter called "probabilities" that contains a mapping of outcome IDs (ints) to outcome probabilities (doubles)
     std::map<int,double> probMap;
+    //highlight-next-line
     params.find_map<int,double>("probabilities", probMap);
 
     out->output("Probabilities are: \n");

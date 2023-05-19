@@ -13,9 +13,8 @@ Set the location the output will print to. Options are `Output::STDOUT`, `Output
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->setOutputLocation(Output::FILE);
 ```

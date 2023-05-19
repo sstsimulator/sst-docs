@@ -28,9 +28,8 @@ Initialize an Output object. This function is required if the default [construct
 * **returns** An SST::Output object
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Use default constructor
 // Initialize with a prefix of "CPU "

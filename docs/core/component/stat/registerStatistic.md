@@ -18,10 +18,9 @@ Register a statistic with the statistics engine. The returned statistic handle c
 * **params** (Params) Parameters for the statistic if the statistic type requires it.
 * **returns** (bool) A handle to the statistic
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id) {
     stat_occupancy = registerStatistic<uint64_t>("queue_occupancy");

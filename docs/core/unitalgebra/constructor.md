@@ -36,7 +36,7 @@ COMPUNIT    := {Hz,hz,Bps,bps,event}
 24 s/B
 ```
 
-### Example 1
+### Code Example
 ```cpp
 
 SST::UnitAlgebra* num0 = new UnitAlgebra("200MHz");

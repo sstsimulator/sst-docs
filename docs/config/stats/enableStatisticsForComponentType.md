@@ -22,9 +22,8 @@ sst.enableStatisticsForComponentType(comp_type, stat_list, stat_params_dict, app
 * **apply_to_children** (type: bool) If set to True, will recursively enable specified statistic on all SubComponent descendants. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

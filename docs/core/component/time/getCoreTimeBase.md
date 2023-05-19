@@ -13,10 +13,9 @@ Returns the timebase used by the core. Unless modified in the SST input configur
 * **returns** (UnitAlgebra) The timebase used by the core (e.g., '1ps')
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("The core is counting time in units of %s\n", getCoreTimeBase().toStringBestSI().c_str());
 ```

@@ -13,9 +13,8 @@ Sets the Output's verbose_level for [`debug()`](debug) and [`verbose()`](verbose
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->setVerboseLevel(8); // Calls to out->debug() or out->verbose() with level > 8 will not be printed
 ```

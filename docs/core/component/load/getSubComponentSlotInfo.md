@@ -1,10 +1,7 @@
 ---
 title: getSubComponentSlotInfo
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 SubComponentSlotInfo* getSubComponentSlotInfo(const std::string& name, bool fatalOnEmptyIndex = false);
 ```
@@ -18,19 +15,17 @@ Return information about the SubComponent(s) that have been loaded into the name
 * **returns** (SubComponentSlotInfo*) A pointer to the SubComponentSlotInfo object holding information (types, parameters, etc.) about the SubComponents that were loaded into the specified slot.
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/cacheFactory.cc --->
-
-### Example 1
-```cpp
-/********* memHierarchy/cacheFactory.cc *********/
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/cacheFactory.cc"
 #include <sst_config.h>
 #include <sst/core/component.h>
 
 // Excerpt from cache constructor. Cache listeners monitor cache traffic. 
 // Multiple listeners can be loaded into the 'listener' subcomponent slot.
 void Cache::createListeners(Params& params) {
+    //highlight-next-line
     SubComponentSlotInfo* lists = getSubComponentSlotInfo("listener");
     if (lists) {
         for (int i = 0; i < lists->getMaxPopulatedSlotNumber(); i++) {

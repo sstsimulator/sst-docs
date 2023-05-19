@@ -13,10 +13,9 @@ Returns the time that simulation ended with units. This function is for use in t
 * **returns** (UnitAlgebra) Time that simulation ended with units
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("The simulation ended after %s.\n", getEndTime().toStringBestSI().c_str());
 ```

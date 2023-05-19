@@ -19,9 +19,8 @@ This macro must reside in a `public` section of the class's header file.
 * **class_name** (class) The fully qualified name of the calling class. This is not a string.
 * **parent_class_name** (class) The fully qualified name of the parent class. This API should also be registered with teh SST Core. 
 
-## Examples
+## Example
 
-### Example 1
 In this example, ComponentBaseClass is not itself an SST Component but it has a parameter to take a clock frequency. ComponentIntermediateClass is also not itself an SST Component but it inherits from ComponentBaseClass. ComponentIntermediateClass also adds a port to the ELI information. MyComponent is an SST Component that inherits from ComponentIntermediateClass and inherits both ComponentBaseClass's parameter and ComponentIntermediateClass's port.
 
 ```cpp

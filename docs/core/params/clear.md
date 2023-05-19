@@ -11,9 +11,8 @@ Erase all key/value pairs from a Params object.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 Params p;
 p.insert("a_parameter", "a_value")

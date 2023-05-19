@@ -17,9 +17,8 @@ This macro must reside in a `public` section of the module API's header file.
 * **class_name** (class) The fully qualified name of the calling class. This is not a string.
 * **parent_class_name** (class) The fully qualified name of the parent class. This API should also be registered with the SST Core.
 
-## Examples
+## Example
 
-### Example 1
 In this example, AModuleAPI is a Module API class. AMoreSpecificModuleAPI is another Module API class that inherits from AModuleAPI. AnActualModule is an SST Module that inherits from AMoreSpecificModuleAPI. The module inherits the parameters from both its parent classes.
 
 ```cpp
@@ -41,6 +40,7 @@ public:
 class AMoreSpecificModuleAPI : public SST::AModuleAPI
 {
 public:
+//highlight-next-line
     SST_ELI_REGISTER_MODULE_DERIVED_API(SST::AMoreSpecificModuleAPI, SST::AModuleAPI)
 
     SST_ELI_DOCUMENT_PARAMS(
@@ -54,9 +54,7 @@ class AnActualModule : public SST::AMoreSpecificModuleAPI
 {
 public:
 
-    /* SST_ELI_REGISTER_MODULE is deprecated for the moment so that we can 
-     * change its signature, use SST_ELI_REGISTER_MODULE_DERIVED instead */
-    SST_ELI_REGISTER_MODULE_DERIVED(
+    SST_ELI_REGISTER_MODULE(
         AnActualModule,                     // Module class
         "exampleLibrary",                   // Element library (for Python/library lookup)
         "mymodule",                         // Module name (for Python/library lookup)

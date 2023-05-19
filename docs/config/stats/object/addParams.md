@@ -18,9 +18,8 @@ statisticObject.addParams(params)
 * **params** (type: dict) a Python dict of key, value pairs. See the [`addParam()`](addParam) description for information about how key and value are used. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
@@ -29,6 +28,7 @@ stat = component0.setStatistic("EventSizeReceived")
 
 params = { "rate" : "50ns" }
 
+#highlight-next-line
 stat.addParams( params )
 ```
 

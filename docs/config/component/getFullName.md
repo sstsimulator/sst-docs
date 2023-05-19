@@ -26,9 +26,8 @@ component.getFullName()
 * **returns** full name of Component/SubComponent as a string
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

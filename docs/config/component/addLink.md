@@ -22,15 +22,15 @@ component.addLink(link, port, latency=link_default)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
 component0 = sst.Component("c0", "simpleElementExample.example0")
 link0 = sst.Link("link")
 
+#highlight-next-line
 component0.addLink(link0, "port", "1ns")
 ```
 

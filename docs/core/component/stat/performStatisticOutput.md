@@ -13,10 +13,9 @@ Trigger the output of a specific statistic.
 * **statName** (StatisticBase*) Statistic to output
 * **returns** None
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id) {
     stat_occupancy = registerStatistic<uint64_t>("queue_occupancy");
@@ -30,6 +29,7 @@ bool clockHandler(Cycle_t cycle) {
 
     // Print the size of the queue occasionally
     if (cycle % 1000 == 0)
+    //highlight-next-line
         performStatisticOutput(stat_occupancy);
 }
 ```

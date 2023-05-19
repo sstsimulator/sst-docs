@@ -25,9 +25,8 @@ Return the next double in the distribution. This is a double converted from the 
 #### Parameters
 * **returns** (double) The next double in the distribution
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::RNG::UniformDistribtuion* dist = new SST::RNG::UniformDistribution(5.0);
 

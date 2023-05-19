@@ -25,9 +25,8 @@ This macro must reside in a `public` section of the tool's header file.
 * **SST_ELI_ELEMENT_VERSION(major, minorX, minorY)** This is a macro that specifies the version of a tool. `major`, `minorX`, and `minorY` are integers that form a version number major.minorX.minorY. For example: SST_ELI_ELEMENT_VERSION(3, 0, 9) yields a version of 3.0.9. Versions are not checked by SST, this is provided for developers to version and manage their libraries.
 * **description** (string) A description of the tool
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 class CodeSegmentCounter: public SST::ComponentCodeSegmentProfileTool
 {

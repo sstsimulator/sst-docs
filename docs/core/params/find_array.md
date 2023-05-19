@@ -21,12 +21,10 @@ Examples of valid array strings:
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 <!--- SOURCE CODE: sst-elements/src/sst/elements/simpleElementExample/basicParams --->
-```cpp
-/* Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.cc */
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.cc"
 basicParams::basicParams(ComponentId_t id, Params& params) : Component(id)
 {
     out = new Output("", 1, 0, Output::STDOUT);
@@ -34,6 +32,7 @@ basicParams::basicParams(ComponentId_t id, Params& params) : Component(id)
     /* Some other constructor stuff */
 
     std::vector<int> intArray;
+    //highlight-next-line
     params.find_array<int>("array_param", intArray);
 
     out->output("Read an array from array_param. Elements are: \n");

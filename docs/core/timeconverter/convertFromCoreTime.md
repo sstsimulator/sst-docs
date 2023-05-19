@@ -16,12 +16,10 @@ frequency, this call would return 4,000 (2ms / 500ps).
 * **time** (SimTime_t) Core time to convert to local time 
 * **returns** (SimTime_t) Converted local time
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/cacheController.cc --->
-### Example 1
-```cpp
-// Excerpt from memHierarchy/cacheController.cc
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/cacheController.cc"
 // This function checks if the cache has been stalling an 
 // event for too long and may be in a deadlock situation
 void Cache::checkTimeout() {
@@ -31,6 +29,7 @@ void Cache::checkTimeout() {
         // Get the current simulation time in nano seconds
         SimTime_t curTime = getCurrentSimTimeNano();
         // Convert the arrival time for the oldest active event to ns and compute how long it has been waiting in ns
+        //highlight-next-line
         SimTime_t startTime = getTimeConverter("1ns")->convertFromCoreTime(entry->getStartTime());
         SimTime_t waitTime = curTime - startTime;
 

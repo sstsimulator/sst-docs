@@ -11,9 +11,8 @@ Return the set of all keys (local and global) contained in the Params object.
 * **returns** (std::set<std::string>) A set of keys that belong to this object
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {

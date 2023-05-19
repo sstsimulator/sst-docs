@@ -11,13 +11,12 @@ const TimeConverter* getDefaultTimeBase() const;
 * **returns** A TimeConverter* representing the default time base
 
 
-## Examples
-
-### Example 1
+## Example
 ```cpp
 // Configure a link connected to a port named 'port' 
 SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));
 
+//highlight-next-line
 TimeConverter* tc = link->getDefaultTimeBase();
 Output* out = getSimulationOutput();
 out->output("The link connected to 'port' has a default time base of %s\n", tc->getPeriod().toStringBestSI().c_str());

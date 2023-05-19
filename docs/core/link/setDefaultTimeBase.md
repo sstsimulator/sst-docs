@@ -17,11 +17,9 @@ Calls to [`registerClock()`](../component/time/registerClock) and [`registerTime
 * **returns** none
 
 
-## Examples
-
-### Example 1
-```cpp
-/* Excerpt from kingsley/linkControl.cc */
+## Example
+<!--- SOURCE_CODE: sst-elements/src/sst/elements/kingsley/linkControl.cc --->
+```cpp title="Excerpt from sst-elements/src/sst/elements/kingsley/linkControl.cc"
 void LinkControl::init(unsigned int phase)
 {
     Event* ev;
@@ -30,7 +28,7 @@ void LinkControl::init(unsigned int phase)
         case 0:
             /* Handle case 0 */
         case 1:
-            ev = rtr_link->recvInitData();
+            ev = rtr_link->recvUntimedData();
             if ( NULL == ev ) break;
             init_ev = static_cast<NocInitEvent*>(ev);
             UnitAlgebra flit_size_ua = init_ev->ua_value;
@@ -41,6 +39,7 @@ void LinkControl::init(unsigned int phase)
 
             // Set the 'output_timing' link's timebase to match bandwdith
             TimeConverter* tc = getTimeConverter(link_clock);
+            //highlight-next-line
             output_timing->setDefaultTimeBase(tc);
         
         /* Rest of case handling and init() */

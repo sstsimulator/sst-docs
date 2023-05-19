@@ -11,15 +11,14 @@ Return True if the Params object is empty (has no local or global parameters).
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/example0.cc"
 // Example Component constructor
-// Based on sst-elements/src/sst/elements/simpleElementExample/example0.cc
 example0::example0(ComponentId_t id, Params& params) : Component(id) {
     out = new Output("", 1, 0, Output::STDOUT);
 
+    //highlight-next-line
     if (params.empty()) {
         out->fatal(CALL_INFO, -1, "Error: No parameters were provided to the component named %s\n", 
                 getName().c_str());

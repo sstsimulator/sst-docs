@@ -14,9 +14,8 @@ Subtract something from this UnitAlgebra. If the argument is a UnitAlgebra and t
 * **v** (typename T) value to subtract
 * **returns** (UnitAlgebra&) This UnitAlgebra after the subtraction operation.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra num0("8s");
 SST::UnitAlgebra num1("5s");

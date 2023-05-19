@@ -19,11 +19,10 @@ Register a clock at the specified frequency. On each clock cycle, the associated
 * **returns** (TimeConverter*) A time converter representing the clock frequency
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/example0.cc --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/example0.cc"
 #include <sst/core/component.h>
 
 example0::example0(ComponentId_t id, Params& params) : Component(id)

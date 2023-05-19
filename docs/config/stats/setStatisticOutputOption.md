@@ -21,9 +21,8 @@ sst.setStatisticOutputOption(option, value)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

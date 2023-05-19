@@ -21,15 +21,15 @@ group.addComponent(comp)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
 component0 = sst.Component("c0", "simpleElementExample.example0")
 
 statGroup = sst.StatisticGroup("StatGroup")
+#highlight-next-line
 statGroup.addComponent(component0)
 ```
 

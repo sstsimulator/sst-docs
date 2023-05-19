@@ -1,10 +1,7 @@
 ---
 title: getOutputDirectory
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 std::string& getOutputDirectory() const;
 ```
@@ -17,10 +14,9 @@ The user can ask SST to place output in a specific directory. This call returns 
 * **returns** (string) Directory in which simulation outputs should be placed. An empty string indicates no directory was requested by the user.
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 

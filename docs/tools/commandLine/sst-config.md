@@ -1,5 +1,4 @@
 ---
-id: sst-config
 title: sst-config
 ---
 

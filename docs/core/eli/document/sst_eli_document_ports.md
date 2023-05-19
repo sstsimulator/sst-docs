@@ -24,9 +24,8 @@ This macro must reside in a `public` section of the object's header file.
 * **description** (string) Description of the purpose or use of the port. This value is displayed when sst-info is run at the command line.
 * **list_of_event_types_accepted** (list of strings) Event types that the port can handle. This value is displayed when sst-info is run at the command line.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST_ELI_DOCUMENT_PORTS(
 { "port", "Port on which cars are sent", {"sst.Interfaces.StringEvent"}}

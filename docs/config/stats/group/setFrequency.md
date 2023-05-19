@@ -21,9 +21,8 @@ group.setFrequency(interval)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

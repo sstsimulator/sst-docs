@@ -1,13 +1,11 @@
 ---
 title: init
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 virtual void init(unsigned phase);
 ```
+
 *Availability:* Component, SubComponent, ComponentExtension
 
 The `init()` function is called by SST after all components are constructed but before simulation begins. It is an opportunity to set up state and prepare for simulation. Components may send events during init but must use the special untimed send and receive functions. Event handlers are not yet active so links must be polled. Init occurs in rounds or phases, with events sent in a prior round delivered in the subsequent round. All components participate in all rounds. SST calls `init()` in a loop until there are no events to deliver in the next round.
@@ -21,13 +19,11 @@ This function is called by SSTCore on Components only. Components, SubComponents
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -39,6 +35,7 @@ class basicSimLifeCycle : public SST::Component {
 	basicSimLifeCycle(SST::ComponentId_t id, SST::Params& params);
 	~basicSimLifeCycle();
 
+    //highlight-next-line
     virtual void init(unsigned phase) override;
 
 	/** Other public functions here */
@@ -65,8 +62,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

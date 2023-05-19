@@ -16,9 +16,8 @@ The logic is:
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 out->setVerboseMask(3); // Output will only occur on debug/verbose if the mask bits match
 ```

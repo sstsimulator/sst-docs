@@ -1,11 +1,7 @@
 ---
-id: getNumRanks
 title: getNumRanks
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 RankInfo getNumRanks() const;
 ```
@@ -18,16 +14,16 @@ Get the number of ranks and threads-per-rank that SST is using.
 * **returns** (RankInfo) The number of ranks and threads used by SST
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 
 // Example event handler in a component
 void example::handleEvent(SST::Event* ev) {
     RankInfo myInfo = getRank();
+    //highlight-next-line
     RankInfo sstInfo = getNumRanks();
     output.output("I am located on rank %d of %d. There are %d threads on each rank and I am on thread %d\n",
         myInfo.rank, sstInfo.rank, sstInfo.thread, myInfo.thread);

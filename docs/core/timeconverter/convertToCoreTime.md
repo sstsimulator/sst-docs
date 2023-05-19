@@ -15,10 +15,9 @@ adding extra latency (specified in the local view of time) on an event send.
 * **time** (SimTime_t) Local time to convert to core time 
 * **returns** (SimTime_t) Converted core time
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 void example::exampleClockHandler(Cycle_t cycle) 
 {

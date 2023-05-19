@@ -23,9 +23,8 @@ group.addStatistic(stat, stat_params_dict)
 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
@@ -33,6 +32,7 @@ component0 = sst.Component("c0", "simpleElementExample.example1")
 
 statGroup = sst.StatisticGroup("StatGroup")
 statGroup.addComponent(component0)
+#highlight-next-line
 statGroup.addStatistic("EventSizeReceived")
 ```
 

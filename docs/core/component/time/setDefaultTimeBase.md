@@ -14,12 +14,10 @@ Sets the calling (Sub)Component's default time base to the specified base.
 * **returns** None
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/standardInterface.cc --->
-### Example 1
-```cpp
-// Excerpt from memHierarchy/standardInterface.cc
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/standardInterface.cc"
 StandardInterface::StandardInterface(SST::ComponentId_t id, Params& params, TimeConverter* time,
     HandlerBase* handler) : StandardMem(id, params, time, handler)
 {

@@ -25,9 +25,8 @@ sst.setStatisticOutput(stat_output_module, options)
 * **options** (type: dict) OPTIONAL. contents specify the option as dictionary keys with the options value being specified by the corresponding dictionary value. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

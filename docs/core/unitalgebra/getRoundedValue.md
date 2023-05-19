@@ -11,9 +11,8 @@ Return the value portion of the UnitAlgebra as a signed 64-bit integer. This dis
 ## Parameters
 * **returns** (int64_t) The value portion of the UnitAlgebra as an int64_t.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra* num = new UnitAlgebra("2GHz");
 int64_t hz = num->getRoundedValue();

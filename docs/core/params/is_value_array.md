@@ -12,13 +12,13 @@ Returns whether the value associated with the given key is a valid array format 
 * **returns** (bool) Whether the corresponding value is an array format or not.
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {
     output = new SST::Output("", 1, 0, SST::Output::STDOUT);
+    //highlight-next-line
     if (!params.is_value_array("names")) {
         out->fatal(CALL_INFO, -1, "Error: The parameter 'names' should be an array but is not formatted correctly. Is it enclosed in square brackets?");
     }

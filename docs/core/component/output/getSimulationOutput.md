@@ -1,10 +1,7 @@
 ---
 title: getSimulationOutput
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 Output& getSimulationOutput() const;
 ```
@@ -17,10 +14,9 @@ Get the instance of the simulation output object that the SST Core is using.
 * **returns** (Output) The instance of the simulation output object that SST Core is using
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 

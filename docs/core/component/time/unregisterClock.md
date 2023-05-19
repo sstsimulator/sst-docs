@@ -16,10 +16,9 @@ Remove a clock. SST will no longer call the specified handler at the clock frequ
 * **returns** (TimeConverter*) A time converter representing the clock frequency
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 example::example(ComponentId_t id, Params& params) : Component(id) 
@@ -31,6 +30,7 @@ example::example(ComponentId_t id, Params& params) : Component(id)
     clock_tc = registerClock("1GHz", handler);
 
     // Disable the clock for now
+    //highlight-next-line
     unregisterClock(clock_tc, handler);
 }
 ```

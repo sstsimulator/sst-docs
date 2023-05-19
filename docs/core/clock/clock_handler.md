@@ -1,5 +1,4 @@
 ---
-id: clock_handler
 title: "Clock Handlers"
 ---
 
@@ -16,12 +15,11 @@ Clock handlers must follow the function definitions above. When the SSTCore invo
 * **data** (dataT) Optional, arbitrary data that the handler is created with
 * **returns** (bool) Whether the clock should be disabled (true) or not (false)
 
-## Examples
+## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicClocks.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicClocks.cc --->
-### Example 1
-```cpp
-/* simpleElementExample/basicClocks.h */
+In this example, a component has two clock handlers, `mainTick` and `otherTick`. Each is registered to a different clock.
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicClocks.h"
 class basicClocks : public SST::Component
 {
 public:
@@ -37,8 +35,8 @@ private:
     // Clock handler handle
     Clock::HandlerBase* clock2Handler;
 };
-
-/* simpleElementExample/basicClocks.cc */
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicClocks.cc"
 basicClocks::basicClocks(ComponentId_t id, Params& params) : Component(id)
 {
     /* Code to read parameters for the clock frequencies clock0Freq, clock1Freq, clock2Freq */

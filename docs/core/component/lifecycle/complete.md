@@ -1,13 +1,11 @@
 ---
 title: complete
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 virtual void complete(unsigned phase);
 ```
+
 *Availability:* Component, SubComponent, ComponentExtension
 
 The `complete()` function is analagous to the `init()` function but called after simulation end. Any call to get simulation time during this phase returns the simulation's end time. During this phase, components may send events using the untimed event send and receive functions. As with init, complete occurs in rounds and the phase terminates when there are no events to deliver in a subsequent round. Common uses of this lifecycle phase include post-processing data for analysis, quiescing state, and error checking.
@@ -21,13 +19,11 @@ This function is called by SSTCore on Components only. Components, SubComponents
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -39,6 +35,7 @@ class basicSimLifeCycle : public SST::Component {
 	basicSimLifeCycle(SST::ComponentId_t id, SST::Params& params);
 	~basicSimLifeCycle();
 
+    //highlight-next-line
     virtual void complete(unsigned int phase) override;
 
 	/** Other public functions here */
@@ -65,8 +62,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

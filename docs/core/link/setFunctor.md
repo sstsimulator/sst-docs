@@ -17,9 +17,8 @@ This function cannot be used on a Link that was configured as a polling link (i.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 // Configure a link connected to a port named 'port' 
 Event::HandlerBase* handler = new Event::Handler<example>(this, &example::handleEvent);
@@ -27,6 +26,7 @@ SST::Link* link = configureLink("port", handler);
 
 // Change the link to call otherHandleEvent() instead of handleEvent() when an event arrives
 // setFunctor won't delete the existing handler so we can reuse it later if we want to swap again
+//highlight-next-line
 link->setFunctor(new Event::Handler<example>(this, &example::otherHandleEvent));
 ```
 

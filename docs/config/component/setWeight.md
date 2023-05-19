@@ -19,9 +19,8 @@ component.setWeight(weight)
 * **weight** (type: float) Weight of the Component specified as a float. Weights can have any value, but should be meaningful in the context of the overall simulation. 
 * **returns** none
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

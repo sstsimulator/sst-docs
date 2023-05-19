@@ -1,12 +1,6 @@
 ---
-id: getMPIRankCount
 title: getMPIRankCount
 ---
-
-<!---
-SAND2022-6843 O
-Source: sst-documentation/manuals/python
---->
 
 Returns the number of physical MPI ranks in the simulation 
 
@@ -18,9 +12,8 @@ sst.getMPIRankCount()
 ## Parameters
 * **returns** number of MPI ranks in the simulation 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

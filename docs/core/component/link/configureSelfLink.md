@@ -1,5 +1,4 @@
 ---
-id: configureSelfLink
 title: configureSelfLink
 ---
 
@@ -23,21 +22,21 @@ A return value of nullptr indicates the link could not be configured. The most c
 * **returns** (Link*) A handle to the configured link. A return value of nullptr indicates the link could not be configured.
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/kingsley/linkControl.cc --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/kingsley/linkcontrol.cc"
 #include <sst/core/component.h>
 
-// kinglsey/linkControl.cc
 LinkControl::LinkControl(ComponentId_t id, Params& params) : Component(id) 
 {
     /** Other configuration here */
 
     // Configure self link for delaying events internally 
+    //highlight-start
     output_timing = configureSelfLink("rtr_port_output_timing", "1GHz",
             new Event::Handler<LinkControl>(this, &LinkControl::handle_output));
+            //highlight-end
 
     /** Other configuration here */
 }

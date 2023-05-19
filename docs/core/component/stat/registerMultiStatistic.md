@@ -17,10 +17,9 @@ Register a statistic whose type takes multiple template parameters with the stat
 * **params** (Params) Parameters for the statistic
 * **returns** (bool) A handle to the statistic
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 auto* stat = registerMultiStatistic<int, uint64_t, uint64_t>("multi_stat_counter");
 ```

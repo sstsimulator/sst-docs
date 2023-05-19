@@ -31,9 +31,8 @@ This macro must reside in a `public` section of the Component's header file.
   * COMPONENT_CATEGORY_NETWORK
   * COMPONENT_CATEGORY_SYSTEM
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 class example1 : public SST::Component
 {

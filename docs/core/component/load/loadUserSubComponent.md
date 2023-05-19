@@ -1,10 +1,7 @@
 ---
 title: loadUserSubComponent
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 template <class T, class... ARGS>
 T* loadUserSubComponent(const std::string& slot_name, uint64_t share_flags, ARGS... args);
@@ -20,12 +17,10 @@ Load a User-defined SST SubComponent, that is, one that was defined in the simul
 * **args** (ARGS) Additional SubComponent API-specific arguments for the SubComponent's constructor
 * **returns** (bool) A pointer to the newly-created SubComponent
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/miranda/mirandCPU.cc --->
-### Example 1
-```cpp
-// Excerpt from miranda/mirandaCPU.cc
+```cpp title="Excerpt from sst-elements/src/sst/elements/miranda/mirandCPU.cc"
 RequestGenCPU::RequestGenCPU(ComponentId_t id, Params& params) : Component(id) {
     /** Configuration here */
 
@@ -33,7 +28,6 @@ RequestGenCPU::RequestGenCPU(ComponentId_t id, Params& params) : Component(id) {
     cache_link = loadUserSubComponent<SST::Interfaces::StandardMem>("memory", ComponentInfo::SHARE_NONE,
         timeConverter, new Interfaces::StandardMem::Handler<RequestGenCPU>(this, &RequestGenCPU::handleEvent));
     
-    sst_assert(cache_link, CALL_INFO, -1, "%s, Error loading memory interface\n", getName().c_str());
 
     /** Rest of configuration here */
 }

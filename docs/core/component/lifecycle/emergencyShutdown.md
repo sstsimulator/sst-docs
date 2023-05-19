@@ -1,10 +1,6 @@
 ---
 title: emergencyShutdown
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
 
 ```cpp
 virtual void emergencyShutdown();
@@ -22,13 +18,11 @@ This function is called by SSTCore on Components only. Components, SubComponents
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -40,7 +34,8 @@ class basicSimLifeCycle : public SST::Component {
 	basicSimLifeCycle(SST::ComponentId_t id, SST::Params& params);
 	~basicSimLifeCycle();
 
-    virtual void emergencyShutdown() override;
+  //highlight-next-line
+  virtual void emergencyShutdown() override;
 
 	/** Other public functions here */
 
@@ -56,8 +51,8 @@ class basicSimLifeCycle : public SST::Component {
 
     /** Additional private class members here */
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

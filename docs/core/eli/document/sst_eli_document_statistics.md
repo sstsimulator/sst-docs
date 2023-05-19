@@ -26,13 +26,14 @@ This macro must reside in a `public` section of the object's header file.
 ## Examples
 
 ### Example 1
-```cpp
-/* simpleElementExample/example1.h */
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/example1.h"
 SST_ELI_DOCUMENT_STATISTICS( 
     {"EventSizeReceived", "Records the payload size of each event received", "bytes", 1}
 )
+```
 
-/* simpleElementExample/basicStatistics.h */
+### Example 2
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicStatistics.h"
 SST_ELI_DOCUMENT_STATISTICS(
     {"UINT32_statistic", "Statistic that records unsigned 32-bit values", "unitless", 1},
     {"UINT32_statistic_duplicate", "Statistic that records unsigned 32-bit values. Multiple stats record values to this statistic.", "unitless", 1},

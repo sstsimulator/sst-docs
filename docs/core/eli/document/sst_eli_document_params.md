@@ -31,8 +31,7 @@ This macro must reside in a `public` section of the object's header file.
 ## Examples
 
 ### Example 1
-```cpp
-/* simpleElementExample/basicParams.h */
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.h"
  SST_ELI_DOCUMENT_PARAMS(
     { "int_param",      "Integer parameter",    NULL },     // Required parameter
     { "bool_param",     "Boolean parameter",    "false"},   // Optional parameter
@@ -43,8 +42,10 @@ This macro must reside in a `public` section of the object's header file.
     { "example_param",  "ExampleType parameter","key:5"},
     { "array_param",    "array parameter",      "[]"},
 )
+```
 
-/* simpleElementExample/example0.h */
+### Example 2
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/example0"
 SST_ELI_DOCUMENT_PARAMS(
     { "eventsToSend", "How many events this component should send.", NULL},
     { "eventSize",    "Payload size for each event, in bytes.", "16"}

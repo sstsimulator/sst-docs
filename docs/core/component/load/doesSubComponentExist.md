@@ -1,10 +1,7 @@
 ---
 title: doesSubComponentExist
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 bool doesSubComponentExist(const std::string& type);
 ```
@@ -16,21 +13,13 @@ Determine whether a SubComponent of the specified type is known to SST.
 * **type** (string) Type of SST SubComponent in `lib.type` format
 * **returns** (bool) True if SubComponent exists, otherwise false
 
-## Examples
+## Example
 
-<!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/standardInterface.cc --->
-### Example 1
-```cpp
-// Excerpt from memHierarchy/standardInterface.cc
-StandardInterface::StandardInterface(SST::ComponentId_t id, Params& params, TimeConverter* time,
-    HandlerBase* handler) : StandardMem(id, params, time, handler)
-{
-    /** Begin configuration code here */
-
-    // Pass our default time base to our child subcomponent
-    link_ = loadUserSubComponent<MemLinkBase>("memlink", ComponentInfo::SHARE_NONE, getDefaultTimeBase());
-
-    /** Remaining configuration here */
+```cpp 
+if (doesSubComponentExist("simpleElementExample.basicSubComponentIncrement")) {
+    // load this one
+} else {
+    // maybe error, or load a default that we know exists instead
 }
 ```
 

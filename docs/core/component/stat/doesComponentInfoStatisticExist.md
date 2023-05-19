@@ -14,9 +14,7 @@ Check whether the named statistic is a valid statistic (i.e., registered via the
 * **returns** (bool) Whether the statistic is valid
 
 
-## Examples
-
-
+<!--- TODO add example --->
 
 ## Header
 ```cpp

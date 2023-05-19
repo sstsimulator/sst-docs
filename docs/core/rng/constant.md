@@ -30,9 +30,8 @@ Return the mean of the distribution, in this case, the constant value.
 #### Parameters
 * **returns** (double) The mean of the distribution
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::RNG::ConstantDistribution* dist = new SST::RNG::ConstantDistribution(5.0);
 

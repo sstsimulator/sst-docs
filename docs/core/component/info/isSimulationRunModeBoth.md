@@ -14,14 +14,12 @@ Returns whether SST is configured to both execute initialization and then run th
 * **returns** (bool) Whether SST's run mode is BOTH (i.e., RUN and INIT)
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-#include <sst/core/component.h>
-s
-output.output("SST is%s in its default mode which initializes and runs the simulation\n", isSimulationRunModeBoth() ? "" : " not");
+output.output("SST is%s in its default mode which initializes and runs the simulation\n", 
+    isSimulationRunModeBoth() ? "" : " not");
 ```
 
 ## Header

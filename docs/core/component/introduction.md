@@ -1,11 +1,6 @@
 ---
-id: introduction
 title: Introduction
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
 
 The fundamental building block of an SST simulation is a *Component*. A Component is a C++ class that implements some part of the simulated system and interacts with other Components via Events sent on Links. Component functionality can be dynamically extended using SubComponents and ComponentExtensions. These three objects, Components, SubComponents, and ComponentExtensions, share a common API defined in the SST::BaseComponent class. The classes also each have their own class-specific functions. The common APIs as well as the class-specific ones are described in this section.  
 

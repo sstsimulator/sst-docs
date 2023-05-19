@@ -22,9 +22,8 @@ component.setSubComponent(slot_name, element_type, slot_index = 0)
 * **returns** SubComponent object 
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 # Subcomponent slot "bay" using component bay from element carWash (carWash.bay), number 0
 baySubcomponent0 = carWashComponent.setSubComponent("bay", "exC_carWash.bay", 0)

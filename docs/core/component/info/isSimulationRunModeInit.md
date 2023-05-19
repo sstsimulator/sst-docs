@@ -14,13 +14,10 @@ SST can be configured to only run initialization and then terminate. This functi
 * **returns** (bool) Whether SST's run mode is INIT 
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
-#include <sst/core/component.h>
-s
 output.output("SST is%s configured to only execute initialization.\n", isSimulationRunModeInit() ? "" : " not");
 ```
 

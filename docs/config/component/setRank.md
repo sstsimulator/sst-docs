@@ -20,9 +20,8 @@ component.setRank(mpi_rank, thread=0)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

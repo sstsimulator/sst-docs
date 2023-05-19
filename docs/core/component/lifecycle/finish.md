@@ -1,13 +1,11 @@
 ---
 title: finish
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 virtual void finish();
 ```
+
 *Availability:* Component, SubComponent, ComponentExtension
 
 The `finish()` function is analagous to the `setup()` function but called after simulation end. It is called once on each component, just prior to simulation destruction. Common uses of this function include generating output, local post-processing, and error-checking.
@@ -21,13 +19,11 @@ This function is called by SSTCore on Components only. Components, SubComponents
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc --->
-### Example 1
-```cpp
-/********* basicSimLifeCycle.h **********/
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.h"
 #include <sst/core/component.h>
 #include <sst/core/link.h>
 
@@ -39,7 +35,8 @@ class basicSimLifeCycle : public SST::Component {
 	basicSimLifeCycle(SST::ComponentId_t id, SST::Params& params);
 	~basicSimLifeCycle();
 
-    virtual void finish() override;
+  //highlight-next-line
+  virtual void finish() override;
 
 	/** Other public functions here */
 
@@ -65,8 +62,8 @@ class basicSimLifeCycle : public SST::Component {
     SST::Link* leftLink;
     SST::Link* rightLink;
 }
-
-/********* basicSimLifeCycle.cc *********/
+```
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSimLifeCycle.cc"
 #include "sst_config.h"
 #include "basicSimLifeCycle.h"
 

@@ -13,10 +13,9 @@ Returns the current simulation time as a cycle count. See [getCoreTimeBase](getC
 * **returns** (SimTime_t) Current simulation time in core cycles
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("The simulation has been running for %" PRIu64 " cycles.\n", getCurrentSimCycle());
 ```

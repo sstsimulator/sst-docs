@@ -12,9 +12,8 @@ Delete a UnitAlgebra object.
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 UnitAlgebra* num = new UnitAlgebra("2Mbps");
 

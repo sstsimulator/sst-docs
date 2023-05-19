@@ -1,11 +1,7 @@
 ---
-id: getName
 title: getName
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 const std::string& getName() const;
 ```
@@ -17,10 +13,9 @@ Returns the name of the Component as assigned by the user in the input configura
 * **returns** (string) (Sub)Component name
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("My name is %s\n", getName().c_str());
 ```

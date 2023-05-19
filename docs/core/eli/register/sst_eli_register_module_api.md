@@ -18,9 +18,8 @@ This macro must reside in a `public` section of the module API's header file.
 
 * **class_name** (class) The name of the Module API class. This is not a string.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 class example1 : public SST::Module
 {

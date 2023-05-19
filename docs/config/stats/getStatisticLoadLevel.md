@@ -18,9 +18,8 @@ sst.getStatisticLoadLevel()
 ## Parameters
 * **returns** value of global statistic load level 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 

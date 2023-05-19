@@ -13,10 +13,9 @@ Returns the time the simulation ended as a cycle count. See [getCoreTimeBase](ge
 * **returns** (SimTime_t) The time simulation ended in core cycles
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 output.output("The simulation finished after %" PRIu64 " cycles.\n", getEndSimCycle());
 ```

@@ -12,9 +12,8 @@ Returns a unique ID of the form `std::pair<uint64_t, int>` where the second memb
 * **returns** id_type with a unique identifier for the event
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::Event* event = new Event();
 id_type id = event->generateUniqueId();

@@ -12,11 +12,10 @@ Delete an event.
 * **returns** none
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicEvent.h --->
-### Example 1
-```cpp
+```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicEvent.h"
 #include <sst/core/event.h>
 
 namespace SST {
@@ -28,6 +27,7 @@ class basicEvent : public SST::Event
 {
 public:
     basicEvent() : SST::Event(), last(false) { }
+    //highlight-next-line
     ~basicEvent() { }
 
     // Example data members

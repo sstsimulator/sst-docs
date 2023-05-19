@@ -20,13 +20,13 @@ component.addParam(key, value)
 * **returns** none
 
 
-## Examples
+## Example
 
-### Example 1
 ```python
 import sst
 
 component0 = sst.Component("c0", "simpleElementExample.example0")
+#highlight-next line
 component0.addParam("eventsToSend", 50)
 ```
 

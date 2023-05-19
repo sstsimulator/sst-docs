@@ -1,10 +1,7 @@
 ---
 title: getId
 ---
-<!---
-SAND202X-XXXX X
-Source: location of source document if any
---->
+
 ```cpp
 ComponentId_t getId() const;
 ```
@@ -17,10 +14,9 @@ Returns the unique ID assigned to (Sub)Component by SST.
 * **returns** (ComponentId_t) The unique ID assigned to the (Sub)Component. 
 
 
-## Examples
+## Example
 
 <!--- SOURCE_CODE: None --->
-### Example 1
 ```cpp
 #include <sst/core/component.h>
 

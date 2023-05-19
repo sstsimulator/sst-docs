@@ -14,9 +14,8 @@ Add something to this UnitAlgebra. If the argument is a UnitAlgebra and the unit
 * **v** (typename T) value to add
 * **returns** (UnitAlgebra&) This UnitAlgebra after the addition operation.
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra num0("3s");
 SST::UnitAlgebra num1("4s");

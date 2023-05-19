@@ -12,9 +12,8 @@ Assignment operator that takes a string instead of a UnitAlgebra.
 * **v** (std::string) New value and units as a string
 * **returns** (UnitAlgebra&) The updated UnitAlgebra
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 SST::UnitAlgebra num0("3s");
 num0 = "3ms";

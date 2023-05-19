@@ -12,9 +12,8 @@ Returns the size (count) of parameters in the Params object. This includes both 
 * **returns** (size_t) The number of key/value parameter pairs that belong to the Params object
 
 
-## Examples
+## Example
 
-### Example 1
 ```cpp
 example::example(ComponentId_t id, Params& params) : Component(id)
 {
