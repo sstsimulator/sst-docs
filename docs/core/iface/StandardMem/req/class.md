@@ -2,14 +2,14 @@
 title: StandardMem::Request
 ---
 
-The Request class is the base class for all requests and responses that get sent through the StandardMem interface. Several basic request types are defined in the interface, including reads, writes, and flushes. In addition, a ['CustomReq'] and ['CustomResp'] type are provided. Implementations can use these to wrap custom request and response types that can also be passed through the interface alongside the basic request types.
+The Request class is the base class for all requests and responses that get sent through the StandardMem interface. Several basic request types are defined in the interface, including reads, writes, and flushes. In addition, a [`CustomReq`](CustomReq) and [`CustomResp`](CustomResp) type are provided. Implementations can use these to wrap custom request and response types that can also be passed through the interface alongside the basic request types.
 
 It is not expected that every StandardMem implementation (and by extension, every memory system component) will handle all of the available request types. Some are specific to particular categories of memory component, for example, flushes may only apply to cache components. If a StandardMem implementation does not implement a handler for a particular type, passing that type to the interface will result in an error message indicating that the request type is not supported.
 
 ## Types
 StandardMem::Request defines two types.
 * **id_t** (uint64_t) Every StandardMem::Request is assigned a unique (per-component) identifier. A request and response contain the same identifier to facilitate matching.
-* **flags_t** (uint32_t) The flags field is a 32-bit vector. The lower 16 bits are either in use or reserved for future use by the StandardMem::Request field. The upper 16 bits are available for memory and endpoint libraries to define their own flags. The `F_RSESERVED` flag marks the 16-bit boundary.
+* **flags_t** (uint32_t) The flags field is a 32-bit vector. The lower 16 bits are either in use or reserved for future use by the StandardMem::Request field. The upper 16 bits are available for memory and endpoint libraries to define their own flags. The `F_RESERVED` flag marks the 16-bit boundary.
     * **Flag::F_NONCACHEABLE** (`0x1`) Indicates caches should be bypassed for this Request
     * **Flag::F_FAIL** (`0x2`) For accesses that can fail, this flag indicates that the access failed
     * **Flag::F_TRACE** (`0x4`) Set this flag to request that the memory system generate trace or debug output for this event
@@ -172,5 +172,5 @@ Return the value of the Request's `flags` field.
 ```cpp
 std::string getFlagString();
 ```
-Returns a comma separated list (as a string) of the flags set on the request. Built in flags are listed by name (e.g., "F_\<FLAG\>"). Other flags are returned as "F_\<NUM\>" where `NUM` is the bit index of the set flag.
+Returns a comma separated list (as a string) of the flags set on the request. Built in flags are listed by name (e.g., `F_<FLAG>`). Other flags are returned as `F_<NUM>` where `NUM` is the bit index of the set flag.
 
