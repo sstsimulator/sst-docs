@@ -2,7 +2,7 @@
 title: StandardMem::Request
 ---
 
-The Request class is the base class for all requests and responses that get sent through the StandardMem interface. Several basic request types are defined in the interface, including reads, writes, and flushes. In addition, a [`CustomReq`](CustomReq) and [`CustomResp`](CustomResp) type are provided. Implementations can use these to wrap custom request and response types that can also be passed through the interface alongside the basic request types.
+The Request class is the base class for all requests and responses that get sent through the StandardMem interface. Several basic request types are defined in the interface, including reads, writes, and flushes. In addition, a [`CustomReq`](customreq) and [`CustomResp`](customresp) type are provided. Implementations can use these to wrap custom request and response types that can also be passed through the interface alongside the basic request types.
 
 It is not expected that every StandardMem implementation (and by extension, every memory system component) will handle all of the available request types. Some are specific to particular categories of memory component, for example, flushes may only apply to cache components. If a StandardMem implementation does not implement a handler for a particular type, passing that type to the interface will result in an error message indicating that the request type is not supported.
 

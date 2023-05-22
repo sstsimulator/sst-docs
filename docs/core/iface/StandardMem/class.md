@@ -1,4 +1,4 @@
----
+e--
 title: SST::Interfaces::StandardMem
 ---
 
@@ -15,7 +15,7 @@ StandardMem defines several types.
 * **Addr** (uint64_t) Represents a memory address.
 * [**Request**](req/class) A class representing a memory system request or response, for example a Read, Write, or Acknowledgement. The Request class is a base class for a number of included request and response types.
 * [**RequestConverter**](reqconverter) A class to convert a Request to an SST::Event* derived type
-* [**RequestHandler**](reqHandler) A class to handle a Request according to type
+* [**RequestHandler**](reqhandler) A class to handle a Request according to type
 * [**Handler**](handler) A function to notify the endpoint when the StandardMem interface receives a response
 
 
