@@ -1,5 +1,6 @@
 ---
 title: sst_types
+keywords: [ComponentId_t, StatisticId_t, LinkId_t, Cycle_t, SimTime_t, Time_t, watts, joules, farad, volts, LIKELY, UNLIKELY]
 ---
 
 SST defines a number of types that developers may encounter throughout the codebase. Several of these types are defined in the `sst_types.h` header and described below.
