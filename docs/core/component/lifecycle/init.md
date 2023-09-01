@@ -36,7 +36,7 @@ class basicSimLifeCycle : public SST::Component {
 	~basicSimLifeCycle();
 
     //highlight-next-line
-    virtual void init(unsigned phase) override;
+    virtual void init(unsigned int phase) override;
 
 	/** Other public functions here */
 
