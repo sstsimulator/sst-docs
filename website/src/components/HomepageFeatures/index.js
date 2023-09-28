@@ -22,7 +22,7 @@ export default function HomepageFeatures() {
       &nbsp;
       &nbsp;
       &nbsp;
-      <Link className="button button--primary" to="/sst-docs/docs/elements/ember/QuickStart">
+      <Link className="button button--primary" to="/sst-docs/docs/elements/intro">
         <Translate>SST Elements</Translate>
       </Link>
       </div>
