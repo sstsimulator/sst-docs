@@ -16,7 +16,7 @@ Return the default time base for the calling (Sub)Component.
 ## Example
 
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/memHierarchy/standardInterface.cc --->
-```cpp title="Excerpt from sst-elements/src/sst/elementsmemHierarchy/standardInterface.cc"
+```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/standardInterface.cc"
 StandardInterface::StandardInterface(SST::ComponentId_t id, Params& params, TimeConverter* time,
     HandlerBase* handler) : StandardMem(id, params, time, handler)
 {

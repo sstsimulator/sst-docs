@@ -7,7 +7,7 @@ SAND2022-6843 O
 Source: sst-documentation/manuals/python
 --->
 
-Sets the x, y, z coordinates for this element. This is for use with visualization. This funciton applies to both Components and SubComponents.
+Sets the x, y, z coordinates for this element. This is for use with visualization. This function applies to both Components and SubComponents.
 
 ## Syntax
 ```python

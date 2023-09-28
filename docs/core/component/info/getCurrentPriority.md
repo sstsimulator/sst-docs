@@ -10,7 +10,7 @@ int getCurrentPriority() const;
 SST handles activities in the same cycle in a specific priority order. Activities include things like events, clock handlers, synchronization, and simulation stopping points, as well as other SST-internal actions. When called in an event or clock handler, this function returns the priority of the event or clock handler.
 
 ## Parameters
-* **returns** (int) Priority of the current activitiy
+* **returns** (int) Priority of the current activity
 
 ## Example
 

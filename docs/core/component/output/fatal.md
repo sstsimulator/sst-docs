@@ -7,7 +7,7 @@ void fatal(uint32_t line, const char* file, const char* func, int exit_code, con
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
-Convienence function for reporting fatal error conditions. The function creates a new Output() object
+Convenience function for reporting fatal error conditions. The function creates a new Output() object
 and calls fatal() using the supplied parameters. Before calling fatal(), the function will also print information
 about the (sub)component that called fatal as well as general simulation state.
 
@@ -26,7 +26,7 @@ about the (sub)component that called fatal as well as general simulation state.
 <!--- SOURCE_CODE: None --->
 ```cpp
 if (fatal_error_condition)
-    fatal(CALL_INFO, -1, "Error, something terrible happend to component %s.\n", getName().c_str());
+    fatal(CALL_INFO, -1, "Error, something terrible happened to component %s.\n", getName().c_str());
 ```
 
 ## Header

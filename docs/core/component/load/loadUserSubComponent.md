@@ -19,8 +19,8 @@ Load a User-defined SST SubComponent, that is, one that was defined in the simul
 
 ## Example
 
-<!--- SOURCE_CODE: sst-elements/src/sst/elements/miranda/mirandCPU.cc --->
-```cpp title="Excerpt from sst-elements/src/sst/elements/miranda/mirandCPU.cc"
+<!--- SOURCE_CODE: sst-elements/src/sst/elements/miranda/mirandaCPU.cc --->
+```cpp title="Excerpt from sst-elements/src/sst/elements/miranda/mirandaCPU.cc"
 RequestGenCPU::RequestGenCPU(ComponentId_t id, Params& params) : Component(id) {
     /** Configuration here */
 

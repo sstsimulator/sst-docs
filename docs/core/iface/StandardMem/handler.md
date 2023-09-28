@@ -7,7 +7,7 @@ void func(StandardMem::Request* request);
 void func(StandardMem::Request* request, dataT data);
 ```
 
-StandardMem passes requests back to an endpoint using a handler. Handlers should use one of the above function signatures and are passed to the interface in its constructor. Calling this function denotes a transfer of responsibility for a Request from the interface to the endpoint. Once called, the interface should no longer access the `request` and the endpoint is responsible for subsequently `delete`ing the `request` if neccessary. 
+StandardMem passes requests back to an endpoint using a handler. Handlers should use one of the above function signatures and are passed to the interface in its constructor. Calling this function denotes a transfer of responsibility for a Request from the interface to the endpoint. Once called, the interface should no longer access the `request` and the endpoint is responsible for subsequently `delete`ing the `request` if necessary. 
 
 ## Requirements
 **Memory interface** &nbsp;  

@@ -2,7 +2,7 @@
 title: SST::ComponentExtension
 ---
 
-A ComponentExtension is a class that shares ELI with a Component. It can be useful when it is convienent to divide a Component class into separate classes but the additional classes do not need to be dynamically loadable or otherwise available to SST users. A ComponentExtension has access to the SST simulation via the Component it is loaded into. In parallel simulations, a ComponentExtension is always co-located with its Component.
+A ComponentExtension is a class that shares ELI with a Component. It can be useful when it is convenient to divide a Component class into separate classes but the additional classes do not need to be dynamically loadable or otherwise available to SST users. A ComponentExtension has access to the SST simulation via the Component it is loaded into. In parallel simulations, a ComponentExtension is always co-located with its Component.
 
 ## Example
 ```cpp title="Excerpt from sst-elements/src/sst/elements/memHierarchy/mshr.h"

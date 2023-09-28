@@ -10,7 +10,7 @@ This function is called during SST's `complete()` phase. The (Sub)Component load
 
 ## Requirements
 **Network interface** &nbsp;  
-Faciliate sending untimed requests sent by endpoints through the network
+Facilitate sending untimed requests sent by endpoints through the network
 
 **Endpoint** &nbsp;  
 Call `complete()` on the interface during each round of the `complete()` phase as SST does not automatically call this function on SubComponents. 

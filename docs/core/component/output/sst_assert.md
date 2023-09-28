@@ -8,7 +8,7 @@ void sst_assert(bool condition, uint32_t line, const char* file, const char* fun
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
-Convienence function for testing and reporting fatal error conditions. If the condition holds, [fatal()](fatal) will be called.
+Convenience function for testing and reporting fatal error conditions. If the condition holds, [fatal()](fatal) will be called.
 
 ## Parameters
 * **condition** (bool) Condition on which to call fatal() if false
@@ -25,7 +25,7 @@ Convienence function for testing and reporting fatal error conditions. If the co
 
 <!--- SOURCE_CODE: None --->
 ```cpp
-sst_assert(fatal_error_condition, CALL_INFO, -1, "Error, something terrible happend to component %s.\n", 
+sst_assert(fatal_error_condition, CALL_INFO, -1, "Error, something terrible happened to component %s.\n", 
     getName().c_str());
 ```
 

@@ -2,7 +2,7 @@
 title: RequestConverter
 ---
 
-The StandardMem::RequestConverter class is a pure virtual visitor class that allows StandardMem implementations to convert an incoming StandardMem::Request type to an SST::Event type that can be passed over SST::Links. StandardMem implementations should derive from RequestConverter to define a conversion function for each built-in StandardMem request type. Upon receiving a request the StandardMem implementation can use the derived RequestoConverter class to convert StandardMem requests by type. 
+The StandardMem::RequestConverter class is a pure virtual visitor class that allows StandardMem implementations to convert an incoming StandardMem::Request type to an SST::Event type that can be passed over SST::Links. StandardMem implementations should derive from RequestConverter to define a conversion function for each built-in StandardMem request type. Upon receiving a request the StandardMem implementation can use the derived RequestConverter class to convert StandardMem requests by type. 
 
 If a memory system implementation does not support a particular request type, it may call ([SubComponent::fatal](../../component/output/fatal)) in the corresponding conversion function or otherwise indicate an error. 
 

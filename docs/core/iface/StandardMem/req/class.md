@@ -85,7 +85,7 @@ Returns whether the `F_NONCACHEABLE` flag has been set (`true`) or not (`false`)
 ```cpp
 void setSuccess();
 ```
-Calling this function unsets the `F_FAIL` flag on the `Request`, indicating that the `Request` was successful. It is not neccessary to call this function on unconditional requests.
+Calling this function removes the `F_FAIL` flag from the `Request`, indicating that the `Request` was successful. It is not necessary to call this function on unconditional requests.
 
 ### unsetSuccess
 ```cpp

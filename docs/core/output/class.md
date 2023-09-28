@@ -10,7 +10,7 @@ SST Output objects have four major attributes:
 * **Verbose Level** A level that filters out calls to output where the message level is greater than the verbose level
 * **Verbose Mask** A bit mask that filters out calls to output where the bits set in the message's mask are not all set in the verbose mask
 
-The verbose level and mask are provided to enable finer-grain control of output. The advantage of using SST output is both the control it grants over what gets printed and also that it prevents interleaving of strings when multiple threads write to output simulatenously.
+The verbose level and mask are provided to enable finer-grain control of output. The advantage of using SST output is both the control it grants over what gets printed and also that it prevents interleaving of strings when multiple threads write to output simultaneously.
 
 ## Output Location
 SST Output location is controlled by a variable of type `output_location_t` which can be set to the following values:
@@ -19,7 +19,7 @@ SST Output location is controlled by a variable of type `output_location_t` whic
 * `Output::FILE` print to a file
 * `Output::NONE` do not print
 
-## Convienence Macros
+## Convenience Macros
 Several output functions take arguments identifying the calling location. To simplify passing these, the Output class provides the following macros:
 * **CALL_INFO**
 * **CALL_INFO_LONG**

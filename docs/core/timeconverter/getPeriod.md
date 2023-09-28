@@ -19,7 +19,7 @@ example::example(ComponentId_t id, Params& params) : Component(id)
 
     Output* out = getSimulationOutput();
     // Prints "Registered a 200MHz clock."
-    //highight-start
+    //highlight-start
     out->output("Registered a %s clock.",
         converter->getPeriod().toStringBestSI().c_str());
     //highlight-end

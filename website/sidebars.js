@@ -618,16 +618,49 @@ const sidebars = {
 
   /***** ELEMENTS ******/
   elements: [
+    'elements/intro',
+    "elements/ariel/intro",
+    "elements/balar/intro",
+    "elements/cacheTracer/intro",
+    "elements/cassini/intro",
+    "elements/cramsim/intro",
     /* Ember */
     {
       type: 'category',
-      label: 'Ember',
+      label: 'ember',
       link: {type: 'doc', id: 'elements/ember/intro'},
       items: [
         "elements/ember/QuickStart",
         "elements/ember/CreatingMotifs",
         "elements/ember/RunningMotifs"]
-    }
+    },
+    "elements/firefly/intro",
+    "elements/gensa/intro",
+    "elements/hermes/intro",
+    "elements/juno/intro",
+    "elements/kingsley/intro",
+    "elements/llyr/intro",
+    "elements/macro/intro",
+    "elements/memHierarchy/intro",
+    "elements/mercury/intro",
+    "elements/merlin/intro",
+    "elements/messier/intro",
+    "elements/miranda/intro",
+    "elements/mmu/intro",
+    "elements/opal/intro",
+    "elements/osseous/intro",
+    "elements/prospero/intro",
+    "elements/rdmaNic/intro",
+    "elements/samba/intro",
+    "elements/serrano/intro",
+    "elements/shogun/intro",
+    "elements/simpleElementExample/intro",
+    "elements/simpleExternalElement/intro",
+    "elements/simpleSimulation/intro",
+    "elements/thornhill/intro",
+    "elements/vanadis/intro",
+    "elements/vaultSimC/intro",
+    "elements/zodiac/intro"
   ],
 
   /***** TOOLS ******/

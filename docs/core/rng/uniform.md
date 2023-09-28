@@ -28,7 +28,7 @@ Return the next double in the distribution. This is a double converted from the 
 ## Example
 
 ```cpp
-SST::RNG::UniformDistribtuion* dist = new SST::RNG::UniformDistribution(5.0);
+SST::RNG::UniformDistribution* dist = new SST::RNG::UniformDistribution(5.0);
 
 double next;
 next = dist->getNextDouble();

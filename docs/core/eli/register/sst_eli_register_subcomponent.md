@@ -23,7 +23,7 @@ This macro must reside in a `public` section of the SubComponent's header file.
 * **name** (string) The name that will be used to instantiate this SubComponent in the simulation input configuration. It can be the same as the class_name but does not need to be. The full name of the SubComponent will be `library.name`.
 * **SST_ELI_ELEMENT_VERSION(X, Y, Z)** This is a macro that specifies the version of a SubComponent. `X`, `Y`, and `Z` are integers that form a version number X.Y.Z. For example: `SST_ELI_ELEMENT_VERSION(3, 0, 9)` yields a version of 3.0.9. Versions are not checked by SST, this is provided for developers to version and manage their libraries.
 * **description** (string) A description of the SubComponent.
-* **interface** (fully qualified class name) This is the API that the SubComponent impelements.
+* **interface** (fully qualified class name) This is the API that the SubComponent implements.
 
 ## Example
 
@@ -36,7 +36,7 @@ SST_ELI_REGISTER_SUBCOMPONENT(
     SST_ELI_ELEMENT_VERSION(1,0,0), // A version number
     "SubComponent that increments a value", // Description
     SST::simpleElementExample::basicSubComponentAPI // Fully qualified name of the API this subcomponent implements
-                                                    // A subcomponent can implment an API from any library
+                                                    // A subcomponent can implement an API from any library
 )
 ```
 

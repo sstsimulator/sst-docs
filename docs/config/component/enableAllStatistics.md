@@ -9,7 +9,7 @@ Source: sst-documentation/manuals/python
 
 Enables all statistics for the Component or SubComponent on which the call is made.
 
-## Synatx
+## Syntax
 ```python
 component.enableAllStatistics(stat_params_dict={}, apply_to_children=False)
 ```

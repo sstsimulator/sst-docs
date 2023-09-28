@@ -8,7 +8,7 @@ virtual void finish();
 
 *Availability:* Component, SubComponent, ComponentExtension
 
-The `finish()` function is analagous to the `setup()` function but called after simulation end. It is called once on each component, just prior to simulation destruction. Common uses of this function include generating output, local post-processing, and error-checking.
+The `finish()` function is analogous to the `setup()` function but called after simulation end. It is called once on each component, just prior to simulation destruction. Common uses of this function include generating output, local post-processing, and error-checking.
 
 :::info Important
 This function is called by SSTCore on Components only. Components, SubComponents, and ComponentExtensions must in turn manually call `finish()` on their SubComponents and ComponentExtensions. This allows developers to control both whether those objects participate in the Finish phase, and the order in which they participate. 

@@ -18,7 +18,7 @@ This macro must reside in a `public` section of the tool's header file.
 
 ## Parameters
 
-* **class_name** (class) The name of the profling tool class. This is not a string.
+* **class_name** (class) The name of the profiling tool class. This is not a string.
 * **profile_api** (class) The name of the profiling API that this tool implements. This is not a string.
 * **library** (string) The name of the library that this tool belongs to. If the library name does not exist, it will be created.
 * **name** (string) The name that will be used to instantiate this tool in the simulation input configuration. It can be the same as the class_name but does not need to be. The full name of the tool will be `library.name`.

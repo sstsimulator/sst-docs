@@ -22,7 +22,7 @@ Load an SST SubComponent anonymously, that is, not via the simulation configurat
 
 ## Example
 
-<!--- SOURCE_CODE: sst-elements/src/sst/elements/miranda/mirandCPU.cc --->
+<!--- SOURCE_CODE: sst-elements/src/sst/elements/miranda/mirandaCPU.cc --->
 ```cpp title="Excerpt from sst-elements/src/sst/elements/miranda/mirandaCPU.cc"
 RequestGenCPU::RequestGenCPU(ComponentId_t id, Params& params) : Component(id) {
     /** Configuration here */

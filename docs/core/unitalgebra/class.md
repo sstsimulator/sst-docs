@@ -1,8 +1,9 @@
 ---
 title: SST::UnitAlgebra
+keywords: [seconds, bytes, bits, events, Hz, hz, Bps, bps, event, SI, unit]
 ---
 
-The UnitAlgebra class can be used to manipulate values with units that are common in architectural simulations. The class includes support for basic arithmetic with units (addition, subtraction, multiplaction, division), as well as conversion between related units such as bits and bytes. UnitAlgebra also handles SI units.
+The UnitAlgebra class can be used to manipulate values with units that are common in architectural simulations. The class includes support for basic arithmetic with units (addition, subtraction, multiplication, division), as well as conversion between related units such as bits and bytes. UnitAlgebra also handles SI units.
 
 Each UnitAlgebra consists of a value, stored in a decimal fixed point format, and units, which can include both a numerator and denominator (e.g., bytes/second). 
 
@@ -41,7 +42,7 @@ All units can also include standard SI prefixes as follows. UnitAlgebra uses the
 The UnitAlgebra class supports serialization and can be used in event serializers.
 
 :::tip Speed Check
-UnitAlgebra is designed for convienence, not performance. It employs string operations to manipulate units. Use it outside of SST's run phase for things like parsing parameters and calculating values needed for simulation. During the run phase, use this class sparingly or in situations where performance is not a critical concern (e.g., for pretty-printing debug information).
+UnitAlgebra is designed for convenience, not performance. It employs string operations to manipulate units. Use it outside of SST's run phase for things like parsing parameters and calculating values needed for simulation. During the run phase, use this class sparingly or in situations where performance is not a critical concern (e.g., for pretty-printing debug information).
 :::
 
 ## Header

@@ -16,13 +16,13 @@ SimpleNetwork defines several types.
 In addition to implementing the functions described in this network interface documentation, SimpleNetwork interfaces must also perform the following tasks. 
 * **Assign a unique ID to each network endpoint**
 
-    This ID is returned by the [`getEndpointID`](getEndpointID) function, and the IDs are used in SimpleNetwork::Request to identify where a request orginates from (src) and to where it should be sent (dest). 
+    This ID is returned by the [`getEndpointID`](getEndpointID) function, and the IDs are used in SimpleNetwork::Request to identify where a request originates from (src) and to where it should be sent (dest). 
     * [getEndpointID()](getEndpointID)
     * [Request](Request)
     
 * **Facilitate untimed data transfer**
 
-During SST's [init()](../../component/lifecycle/init) and [complete()](../../component/lifecycle/init) phases, events can be sent over links. While a network does not need to use these phases itself (although it may), a network *should* support endpoints sending events over network links during these phases. In addtition to routing events to specific endpoints, the network must also support broadcasting of messages during the untimed phases when INIT_BROADCAST_ADDRESS is specified as the destination.  This can be done either by the SimpleNetwork object creating an event for each endpoint in the network, or the network routers can use more intelligent algorithms to guarantee that each end point receives exactly one copy of the event.
+During SST's [init()](../../component/lifecycle/init) and [complete()](../../component/lifecycle/init) phases, events can be sent over links. While a network does not need to use these phases itself (although it may), a network *should* support endpoints sending events over network links during these phases. In addition to routing events to specific endpoints, the network must also support broadcasting of messages during the untimed phases when INIT_BROADCAST_ADDRESS is specified as the destination.  This can be done either by the SimpleNetwork object creating an event for each endpoint in the network, or the network routers can use more intelligent algorithms to guarantee that each end point receives exactly one copy of the event.
 
 * **Support both polling and interrupt-based event delivery**
 

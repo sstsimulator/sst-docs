@@ -7,7 +7,7 @@ void send(SimTime_t delay, Event* event);
 void send(Event* event);
 ```
 
-Send an event over the link, optionally, with additional latency added to the mimimum latency the link was configured with as well as any other latency added to the link.
+Send an event over the link, optionally, with additional latency added to the minimum latency the link was configured with as well as any other latency added to the link.
 
 
 ## Parameters

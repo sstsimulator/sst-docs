@@ -10,7 +10,7 @@ Set which addresses in the global address space will map to this endpoint. Only 
 
 ## Requirements
 **Memory interface** &nbsp;  
-Support setting memory mapped addresses if supported by the memory system. The function must be implemented, but a particular impelementation can raise an error if this is not supported.
+Support setting memory mapped addresses if supported by the memory system. The function must be implemented, but a particular implementation can raise an error if this is not supported.
 
 **Endpoint** &nbsp;  
 Call this function to set the addressable region if the endpoint needs to be mapped into the memory space.

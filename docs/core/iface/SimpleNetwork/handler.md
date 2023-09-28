@@ -76,7 +76,7 @@ void LinkControl::handle_input(Event* ev)
 
         // Invoke the receive functor if one was registered with this interface
         // Remove or keep the functor depending on the functor's return value
-        if (recieveFunctor != nullptr ) {
+        if (receiveFunctor != nullptr ) {
             //highlight-next-line
             bool keep = (*receiveFunctor)(vn);
             if ( !keep ) receiveFunctor = nullptr;

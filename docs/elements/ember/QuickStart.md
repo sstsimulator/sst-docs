@@ -3,7 +3,7 @@ title: QuickStart Motif Guide
 ---
 
 ## What is an Ember motif?
-Ember Motifs are a high-level represenation of a workload's communication patterns. They are used to estimate performance on hardware at scale in SST simulations.
+Ember Motifs are a high-level representation of a workload's communication patterns. They are used to estimate performance on hardware at scale in SST simulations.
 This guide provides a directions on how to:
 
 *   Implement a empty motif.
@@ -96,7 +96,7 @@ The SST Document Statistics provides tracking for initialization and various MPI
 
 Motifs are executed as follows:
 
-1. The motif generator is initialized (the contructor).
+1. The motif generator is initialized (the constructor).
 1. The generate function is invoked and returns either true or false.
 1. The events on the eventQueue are processed.
 1. If the generate function in step 2 returned false, return to step 2, otherwise the motif is complete.

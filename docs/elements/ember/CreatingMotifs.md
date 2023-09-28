@@ -40,7 +40,7 @@ The parameters of this function are:
 
 1. Class associated with this Motif
 1. Library that the SubComponent belongs to
-1. Identifier of the Motif. This name, prefixed by the library name ('ember'), will be used by SST to identify the subcomponent. Note that the end of this parameter must alwasy be 'Motif'.
+1. Identifier of the Motif. This name, prefixed by the library name ('ember'), will be used by SST to identify the subcomponent. Note that the end of this parameter must always be 'Motif'.
 1. SST elements version
 1. Comment describing what the motif does
 1. EmberGenerator API

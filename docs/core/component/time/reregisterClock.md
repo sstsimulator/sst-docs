@@ -9,7 +9,7 @@ Cycle_t reregisterClock(TimeConverter* freq, Clock::HandlerBase* handler);
 
 Re-register a clock at the specified frequency. On each clock cycle, the associated handler will be called. Calling this function for a clock frequency that was not previously registered will cause an error. The function will return the cycle count (in terms of the clock frequency) at which the clock will next be called.
 
-*Note:* If called after the simulation run loop (e.g., in `finish()` or `complete()`)), the cycle time returned by this function will be one cycle past the end time of the simulation. Because there can be a small lag bectween simulation end and detection of simulation end, during which clocks can run a few extra cycles, the return value of this function just prior to simulation end may be greater than the value returned after simulation end.
+*Note:* If called after the simulation run loop (e.g., in `finish()` or `complete()`)), the cycle time returned by this function will be one cycle past the end time of the simulation. Because there can be a small lag between simulation end and detection of simulation end, during which clocks can run a few extra cycles, the return value of this function just prior to simulation end may be greater than the value returned after simulation end.
 
 
 ## Parameters

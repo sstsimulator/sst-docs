@@ -21,7 +21,7 @@ The following are virtual functions that must be defined by derived classes.
 ```cpp
 virtual Addr getRoutingAddress() = 0;
 ```
-This function should return an address that can be used by the memory sytem implementation to appropriately forward the request to its intended destination.
+This function should return an address that can be used by the memory system implementation to appropriately forward the request to its intended destination.
 
 ### getSize
 ```cpp
@@ -53,7 +53,7 @@ virtual void serialize_order(SST::Core::Serialization::serializer& ser) = 0;
 ```
 This function must be implemented by all CustomData derivatives to enable serialization of the class' data members. See [Event serialization](../../../events/serialize_order) for additional details. In addition to defining this function, derivative classes *must* include this macro in their class header:
 ```cpp
-ImepmentSerializable(CLASS); // Where CLASS is the name of the derivative class
+ImplementSerializable(CLASS); // Where CLASS is the name of the derivative class
 ```
 
 

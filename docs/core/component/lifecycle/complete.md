@@ -8,7 +8,7 @@ virtual void complete(unsigned phase);
 
 *Availability:* Component, SubComponent, ComponentExtension
 
-The `complete()` function is analagous to the `init()` function but called after simulation end. Any call to get simulation time during this phase returns the simulation's end time. During this phase, components may send events using the untimed event send and receive functions. As with init, complete occurs in rounds and the phase terminates when there are no events to deliver in a subsequent round. Common uses of this lifecycle phase include post-processing data for analysis, quiescing state, and error checking.
+The `complete()` function is analogous to the `init()` function but called after simulation end. Any call to get simulation time during this phase returns the simulation's end time. During this phase, components may send events using the untimed event send and receive functions. As with init, complete occurs in rounds and the phase terminates when there are no events to deliver in a subsequent round. Common uses of this lifecycle phase include post-processing data for analysis, quiescing state, and error checking.
 
 :::info Important
 This function is called by SSTCore on Components only. Components, SubComponents, and ComponentExtensions must in turn manually call `complete()` on their SubComponents and ComponentExtensions. This allows developers to control both whether those objects participate in the Complete phase, and the order in which they participate. 

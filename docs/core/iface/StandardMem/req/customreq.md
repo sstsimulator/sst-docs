@@ -10,7 +10,7 @@ SST::Interfaces::StandardMem::CustomReq(CustomData* data, flags_t flags = 0, Add
 **Response Type** [StandardMem::CustomResp](customresp)  &nbsp;  
 **Needs Response** `true`
 
-The `CustomReq` class allows implementations (endpoints and/or memory systems) to add additional custom memory transactions to the set provided by StandardMem. The class wraps a generic data structure, [`CustomData`](customdata) which can be extended by endpoints and the memory system to dynmaically add new request types to the StandardInterface. The `CustomData` class provides a minimal set of functions to enable a memory system to route requests by address, create responses, and generate debug/output for the CustomReq. 
+The `CustomReq` class allows implementations (endpoints and/or memory systems) to add additional custom memory transactions to the set provided by StandardMem. The class wraps a generic data structure, [`CustomData`](customdata) which can be extended by endpoints and the memory system to dynamically add new request types to the StandardInterface. The `CustomData` class provides a minimal set of functions to enable a memory system to route requests by address, create responses, and generate debug/output for the CustomReq. 
 
 ## Member variables
 Including those inherited from the `StandardMem::Request` base class, `StandardMem::CustomReq` includes the following member variables.

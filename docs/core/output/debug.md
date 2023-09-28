@@ -12,7 +12,7 @@ This function prints a debug message. The message is only printed if the output_
 * **file** (const char*) File name of calling function (use CALL_INFO macro)
 * **func** (const char*) Name of calling function (use CALL_INFO macro)
 * **output_level** (uint32_t) For output to occur, output_level must be less than or equal to the Output's verbose_level
-* **output_bits** (uint32_t) For output to occur, all bits set in this parameter must also be set in the Output's verbose_mask. It uses this logic: if (`~verbose_maks & output_bits == 0`), then output is enabled.
+* **output_bits** (uint32_t) For output to occur, all bits set in this parameter must also be set in the Output's verbose_mask. It uses this logic: if (`~verbose_mask & output_bits == 0`), then output is enabled.
 * **format** (const char*) Format string. All valid formats for printf are available
 * **...** (variable) Arguments for format string
 * **returns** none

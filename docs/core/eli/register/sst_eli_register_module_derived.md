@@ -12,7 +12,7 @@ SST_ELI_REGISTER_MODULE_DERIVED(class_name, "library", "name",
     SST_ELI_ELEMENT_VERSION(major, minorX, minorY), "description", api_class_name)
 ```
 
-This macro was used temporarily to facilitate a signature change in `SST_ELI_REGISTER_MODULE` between SST 11 and 13. As of SST 13, it is deprecated and `SST_ELI_REGISTER_MODULE` uses the new signature. Any existing use of this macro can drop the `_DERVIED` in the macro name without any other change.
+This macro was used temporarily to facilitate a signature change in `SST_ELI_REGISTER_MODULE` between SST 11 and 13. As of SST 13, it is deprecated and `SST_ELI_REGISTER_MODULE` uses the new signature. Any existing use of this macro can drop the `_DERIVED` in the macro name without any other change.
 
 :::info Important
 This macro must reside in a `public` section of the Module's header file.

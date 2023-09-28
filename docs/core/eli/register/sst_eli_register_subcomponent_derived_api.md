@@ -20,7 +20,7 @@ This macro must reside in a `public` section of the SubComponent API's header fi
 
 ## Example
 
-In this example, ASubComponentAPI is a SubComponent API class. AMoreSpecificSubComponentAPI is another SubComponent API class that inherits from ASubCompponentAPI. AnActualSubComponent is an SST SubComponent that inherits from AMoreSpecificSubComponentAPI. The subcomponent inherits the parameters from both its parent classes.
+In this example, ASubComponentAPI is a SubComponent API class. AMoreSpecificSubComponentAPI is another SubComponent API class that inherits from ASubComponentAPI. AnActualSubComponent is an SST SubComponent that inherits from AMoreSpecificSubComponentAPI. The subcomponent inherits the parameters from both its parent classes.
 
 ```cpp
 #include <sst/core/subcomponent.h>
@@ -55,10 +55,10 @@ class AnActualSubComponent : public SST::AMoreSpecificSubComponentAPI
 {
 public:
 
-    SST_ELI_REGISTER_SUBCOMPONENTD(
+    SST_ELI_REGISTER_SUBCOMPONENT(
         AnActualSubComponent,               // SubComponent class
         "exampleLibrary",                   // Element library (for Python/library lookup)
-        "mysub",                            // SubCompponent name (for Python/library lookup)
+        "mysub",                            // SubComponent name (for Python/library lookup)
         SST_ELI_ELEMENT_VERSION(1,0,0),     // Version of the component (not related to SST version)
         "Example of ELI inheritance",       // Description
         SST::AMoreSpecificSubComponentAPI   // SubComponent API

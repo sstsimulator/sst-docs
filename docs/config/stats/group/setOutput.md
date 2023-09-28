@@ -18,7 +18,7 @@ group.setOutput(output)
 ```
 
 ## Parameters
-* **output** (type: sst.StatisticOuptut) StatisticOutput object that will record the data 
+* **output** (type: sst.StatisticOutput) StatisticOutput object that will record the data 
 * **returns** none
 
 

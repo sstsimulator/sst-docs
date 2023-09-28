@@ -6,11 +6,11 @@ title: init
 virtual void init(unsigned int phase);
 ```
 
-See [`init()`](../../component/lifecycle/init) for a description of SST's init phase and the use of this function. The (Sub)Component that loaded a SimpleNetwork interface should call this function during its own `init()` function. A SimpleNetwork interface should faciliate sending untimed requests during the init() phase, however, it may use the [`isNetworkInitialized()`](isNetworkInitialized) function to block an endpoint from sending requests until it is ready to accept them.
+See [`init()`](../../component/lifecycle/init) for a description of SST's init phase and the use of this function. The (Sub)Component that loaded a SimpleNetwork interface should call this function during its own `init()` function. A SimpleNetwork interface should facilitate sending untimed requests during the init() phase, however, it may use the [`isNetworkInitialized()`](isNetworkInitialized) function to block an endpoint from sending requests until it is ready to accept them.
 
 ## Requirements
 **Network interface** &nbsp;  
-Faciliate sending untimed requests sent by endpoints through the network. The network does not need to facilitate sending requests until the interface's [`isNetworkInitialized()`](isNetworkInitialized) function returns true. In addtition to routing events to specific endpoints, the network must also support broadcasting of messages during the untimed phases when INIT_BROADCAST_ADDRESS is specified as the destination. This can be done either by the SimpleNetwork object creating an event for each endpoint in the network, or the network routers can use more intelligent algorithms to guarantee that each end point receives exactly one copy of the event.
+Facilitate sending untimed requests sent by endpoints through the network. The network does not need to facilitate sending requests until the interface's [`isNetworkInitialized()`](isNetworkInitialized) function returns true. In addition to routing events to specific endpoints, the network must also support broadcasting of messages during the untimed phases when INIT_BROADCAST_ADDRESS is specified as the destination. This can be done either by the SimpleNetwork object creating an event for each endpoint in the network, or the network routers can use more intelligent algorithms to guarantee that each end point receives exactly one copy of the event.
 
 **Endpoint** &nbsp;  
 Call `init()` on the interface during each round of the `init()` phase as SST does not automatically call this function on SubComponents. 

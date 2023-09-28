@@ -11,7 +11,7 @@ Returns the RankInfo structure holding rank and thread information for this Comp
 
 
 ## Parameters
-* **returns** (RankInfo) The RankInfo structure containing this omponent's rank and thread
+* **returns** (RankInfo) The RankInfo structure containing this component's rank and thread
 
 
 ## Example

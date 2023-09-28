@@ -27,7 +27,7 @@ basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id)
     // Configure the ports in the vector that are connected.
     std::string linkprefix = "port_vector";
     std::string linkname = linkprefix + "0";
-    int portunm = 0;
+    int portnum = 0;
     //highlight-next-line
     while (isPortConnected(linkname)) {
         SST::Link* link = configureLink(linkname, new Event::Handler<basicLinks,int>(this, &basicLinks::handleWithEventID, portnum));

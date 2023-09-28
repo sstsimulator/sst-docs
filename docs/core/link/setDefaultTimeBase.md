@@ -37,7 +37,7 @@ void LinkControl::init(unsigned int phase)
             // Compute the link timebase based on the link bandwidth
             UnitAlgebra link_clock = link_bw / flit_size_ua;
 
-            // Set the 'output_timing' link's timebase to match bandwdith
+            // Set the 'output_timing' link's timebase to match bandwidth
             TimeConverter* tc = getTimeConverter(link_clock);
             //highlight-next-line
             output_timing->setDefaultTimeBase(tc);

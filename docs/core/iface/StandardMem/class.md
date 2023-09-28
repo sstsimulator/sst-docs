@@ -1,4 +1,4 @@
-e--
+---
 title: SST::Interfaces::StandardMem
 ---
 
@@ -8,7 +8,7 @@ The StandardMem interface defines an interface between a core or other compute u
 
 To send requests into the memory system, the CPU uses the interface's [`send`](send) function and passes a request as one of the [StandardMem::Request](req/class) types. The interface converts incoming requests into an implementation-specific SST::Event type using converters which in turn belong to a derived instance of the [StandardMem::RequestConverter](reqconverter) class. These events can then be sent among the memory (or any other compatible) components as shown in the cloud below. As the StandardMem interface is part of the memory system component space, it should have knowledge of these library-internal event types. Finally, when the interface needs to pass an event to the CPU, it passes the event as a StandardMem::Request using a [callback function](handler) (`StdMemCallbackHandler`). Finally, the CPU implements a class based on the StandardMem::RequestHandler class (`derivedRequestHandlerClassInstance`) that provides visitor functions for various StandardMem::Request types. In hte callback function, the CPU invokes this visitor class to allow requests to be handled according to type.
 
-The image describes a concerete implementation of the interface and its use in a system. It is also valid for the StandardMem interface to interact with a memory system via SubComponents rather than Links, or for the endpoint to be a SubComponent rather than a Component. Likewise, the CPU in the example could be replaced by any ohter entity that needs to interact with a memory system. 
+The image describes a concrete implementation of the interface and its use in a system. It is also valid for the StandardMem interface to interact with a memory system via SubComponents rather than Links, or for the endpoint to be a SubComponent rather than a Component. Likewise, the CPU in the example could be replaced by any other entity that needs to interact with a memory system. 
 
 ## Types
 StandardMem defines several types. 

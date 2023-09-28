@@ -20,7 +20,7 @@ Including those inherited from the `StandardMem::Request` base class, `StandardM
 * **vAddr** (Addr) The virtual (if any) starting address for the bytes to be read
 * **size** (uint64_t) The number of bytes to read
 * **inv** (bool) If `true`, the flush should also invalidate the line. If `false`, the line can remain in the cache in a clean state.
-* **depth** (uint32_t)  How many levels down the memory hierarchy the flush should propogate
+* **depth** (uint32_t)  How many levels down the memory hierarchy the flush should propagate
 * **iPtr** (Addr) An instruction pointer. This is optional metadata.
 * **tid** (uint32_t) An optional thread ID, can be used by memory systems if needed
 
@@ -51,7 +51,7 @@ Including those inherited from the `StandardMem::Request` base class, `StandardM
 ```cpp
 Request* makeResponse();
 ```
-Creates a [FlushResp](flushresp) initialized as a response to this FlushAddr request. If the memory system implementation allows flushes to fail, the memory interface should subsequently set the F_FAIL flag on the response if neccessary.
+Creates a [FlushResp](flushresp) initialized as a response to this FlushAddr request. If the memory system implementation allows flushes to fail, the memory interface should subsequently set the F_FAIL flag on the response if necessary.
 
 #### needsResponse
 ```cpp

@@ -13,7 +13,7 @@ Generators include:
     - A Mersenne-based RNG. This provides better "randomness" compared to Marsaglia but is more computationally expensive.
 * **XOR-Shift**
     - `SST::RNG::XORShift`
-    - A lightweight and computationally inexpensive RNG based on xort-shift operations. Implements the algorithm described [here](http://en.wikipedia.org/wiki/Xorshift).
+    - A lightweight and computationally inexpensive RNG based on xor-shift operations. Implements the algorithm described [here](http://en.wikipedia.org/wiki/Xorshift).
 
 ## API
 Random number generators implement the following API:

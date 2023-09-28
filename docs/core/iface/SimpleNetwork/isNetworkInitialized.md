@@ -28,7 +28,7 @@ Must use this function during `init()` to wait until the network is initialized 
 
 ## Examples
 
-### Example 1: A network interface using isNetworkIntialized
+### Example 1: A network interface using isNetworkInitialized
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/merlin/interfaces/linkControl.h --->
 In this example, taken from the Merlin element library, the SimpleNetwork interface uses phase numbers 0-2 of `init()` to perform internal initialization and allow network components to agree on network parameters. During those phase numbers, calls to `isNetworkInitialized()` will return `false`. Once the network is ready, `isNetworkInitialized()` returns `true`, allowing the endpoints to do their own `init()` protocols if needed.
 

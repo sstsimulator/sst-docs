@@ -1,0 +1,152 @@
+---
+title: SST Elements
+sidebar_label: Overview
+---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+SST Element libraries contain components, subcomponents, modules, and other SST objects that can be used to build a simulation. 
+
+
+## [SST Community Libraries](http://sst-simulator.org/SSTPages/SSTMainCommunity/)
+The pages in this area describe the libraries available from the SST project. Many other libraries are available, check out the [community page](http://sst-simulator.org/SSTPages/SSTMainCommunity/).
+
+## SST Project Libraries
+Most SST-provided element libraries are located in the [sst-elements](https://github.com/sstsimulator/sst-elements) repository, though a few are in separate repositories. 
+The libraries range from early-stage models with limited functionality to those that are mature and extensively tested. In addition, we categorize elements by development activity and planned trajectory ("development path").
+
+<details>
+<summary>SST elements are categorized according to maturity and development path. </summary>
+  <Tabs>
+  <TabItem value="maturity" label="Maturity" default>
+  <table>
+  <tr>
+    <th> </th>
+    <th> Maturity </th>
+    <th> Reliability </th>
+    <th> Testing </th>
+    <th> Documentation </th>
+  </tr>
+  <tr>
+    <th> Early Development (1) </th>
+    <td> An element in its initial stages of development. "Alpha" quality. </td>
+    <td> <i>May be unreliable.</i> The APIs and behavior of the element may change and the element should not be considered stable yet. Configurations outside those tested may fail to work. </td>
+    <td> <i>None required.</i> Tests may produce unreliable and/or unreproducible results. </td> 
+    <td> <i>None required.</i> </td>
+  </tr>
+  <tr>
+    <th> Prototype (2) </th>
+    <td> The element's basic functionality is in place, but many features are still being developed. The element is usable within tested configurations but may not work outside of those. "Beta" quality. </td>
+    <td> <i>Somewhat reliable.</i> APIs and implementations may change suddenly as development progresses. Bugs may be encountered outside of tested configurations. </td> 
+    <td> <i>Required.</i> Passes basic functionality testing. Builds reliably as part of overnight project builds. </td>
+    <td> <i>Required.</i> Documentation may be limited to a statement of the element's use and behavior. </td>
+  </tr>
+  <tr>
+    <th> Mature (3) </th>
+    <td> The element's major capabilities are stable, reliable, and reasonably well-tested although performance enhancements, validation, and new features may be on-going. </td>
+    <td> <i>Reliable.</i> The element's major features are stable, tested, and in some cases, validated. Major and/or breaking changes are communicated to users in advance (e.g., deprecation warnings, release notes, etc.). </td>
+    <td> <i>Required.</i> Has undergone substantial capability testing. Builds reliably as part of overnight project builds. </td>  
+    <td> <i>Required.</i> More extensive than that of prototype elements. </td>
+  </tr>
+  </table>
+
+  </TabItem>
+  <TabItem value="develop" label="Development Path">
+
+  In addition to a maturity level, elements belong to one of the following development paths.  &nbsp;  
+  
+  
+  **Experimental:** A unique, "one-off" or experimental implementation that is not necessarily intended to be part of SST long-term. No elements in other development paths may rely on experimental elements. These elements are considered "unsupported".  &nbsp;  
+  
+  
+  **Active:** An element that is actively being maintained, enhanced, and developed. &nbsp;  
+  
+  
+  **Maintenance:** An element that is not currently under active development but is still maintained and tested regularly. Occasional feature updates and bug fixes will be made to ensure the element continues to function. This does *not* imply end-of-life. &nbsp;  
+  
+  
+  **Deprecated:** An element that is end-of-life. Once deprecated, an element is subject to removal in future releases.
+
+  </TabItem>
+  </Tabs>
+</details>
+
+### `sst-info`
+All Element libraries, whether provided via the SST repos or from the community, export certain Element Library Information (ELI) that can be queried at the command line using the `sst-info` utility.
+This information includes a basic description of each element (i.e., component, subcomponent, module, etc.) within the library as well the parameters, statistics, and ports available for the element.
+Elements that implement interfaces (e.g., subcomponents, modules, etc.) also declare which interface they implement.
+The documentation here supplements sst-info's basic information and provides context, implementation details, and configuration hints. 
+
+### SST-Elements Repository Structure
+The root directory of [sst-elements](https://github.com/sstsimulator/sst-elements) contains a number of subdirectories as well as a brief README, License, and contributor information. 
+The element source code lies in the `sst-elements/src/sst/elements` subdirectory. 
+Each library has its own directory in this location. 
+Generally, it is the convention for libraries to include their set of tests in a `tests` subdirectory.
+
+## SST Elements
+Elements range from experimental to mature. 
+Most of the elements below reside in the sst-elements repository, but a few are in standalone repositories. 
+All are available via the sstsimulator repositories while only the "released" libraries are available from the release tarballs.
+
+### Examples
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [simpleElementExample](simpleElementExample/intro)    | 3   | Active        | 13.0          | Examples for building, running, parameterizing, etc. simulations and elements | 
+| [simpleExternalElement](simpleExternalElement/intro)  | 3   | Active        | 13.0          | Example of an element library external to the sst-elements repository |
+| [simpleSimulation](simpleSimulation/intro)            | 3   | Maintenance   | 12.1          | Example simulation components that simulate cars going through a carwash |
+
+### Network Endpoints
+
+These models are generally used to drive networks at system scales where detailed cycle-level processor modeling become prohibitively time-consuming.
+
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [ember](ember/intro)              | 3 	      | Active        | 13.0          | Communication motifs for network simulations |
+| [firefly](firefly/intro)          | 3 	      | Active        | 13.0          | Low-level communication protocol for use with system network simulations |
+| [hermes](hermes/intro)            | 3 	      | Active        | 13.0          | Interface to message passing functions for system network simulations |
+| [macro](macro/intro)              | 3         | Maintenance   | 13.0          | Simulation of coarse-grain distributed memory applications |
+| [mercury](mercury/intro)          |	1 	      | Active        | 13.0          | Support for workload/application models |
+| [thornhill](thornhill/intro)      |	1 	      | Maintenance   | 13.0          | Support library for detailed endpoint models in Ember | 
+| [zodiac](zodiac/intro) 	          |	1 	      | Maintenance   | 13.0          | Trace-based endpoints for network simulation |
+
+### Networks
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [kingsley](kingsley/intro)        |	2 	      | Active        | 13.0          | Simulates a mesh network-on-chip |
+| [merlin](merlin/intro)            |	3 	      | Active        | 13.0          | Router model with flexible topology modules to simulate networks. |
+| [shogun](shogun/intro)            | 2 	      | Active        | 13.0          | Provides a simple crossbar model | 
+
+### Processors
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [ariel](ariel/intro) 	            | 3 	      | Active        | 13.0          | Dynamic trace-based model leveraging PIN to execute x86 binaries |
+| [balar](balar/intro) 	            | 2 	      | Active        | 13.0          | GPU component based on GPGPU-Sim |
+| [gensa](gensa/intro)              | 1         | Experimental  | Never         | Neuromorphic processor |
+| [juno](juno/intro)                | 2         | Maintenance   | 13.0          | Example pipeline processor model with a custom ISA |
+| [llyr](llyr/intro)                | 1         | Active        | Never         | A spatial compute accelerator model |
+| [miranda](miranda/intro)          |	3 	      | Active        | 13.0          | Processor driven by a state machine to generate memory instructions |
+| [prospero](prospero/intro)        | 2 	      | Active        | 13.0          | Processor that reads a trace from file |
+| [serrano](serrano/intro)          | 1         | Experimental  | Never         | Coarse-grain reconfigurable processor model |
+| [vanadis](vanadis/intro)          |	2 	      | Active        | 13.0          | Core pipeline model supporting RISC-V and MIPS |
+
+### Cache and Memory System
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [cacheTracer](cacheTracer/intro)  | 1 	      | Maintenance   | 13.0          | Intercepts cache accesses for observation |
+| [cassini](cassini/intro)          | 2 	      | Active        | 13.0          | Prefetchers and other memory system plug-in modules |
+| [Cramsim](cramsim/intro)          | 2 	      | Maintenance   | 13.0          | Memory model from IBM - DDR, HBM |
+| [memHierarchy](memHierarchy/intro)|	3 	      | Active        | 13.0          | Memory system components including caches, directories, and memory controllers and models |
+| [messier](messier/intro)          |	2 	      | Active        | 13.0          | Provides a detailed model for NVM-based DIMMs with high-end internal controller |
+| [mmu](mmu/intro)                  |	1 	      | Active        | 13.0          | A basic TLB/MMU implementation that works with Vanadis |
+| [opal](opal/intro)                | 1         | Active        | Never         | Memory allocation support for multi-node simulations using Ariel |
+| [rdmaNic](rdmaNic/intro)          | 1 	      | Active        | 13.0          | Facilitates RDMA in conjunction with Vanadis | 
+| [samba](samba/intro)              | 2         | Maintenance   | 13.0          | A detailed memory management unit (MMU) model |
+| [VaultSimC](vaultsimc/intro)      |	3 	      | Maintenance   | 13.0          | Models a vaulted memory architecture | 
+
+### Other/Miscellaneous
+| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
+| ---                               | ---       | ---           | ---           | ---           |
+| [osseous](osseous/intro)          | 1 	      | Active        | Never         | Supports generation of SST components from RTL via [Essent](https://github.com/ucsc-vama/essent) |

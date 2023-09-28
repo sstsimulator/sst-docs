@@ -11,7 +11,7 @@ Simulation* getSimulation();
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
-Return the SST simulation instance. Most APIs available via the simulation object are also available through the Component API so this function should not generally be neccessary. 
+Return the SST simulation instance. Most APIs available via the simulation object are also available through the Component API so this function should not generally be necessary. 
 
 
 ## Parameters

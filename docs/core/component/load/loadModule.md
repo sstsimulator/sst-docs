@@ -30,7 +30,7 @@ ArielCore::ArielCore(ComponentId_t id, Params& params) : Component(id) {
         //highlight-next-line
         traceGen = loadModule<ArielTraceGenerator>(traceGenName, interfaceParams);
 
-        sst_assert(traceGen, CALL_INFO, -1, "Unable to laod tracing module: \"%s\"\n", traceGenName.c_str());
+        sst_assert(traceGen, CALL_INFO, -1, "Unable to load tracing module: \"%s\"\n", traceGenName.c_str());
 
     /** Rest of configuration here */
     }

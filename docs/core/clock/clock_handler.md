@@ -65,7 +65,7 @@ bool basicClocks::mainTick( Cycle_t cycle )
 
     if (cycleCount == 0) {
         // Let simulation end, unregister this clock since we have nothing else to do
-        primaryComponentOKTOEndSim();
+        primaryComponentOKToEndSim();
         return true;
     } else {
         // Keep the clock registered

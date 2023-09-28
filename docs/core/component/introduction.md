@@ -8,7 +8,7 @@ The fundamental building block of an SST simulation is a *Component*. A Componen
 Components should include the `<sst/core/component.h>` header, SubComponents the `<sst/core/subcomponent.h>` header, and ComponentExtensions the `<sst/core/componentExtension.h>`. The BaseComponent header should not be included directly. 
 
 ## Virtual Component API
-In addition to constructors and destrctors, these functions should be implemented as needed by SST Components, SubComponents, and ComponentExtensions. The Core will call these functions during different stages of simulation. These stages are also referred to as the *SST LifeCycle*.
+In addition to constructors and destructors, these functions should be implemented as needed by SST Components, SubComponents, and ComponentExtensions. The Core will call these functions during different stages of simulation. These stages are also referred to as the *SST LifeCycle*.
 
 * [init](lifecycle/init) Called during the init() simulation phase.
 * [setup](lifecycle/setup) Called during the setup() simulation phase.

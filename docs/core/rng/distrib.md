@@ -19,7 +19,7 @@ Distributions include:
     - A Gaussian (normal) distribution that produces the same output across supported platforms and compilers.
 * **Poisson**
     - `SST::RNG::PoissonDistribution`
-    - A Poisson distribtuion that produces the same output across supported platforms and compilers.
+    - A Poisson distribution that produces the same output across supported platforms and compilers.
 * **Uniform**
     - `SST::RNG::UniformDistribution`
     - A Uniform distribution that produces the same output across supported platforms and compilers.

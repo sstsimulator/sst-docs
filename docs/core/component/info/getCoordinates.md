@@ -7,7 +7,7 @@ const std::vector<double>& getCoordinates() const;
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
-Returns the X, Y, Z coordinates of the component. For a SubComponent or ComponentExtension, these are the coordiantes of the parent Component. These are typically used for visualization.
+Returns the X, Y, Z coordinates of the component. For a SubComponent or ComponentExtension, these are the coordinates of the parent Component. These are typically used for visualization.
 
 
 ## Parameters

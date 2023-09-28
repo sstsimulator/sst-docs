@@ -1,5 +1,6 @@
 ---
 title: SST::Event
+keywords: [id_type, ImplementSerializable, ImplementVirtualSerializable, NotSerializable]
 ---
 
 The Event class in SST is the base class for all simulation Events that get passed over Links. Libraries are expected to implement their own event types that derive from the SST::Event class. The base class provides some common functions for all events.

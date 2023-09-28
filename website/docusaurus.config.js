@@ -81,7 +81,7 @@ module.exports={
           sidebarId: 'config',
         },
         {
-          "to": "docs/elements/ember/QuickStart",
+          "to": "docs/elements/intro",
           "label": "Elements",
           "position": "left",
           sidebarId: 'elements',
