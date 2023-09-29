@@ -18,4 +18,4 @@ title: vanadis
 *None*
 
 ### Optional dependencies
-*None*
+Vanadis has been tested with the [musl](https://musl.cc) toolchain for cross-compiling MIPS and RISCV-64 binaries. 

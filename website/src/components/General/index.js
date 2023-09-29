@@ -1,4 +1,4 @@
-const Container = requre('./Container.js');
+const Container = require('./Container.js');
 
 module.exports = {
     Container
