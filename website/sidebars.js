@@ -679,7 +679,10 @@ const sidebars = {
         "tools/commandLine/sst-register",
       ]
     }
-  ]
+  ],
+
+  /***** COMMUNITY *****/
+  community: []
 }
   module.exports = sidebars;
   /*

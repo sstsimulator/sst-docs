@@ -93,6 +93,12 @@ module.exports={
           sidebarId: 'tools',
         },
         {
+          "to": "docs/community",
+          "label": "Community",
+          "position": "left",
+          sidebarId: 'community'
+        },
+        {
           "to": "help",
           "label": "Help",
           "position": "left"
