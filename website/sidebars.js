@@ -659,7 +659,7 @@ const sidebars = {
     "elements/simpleSimulation/intro",
     "elements/thornhill/intro",
     "elements/vanadis/intro",
-    "elements/vaultSimC/intro",
+    "elements/vaultsim/intro",
     "elements/zodiac/intro"
   ],
 

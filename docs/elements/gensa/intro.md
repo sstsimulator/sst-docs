@@ -6,13 +6,13 @@ This element provides a general-purpose neuromorphic processor core. It performs
 
 :::info
 
-This element has been interchangeably referred to as "gensa" and "GNA". A naming change to consistently use "gensa" is under way. Once the codebase is updated, this documentation will be updated to reflect the change as well.
+This element has been interchangeably referred to as "gensa" and "GNA" in the past but the element has now been renamed to "gensa".
 
 :::
 
 :::note At a Glance
 
-**Source Code:** [sst-elements/.../GNA](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/GNA) &nbsp;  
+**Source Code:** [sst-elements/.../gensa](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/gensa) &nbsp;  
 **SST Name:** `GNA` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Experimental &nbsp;   

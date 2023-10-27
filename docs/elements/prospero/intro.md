@@ -1,5 +1,5 @@
 ---
-title: Prospero
+title: prospero
 ---
 
 *Prospero* is a trace-based core model. The core models memory instructions only. Multiple Prospero cores can be used in the same simulation, each running independent trace files, to model a multicore architecture. A Pintool for collecting traces from x86 binaries is included. Prospero interfaces with memory via the [SST::StandardMem](../../core/iface/StandardMem/class) interface.
