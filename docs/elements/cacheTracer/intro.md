@@ -13,7 +13,7 @@ The *cacheTracer* can be used to generate a trace of events between any CPU and 
 **SST Name:** `cacheTracer` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 13.0
+**Last Released:** SST 13.1
 
 ::: 
 

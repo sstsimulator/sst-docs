@@ -10,7 +10,7 @@ title: zodiac
 **SST Name:** `zodiac` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Maintenance &nbsp;  
-**Last Released:** SST 13.0
+**Last Released:** SST 13.1
 
 :::
 

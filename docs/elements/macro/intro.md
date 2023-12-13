@@ -10,7 +10,7 @@ The *macro* software package provides a simulator for large-scale parallel compu
 **SST Name:** `macro` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 13.0
+**Last Released:** SST 13.1
 
 :::
 
@@ -27,4 +27,4 @@ The *macro* software package provides a simulator for large-scale parallel compu
 * **Clang development libraries** To enable SST source-to-source compiler
 
 ## Additional Documentation
-Macro includes [user](https://github.com/sstsimulator/sst-macro/blob/v13.0.0_beta/docs/manual/manual.md) and [developer](https://github.com/sstsimulator/sst-macro/blob/v13.0.0_beta/docs/developer/developer.md) guides. 
+Macro includes [user](https://github.com/sstsimulator/sst-macro/blob/v13.1.0_beta/docs/manual/manual.md) and [developer](https://github.com/sstsimulator/sst-macro/blob/v13.1.0_beta/docs/developer/developer.md) guides. 
