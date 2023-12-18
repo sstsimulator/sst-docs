@@ -8,7 +8,7 @@ SST_ELI_REGISTER_MODULE(class_name, "library", "name",
     SST_ELI_ELEMENT_VERSION(major, minorX, minorY), "description", api_class_name)
 ```
 
-:::caution
+:::warning
 As of SST 13 the `api_class_name` field must be specified as a class name, not as a string. 
 :::
 

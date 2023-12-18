@@ -19,7 +19,7 @@ Including those inherited from the `StandardMem::Request` base class, `StandardM
 * **pAddr** (Addr) The physical starting byte address to write to
 * **vAddr** (Addr) The virtual (if any) starting byte address to write the data to
 * **size** (uint64_t) The number of bytes to write (same as size of data vector)
-* **data** (std::vector<uint8_t\>) Bytes to write
+* **data** (std::vector\<uint8_t\>) Bytes to write
 * **iPtr** (Addr) An instruction pointer. This is optional metadata.
 * **tid** (uint32_t) An optional thread ID, can be used by memory systems if needed
 

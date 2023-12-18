@@ -2,7 +2,7 @@
 title: sst-register
 ---
 
-:::caution
+:::warning
 This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
 :::
 

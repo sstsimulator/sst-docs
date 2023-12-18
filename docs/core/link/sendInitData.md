@@ -2,7 +2,7 @@
 title: sendInitData
 ---
 
-:::caution Deprecated
+:::warning Deprecated
 This function is deprecated as of SST 13. Use [sendUntimedData](sendUntimedData) instead.
 :::
 

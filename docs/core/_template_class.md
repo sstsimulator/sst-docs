@@ -57,11 +57,6 @@ Description
 
 **param** - description
 
-#### Return Value</span>
-
-**ret** - description
-
-**ret** - description
 
 ## Examples
 

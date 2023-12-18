@@ -1,4 +1,5 @@
-module.exports={
+module.exports= async function createConfigAsync() {
+    return {
   "title": "The Structural Simulation Toolkit",
   "tagline": "Using the supercomputers of today to build the supercomputers of tomorrow",
   "url": "https://sstsimulator.github.io",
@@ -27,7 +28,9 @@ module.exports={
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/sstsimulator/sst-docs/edit/master/docs/",
           "path": "../docs",
-          "sidebarPath": "./sidebars.js"
+          "sidebarPath": "./sidebars.js",
+          remarkPlugins: [(await import('remark-math')).default],
+          rehypePlugins: [(await import('rehype-katex')).default]
         },
         "blog": {
           "path": "blog"
@@ -37,6 +40,15 @@ module.exports={
         }
       }
     ]
+  ],
+  "stylesheets": [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
   "plugins": [
     [
@@ -121,4 +133,5 @@ module.exports={
       "placeholder": "Search Docs (not working yet)"
     }
   }
-}
+};
+};

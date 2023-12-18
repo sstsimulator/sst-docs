@@ -3,7 +3,7 @@ title: SST_ELI_REGISTER_MODULE_DERIVED
 sidebar_label: Module Derived
 ---
 
-:::caution Deprecated
+:::warning Deprecated
 This macro is deprecated as of SST 13. Use [SST_ELI_REGISTER_MODULE](SST_ELI_REGISTER_MODULE) instead.
 :::
 

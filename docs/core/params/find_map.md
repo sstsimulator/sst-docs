@@ -20,7 +20,7 @@ Example of an invalid map string in Python (mixed types cannot be converted):
 
 ## Parameters
 * **key** (std::string) Parameter key to search for
-* **map** (std::map<keyT, valT\>) Map templated on types keyT and valT to populate from the parameter's value
+* **map** (std::map\<keyT, valT\>) Map templated on types keyT and valT to populate from the parameter's value
 * **returns** none
 
 

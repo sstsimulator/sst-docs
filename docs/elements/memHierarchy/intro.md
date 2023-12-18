@@ -29,4 +29,3 @@ MemHierarchy memories can optionally use any of the following simulators in plac
 * [messier](../messier/intro); included with sst-elements
 * [NVDIMMSim](https://github.com/jimstevens2001/NVDIMMSim/); [Download](https://github.com/jimstevens2001/NVDIMMSIM/archive/v2.0.0.tar.gz)
 * [Ramulator](https://github.com/CMU-SAFARI/ramulator/); [Download](https://github.com/CMU-SAFARI/ramulator/archive/master.zip)
-

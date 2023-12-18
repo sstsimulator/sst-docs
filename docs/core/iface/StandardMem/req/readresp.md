@@ -24,7 +24,7 @@ Including those inherited from the `StandardMem::Request` base class, `StandardM
 * **size** (uint64_t) The number of bytes read, equivalent to the size of the data field.
 * **iPtr** (Addr) An instruction pointer. This is optional metadata.
 * **tid** (uint32_t) An optional thread ID, can be used by memory systems if needed
-* **data** (std::vector<uint8_t\>) A vector containing the read data
+* **data** (std::vector\<uint8_t\>) A vector containing the read data
 
 ## Member functions
 ### Defined in [`Request`](class) base class

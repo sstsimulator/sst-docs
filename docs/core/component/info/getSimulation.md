@@ -2,7 +2,7 @@
 title: getSimulation
 ---
 
-:::caution Deprecated
+:::warning Deprecated
 This function is deprecated as of SST 13. All functions previously available through SST `getSimulation()` are now directly available through the component classes.
 :::
 

@@ -17,7 +17,7 @@ Examples of valid set strings:
 
 ## Parameters
 * **key** (std::string) Parameter key to search for
-* **set** (std::set<T\>) Set with type `T` to populate from the parameter's value. 
+* **set** (std::set\<T\>) Set with type `T` to populate from the parameter's value. 
 * **returns** none
 
 

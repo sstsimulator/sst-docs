@@ -9,7 +9,7 @@ Source: sst-documentation/manuals/python
 
 The StatisticGroup object is used to group Statistics objects together to be written to the same StatisticOutput object.
 
-:::caution
+:::warning
 The StatisticGroup object had limited use in the past and is evolving to include new functionality. This is the proposed functionality of the class and may not be the final API for the object. 
 :::
 

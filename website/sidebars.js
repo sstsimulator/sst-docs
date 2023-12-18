@@ -641,7 +641,16 @@ const sidebars = {
     "elements/kingsley/intro",
     "elements/llyr/intro",
     "elements/macro/intro",
-    "elements/memHierarchy/intro",
+    /* MemHierarchy */
+    {
+      type: 'category',
+      label: 'memHierarchy',
+      link: {type: 'doc', id: 'elements/memHierarchy/intro'},
+      items: [
+        "elements/memHierarchy/stdmem",
+        "elements/memHierarchy/cache"
+      ]
+    },
     "elements/mercury/intro",
     "elements/merlin/intro",
     "elements/messier/intro",

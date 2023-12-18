@@ -2,33 +2,78 @@
 title: sst-info
 ---
 
-:::caution
-This page has not been reviewed recently to ensure that it is up-to-date with the latest SST specification. It is possible the information is out of date.
-:::
+The command line utility, `sst-info`, leverages the Element Library Information (ELI) macros embedded in SST objects to return a list of elements (e.g., Components, SubComponents, Modules, Partitioners, etc.) provided by each element library registered with the SST-Core, as well as those provided by the Core itself. 
 
-### Remarks
+For each type of SST object, sst-info provides the following.
 
-The command line utility, sst-info, lists documented Components, SubComponents, Events, Modules, and Partitioners within an Element Library. See below for more details on what sst-info will include for each of the types.
+|                 | Component   | SubComponent  | Module  | Partitioner | ProfileTool |
+| Description     | X           | X             | X       | X           | X           |
+| Version         | X           | X             | X       | X           | X           |
+| Compilation info | X          | X             | X       | X           | X           |
+| Category        | X           |               |         |             |             |
+| API implemented |             | X             |         |             | X           |
+| Parameters      | X           | X             | X       |             | X           |
+| Ports           | X           | X             |         |             |             |
+| Statistics      | X           | X             |         |             |             |
+| SubComponent slots | X        | X             |         |             |             |
+| Profile points  | X           | X             |         |             |             |
+| Attributes      | X           | X             |         |             |             |
 
-- Components
-  - Describes the Components in the Element Library.
-  - **Parameters** - Includes the parameter name, description, and default value.
-  - **Ports** - Includes the port name, description, and what events the port accepts.
-  - **Statistics** - Includes the statistic name, plural name for the units the statistic collects, description, and the statistic's enable level.
-  - **SubComponent Slots** - Includes the slot's name, description, and what interface the SubComponent should provide.
-- SubComponents
-  - Describes what SubComponents are defined in the Element Library. These SubComponents can be placed in the SubComponent slot of a Component.
-  - **Provides Interface** - The interface the SubComponent expects to be communicated with. The SubComponent slot in the Component should be the same as this interface.
-  - **Parameters** - Includes the parameter name, description, and default value.
-  - **Ports** - Includes the port name, description, and what events the port accepts.
-  - **Statistics** - Includes the statistics name, plural name for the units the stat collects, description, and the statistic's enable level.
-  - **SubComponent Slots** - Includes the slot's name, description, and what interface the SubComponents should provide.
-- Events
-  - Lists any custom events defined in the Element Library.
-- Modules -
-  - **Parameters** - Includes the parameter name, description, and default value.
-- Partitioners -
-  - Name of the partitioner, description of the partitioner.
+## Output
+For each category above, `sst-info` prints the following information.
+
+#### Description
+A brief description of the element
+
+#### Version
+A version of the form `major.minorX.minorY`. This is an element-specific version number and is not related to the SST release version.
+
+#### Compilation info
+Shows the date compiled and source file.
+
+#### Category
+Components are assigned a category among `PROCESSOR COMPONENT`, `MEMORY COMPONENT`, `NETWORK COMPONENT`, `SYSTEM COMPONENT`, and `UNCATEGORIZED COMPONENT`. 
+
+#### API implemented
+For elements that implement an API (e.g., a SubComponent), the API implemented
+
+#### Parameters
+Parameters are displayed in the following format. `<name>` is the name of the parameter and matches the name that should be used in the SST input file. Each parameter displays a `<Description>` and the `<default>` value assigned to the parameter in square brackets. If no default value is defined, `<required>` is displayed instead.
+```sh
+# Format
+<name>: <Description> [<required>] # A parameter with no default value
+<name>: <Description> [<default_value>] # A parameter with a default value
+
+# Examples
+hyperx.local_ports: Number of endpoints attached to each router.  [<required>]
+algorithm: Routing algorithm to use.  [DOR]
+```
+
+#### Ports
+Similar to parameters, ports display the `<name>` which should be used to access the port and a description of the port's purpose.
+```sh
+# Format
+<name>: <Description>
+
+# Examples
+rtr_port: Port that connects to router
+```
+
+#### Statistics
+Statistics are printed in the following format. `<name>` matches the name of the statistic in the simulation input and statistic output. `<Description>` describes the statistic and `<unit_value` 
+```sh
+# Format
+<name>: <Description>, (units = "<unit_value>") Enable level = <level>
+
+# Examples
+send_bit_count: Count number of bits sent on link,  (units = "bits") Enable level = 1
+```
+
+#### SubComponent Slots
+
+#### Profile points
+
+#### Attributes
 
 ## Syntax
 
@@ -45,7 +90,7 @@ sst-info [<element[.component|subcomponent]>]  [options]
 **options**:
 - **-h, --help** - Print help message.
 - **-v, --version** - Print SST Package Release Version.
-- **-l, --libs=LIBS** - {all, \<element\>, \<element[.component|subcomponent]\>} - Element Library9(s) to process.
+- **-l, --libs=LIBS** - \{all, \<element\>, \<element[.component|subcomponent]\>\} - Element Library9(s) to process.
 - **-n, --nodisplay** - Do not display output. Default is off.
 - **-x, --xml** - Generate XML data. Default is off.
 - **-o, --outputxml=FILE** - File path to XML file. Default is SSTInfo.xml.

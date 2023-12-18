@@ -2,7 +2,7 @@
 title: recvInitData
 ---
 
-:::caution Deprecated
+:::warning Deprecated
 This function is deprecated as of SST 13. Use [recvUntimedData](recvUntimedData) instead.
 :::
 

@@ -18,7 +18,7 @@ Examples of valid array strings:
 
 ## Parameters
 * **key** (std::string) Parameter key to search for
-* **vec** (std::vector<T\>) Vector with type `T` to populate from the parameter's value. 
+* **vec** (std::vector\<T\>) Vector with type `T` to populate from the parameter's value. 
 * **returns** none
 
 

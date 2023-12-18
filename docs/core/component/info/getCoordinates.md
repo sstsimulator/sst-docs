@@ -11,7 +11,7 @@ Returns the X, Y, Z coordinates of the component. For a SubComponent or Componen
 
 
 ## Parameters
-* **returns** (std::vector<double\>) A vector containing the X, Y, and Z coordinates of the component.
+* **returns** (`std::vector<double>`) A vector containing the X, Y, and Z coordinates of the component.
 
 
 ## Example

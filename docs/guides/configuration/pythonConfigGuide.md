@@ -29,7 +29,7 @@ Within this module, there are a number of available classes and global functions
 
 *This example is based on sst-elements/src/sst/elements/simpleElementExample/tests/example0.py*
 
-Full documentation can be found at the links above, this section describes basic usage only. In the following input file, we define a graph consisting of two components, named 'c0' and 'c1', which are connected by a single link. The names are arbitrary, user-selected strings. Links are bidirectional. 
+Full documentation can be found at the links above, this section describes basic usage only. In the following input file, we define a graph consisting of two components, named 'c0' and 'c1', which are connected by a single link. The names are arbitrary, user-selected strings. Links are bidirectional.
 
 ```py
 1   # Import the SST module
@@ -51,6 +51,11 @@ Full documentation can be found at the links above, this section describes basic
 17  link.connect( (component0, "port", "1ns"), (component1, "port", "1ns") )
 18
 ```
+
+Here is a picture of the system created by the script. The link, `component_link`, allows `c0` and `c1` to exchange events with each other during simulation.
+
+![A picture of the system described by the python file shown above](../assets/pythonconfig_guide_ex0_graph.png)
+
 
 ### Imports
 Line 2 above imports the `sst` module. Additional Python modules may be imported if desired.
@@ -171,7 +176,7 @@ In addition to setting the global statistic load level, you must specify which s
 
 Functions to enable statistics take an optional parameters list which allows users to configure the output frequency and/or collection type of the statistic (e.g., accumulator, histogram), as well as any statistic type-specific parameters. By default, all statistics are output once at the end of simulation and are of the accumulator type. See [General Notes on Statistics](../../config/stats/overview) for details.
 
-:::caution
+:::warning
 Enabling statistics must occur after the related components are created in the python file.
 :::
 

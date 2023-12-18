@@ -11,7 +11,7 @@ The Component and SubComponent Python classes represent the Component and SubCom
 
 The figures below show the main structures of the Component/SubComponent objects. The right image illustrates the arbitrary nesting capability of SubComponents.
 
-![Main structures of the Component and SubComponent objects](/img/component-structure.png) ![Component with SubComponents loaded, showing that SubComponents can be arbitrarily nested](/img/component-structure-with-subcomponent.png)
+![Main structures of the Component and SubComponent objects](../assets/component-structure.png) ![Component with SubComponents loaded, showing that SubComponents can be arbitrarily nested](../assets/component-structure-with-subcomponent.png)
 
 * [Create a Component](../component)
 * [Create a SubComponent](setSubComponent)
