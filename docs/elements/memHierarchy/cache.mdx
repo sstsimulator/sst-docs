@@ -12,7 +12,7 @@ This subcomponent handles incoming events and sends outgoing ones according to t
 | `L1`  | `coherence_protocol`  | `cache_type`                  | SubComponent                          |
 | ---   | ---                   | ---                           | ---                                   |
 | true  | mesi, msi             | inclusive                     | `coherence.mesi_l1`                   |
-| true  | none                  | noninclusive                  | `coherence.incoherent_l1`             |
+| true  | none                  | inclusive                     | `coherence.incoherent_l1`             |
 | false | mesi, msi             | inclusive                     | `coherence.mesi_inclusive`            |
 | false | mesi, msi             | noninclusive                  | `coherence.mesi_private_noninclusive` |
 | false | mesi, msi             | noninclusive_with_directory   | `coherence.mesi_shared_noninclusive`  |
