@@ -18,7 +18,10 @@ const sidebars = {
       type: 'category',
       label: 'Tips and Tricks',
       link: { type: 'generated-index' },
-      items: ['guides/tips/compilation']
+      items: [
+        'guides/tips/compilation',
+        'guides/tips/debugging'
+      ]
     },
     {
       type: 'category',
