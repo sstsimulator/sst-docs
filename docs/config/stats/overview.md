@@ -25,5 +25,5 @@ Statistic parameters are used to pass the parameters to the statistics subsystem
   * **rate** collection rate of statistic. Stats will be dumped at this interval. A rate of “0ns” will cause the stats to be dumped only at the end of simulation. 
   * **startat** Time that statistic should start recording statistics 
   * **stopat** Time that statistic should stop recording statistics 
-  * **resetOnRead** If set to true, statistics will reset when written out. Default is False.
+  * **resetOnOutput** If set to true, statistics will reset when written out. Default is False.
 
