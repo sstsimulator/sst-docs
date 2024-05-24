@@ -10,7 +10,7 @@ The *memHierarchy* library is a collection of cache, scratchpad, directory, and 
 **SST Name:** `memHierarchy` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 
@@ -18,7 +18,7 @@ The *memHierarchy* library is a collection of cache, scratchpad, directory, and 
 *None*
 
 ### Optional dependencies
-MemHierarchy memories can optionally use any of the following simulators in place of the included timing models for main memory, scratchpad, and other components that load a backend timing model. SST-Elements must be compiled with the appropriate `--with-<SIMULATOR>=/path/to/sim` flag for the integration to be enabled. See the SST [dependency build instructions](http://sst-simulator.org/SSTPages/SSTBuildAndInstall_13dot0dot0_SeriesAdditionalExternalComponents/) for details.
+MemHierarchy memories can optionally use any of the following simulators in place of the included timing models for main memory, scratchpad, and other components that load a backend timing model. SST-Elements must be compiled with the appropriate `--with-<SIMULATOR>=/path/to/sim` flag for the integration to be enabled. See the SST [dependency build instructions](http://sst-simulator.org/SSTPages/SSTBuildAndInstall_14dot0dot0_SeriesAdditionalExternalComponents/) for details.
 
 * [CramSim](../cramsim/intro); included with sst-elements
 * [DramSim2](https://github.com/dramninjaUMD/DRAMSim2); [Download](https://github.com/dramninjasUMD/DRAMSim2/archive/v2.2.2.tar.gz)

@@ -6,7 +6,7 @@ title: init
 void init(const std::string& val);
 ```
 
-Initialize a UnitAlgebra object. This function is required if the default [constructor](constructor) was used to create the Output object.
+Initialize a UnitAlgebra object. This function is required if the default [constructor](constructor) was used to create the UnitAlgebra object.
 
 ## Parameters
 * **val** (std::string) value. The format must be `<NUMBER>?<UNITS>` where:

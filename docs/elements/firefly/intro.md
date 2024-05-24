@@ -10,7 +10,7 @@ The *firefly* library provides network data movement modeling functionality for 
 **SST Name:** `firefly` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 

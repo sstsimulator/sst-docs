@@ -10,7 +10,7 @@ The *mmu* library provides a simple memory management unit (mmu) and translation
 **SST Name:** `mmu` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 

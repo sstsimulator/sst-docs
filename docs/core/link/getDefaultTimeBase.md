@@ -14,7 +14,7 @@ const TimeConverter* getDefaultTimeBase() const;
 ## Example
 ```cpp
 // Configure a link connected to a port named 'port' 
-SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));
+SST::Link* link = configureLink("port", new Event::Handler2<example,&example::handleEvent>(this));
 
 //highlight-next-line
 TimeConverter* tc = link->getDefaultTimeBase();

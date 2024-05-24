@@ -30,7 +30,7 @@ basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id)
     int portnum = 0;
     //highlight-next-line
     while (isPortConnected(linkname)) {
-        SST::Link* link = configureLink(linkname, new Event::Handler<basicLinks,int>(this, &basicLinks::handleWithEventID, portnum));
+        SST::Link* link = configureLink(linkname, new Event::Handler2<basicLinks,&basicLinks::handleWithEventID,int>(this, portnum));
         sst_assert(link, CALL_INFO, -1, "Error: Link configuration failed\n");
 
         linkVector.push_back(link);

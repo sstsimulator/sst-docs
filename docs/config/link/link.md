@@ -4,7 +4,7 @@ title: Link
 
 Creates a Link. A Link connects two ports and enables the components on each port to send events across the link.
 
-**NOTE**: This only creates the link. The link must also be connected to ports via [`Link.connect()`](connect.md) or [`(Sub)Component.addLink()`](../component/addLink.md).
+**NOTE**: This only creates the link. The link must also be connected to ports via [Link.connect()](../link/connect.md) or [(Sub)Component.addLink()](../component/addLink.md).
 
 ## Syntax
 

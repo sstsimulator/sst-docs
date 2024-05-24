@@ -15,7 +15,7 @@ Returns the unique ID assigned to the Link. LinkId_t is a uint32_t.
 ## Example
 ```cpp
 // Configure a link connected to a port named 'port' 
-SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));
+SST::Link* link = configureLink("port", new Event::Handler2<example,&example::handleEvent>(this));
 
 Output* out = getSimulationOutput();
 //highlight-next-line

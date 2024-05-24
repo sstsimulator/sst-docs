@@ -35,7 +35,7 @@ LinkControl::LinkControl(ComponentId_t id, Params& params) : Component(id)
     // Configure self link for delaying events internally 
     //highlight-start
     output_timing = configureSelfLink("rtr_port_output_timing", "1GHz",
-            new Event::Handler<LinkControl>(this, &LinkControl::handle_output));
+            new Event::Handler2<LinkControl, &LinkControl::handle_output>(this));
             //highlight-end
 
     /** Other configuration here */

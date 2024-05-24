@@ -14,9 +14,37 @@ Event handlers are used by Links when an event arrives on the Link. The handler 
 * **data** (dataT) Optional, data that the handler was created with.
 * **returns** none
 
+## Constructing Handlers
+An event handler belonging to class `class` and pointing to function `func` is constructed as follows. The second line demonstrates a handler with metadata of type `dataT` and a value of `data`.
+```cpp
+SST::Handler* handler = new Event::Handler2<class, &class::func>(this);
+SST::Handler* handler = new Event::Handler2<class, &class::func, dataT>(this, data);
+```
+
+This definition has changed as of SST 14.0 due to the reintroduction of checkpointing support. The old style handler was named `Handler` instead of `Handler2` and passed the handler function pointer to the constructor as a function parameter rather than a template parameter. The `Handler` type is not checkpointable. `Handler` is deprecated in SST 14.0 and the name will be reintroduced in SST 15.0 with the same syntax as `Handler2`.
+
+```cpp title="Handler construction in different versions of SST"
+/* Pre-SST 14.0 handler - not checkpointable */
+SST::Handler* handler = new Event::Handler<class>(this, &class::func);
+SST::Handler* handler = new Event::Handler<class, metaT>(this, &class::func, data);
+
+/* SST 14.0 - old and new style supported */
+// Old style, deprecated and not checkpointable - update to Handler2 style instead
+SST::Handler* handler = new Event::Handler<class>(this, &class::func);
+SST::Handler* handler = new Event::Handler<class, dataT>(this, &class::func, data);
+// New style, checkpointable
+SST::Handler* handler = new Event::Handler2<class, &class::func>(this);
+SST::Handler* handler = new Event::Handler2<class, &class::func, dataT>(this, data);
+
+/* SST 15.0+ - old and new type name both use new style. Eventually the name 'Handler2' will be deprecated. */
+SST::Handler* handler = new Event::Handler<class, &class::func>(this);
+SST::Handler* handler = new Event::Handler<class, &class::func, dataT>(this, data);
+SST::Handler* handler = new Event::Handler2<class, &class::func>(this);
+SST::Handler* handler = new Event::Handler2<class, &class::func, dataT>(this, data);
+```
+
 
 ## Example
-
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicLinks.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicLinks.cc --->
 ```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicLinks.h"
@@ -45,7 +73,7 @@ basicLinks::basicLinks(ComponentId_t id, Params& params) : Component(id)
     while (isPortConnected(linkname)) {
         // Configure links connected to port_vector* to call handleEventWithID when an event arrives
         // Also pass the index of the port/link that received the event
-        configureLink(linkname, new Event::Handler<basicLinks, int>(this, &basicLinks::handleEventWithID, portnum));
+        configureLink(linkname, new Event::Handler2<basicLinks, &basicLinks::handleEventWithID, int>(this, portnum));
 
         portnum++;
         linkname = "port_vector" + std::to_string(portnum);

@@ -10,7 +10,7 @@ The *cassini* element implements subcomponents that can be used for cache prefet
 **SST Name:** `cassini` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 

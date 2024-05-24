@@ -7,7 +7,7 @@ UnitAlgebra(const std::string& val);
 UnitAlgebra();
 ```
 
-Create a new UnitAlgebra. The string passed to the constructor should include both the value and the units, for example, `3s`. If the default constructor is used, [UnitAlgebra::init()](init) must be called to initialize the object.
+Create a new UnitAlgebra. The string passed to the constructor should include both the value and the units, for example, `3s`. A space between the value and units is optional. If the default constructor is used, [UnitAlgebra::init()](init) must be called to initialize the object.
 
 ## Parameters
 * **val** (std::string) value. The format must be `<NUMBER>?<UNITS>` where:

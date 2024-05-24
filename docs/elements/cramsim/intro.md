@@ -16,7 +16,7 @@ This element has been renamed from 'CramSim' to 'cramSim' in an effort to standa
 **SST Name:** `cramSim` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 

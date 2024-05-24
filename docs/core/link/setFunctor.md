@@ -21,13 +21,13 @@ This function cannot be used on a Link that was configured as a polling link (i.
 
 ```cpp
 // Configure a link connected to a port named 'port' 
-Event::HandlerBase* handler = new Event::Handler<example>(this, &example::handleEvent);
+Event::HandlerBase* handler = new Event::Handler2<example,&example::handleEvent>(this);
 SST::Link* link = configureLink("port", handler);
 
 // Change the link to call otherHandleEvent() instead of handleEvent() when an event arrives
 // setFunctor won't delete the existing handler so we can reuse it later if we want to swap again
 //highlight-next-line
-link->setFunctor(new Event::Handler<example>(this, &example::otherHandleEvent));
+link->setFunctor(new Event::Handler2<example,&example::otherHandleEvent>(this));
 ```
 
 ## Header

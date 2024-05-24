@@ -26,7 +26,7 @@ example::example(ComponentId_t id, Params& params) : Component(id)
     /** Other configuration here */
 
     // Register a clock
-    handler = new Clock::Handler<example>(this, &example::clockTick);
+    handler = new Clock::Handler2<example, &example::clockTick>(this);
     clock_tc = registerClock("1GHz", handler);
 
     // Disable the clock for now

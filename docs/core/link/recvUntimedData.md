@@ -8,11 +8,6 @@ Event* recvUntimedData();
 
 Receive an event during SST's [`init()`](../component/lifecycle/init) or [`complete()`](../component/lifecycle/complete) phase. Event handlers are not active during this time, so links must be polled using this function.
 
-:::note 
-The `recvInitData` and `recvUntimedData` functions are identical. The latter was added when SST added the `complete()` phase to indicate that it could be used during *any* untimed phase, not just `init()`. `recvInitData` may eventually be deprecated in favor of `recvUntimedData`.
-:::
-
-
 ## Parameters
 * **returns** Event received or `nullptr` if none available
 

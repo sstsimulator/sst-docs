@@ -5,8 +5,6 @@ sidebar_label: SubComponent
 
 ```cpp
 SST_ELI_REGISTER_SUBCOMPONENT(class_name, "library", "name" , SST_ELI_ELEMENT_VERSION(X, Y, Z), "description", interface)
-// Deprecated name for the same macro. Use the above version instead.
-SST_ELI_REGISTER_SUBCOMPONENT_DERIVED(class_name, "library", "name", SST_ELI_ELEMENT_VERSION(X, Y, Z), "description", interface)
 ```
 
 All SubComponents must register themselves with SST using this macro. The library and name strings provided in this macro will be used by SST to identify the subcomponent as "library.name". The version, description, and category are displayed by sst-info to document the purpose and version of the SubComponent. The interface declares which SubComponent API this subcomponent implements which is used to check compatibility with SubComponent slots. The interface must also be registered with SST using the [`SST_ELI_REGISTER_SUBCOMPONENT_API`](sst_eli_register_subcomponent_api) or [`SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API`](sst_eli_register_subcomponent_derived_api) macro.

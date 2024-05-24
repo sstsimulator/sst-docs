@@ -15,7 +15,7 @@ Returns a UnitAlgebra representing the clock period captured by this TimeConvert
 #include <sst/core/timeConverter.h>
 example::example(ComponentId_t id, Params& params) : Component(id) 
 {
-    TimeConverter* converter = registerClock("200MHz", new Clock::Handler<example>(this, &example::clockHandler));
+    TimeConverter* converter = registerClock("200MHz", new Clock::Handler2<example, &example::clockHandler>(this));
 
     Output* out = getSimulationOutput();
     // Prints "Registered a 200MHz clock."

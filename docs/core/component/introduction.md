@@ -33,6 +33,7 @@ Alongside the above virtual API, the API includes a number of functions that gra
 * [Loadable Objects (Components, SubComponents, Modules, etc)](load/loadUserSubComponent)
 * [Statistics](stat/registerStatistic)
 * [Output and Error Handling](output/getSimulationOutput)
+* [Serialization](serialization/serialize_order)
 
 ## Header
 ```cpp

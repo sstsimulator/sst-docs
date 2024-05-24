@@ -83,6 +83,31 @@ Example Output:
 ID: 133, Type: CustomResp, Flags: [],  atomic increment at addr 0x7ffffcf0, InstPtr: 0x0, ThreadID: 0
 ```
 
+### Member functions defined in the `CustomResp` class
+#### getData
+```cpp
+CustomData& getData();
+const CustomData& getData() const;
+```
+Returns a reference to the CustomData object belonging to the request. Ownership of the CustomData is retained by the request.
+
+#### setData
+```cpp
+void setData(CustomData* dataNew);
+```
+Copies `dataNew` to the CustomRequest's `data` member. `dataNew` is deleted. The CustomRequest has ownership of the new `data` member.
+
+#### resetData
+```cpp
+CustomData* resetData(CustomData* dataNew = nullptr);
+```
+The CustomRequest updates its `data` member to `dataNew` and returns the old value of `data`. The CustomRequest takes ownership of `dataNew`. If `dataNew` is not provided, this function updates the `data` member to `nullptr` and returns the old value of `data`.
+
+#### releaseData
+```cpp
+CustomData* releaseData();
+``` 
+Returns the CustomRequest's `data` member and transfers ownership to the caller. `data` is updated to `nullptr`.
 
 ## Header
 ```cpp

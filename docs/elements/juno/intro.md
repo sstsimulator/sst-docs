@@ -10,7 +10,7 @@ title: juno
 **SST Name:** `juno` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 

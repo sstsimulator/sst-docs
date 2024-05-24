@@ -4,24 +4,30 @@ const sidebars = {
     'guides/runningSST',
     {
       type: 'category',
-      label: 'Concepts',
+      label: 'Configuring SST',
       link: { type: 'generated-index' },
-      items: ['guides/concepts/time']
+      items: ['guides/configuration/configTutorial'
+              ,'guides/configuration/pythonConfigGuide']
     },
     {
       type: 'category',
-      label: 'Configuration',
+      label: 'Concepts',
       link: { type: 'generated-index' },
-      items: ['guides/configuration/pythonConfigGuide']
+      items: ['guides/concepts/time'
+            ,'guides/concepts/glossary']
+    },
+    {
+      type: 'category',
+      label: 'Features',
+      link: { type: 'generated-index' },
+      items: ['guides/features/checkpoint']
     },
     {
       type: 'category',
       label: 'Tips and Tricks',
       link: { type: 'generated-index' },
-      items: [
-        'guides/tips/compilation',
-        'guides/tips/debugging'
-      ]
+      items: ['guides/tips/compilation'
+             ,'guides/tips/debugging']
     },
     {
       type: 'category',
@@ -31,15 +37,6 @@ const sidebars = {
         "guides/dev/autotest"
         , "guides/dev/testing"
         , "guides/dev/testfaq"
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Files',
-      link: { type: 'generated-index' },
-      items: [
-        "guides/files/basics_header_files"
-        ,"guides/files/basics_makefile"
       ]
     },
   ],
@@ -116,7 +113,6 @@ const sidebars = {
             , "core/component/info/requireLibrary"
             , "core/component/info/getCoordinates"
             , "core/component/info/getCurrentPriority"
-            , "core/component/info/getSimulation"
             , "core/component/info/isSimulationRunModeBoth"
             , "core/component/info/isSimulationRunModeInit"
             , "core/component/info/isSimulationRunModeRun"
@@ -200,6 +196,12 @@ const sidebars = {
             , "core/component/output/getSimulationOutput"
             , "core/component/output/getOutputDirectory"
           ]
+        },
+        {
+          type: 'category',
+          label: "Serialization",
+          link: { type: 'generated-index' },
+          items: [ "core/component/serialization/serialize_order" ]
         }
       ]
     },
@@ -220,7 +222,6 @@ const sidebars = {
             , "core/eli/register/sst_eli_register_subcomponent_api"
             , "core/eli/register/sst_eli_register_subcomponent_derived_api"
             , "core/eli/register/sst_eli_register_module"
-            , "core/eli/register/sst_eli_register_module_derived"
             , "core/eli/register/sst_eli_register_module_api"
             , "core/eli/register/sst_eli_register_module_derived_api"
             , "core/eli/register/sst_eli_register_profiletool"
@@ -299,11 +300,9 @@ const sidebars = {
             , "core/iface/SimpleNetwork/getLinkBW"
             , "core/iface/SimpleNetwork/isNetworkInitialized"
             , "core/iface/SimpleNetwork/recv"
-            , "core/iface/SimpleNetwork/recvInitData"
             , "core/iface/SimpleNetwork/recvUntimedData"
             , "core/iface/SimpleNetwork/requestToReceive"
             , "core/iface/SimpleNetwork/send"
-            , "core/iface/SimpleNetwork/sendInitData"
             , "core/iface/SimpleNetwork/sendUntimedData"
             , "core/iface/SimpleNetwork/setNotifyOnReceive"
             , "core/iface/SimpleNetwork/setNotifyOnSend"
@@ -376,8 +375,6 @@ const sidebars = {
         , "core/link/setDefaultTimeBase"
         , "core/link/sendUntimedData"
         , "core/link/recvUntimedData"
-        , "core/link/sendInitData"
-        , "core/link/recvInitData"
         , "core/link/getId"
       ]
     },
@@ -475,7 +472,7 @@ const sidebars = {
       label: 'UnitAlgebra',
       link: { type: 'doc', id: 'core/unitalgebra/class'  },
       items: [
-        "core/unitalgebra/constructor"
+          "core/unitalgebra/constructor"
         , "core/unitalgebra/destructor"
         , "core/unitalgebra/init"
         , "core/unitalgebra/operatoreq"
@@ -502,6 +499,7 @@ const sidebars = {
         , "core/unitalgebra/serialize_order"
       ]
     },
+    "core/deprecations"
   ],
 
   /***** CONFIG ******/
@@ -617,6 +615,23 @@ const sidebars = {
         , "config/stats/group/setOutput"
       ]
     },
+    {
+      type: 'category',
+      label: 'UnitAlgebra',
+      link: {
+        type: 'doc', id: 'config/unitalgebra/unitalgebra'
+      },
+      items : [
+        "config/unitalgebra/bestSI",
+        "config/unitalgebra/getFloatValue",
+        "config/unitalgebra/getRoundedValue",
+        "config/unitalgebra/hasUnits",
+        "config/unitalgebra/invert",
+        "config/unitalgebra/isValueZero",
+        "config/unitalgebra/precision"
+      ]
+    },
+    
   ],
 
   /***** ELEMENTS ******/
@@ -640,10 +655,12 @@ const sidebars = {
     "elements/firefly/intro",
     "elements/gensa/intro",
     "elements/hermes/intro",
+    "elements/iris/intro",
     "elements/juno/intro",
     "elements/kingsley/intro",
     "elements/llyr/intro",
     "elements/macro/intro",
+    "elements/maskmpi/intro",
     /* MemHierarchy */
     {
       type: 'category',

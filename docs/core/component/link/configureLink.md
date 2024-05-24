@@ -33,7 +33,7 @@ example0::example0(ComponentId_t id, Params& params) : Component(id)
     /** Other configuration here */
 
     //higlight-next-line
-    link = configureSelfLink("port", new Event::Handler<example0>(this, &example0::handleEvent));
+    link = configureSelfLink("port", new Event::Handler2<example0, &example0::handleEvent>(this));
     sst_assert(link, CALL_INFO, -1, "Error in %s: Link configuration failed\n", getName().c_str());
 
     /** Other configuration here */

@@ -14,16 +14,17 @@ import sst
 from sst import *
 ```
 
-Within this module, there are a number of available classes and global functions. The available classes are: Component, SubComponent, Link, StatisticOutput and StatisticGroup. The global functions are divided between general functions and functions operating on or returning one of the available objects. The links below document the available classes in the SST python module and the global functions. 
+Within this module, there are a number of available classes and global functions. The available classes are: Component, SubComponent, Link, StatisticOutput, StatisticGroup, and UnitAlgebra. The global functions are divided between general functions and functions operating on or returning one of the available objects. The links below document the available classes in the SST python module and the global functions. 
 
 **SST Python Module**
-* [Global functions](../../config)
-* [Component/SubComponent](../../config/component/classes)
-* [Link](../../config/link)
-* [Statistic](../../config/stats/overview)
-* [StatisticObject](../../config/stats/object/statisticObject)
-* [StatisticOutput](../../config/stats/output/statisticOutput)
-* [StatisticGroup](../../config/stats/group/statisticGroup)
+* [Global functions](../../config/config.md) (*General functions that apply to the simulation instance*)
+* [Component and SubComponent](../../config/component/classes.md) (*Create and parameterize Components and SubComponents*)
+* [Link](../../config/link/link.md) (*Create and connect Links*)
+* [Statistic](../../config/stats/overview.md) (*Enable statistics, set options on statistic output, etc.*)
+* [StatisticObject](../../config/stats/object/statisticObject.md) (*Parameterize a specific statistic*)
+* [StatisticOutput](../../config/stats/output/statisticOutput.md) (*Parameterize the output format for statistics*)
+* [StatisticGroup](../../config/stats/group/statisticGroup.md) (*Create and parameterize groups of statistics*)
+* [UnitAlgebra](../../config/unitalgebra/unitalgebra.md) (*Perform math on values with units*)
 
 # Usage via a simple example
 

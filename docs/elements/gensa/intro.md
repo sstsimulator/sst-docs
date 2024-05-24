@@ -13,10 +13,10 @@ This element has been interchangeably referred to as "gensa" and "GNA" in the pa
 :::note At a Glance
 
 **Source Code:** [sst-elements/.../gensa](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/gensa) &nbsp;  
-**SST Name:** `GNA` &nbsp;  
+**SST Name:** `gensa` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Experimental &nbsp;   
-**Last Released:** Never
+**Last Released:** 14.0
 
 :::
 

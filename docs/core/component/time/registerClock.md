@@ -29,7 +29,7 @@ example0::example0(ComponentId_t id, Params& params) : Component(id)
 {
     /** Other configuration here */
 
-    registerClock("1GHz", new Clock::Handler<example0>(this, &example0::clockTic));
+    registerClock("1GHz", new Clock::Handler2<example0, &example0::clockTic>(this));
 
     /** Other configuration here */
 }

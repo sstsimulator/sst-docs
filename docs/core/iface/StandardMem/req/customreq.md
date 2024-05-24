@@ -10,7 +10,7 @@ SST::Interfaces::StandardMem::CustomReq(CustomData* data, flags_t flags = 0, Add
 **Response Type** [StandardMem::CustomResp](customresp)  &nbsp;  
 **Needs Response** `true`
 
-The `CustomReq` class allows implementations (endpoints and/or memory systems) to add additional custom memory transactions to the set provided by StandardMem. The class wraps a generic data structure, [`CustomData`](customdata) which can be extended by endpoints and the memory system to dynamically add new request types to the StandardInterface. The `CustomData` class provides a minimal set of functions to enable a memory system to route requests by address, create responses, and generate debug/output for the CustomReq. 
+The `CustomReq` class allows implementations (endpoints and/or memory systems) to add additional custom memory transactions to the set provided by StandardMem. The class wraps a generic data structure, [`CustomData`](customdata) which can be extended by endpoints and the memory system to dynamically add new request types to the StandardInterface. The `CustomData` class provides a minimal set of functions to enable a memory system to route requests by address, create responses, and generate debug/output for the CustomReq. CustomReq also provides functions to manage ownership (e.g., responsibility for delete) of the `CustomData` structure.
 
 ## Member variables
 Including those inherited from the `StandardMem::Request` base class, `StandardMem::CustomReq` includes the following member variables.
@@ -79,6 +79,31 @@ Example Output:
 ID: 133, Type: CustomReq, Flags: [],  atomic increment at addr 0x7ffffcf0, InstPtr: 0x0, ThreadID: 0
 ```
 
+### Member functions defined in the `CustomReq` class
+#### getData
+```cpp
+CustomData& getData();
+const CustomData& getData() const;
+```
+Returns a reference to the CustomData object belonging to the request. Ownership of the CustomData is retained by the request.
+
+#### setData
+```cpp
+void setData(CustomData* dataNew);
+```
+Copies `dataNew` to the CustomRequest's `data` member. `dataNew` is deleted. The CustomRequest has ownership of the new `data` member.
+
+#### resetData
+```cpp
+CustomData* resetData(CustomData* dataNew = nullptr);
+```
+The CustomRequest updates its `data` member to `dataNew` and returns the old value of `data`. The CustomRequest takes ownership of `dataNew`. If `dataNew` is not provided, this function updates the `data` member to `nullptr` and returns the old value of `data`.
+
+#### releaseData
+```cpp
+CustomData* releaseData();
+``` 
+Returns the CustomRequest's `data` member and transfers ownership to the caller. `data` is updated to `nullptr`.
 
 ## Header
 ```cpp

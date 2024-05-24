@@ -20,11 +20,11 @@ This function cannot be used on a Link that was configured as a polling link (i.
 ## Example
 ```cpp
 // Configure a link connected to a port named 'port' 
-SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));
+SST::Link* link = configureLink("port", new Event::Handler2<example,&example::handleEvent>(this));
 
 // Change the link to call otherHandleEvent() instead of handleEvent() when an event arrives
 // The original handler will be deleted
-link->replaceFunctor(new Event::Handler<example>(this, &example::otherHandleEvent));
+link->replaceFunctor(new Event::Handler2<example,&example::otherHandleEvent>(this));
 ```
 
 ## Header

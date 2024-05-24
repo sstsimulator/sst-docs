@@ -8,10 +8,6 @@ void sendUntimedData(Request* req);
 
 This function should be used to send requests on a network during SST's untimed phases, `init()` and `complete`. This is not a pure virtual function, however, implementing it is recommended per the note below. See [SST::Link::sendUntimedData](../../link/sendUntimedData) for additional detail on the use of this function.
 
-:::note 
-The `sendInitData` and `sendUntimedData` functions are identical. The latter was added when SST added the `complete()` phase to indicate that it could be used during *any* untimed phase, not just `init()`. `sendInitData` is deprecated as of SST 13, and `sendUntimedData` will become required (pure virtual) in SST 14.
-:::
-
 ## Requirements
 **Network interface** &nbsp;  
 Must support sending events via this function during SST's `init()` and `complete()` phases. During `init()`. This function is allowed to cause an error if it is called during `init()` but a call to `isNetworkInitialized()` would return `false`.
@@ -63,7 +59,7 @@ void Endpoint::init(unsigned int phase) {
         //highlight-next-line
         net_iface->sendUntimedData(req); 
 
-        while (SST::Interfaces::SimpleNetwork::Request* req = net_iface->recvInitData()) {
+        while (SST::Interfaces::SimpleNetwork::Request* req = net_iface->recvUntimedData()) {
             /* set up a mapping table of the other endpoints' names -> IDs */
             SST::Interfaces::StringEvent* name = static_cast<SST::Interfaces::StringEvent*>(req->takePayload());
             IDMap.insert(std::make_pair(name->getString(), req->src));

@@ -8,10 +8,6 @@ virtual Request* recvUntimedData();
 
 This function should be used to check for received requests on a network during SST's untimed phases, `init()` and `complete`. This is not a pure virtual function, however, implementing it is recommended per the note below. See [SST::Link::recvUntimedData](../../link/recvUntimedData) for additional detail on the use of this function.
 
-:::note 
-The `recvInitData` and `recvUntimedData` functions are identical. The latter was added when SST added the `complete()` phase to indicate that it could be used during *any* untimed phase, not just `init()`. `recvInitData` is deprecated as of SST 13, and `recvUntimedData` will become required (pure virtual) in SST 14.
-:::
-
 ## Requirements
 **Network interface** &nbsp;  
 Must support receiving events via this function during SST's `init()` and `complete()` phases. 

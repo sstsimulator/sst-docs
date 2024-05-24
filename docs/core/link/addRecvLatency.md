@@ -19,7 +19,7 @@ Set additional latency to be added to all events that come in on this link.
 
 ```cpp
 // Configure a link connected to a port named 'port' 
-SST::Link* link = configureLink("port", new Event::Handler<example>(this, &example::handleEvent));
+SST::Link* link = configureLink("port", new Event::Handler2<example,&example::handleEvent>(this));
 
 // Add 20ns of latency
 link->addRecvLatency(1, "20ns");

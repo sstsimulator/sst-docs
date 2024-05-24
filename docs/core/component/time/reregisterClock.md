@@ -31,7 +31,7 @@ public:
     Sender(ComponentId_t id, Params& params) : Component(id)
     {
         clockOn = true;
-        clockHandler = new Clock::Handler<Sender>(this, &Sender::handleClock);
+        clockHandler = new Clock::Handler2<Sender, &Sender::handleClock>(this);
         clockTimeConverter = registerClock("1GHz", clockHandler);
 
         /** Other configuration here */
@@ -58,7 +58,7 @@ public:
 private:
     bool clockOn;
     TimeConverter* clockTimeConverter;
-    Clock::Handler<Sender>* clockHandler;
+    Clock::HandlerBase* clockHandler;
     /* Other class members here */
 };
 ```

@@ -20,14 +20,16 @@ from sst import *
 ```
 
 In addition to general functions, there are seven classes available in SST: 
-* [Component and SubComponent](config/component/classes)
-* [Link](config/link)
-* [Statistic](config/stats/overview)
-* [StatisticObject](config/stats/object/statisticObject)
-* [StatisticOutput](config/stats/output/statisticOutput)
-* [StatisticGroup](config/stats/group/statisticGroup)
+* [Component and SubComponent](./component/classes.md) (*Create and parameterize Components and SubComponents*)
+* [Link](./link/link.md) (*Create and connect Links*)
+* [Statistic](./stats/overview.md) (*Enable statistics, set options on statistic output, etc.*)
+* [StatisticObject](./stats/object/statisticObject.md) (*Parameterize a specific statistic*)
+* [StatisticOutput](./stats/output/statisticOutput.md) (*Parameterize the output format for statistics*)
+* [StatisticGroup](./stats/group/statisticGroup.md) (*Create and parameterize groups of statistics*)
+* [UnitAlgebra](./unitalgebra/unitalgebra.md) (*Perform math on values with units*)
 
 The Component and SubComponent classes share many of the same functions and are both covered under Component.
 
 ## See Also
-- [Python Configuration Guide](guides/configuration/pythonConfigGuide)
+- [Tutorial: Configuring your first simulation](../guides/configuration/configTutorial.mdx)
+- [Python Configuration Guide](../guides/configuration/pythonConfigGuide.md)

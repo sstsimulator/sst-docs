@@ -10,7 +10,7 @@ The *mercury* library enables simulating the behavior of large-scale application
 **SST Name:** `mercury` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.0
 
 :::
 
