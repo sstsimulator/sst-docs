@@ -650,7 +650,9 @@ const sidebars = {
       items: [
         "elements/ember/QuickStart",
         "elements/ember/CreatingMotifs",
-        "elements/ember/RunningMotifs"]
+        "elements/ember/RunningMotifs", 
+        "elements/ember/OTF2Ember", 
+      ]
     },
     "elements/firefly/intro",
     "elements/gensa/intro",
