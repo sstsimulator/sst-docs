@@ -121,7 +121,7 @@ module.exports= async function createConfigAsync() {
     "footer": {
       "style" : "dark",
       "links": [],
-      "copyright": "Copyright © 2023 SST",
+      "copyright": "Copyright © 2009-2024 NTESS",
       "logo": {
         "src": "img/sst-logo-small.png"
       }
