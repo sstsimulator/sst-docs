@@ -1,5 +1,5 @@
 ---
-title: Checkpoint and Restart
+title: Checkpoint and restart
 ---
 
 In SST 14, SST has begun to bring back support for checkpoint/restart. Under the checkpoint/restart infrastructure, a particular SST simulation can be checkpointed *only* if all of the elements it uses support checkpointing (that is, are serializable). Thus, it will be necessary for developers to add checkpointing capability to their models. The current infrastructure is experimental and has several temporary limitations described below. It was released to enable developers to start adding checkpoint support in anticipation of a fully-functional checkpoint/restart capability. We also expect that as element libraries are made checkpointable and we discover new requirements, the SST-Core support may need modifications. 
@@ -14,11 +14,11 @@ There are several limitations in the current implementation.
 
 ### Short-term temporary limitations
 The following limitations are expected to be addressed in the coming months.
-* Checkpoint/restart is only supported for serial simulations
-* Statistics are not checkpointed. On restart, any previously enabled statistics will be disabled. 
+* ~Checkpoint/restart is only supported for serial simulations.~ *This has been fixed in the SST-Core repository as of pull-request #1132*
+* ~Statistics are not checkpointed. On restart, any previously enabled statistics will be disabled.~ *This has been fixed in the SST-Core repository as of pull-request #1098.* 
 * There is no way to query whether a particular Element supports checkpointing.
 * The target directory to write checkpoints to cannot be set.
-* The checkpoint period must be specified in simulated time rather than real (wall) time.
+* ~The checkpoint period must be specified in simulated time rather than real (wall) time.~ *This has been fixed in the SST-Core repository as of pull-request #1108.*
 * There are no options to limit the number of checkpoints kept.
 * SST serialization has support for standard C++ containers and containers of pointers but *not* a pointer to a container.
 * SST interfaces (SimpleNetwork, StandardMem) have not yet been made serializable so elements using them will not be able to generate checkpoints
@@ -34,6 +34,11 @@ These are limitations that either we have not identified a path towards addressi
 * Profile points are not checkpoint-able.
 
 ## Creating a checkpoint
+
+:::info
+If you are using the SST-Core repository then as of PR #1108, the checkpoint period options are `--checkpoint-wall-period` and `--checkpoint-sim-period` to specify a wall-clock interval or a simulation time interval, respectively. `--checkpoint-period` is still available but will eventually be removed. The wall time option accepts a time formatted as HH:MM:SS, MM:SS, or SS. Alternately an integer with a time unit (`h`, `m`, or `s`) can be given. The simulation time option accepts an integer with a time unit of `s` or `Hz` and SI prefixes are allowed.
+:::
+
 Checkpoints can be created by passing the `--checkpoint-period` option to SST or by setting the option in the Python configuration file. In addition, a prefix can optionally be specified to customize the checkpoint filename.
 ```sh
 $ sst --checkpoint-period=250us configuration.py
@@ -60,7 +65,7 @@ $ sst --load-checkpoint checkpoint_250000000_0.sstcpt
 ```
 
 ## Adding checkpoint support to SST Element libraries
-To support checkpointing, any object that could be part of a checkpoint needs to be serializable and provide a method for serializing and deserializing its state. Element APIs (Component, SubComponent, Module) inherit from SST's serializable class and can be made serializable by following the steps below. The same serialization engine is used both for the existing Event serialization in parallel simulations and for checkpointing. Thus, the steps are similar to the steps needed to make Events serializable. Like Event serialization, checkpointing requires data to be explicitly added to the serialization stream. Unlike Event serialization, checkpointing tracks and tags pointers to objects so that upon restart, a pointer will correctly point to the recreated object.
+To support checkpointing, any object that could be part of a checkpoint needs to be serializable and provide a method for serializing and deserializing its state. Element APIs inherit from SST's serializable class and can be made serializable by following the steps below. The same serialization engine is used both for the existing Event serialization in parallel simulations and for checkpointing. Thus, the steps are similar to the steps needed to make Events serializable. Like Event serialization, checkpointing requires data to be explicitly added to the serialization stream. Unlike Event serialization, checkpointing tracks and tags pointers to objects so that upon restart, a pointer will correctly point to the recreated object.
 
 Use these guidelines to determine how to make an object serializable:
 * **Elements (Components, SubComponents, Modules, etc.)**: Follow steps 1-4 below.
@@ -157,7 +162,8 @@ Many data types are supported natively in SST's serialization libraries. These i
 * POD types
 * Pointers to POD types
 * `std::vector`, `std::set`, `std::map`, `std::multiset`, `std::priority_queue`
-* SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`
+* SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra` 
+    * In the SST-Core repository, as of PR #1098: `Statistic`, `StatisticOutput`
 * Handlers: `Clock::Handler2`, `Event::Handler2`
 
 Note that non-polymorphic classes/structs are special cases in the serialization library. Because there is no way to reference the class with a different type, there is no need to inherit from `Serializable` or call the `ImplementSerializable` macro (step 4 below). You may simply add a `serialize_order()` function to the class as listed above and the class will be compatible with the serializer.

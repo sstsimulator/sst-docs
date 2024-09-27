@@ -1,8 +1,8 @@
 ---
-title: Debugging Tricks
+title: Debugging tips
 ---
 
-## Using debugging tools
+## Using Debugging Tools
 
 SST utilizes a bootstrapping approach to configure the environment prior to execution.
 The following approaches may aid in the use of debugging tools.
@@ -39,9 +39,9 @@ valgrind --trace-children=yes <path to SST>/bin/sst mysstmodel.py
 
 ## Debug Output
 
-### Dynamic Loading
+### Dynamic loading
 
-Installing multiple verions of libraries and executables commonly leads to runtime errors if search paths are misconfigured.
+Installing multiple versions of libraries and executables commonly leads to runtime errors if search paths are misconfigured.
 Setting the `SST_CORE_DL_VERBOSE` environment variable can be helpful to diagnose dynamic linking problems.
 ```
 [user1@localhost tests]$ SST_CORE_DL_VERBOSE=1 sst testStdMem.py

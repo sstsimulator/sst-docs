@@ -13,14 +13,16 @@ const sidebars = {
       type: 'category',
       label: 'Concepts',
       link: { type: 'generated-index' },
-      items: ['guides/concepts/time'
+      items: ['guides/concepts/lifecycle'
+            ,'guides/concepts/time'
             ,'guides/concepts/glossary']
     },
     {
       type: 'category',
       label: 'Features',
       link: { type: 'generated-index' },
-      items: ['guides/features/checkpoint']
+      items: ['guides/features/checkpoint'
+            ,'guides/features/signal']
     },
     {
       type: 'category',

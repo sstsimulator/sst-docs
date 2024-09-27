@@ -2,7 +2,7 @@
 title: sst-config
 ---
 
-`sst-config` is a command line utlity that queries SST's configuration to retrieve information about how SST was compiled and libraries that have been registered with it. A common use of this command is to pull compiler flags for element library compilation. Passing the `--help` flag to `sst-config` will print a brief usage description.
+`sst-config` is a command line utility that queries SST's configuration to retrieve information about how SST was compiled and libraries that have been registered with it. A common use of this command is to pull compiler flags for element library compilation. Passing the `--help` flag to `sst-config` will print a brief usage description.
 
 ```bash
 $ sst-config
@@ -67,9 +67,9 @@ $ sst-config SST_ELEMENT_LIBRARY SST_ELEMENT_LIBRARY_BINDIR
 
 ## Understanding the SST configuration file
 When SST-Core is compiled, it generates a configuration file. This file can be found in `$SSTCORE_BUILD_DIR/etc/sst/sstsimulator.conf`. As elements are registered with SST using `sst-register`, information about those elements is added to this same file. The file is separated into sections called *groups*. Each group has a name which is enclosed in square brackets. Any lines following a group name belong to the most recently declared group. Common groups that can be found in the file include:
-* **SSTCore** Information about the core compilation including compiler and linker flags, compiler version, python version and flags, etc.
+* **SSTCore** Information about the core compilation including compiler and linker flags, compiler version, Python version and flags, etc.
 * **SST_ELEMENT_SOURCE** When element libraries register their source code location with SST, the paths are captured in this group. 
-* **SST_ELEMENT_TESTS** This group records the location of testsuites that have been registered with SST and is used by the SST test infrastructure to locate available tests.
+* **SST_ELEMENT_TESTS** This group records the location of test suites that have been registered with SST and is used by the SST test infrastructure to locate available tests.
 * **SST_ELEMENT_LIBRARY** If you have built and installed elements from the sst-elements repository, you will see this group. It contains the library install path. Other elements should be registered to their own groups, for example the sst-external-element repository registers its `simpleExternalElement` library under a group of the same name: `simpleExternalElement`.
 
 

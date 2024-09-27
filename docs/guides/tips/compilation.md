@@ -1,9 +1,9 @@
 ---
-title: Compilation Tricks
+title: Compilation tips
 ---
 
-## Avoid unneccessary recompilation
-To avoid a majority of redundant recompilation when developing SST Core and Elements, you can have the `install` utility preserve timestamps of installed files. To do this, override the `INSTALL` variable when configuring SST, prior to running `make`. This will allow `make` and friends to continue to work properly while reducing the amount of recompilation. Appending the `INSTALL` flag to your configure scipt invocation will set it appropriately. 
+## Avoid unnecessary recompilation
+To avoid a majority of redundant recompilation when developing SST Core and Elements, you can have the `install` utility preserve timestamps of installed files. To do this, override the `INSTALL` variable when configuring SST, prior to running `make`. This will allow `make` and friends to continue to work properly while reducing the amount of recompilation. Appending the `INSTALL` flag to your configure script invocation will set it appropriately. 
 
 ```sh
 $ ../configure --prefix=$HOME/install <other configure flags> INSTALL="/usr/bin/install -p"

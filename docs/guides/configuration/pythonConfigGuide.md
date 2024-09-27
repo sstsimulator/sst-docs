@@ -1,20 +1,20 @@
 ---
-title: "Simulation Configuration File"
+title: "Simulation configuration file"
 ---
 
-SST provides a python module to allow interaction with the simulation build system. This python module is used in the input python script for the purpose of building the graph that represents the simulation to be performed. This is done by providing classes and functions to define the elements of the simulation, their parameters, and how they are interconnected. The user can also optionally enable statistics and create a user specified partitioning for the described model. Behind the scenes, these classes will build the C\+\+ data structure that is used by SST to construct the simulation model. 
+SST provides a Python module to allow interaction with the simulation build system. This Python module is used in the input Python script for the purpose of building the graph that represents the simulation to be performed. This is done by providing classes and functions to define the elements of the simulation, their parameters, and how they are interconnected. The user can also optionally enable statistics and create a user specified partitioning for the described model. Behind the scenes, these classes will build the C\+\+ data structure that is used by SST to construct the simulation model. 
 
-The SST core python module is defined in cpython and is only available in the python interpreter launched within a running SST executable. The module is accessed by importing the sst module. This can be done in a number of ways. The two most common being: 
+The SST core Python module is defined in cpython and is only available in the Python interpreter launched within a running SST executable. The module is accessed by importing the sst module. This can be done in a number of ways. The two most common being: 
 
 
 ```py
-# Import SST python module using sst. prefix
+# Import SST Python module using sst. prefix
 import sst
-# Import SST python module members into current namespace
+# Import SST Python module members into current namespace
 from sst import *
 ```
 
-Within this module, there are a number of available classes and global functions. The available classes are: Component, SubComponent, Link, StatisticOutput, StatisticGroup, and UnitAlgebra. The global functions are divided between general functions and functions operating on or returning one of the available objects. The links below document the available classes in the SST python module and the global functions. 
+Within this module, there are a number of available classes and global functions. The available classes are: Component, SubComponent, Link, StatisticOutput, StatisticGroup, and UnitAlgebra. The global functions are divided between general functions and functions operating on or returning one of the available objects. The links below document the available classes in the SST Python module and the global functions. 
 
 **SST Python Module**
 * [Global functions](../../config/config.md) (*General functions that apply to the simulation instance*)
@@ -55,7 +55,7 @@ Full documentation can be found at the links above, this section describes basic
 
 Here is a picture of the system created by the script. The link, `component_link`, allows `c0` and `c1` to exchange events with each other during simulation.
 
-![A picture of the system described by the python file shown above](../assets/pythonconfig_guide_ex0_graph.png)
+![A picture of the system described by the Python file shown above](../assets/pythonconfig_guide_ex0_graph.png)
 
 
 ### Imports
@@ -178,7 +178,7 @@ In addition to setting the global statistic load level, you must specify which s
 Functions to enable statistics take an optional parameters list which allows users to configure the output frequency and/or collection type of the statistic (e.g., accumulator, histogram), as well as any statistic type-specific parameters. By default, all statistics are output once at the end of simulation and are of the accumulator type. See [General Notes on Statistics](../../config/stats/overview) for details.
 
 :::warning
-Enabling statistics must occur after the related components are created in the python file.
+Enabling statistics must occur after the related components are created in the Python file.
 :::
 
 
