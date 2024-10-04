@@ -131,7 +131,10 @@ module.exports= async function createConfigAsync() {
       "apiKey": "21b099cfb417d9b97f19045cc7c20cfe",
       "indexName": "sst-simulator",
       "placeholder": "Search Docs (not working yet)"
-    }
+    },
+    prism: {
+      additionalLanguages: ['bash'],
+    },
   }
 };
 };

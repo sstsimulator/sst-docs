@@ -640,7 +640,18 @@ const sidebars = {
   elements: [
     'elements/intro',
     "elements/ariel/intro",
-    "elements/balar/intro",
+    /* Balar */
+    {
+      type: 'category',
+      label: 'balar',
+      link: {type: 'doc', id: 'elements/balar/intro'},
+      items: [
+        "elements/balar/QuickStart",
+        "elements/balar/TracingCUDAProgram",
+        "elements/balar/CompilingRISCVCUDA",
+        "elements/balar/BalarInDepth",
+      ]
+    },
     "elements/cacheTracer/intro",
     "elements/cassini/intro",
     "elements/cramsim/intro",
