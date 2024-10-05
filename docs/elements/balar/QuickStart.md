@@ -2,6 +2,8 @@
 title: QuickStart
 ---
 
+This page provides instructions to setup balar and run test examples.
+
 ## Prerequisites
 
 ### CUDA
@@ -31,7 +33,7 @@ make -j4
 
 ### LLVM + RISCV GNU Toolchain
 
-If you wish to run CUDA binary with [Vanadis](../vanadis/intro.md) and balar, you will need to clone LLVM and RISCV GNU toolchain to compile CUDA source code.
+If you wish to run CUDA binary with [vanadis](../vanadis/intro.md) and balar, you will need to clone LLVM and RISCV GNU toolchain to compile CUDA source code.
 
 ```bash
 # Create installation dirs
@@ -164,16 +166,16 @@ cd SST_ELEMENT_SOURCE/src/sst/elements/balar/tests
 make -C vectorAdd
 sst testBalar-testcpu.py --model-options="-c gpu-v100-mem.cfg -x ./vectorAdd/vectorAdd -t cuda_calls.trace"
 
-# With Vanadis 
+# With vanadis 
 # Run helloworld example, pure CPU code, no CUDA calls
 make -C vanadisLLVMRISCV
-VANADIS_EXE=./vanadisLLVMRISCV/helloworld \
-VANADIS_ISA=RISCV64 \
+vanadis_EXE=./vanadisLLVMRISCV/helloworld \
+vanadis_ISA=RISCV64 \
 sst testBalar-vanadis.py --model-options='-c gpu-v100-mem.cfg'
 
 # Run a simple integer vector add example
-VANADIS_EXE=./vanadisLLVMRISCV/vecadd \
-VANADIS_ISA=RISCV64 \
+vanadis_EXE=./vanadisLLVMRISCV/vecadd \
+vanadis_ISA=RISCV64 \
 BALAR_CUDA_EXE_PATH=./vanadisLLVMRISCV/vecadd \
 sst testBalar-vanadis.py --model-options='-c gpu-v100-mem.cfg'
 ```

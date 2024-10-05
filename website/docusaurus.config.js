@@ -133,7 +133,7 @@ module.exports= async function createConfigAsync() {
       "placeholder": "Search Docs (not working yet)"
     },
     prism: {
-      additionalLanguages: ['bash'],
+      additionalLanguages: ['bash', 'makefile'],
     },
   }
 };

@@ -2,13 +2,15 @@
 title: Tracing CUDA Program
 ---
 
+This page provides steps to use tracer tool to generate CUDA API traces to run *balar* with *BalarTestCPU*.
+
 :::warning
 
 We are working on providing a more robust version of the tracer with the new NVBit release. Including better trace format and better computation validation.
 
 :::
 
-In order to run balar in trace-driven mode, you will need to supply the *BalarTestCPU* component with a trace file and associated GPU memory copy data dump. We have created an instruction tracer tool based on [NVBit](https://github.com/NVlabs/NVBit) to generate those. You can find relevant code inside [Accel-Sim](https://github.com/accel-sim/accel-sim-framework) framework: `ACCEL_SIM_SRC/util/tracer_nvbit/others/cuda_api_tracer_tool`.
+In order to run *balar* in trace-driven mode, you will need to supply the *BalarTestCPU* component with a trace file and associated GPU memory copy data dump. We have created an instruction tracer tool based on [NVBit](https://github.com/NVlabs/NVBit) to generate those. You can find relevant code inside [Accel-Sim](https://github.com/accel-sim/accel-sim-framework) framework: `ACCEL_SIM_SRC/util/tracer_nvbit/others/cuda_api_tracer_tool`.
 
 :::note
 
