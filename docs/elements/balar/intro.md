@@ -11,7 +11,7 @@ The *BalarTestCPU* component is a trace-based test CPU that is included inside b
 
 *BalarMMIO* is responsible for relaying CUDA API requests from SST to GPGPU-Sim. Currently it supports running with CUDA traces without a real CPU model (with BalarTestCPU) or with a [Vanadis](../vanadis/intro) core running RISCV + CUDA binary with a custom CUDA runtime (`libcudart_vanadis` inside `./tests/vanadisLLVMRISCV/`). This mode has been tested with a subset of Rodinia 2.0 benchmark kernels in unittest.
 
-The *dmaEngine* component performs memory data transfers between Vanadis  memory space and simulator memory space. It is required for direct-execution mode as balar will read/write the CPU data (i.e. `cudaMemcpy()`) and place them into GPGPU-Sim's memory space for functional simulation. In addition, dmaEngine is also used to read CUDA dispatch packet and write return value for the custom CUDA runtime.
+The *dmaEngine* component performs memory data transfers between SST cache memory space and simulator memory space. It is required as balar will read/write the CPU data (i.e. `cudaMemcpy()` with vanadis) and place them into GPGPU-Sim's memory space for functional simulation. In addition, dmaEngine is also used to read CUDA dispatch packet and write return value for the custom CUDA runtime.
 
 :::note At a Glance
 

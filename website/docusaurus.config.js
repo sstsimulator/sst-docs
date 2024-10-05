@@ -135,6 +135,10 @@ module.exports= async function createConfigAsync() {
     prism: {
       additionalLanguages: ['bash', 'makefile'],
     },
-  }
+  },
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
 };
