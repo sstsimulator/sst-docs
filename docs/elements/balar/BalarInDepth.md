@@ -17,7 +17,6 @@ sequenceDiagram
     participant balarMMIO
     participant balarTestCPU
     participant memory
-    link memory: memory @ google.com
     balarTestCPU->>memory: Write CUDA API packet to<br/>scratch memory location
     balarTestCPU->>balarMMIO: Write pointer to<br/>scratch memory location
     balarMMIO->>dmaEngine: Issue a Read to<br/>retrieve the CUDA packet
