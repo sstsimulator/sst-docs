@@ -10,7 +10,7 @@ title: miranda
 **SST Name:** `miranda` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.0
+**Last Released:** SST 14.1
 
 :::
 

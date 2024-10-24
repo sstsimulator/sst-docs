@@ -1,0 +1,467 @@
+---
+title: Checkpoint and restart
+---
+
+In SST 14, SST began bringing back checkpoint/restart support. Elements are not automatically checkpoint-able. To enable checkpoint/restart, developers must create a function in each element that describes how to serialize the element. A simulation can be checkpointed if *all* of the elements it uses support checkpoint (i.e., are serializable).
+
+The checkpoint/restart infrastructure is intended to enable users to recover from node failure or to comply with job timeouts on machines with job time limits. Thus the assumption is that restart will occur on the same or a similar machine with the same version of SST. SST's serialization uses C++ `typeid`s which are not guaranteed to be portable across architectures or compilers.
+
+This guide describes 
+1. [Support status](#support-status)
+2. [How to checkpoint](#creating-a-checkpoint) and [restart a simulation](#restarting-from-a-checkpoint)
+3. [How to add checkpoint support to an element library](#adding-checkpoint-support-to-element-libraries)
+4. [Planned improvements](#planned-improvements)
+
+
+## Support status
+Select the version of SST you are using to see version-specific information. As support evolves, the repository information will be updated.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="release-version">
+    <TabItem value="14.0" label="14.0 Release" default>
+    "Serializable types" lists types that SST automatically serializes or that have an API available.
+        * **Parallel support:** Only serial simulations can be checkpointed.
+        * **Checkpoint triggers**
+            * Simulated time interval using the `--checkpoint-period` command line option.
+        * **Output format**
+            * A binary file named "PREFIX_TIME_ID.sstcpt" where PREFIX=checkpoint, TIME is simulated time of the checkpoint and ID is a incrementing integer starting at 0. PREFIX can be changed using the `--checkpoint-prefix` command-line option.
+        * **Serializable types**
+            * API available: Component, SubComponent, ComponentExtension, Module
+            * POD types and pointers to POD types
+            * `std::vector`, `std::set`, `std::map`, `std::multiset`, `std::priority_queue`
+            * SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`
+                * Statistics are not checkpointed. On restart, any previously enabled statistics will be disabled.
+            * SST Handlers: `Clock::Handler2`, `Event::Handler2`
+    </TabItem>
+    <TabItem value="14.1" label="14.1 Release" default>
+        *The SST 14.1 release added support for parallel simulations, additional checkpoint triggers, and checkpointing statistics.*
+        * **Parallel support:** All simulations, parallel and serial, can be checkpointed. Checkpoint and restart require the same parallelization (e.g., if checkpoint was generated with SST running two threads, SST must be restarted using two threads).
+        * **Serializable types**
+            * API available: Component, SubComponent, ComponentExtension, Module
+            * POD types and pointers to POD types
+            * `std::vector`, `std::set`, `std::map`, `std::multiset`, `std::priority_queue`
+            * SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`, `Statistic`, `StatisticOutput`
+            * SST Handlers: `Clock::Handler2`, `Event::Handler2`
+        * **Checkpoint triggers**
+            * Simulated time using the `--checkpoint-period` command line option.
+            * Real (wall) time using the `--checkpoint-wall-period` command line option.
+            * On a signal by using the `--sigusr1=sst.rt.checkpoint` or `--sigusr2=sst.rt.checkpoint` command line options.
+        * **Output format**
+            * Checkpoints are placed in a directory named "PREFIX" which is "checkpoint" by default. Use `--checkpoint-prefix` to change the prefix. If the directory already exists, SST will create a new one named "PREFIX_ID" using a unique integer for ID.
+            * Within the directory, there is a subdirectory for each checkpoint which is named "PREFIX_ID_TIME". ID is a unique integer and TIME is the simulated time at checkpoint.
+            * Within the checkpoint subdirectory are a number of files.
+                * Registry: A plaintext file named "PREFIX_ID_TIME.sstcpt". This is the file to specify when restarting.
+                * Globals: A binary file containing global checkpoint data named "PREFIX_ID_TIME_globals.bin"
+                * Data files: One per thread/rank and named PREFIX_ID_TIME_RANK_THREAD.bin
+    </TabItem>
+    <TabItem value="repo" label="SST Repositories" default>
+        *Repository support is currently identical to the SST 14.1 release.*
+        * **Parallel support:** All simulations, parallel and serial, can be checkpointed. Checkpoint and restart require the same parallelization (e.g., if checkpoint was generated with SST running two threads, SST must be restarted using two threads).
+        * **Serializable types**
+            * API available: Component, SubComponent, ComponentExtension, Module
+            * POD types and pointers to POD types
+            * `std::vector`, `std::set`, `std::map`, `std::multiset`, `std::priority_queue`
+            * SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`, `Statistic`, `StatisticOutput`
+            * SST Handlers: `Clock::Handler2`, `Event::Handler2`
+        * **Checkpoint triggers**
+            * Simulated time using the `--checkpoint-period` command line option.
+            * Real (wall) time using the `--checkpoint-wall-period` command line option.
+            * On a signal by using the `--sigusr1=sst.rt.checkpoint` or `--sigusr2=sst.rt.checkpoint` command line options.
+        * **Output format**
+            * Checkpoints are placed in a subdirectory in the current working directory named "PREFIX" which is "checkpoint" by default. Use `--checkpoint-prefix` to change the prefix. If the subdirectory already exists, SST will create a new one named "PREFIX_ID" using a unique integer for ID.
+            * Within the directory, there is a subdirectory for each checkpoint which is named "PREFIX_ID_TIME". ID is a unique integer and TIME is the simulated time at checkpoint.
+            * Within each individual checkpoint subdirectory are a number of files.
+                * Registry: A plaintext file named "PREFIX_ID_TIME.sstcpt". This is the file to specify when restarting.
+                * Globals: A binary file containing global checkpoint data named "PREFIX_ID_TIME_globals.bin"
+                * Data files: One per thread/rank and named PREFIX_ID_TIME_RANK_THREAD.bin
+    </TabItem>
+</Tabs>
+
+
+## Creating a checkpoint
+The command line option to create a checkpoint changed between SST 14.0 and SST 14.1 and the repositories. Select your version.
+
+<Tabs groupId="release-version">
+    <TabItem value="14.0" label="14.0 Release" default>
+        Enable checkpoints by giving SST a frequency at which to generate checkpoints either on the command line or in the simulation configuration file. The checkpoint file name prefix can also be customized (default is "checkpoint").
+    
+        ```sh title="Enabling checkpoints on the command line"
+        $ sst --checkpoint-period=250us configuration.py
+        $ sst --checkpoint-period=250us --checkpoint-prefix="simulation" configuration.py
+        ```
+        ```py title="Enabling checkpoints in the SST configuration file"
+        import sst
+
+        sst.setProgramOption("checkpoint-period", "250us")
+        sst.setProgramOption("checkpoint-prefix", "simulation") # Optional
+        ```
+
+        The period refers to **simulated time** and must include units. SI\-prefixes are valid.
+
+        The examples above produce a checkpoint every 250us. Checkpoints are written to the current working directory with the file name PREFIX_TIME_ID.sstcpt. If no prefix option was given, the PREFIX is "checkpoint". TIME is the time of the checkpoint as measured in the simulation's core time base. For most simulations, this is picoseconds. ID starts at 0 for the first checkpoint and is incremented for each subsequent checkpoint.
+    </TabItem>
+
+    <TabItem value="14.1" label="14.1 Release" default>
+        There are three options for triggering checkpoints: (1) on a simulation time interval, (2) on a wall (real) time interval, and (3) by sending SST a signal. A prefix to use for checkpoint directories and file names can also be given (default is "checkpoint").
+
+        ```sh title="Enabling checkpoints at a simulation time interval on the command line"
+        $ sst --checkpoint-sim-period=250us configuration.py
+        $ sst --checkpoint-sim-period=250us --checkpoint-prefix="simulation" configuration.py
+        ```
+        ```sh title="Enabling checkpoints on a wall time interval on the command line"
+        $ sst --checkpoint-wall-period=10m configuration.py
+        $ sst --checkpoint-wall-period=10m --checkpoint-prefix="simulation" configuration.py
+        ```
+
+        ```sh title="Enabling checkpoint when a SIGUSR1 or SIGUSR2 is sent to SST"
+        $ sst --sigusr1=sst.rt.checkpoint configuration.py
+        $ sst --sigusr2=sst.rt.checkpoint --checkpoint-prefix="simulation" configuration.py
+
+        ```
+        ```py title="Any command line parameter can be set in the configuration file instead"
+        import sst
+
+        sst.setProgramOption("checkpoint-wall-period", "10m")    # Enable on a frequency in terms of wall time
+        sst.setProgramOption("checkpoint-prefix", "simulation")  # Optional
+        # sst.setProgramOption("checkpoint-sim-period", "250us") # Uncomment to enable on a frequency in terms of simulated time
+        # sst.setProgramOption("sigusr1", "sst.rt.checkpoint")   # Uncomment to trigger a checkpoint when SST receives SIGUSR1
+        # sst.setProgramOption("sigusr2", "sst.rt.checkpoint")   # Uncomment to trigger a checkpoint when SST receives SIGUSR2
+        ```
+        Simulated times must include units and SI\-prefixes are valid. Wall times must be formatted as HH::MM::SS, MM::SS, or SS. Alternately, an integer with a time unit (`h`, `m`, or `s`) can be given.
+
+        If checkpoints are enabled, SST creates a directory named PREFIX in the current working directory where checkpoints will be placed. If a directory called PREFIX already exists, SST will name the directory PREFIX_ID and increment ID to the smallest integer that is a new directory name. (e.g., if "checkpoint_0" exists, SST will use "checkpoint_1"). An example directory structure is shown below.
+        
+        ```sh
+        current working directory
+        |--checkpoint
+           |--checkpoint_0_1000
+              |--checkpoint_0_1000.sstcpt
+              |--checkpoint_0_1000_globals.bin
+              |--checkpoint_0_1000_0_0.bin
+              |--checkpoint_0_1000_1_0.bin
+            |--checkpoint_1_2000
+              |--checkpoint_1_2000.sstcpt
+              |--checkpoint_1_2000_globals.bin
+              |--checkpoint_1_2000_0_0.bin
+              |--checkpoint_1_2000_1_0.bin
+        ```
+        
+        Each generated checkpoint creates its own subdirectory named PREFIX_ID_TIME where ID is a unique (incrementing) integer and time is the simulated time. In that directory is a plaintext checkpoint registry file and a number of global files (one per thread/rank). The registry file should be given to SST to restart the simulation.
+    </TabItem>
+    
+    <TabItem value="repo" label="SST Repositories" default>
+        There are three options for triggering checkpoints: (1) on a simulation time interval, (2) on a wall (real) time interval, and (3) by sending SST a signal. A prefix to use for checkpoint directories and file names can also be given (default is "checkpoint").
+
+        ```sh title="Enabling checkpoints at a simulation time interval on the command line"
+        $ sst --checkpoint-sim-period=250us configuration.py
+        $ sst --checkpoint-sim-period=250us --checkpoint-prefix="simulation" configuration.py
+        ```
+        ```sh title="Enabling checkpoints on a wall time interval on the command line"
+        $ sst --checkpoint-wall-period=10m configuration.py
+        $ sst --checkpoint-wall-period=10m --checkpoint-prefix="simulation" configuration.py
+        ```
+
+        ```sh title="Enabling checkpoint when a SIGUSR1 or SIGUSR2 is sent to SST"
+        $ sst --sigusr1=sst.rt.checkpoint configuration.py
+        $ sst --sigusr2=sst.rt.checkpoint --checkpoint-prefix="simulation" configuration.py
+
+        ```
+        ```py title="Any command line parameter can be set in the configuration file instead"
+        import sst
+
+        sst.setProgramOption("checkpoint-wall-period", "10m")    # Enable on a frequency in terms of wall time
+        sst.setProgramOption("checkpoint-prefix", "simulation")  # Optional
+        # sst.setProgramOption("checkpoint-sim-period", "250us") # Uncomment to enable on a frequency in terms of simulated time
+        # sst.setProgramOption("sigusr1", "sst.rt.checkpoint")   # Uncomment to trigger a checkpoint when SST receives SIGUSR1
+        # sst.setProgramOption("sigusr2", "sst.rt.checkpoint")   # Uncomment to trigger a checkpoint when SST receives SIGUSR2
+        ```
+        Simulated times must include units and SI\-prefixes are valid. Wall times must be formatted as HH::MM::SS, MM::SS, or SS. ALternately, an integer with a time unit (`h`, `m`, or `s`) can be given.
+
+        If checkpoints are enabled, SST creates a directory named PREFIX in the current working directory where checkpoints will be placed. If a directory called PREFIX already exists, SST will name the directory PREFIX_ID and increment ID to the smallest integer that is a new directory name. (e.g., if "checkpoint_0" exists, SST will use "checkpoint_1"). An example directory structure is shown below.
+        
+        ```sh
+        current working directory
+        |--checkpoint
+           |--checkpoint_0_1000
+              |--checkpoint_0_1000.sstcpt
+              |--checkpoint_0_1000_globals.bin
+              |--checkpoint_0_1000_0_0.bin
+              |--checkpoint_0_1000_1_0.bin
+            |--checkpoint_1_2000
+              |--checkpoint_1_2000.sstcpt
+              |--checkpoint_1_2000_globals.bin
+              |--checkpoint_1_2000_0_0.bin
+              |--checkpoint_1_2000_1_0.bin
+        ```
+        
+        Each generated checkpoint creates its own subdirectory named PREFIX_ID_TIME where ID is a unique (incrementing) integer and time is the simulated time. In that directory is a plaintext checkpoint registry file and a number of global files (one per thread/rank). The registry file should be given to SST to restart the simulation.
+    </TabItem>
+</Tabs>
+
+
+## Restarting from a checkpoint
+To restart from a checkpoint, use the `--load-checkpoint` option and pass the checkpoint file (with suffix ".sstcpt") instead of a configuration file.
+```sh
+$ sst --load-checkpoint checkpoint/checkpoint_0_1000/checkpoint_0_1000.sstcpt
+```
+
+## Adding checkpoint support to element libraries
+Follow the steps below for each class, struct, etc. in your element Library. This will tell SST how to serialize your data structures. Depending on your object type, some steps may be skipped.
+
+Note: The same serialization engine is used both for the existing Event serialization in parallel simulations and for checkpointing. Thus, the steps are similar to the steps needed to make Events serializable. Like Event serialization, checkpointing requires data to be explicitly added to the serialization stream. Unlike Event serialization, checkpointing tracks and tags pointers to objects so that upon restart, a pointer will correctly point to the recreated object.
+
+### Step 1: Inherit from the Serializable class - non-Element classes ONLY
+:::note
+Skip this step if any of the following apply:
+1. Your class is an SST Element or inherits from a class that is already serializable (examples: `SST::Component`, `SST::SubComponent`, `SST::Module`, `SST::Event`, etc).
+2. Your object is a struct
+3. Your object is a non-polymorphic class.
+:::
+
+For all other classes, inherit from SST's serializable class as shown.
+```cpp title="Inheriting from SST's serializable class"
+#include <sst/core/serialization/serializable.h>
+
+class MyClass : public SST::Core::Serialization::serializable {
+    ...
+```
+
+### Step 2: Change Clock and Event handler functions
+Change the handler type from `Handler` to `Handler2` and move the function pointer from the constructor parameters into the template parameters as shown. The old handler types are not serializable and will cause errors if you attempt to serialize them.
+```cpp
+// Clock handler without metadata
+SST::Clock::HandlerBase* old_handler = 
+    new SST::Clock::Handler<ComponentName>(this, &ComponentName::HandlerFunction); // Not serializable
+SST::Clock::HandlerBase* new_handler = 
+    new SST::Clock::Handler2<ComponentName, &ComponentName::HandlerFunction>(this); // Serializable
+
+// Clock handler with metadata
+SST::Clock::HandlerBase* old_handler = 
+    new SST::Clock::Handler<ComponentName, uint32_t>(this, &ComponentName::HandlerFunction, 0); // Not serializable
+SST::Clock::HandlerBase* new_handler = 
+    new SST::Clock::Handler2<ComponentName, &ComponentName::HandlerFunction, uint32_t>(this, 0); // Serializable
+
+// Event handler without metadata
+SST::Link::HandlerBase* old_handler = 
+    new SST::Event::Handler<ComponentName>(this, &ComponentName::HandlerFunction); // Not serializable
+SST::Link::HandlerBase* new_handler = 
+    new SST::Event::Handler2<ComponentName, &ComponentName::HandlerFunction>(this); // Serializable
+
+// Event handler with metadata
+SST::Event::HandlerBase* old_handler = 
+    new SST::Event::Handler<ComponentName, uint32_t>(this, &ComponentName::HandlerFunction, 0); // Not serializable
+SST::Event::HandlerBase* new_handler = 
+    new SST::Event::Handler2<ComponentName, &ComponentName::HandlerFunction, uint32_t>(this, 0); // Serializable
+```
+
+### Step 3: Add a default constructor
+During deserialization, SST will call this constructor to create an object before populating its state from the checkpoint. 
+```cpp 
+MyClass();
+```
+
+### Step 4: Add a serialization function
+SST's serializer calls `serialize_order` on elements during both serialization and deserialization. 
+Add this function to a public section of your class definition:
+```cpp title = "class.h"
+public:
+    // highlight-start
+    void serialize_order(SST::Core::Serialization::serializer& ser) override;
+    // highlight-end
+```
+
+Next, if you class inherits from another, call that classes's `serialize_order` function.
+```cpp
+void MyClass:serialize_order(SST::Core::Serialization::serializer& ser)
+{
+    BaseClass::serialize_oder(ser);
+}
+```
+
+Last, add *all* class data members that need to be saved to the checkpoint using the macros `SST_SER` and `SST_SER_AS_PTR`.
+* If you are adding a data member that is not itself a pointer but other pointers to it exist and will be serialized, use `SST_SER_AS_PTR`. See note below.
+* In all other cases (serializing pointers or serializing non-pointers which are not pointed to), use `SST_SER`.
+If you are familiar with Event serialization, these macros implement the `ser& x` and `ser| x` syntax used there. However, they also enable interactive debugging of your element (as of SST 14.1) so the macros are preferred.
+
+Note: The `SST_SER_AS_PTR`(`|`) operator works only for non-pointer data and adds both the data to the checkpoint *and* registers a pointer to the data. This operator is only required if the object being serialized is not a pointer and you have a pointer elsewhere to the object that you intend to serialize as well. Using this macro allows a serialized pointer to correctly link itself to the serialized data. Using `SST_SER_AS_PTR` consumes both extra space in the checkpoint and adds a (small) overhead during serialization. The non-pointer data must serialize before any pointers to the data are serialized, otherwise the deserialized data will not be correct. One use case for `SST_SER_AS_PTR` is when the data is stored in a container (such as a map or set) and there are other pointers to the data.
+
+By way of example:
+```cpp
+/* Class variables */
+// 
+SST::Link* link;
+SST::Output* output;
+SST::TimeConverter* tc;
+int count;
+std::string name;
+std::vector<uint32_t> nums;
+std::string pointedToObj;
+std::string* pointer = &pointedToObj;
+
+/* Serialization function */
+void serialize_order(SST::Core::Serialization::Serializer& ser) override
+{
+    BaseClass::serialize_order(ser); // Assuming this class has a base class called 'BaseClass'. ALWAYS call the base class's serialize_order function prior to adding data from this class.
+    SST_SER(link)
+    SST_SER(output)
+    SST_SER(tc)
+    SST_SER(count)
+    SST_SER(name)
+    SST_SER(nums)
+    SST_SER_AS_PTR(pointedToObj) // Track a pointer to this object
+    SST_SER(pointer)
+}
+```
+
+Many data types are supported natively in SST's serialization libraries. These include:
+* POD types
+* Pointers to POD types
+* `std::vector`, `std::set`, `std::map`, `std::multiset`, `std::priority_queue`
+* SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`, `Statistic`, `StatisticOutput`
+* Handlers: `Clock::Handler2`, `Event::Handler2`
+
+Note that non-polymorphic classes/structs are special cases in the serialization library. Because there is no way to reference the class with a different type, there is no need to inherit from `Serializable` or call the `ImplementSerializable` macro (step 5 below). You may simply add a `serialize_order()` function to the class as listed above and the class will be compatible with the serializer.
+
+### Step 5: Add the appropriate serialization macro
+:::note
+Skip this step if any of the following apply:
+* You are serializing a struct
+* Your class is non-polymorphic
+:::
+
+Classes that inherit from `SST::Core::Serialization::serializable` must call the `ImplementSerializable` macro with their class name. Note that the macro should be called from a public section of the class definition.
+```cpp
+MyClass : public SST::Component
+{
+public:
+    // Class functions
+    
+    ImplementSerializable(MyClass)
+};
+```
+Pure virtual classes must use `ImplementVirtualSerializable` instead of `ImplementSerializable`.
+
+### Put it together: An example
+Here is an example of what this looks like. Note we've removed all but the relevant-to-checkpointing pieces of the class (ELI macros, most class functions, etc.).
+
+```cpp title="example.h"
+#ifndef SST_EXAMPLE_CHECKPOINT_HEADER
+#define SST_EXAMPLE_CHECKPOINT_HEADER
+
+#include <sst/core/component.h>
+#include <sst/core/link.h>
+#include <sst/core/rng/marsaglia.h>
+
+namespace SST {
+namespace ExampleSSTLibrary {
+
+class example : public SST::Component { // Step 1 - SST::Component already inherits from Serializable
+public:
+    // ELI macros would be here
+    
+    // Public class members would be here
+
+    //highlight-start
+    // Step 3 - Add default constructor, serialize_order, and serializable macro
+    example();
+    void serialize_order(SST::Core::Serialization::serializer& ser) override;
+    ImplementSerializable(SST::ExampleSSTLibrary::example)
+    //highlight-end
+private:
+    // Private member functions would be here
+
+    // Private data members - to be serialized in serialize_order
+    int64_t param0;
+    uint32_t param1;
+    std::string param2;
+    Statistic<uint64_t> stat;
+    SST::Output* out;
+    std::vector<std::string> stringVec;
+    SST::Link* link;
+    RNG::Random* rng;
+};
+
+} } // End namespaces
+#endif
+```
+```cpp title="example.cc"
+// Rest of class defined here
+
+// highlight-start
+example::example() : Component() {}
+
+void example::serialize_order(SST::Core::Serialization::serializer& ser) {
+    // MUST call parent's serialize_order FIRST
+    Component::serialize_order(ser);
+
+    // Now, serialize everything we need to save
+    SST_SER(param0)
+    SST_SER(param1)
+    SST_SER(param2)
+    SST_SER(stat)
+    SST_SER(out)
+    SST_SER(stringVec)
+    SST_SER(link)
+    SST_SER(rng)
+}
+//highlight-end
+```
+
+## Advanced notes on serialization
+While many types are serializable already within SST's serialization engine, complex types may require additional work. 
+
+### Background
+Checkpoint uses three stages of serialization (a fourth, MAP, exists for interactive debugging). They are: (1) SIZER, (2) PACK, and (3) UNPACK. When writing a checkpoint, SIZER and PACK are used to serialize the state of simulation and write it to file. During restart, UNPACK is used to deserialize the checkpointed data. In each stage, the serializer will call `serialize_order` on each object. Thus, if the default serialization does not work for a particular type, a custom serialization can be implemented by querying the serializer's mode in the `serialize_order` function and taking the appropriate action to serialize the type. During `SIZER`, the `serialize_order` function should add the size of the data to be serialized using the `&` (typically) or `|` (serialize-as-pointer) operator. During `PACK`, `serialize_order` should add the data to be added to the serialization stream using the `&` or `|` operator. Finally, during `UNPACK`, `serialize_order` should read the serialized data from the stream, again using the `&` or `|` operator. The same operator should be used in all three stages. The fourth stage, `MAP`, should be defined in the case switch statements and left empty.
+
+### Example: Serializing UnitAlgebra
+As an example, the code snippet below shows how `SST::UnitAlgebra` is serialized. UnitAlgebra has two components, a "unit" struct that contains a numerator (string) and denominator (string) and a "value" object that is a custom type called `decimal_fixedpoint`.
+
+The "unit" struct consists of strings so UnitAlgebra serializes the struct's members using the `&` operator in all three serializer stages (`SIZER`, `PACK`, and `UNPACK`). To serialize `decimal_fixedpoint`, SST converts it to a string, stores the string, and then, on deserialization, re-initializes a new `decimal_fixedpoint` type using the stored string.  
+
+Note that the `SST_SER` macro is only useful for class members - `unit.numerator` and `unit.denominator` in the example below. For temporaries, use the raw (`&` or `|`) serialization operators.
+```cpp
+    void serialize_order(SST::Core::Serialization::serializer& ser) override
+    {
+        // Do the unit - these are both strings, no special handling required
+        SST_SER(unit.numerator);
+        SST_SER(unit.denominator);
+
+        // For value, first convert to a string
+        // Then, reinitialize from the string
+        switch ( ser.mode() ) {
+        case SST::Core::Serialization::serializer::SIZER:
+        case SST::Core::Serialization::serializer::PACK:
+        {
+            std::string s = value.toString(0);
+            // The next line will get the size of the string during SIZER
+            // and will pack the string into the serialization stream during PACK
+            ser&        s; // Could equivalently use SST_SER but not needed since 's' is not a class member
+            break;
+        }
+        case SST::Core::Serialization::serializer::UNPACK:
+        {   
+            // Extract the serialized string from the stream
+            std::string s;
+            ser&        s;
+            // Reinitialize 'value' using the string
+            value = sst_big_num(s);
+            break;
+        }
+        case SST::Core::Serialization::serializer::MAP:
+        {
+            // Case required but no implementation needed
+            break;
+        }
+        }
+    }
+```
+
+
+## Planned improvements
+* Add ability to query if an element supports checkpoint
+* Options to limit number of checkpoints kept and change checkpoint directory path
+* Serialization support for SST interfaces (SimpleNetwork, StandardMem)
+* Additional flexibility when restarting SST including ability to change parallelization and re-partition components.
+    * The current implementations allow overriding command line options that govern output such as `--verbose` and `--output-directory` when restarting.

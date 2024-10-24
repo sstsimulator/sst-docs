@@ -10,7 +10,7 @@ The *macro* software package provides a simulator for large-scale parallel compu
 **SST Name:** `macro` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 13.1
+**Last Released:** SST 14.1
 
 :::
 

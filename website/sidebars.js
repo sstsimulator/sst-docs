@@ -39,6 +39,8 @@ const sidebars = {
         "guides/dev/autotest"
         , "guides/dev/testing"
         , "guides/dev/testfaq"
+        , "guides/dev/testframework"
+        , "guides/dev/testframeworkapi"
       ]
     },
   ],
@@ -190,13 +192,14 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: "Output",
+          label: "Output and Debug",
           link: { type: 'generated-index' },
           items: [
             "core/component/output/fatal"
-            , "core/component/output/sst_assert"
-            , "core/component/output/getSimulationOutput"
             , "core/component/output/getOutputDirectory"
+            , "core/component/output/getSimulationOutput"
+            , "core/component/output/initiateInteractive"
+            , "core/component/output/sst_assert"
           ]
         },
         {
@@ -228,6 +231,7 @@ const sidebars = {
             , "core/eli/register/sst_eli_register_module_derived_api"
             , "core/eli/register/sst_eli_register_profiletool"
             , "core/eli/register/sst_eli_register_python_module"
+            , "core/eli/register/sst_eli_register_realtimeaction"
           ]
         },
         {
@@ -449,6 +453,41 @@ const sidebars = {
       ]
     },
     {
+        type: 'category',
+        label: 'RealTimeAction',
+        link: { type: 'doc', id: 'core/realtime/class' },
+        items: [
+            "core/realtime/constructor"
+            , "core/realtime/destructor"
+            , "core/realtime/begin"
+            , "core/realtime/canInitiateCheckpoint"
+            , "core/realtime/getCoreTimeBase"
+            , "core/realtime/getCurrentSimCycle"
+            , "core/realtime/getElapsedSimTime"
+            , "core/realtime/getEndSimCycle"
+            , "core/realtime/getMemPoolUsage"
+            , "core/realtime/getNumRanks"
+            , "core/realtime/getRank"
+            , "core/realtime/getSimulationOutput"
+            , "core/realtime/getSyncQueueDataSize"
+            , "core/realtime/getTimeVortexMaxDepth"
+            , "core/realtime/initiateInteractive"
+            , "core/realtime/simulationCheckpoint"
+            , "core/realtime/simulationPrintStatus"
+            , "core/realtime/simulationSignalShutdown"
+        ]
+    },
+    {
+        type: 'category',
+        label: 'Shared Objects',
+        link: { type: 'doc', id: 'core/sharedobj/overview' },
+        items: [
+            "core/sharedobj/sharedArray"
+            , "core/sharedobj/sharedMap"
+            , "core/sharedobj/sharedSet"
+        ]
+    },
+    {
       type: 'category',
       label: 'Statistics',
       link: { type: 'doc', id: 'core/statistics/class'  },
@@ -651,9 +690,9 @@ const sidebars = {
       link: {type: 'doc', id: 'elements/ember/intro'},
       items: [
         "elements/ember/QuickStart",
-        "elements/ember/CreatingMotifs",
-        "elements/ember/RunningMotifs", 
-        "elements/ember/OTF2Ember", 
+        , "elements/ember/CreatingMotifs"
+        , "elements/ember/RunningMotifs" 
+        , "elements/ember/OTF2Ember" 
       ]
     },
     "elements/firefly/intro",

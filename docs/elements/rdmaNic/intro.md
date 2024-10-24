@@ -10,7 +10,7 @@ The *rdmaNic* library provides a Network Interface Controller (NIC) model that i
 **SST Name:** `rdmaNic` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.0
+**Last Released:** SST 14.1
 
 :::
 

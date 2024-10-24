@@ -7,7 +7,7 @@ All MemHierarchy caches, regardless of level or type (shared, private, inclusive
 ![Cache subcomponent slots](./assets/cache_subcomps.png)
 
 ## coherence
-This subcomponent handles incoming events and sends outgoing ones according to the configured coherence protocol (or lack thereof). The cache component decides which coherence subcomponent to load depending on the parameters `L1`, `coherence_protocol`, and `cache_type`. Users should not explicitly load a subcomponent into this slot in the input file. The table below shows different combinations of parameters and which subcomponent gets loaded. Any combination of parameters not listed (for example, `L1`=true, `coherence_protocol`=mesi and `cache_type`=noninclusive) is an invalid combination.
+This subcomponent handles incoming events and sends outgoing ones according to the configured coherence protocol (or lack thereof). The cache component decides which coherence subcomponent to load depending on the parameters `L1`, `coherence_protocol`, and `cache_type`. Users should not explicitly load a subcomponent into this slot in the SST input file. The table below shows different combinations of parameters and which subcomponent gets loaded. Any combination of parameters not listed (for example, `L1=true`, `coherence_protocol="mesi"` and `cache_type="noninclusive"`) is an invalid combination.
 
 | `L1`  | `coherence_protocol`  | `cache_type`                  | SubComponent                          |
 | ---   | ---                   | ---                           | ---                                   |
@@ -19,7 +19,7 @@ This subcomponent handles incoming events and sends outgoing ones according to t
 | false | none                  | noninclusive                  | `coherence.incoherent`                |
 
 ## replacement
-This subcomponent implements the cache replacement policy. It can be loaded by the user explicity in the input file, otherwise it will be inferred from the `replacement_policy` cache parameter. A number of policies are included in memHierarchy but custom ones from other libraries can also be used by explicitly loading them in the input file. If the cache coherence configuration uses multiple cache arrays (e.g., a non-inclusive cache and directory), multiple replacement policies can be loaded in the slot. 
+This subcomponent implements the cache replacement policy. It can be loaded by the user in the input file (e.g., `setSubComponent("replacement", "replacement.mru")`), otherwise it will be inferred from the `replacement_policy` cache parameter. A number of policies are included in memHierarchy but custom ones from other libraries can also be used by loading them in the input file. If the cache coherence configuration uses multiple cache arrays (e.g., a non-inclusive cache and directory), multiple replacement policies can be loaded in the slot. 
 
 ### replacement.lru
 LRU is a **l**east-**r**ecently-**u**sed policy. The timestamp of the most recent access to each line in a cache set is tracked and the line with the oldest timestamp is replaced.
@@ -56,7 +56,7 @@ The random replacement policy randomly selects one of the blocks in the cache se
 This is a **n**ot-**m**ost-**r**ecently-**u**sed policy. Only the most recently used line in each set is tracked. A victim is randomly selected from the remaining lines. NMRU uses the [Marsaglia random number generator](../../core/rng/marsaglia).
 
 ## hash
-The hash slot loads a function that is used to map physical addresses to lines in the cache array. The subcomponent can be set explicitly in the input file or can be controlled using the cache's `hash` parameter. The only way to pass parameters to the hash subcomponent is to load it explicitly in the SST input file. By default, the cache loads a pass-through subcomponent that does not hash addresses.
+The hash slot loads a function that is used to map physical addresses to lines in the cache array. The subcomponent can be set in the input file or can be controlled using the cache's `hash` parameter. The only way to pass parameters to the hash subcomponent is to load the subcomponent in the SST input file and add parameters to it. By default, the cache loads a pass-through subcomponent that does not hash addresses.
 
 ### hash.none
 This subcomponent does not do any manipulation of the address passed to it. It is the default function used in the cache if none is specified.
@@ -82,7 +82,7 @@ Loading a prefetcher is optional. When loaded, the cache will notify the prefetc
 The cache has three parameters related to prefetch performance. The first, `prefetch_delay_cycles`, causes each prefetch sent by the prefetcher subcomponent to be delayed by some number of cycles before being handled. This compensates for prefetchers that do not implement their own timing and can issue prefetches in the same cycle that they receive notification of a cache access. The second and third parameters, `max_outstanding_prefetch` and `drop_prefetch_mshr_level`, allow the cache to throttle the amount of traffic generated by a prefetcher. `max_outstanding_prefetch` limits the total number of prefetch misses allowed at one time. `drop_prefetch_mshr_level` allows the cache to drop a prefetch if handling it would cause the MSHR occupancy to rise above the specified level.
 
 ## listener
-The `listener` subcomponent is nearly identical to the `prefetcher` and uses the same `CacheListener` API. Both receive notification of every request handled by the cache. The difference is that while the `prefetcher` can send requests to the cache, a listener cannot. Listeners can be used to snoop traffic, generate traces, etc. Multiple listeners can be loaded into this slot. 
+The `listener` subcomponent is nearly identical to the `prefetcher` and uses the same `CacheListener` API. Both subcomponents receive notification of every request handled by the cache. The difference is that while the `prefetcher` can send requests to the cache, a listener cannot. Listeners can be used to snoop traffic, generate traces, etc. Multiple listeners can be loaded into this slot. 
 
 ## cpulink and memlink
 The `cpulink` and `memlink` subcomponent slots each load a memory link manager subcomponent that controls how the cache connects to other memory system components. These are intended to be used *instead of* the cache ports. `cpulink` can be thought of as the link on which requests are received (typically, the link towards a CPU or other processing element) while `memlink` is the link towards the memory, or, where the cache sends requests if the cache cannot handle them itself. Both subcomponents use the `MemHierarchy::MemLinkBase` API. MemHierchy provides three subcomponents that can be loaded into these slots: `MemLink`, `MemNIC`, and `MemNICFour`.
@@ -103,5 +103,5 @@ This is the default link manager, and is used when a cache connects directly to 
 MemNIC is used when the cache is connected to a network. If the cache has a single connection point into the network, the `cpulink` slot should contain the link manager and the `memlink` slot can be left empty.
 
 ### MemNICFour
-Like MemNIC, MemNICFour is used to connect the cache to a network. However, it has four separate ports for different coherence traffic classes (request, data, acknowledgement, forward). MemHierarchy does not rely on separating coherence classes for correctness and so either the MemNIC (single network) or MemNICFour (multiple networks) subcomponents can be used depending on the architecture to be modeled. 
+Like MemNIC, MemNICFour is used to connect the cache to a network. However, it has four separate ports for different coherence traffic classes (request, data, acknowledgement, forward). MemHierarchy does not require coherence classes to be separated for correctness and so either the MemNIC (single network) or MemNICFour (multiple networks) subcomponent can be used depending on the architecture to be modeled. 
 

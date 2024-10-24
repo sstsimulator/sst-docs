@@ -10,7 +10,7 @@ The *messier* library models a non-volatile memory (NVM) DIMM architecture. The 
 **SST Name:** `Messier` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.0
+**Last Released:** SST 14.1
 
 :::
 

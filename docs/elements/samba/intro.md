@@ -10,7 +10,7 @@ The *samba* library provides a memory management unit (MMU) for use with process
 **SST Name:** `Samba` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 14.0
+**Last Released:** SST 14.1
 
 :::
 

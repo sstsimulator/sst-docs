@@ -43,7 +43,7 @@ Keep in mind these limitations of the init stage:
 * Event handlers are not active yet. Links should be polled using the untimed polling function, [`recvUntimedData()`](../../core/link/recvUntimedData.md).
 * Clock handlers are not active and simulation time is 0
 
-At the end of the initialization stage:
+At the end of the init stage:
 * Event handlers and link time bases need to be finalized. 
 * Writes to SharedObjects must be complete. SharedObjects are read-only once setup begins.
 

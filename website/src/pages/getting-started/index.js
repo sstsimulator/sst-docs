@@ -16,13 +16,13 @@ export default function GettingStarted() {
       </p>
       <p>This quick start guide is intended to get the user up and running with SST as quickly as possible. It is intended for users with intermediate knowledge in the operation of Unix/Linux/OSX environments.</p>
 
-       <p>The SST 14.0.x <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V14dot0dot0">Release Notes</a> identify what operating systems, compiler, and external component combinations have been tested and proven to work with this version of SST.</p>
+       <p>The SST 14.1.x <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V14dot1dot0">Release Notes</a> identify what operating systems, compiler, and external component combinations have been tested and proven to work with this version of SST.</p>
 
-            <p><strong>NOTE: The versions recommended in <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V14dot0dot0">Release Notes</a> are tested regularly with SST; other tool and library versions may not work.</strong></p>
+            <p><strong>NOTE: The versions recommended in <a href="http://sst-simulator.org/SSTPages/SSTmicroRelease_V14dot1dot0">Release Notes</a> are tested regularly with SST; other tool and library versions may not work.</strong></p>
 
             <p>A detailed list of elements provided with the SST distribution is available at <a href="http://sst-simulator.org/sst-docs/element/intro">SST Elements Documentation</a> and  <a href="http://sst-simulator.org/SSTPages/SSTElementReleaseMatrix">SST Release Matrix</a>.</p>
 
-            <p>If you encounter difficulties, refer to the <a href="http://sst-simulator.org/SSTPages/SSTBuildAndInstall_14dot0dot0_SeriesDetailedBuildInstructions">Detailed SST Build and Install Instructions</a> or go to the <a href="http://sst-simulator.org/SSTPages/SSTMainSupport">SST Support</a> page</p>
+            <p>If you encounter difficulties, refer to the <a href="http://sst-simulator.org/SSTPages/SSTBuildAndInstall_14dot1dot0_SeriesDetailedBuildInstructions">Detailed SST Build and Install Instructions</a> or go to the <a href="http://sst-simulator.org/SSTPages/SSTMainSupport">SST Support</a> page</p>
 
             <h2>Introduction</h2>
             

@@ -16,7 +16,7 @@ This element has been interchangeably referred to as "gensa" and "GNA" in the pa
 **SST Name:** `gensa` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Experimental &nbsp;   
-**Last Released:** 14.0
+**Last Released:** 14.1
 
 :::
 

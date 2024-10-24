@@ -10,7 +10,7 @@ The *memHierarchy* library is a collection of cache, scratchpad, directory, and 
 **SST Name:** `memHierarchy` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.0
+**Last Released:** SST 14.1
 
 :::
 
