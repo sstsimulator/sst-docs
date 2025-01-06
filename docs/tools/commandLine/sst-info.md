@@ -6,7 +6,9 @@ The command line utility, `sst-info`, leverages the Element Library Information 
 
 For each type of SST object, sst-info provides the following.
 
+
 |                 | Component   | SubComponent  | Module  | Partitioner | ProfileTool |
+| ---             | ---         | ---           | ---     | ---         | ---         |
 | Description     | X           | X             | X       | X           | X           |
 | Version         | X           | X             | X       | X           | X           |
 | Compilation info | X          | X             | X       | X           | X           |
@@ -35,7 +37,7 @@ Shows the date compiled and source file.
 Components are assigned a category among `PROCESSOR COMPONENT`, `MEMORY COMPONENT`, `NETWORK COMPONENT`, `SYSTEM COMPONENT`, and `UNCATEGORIZED COMPONENT`. 
 
 #### API implemented
-For elements that implement an API (e.g., a SubComponent), the API implemented
+For elements that implement an API (e.g., a SubComponent), the API implemented.
 
 #### Parameters
 Parameters are displayed in the following format. `<name>` is the name of the parameter and matches the name that should be used in the SST input file. Each parameter displays a `<Description>` and the `<default>` value assigned to the parameter in square brackets. If no default value is defined, `<required>` is displayed instead.

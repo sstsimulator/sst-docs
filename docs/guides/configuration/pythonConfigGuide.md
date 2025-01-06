@@ -4,7 +4,7 @@ title: "Simulation configuration file"
 
 SST provides a Python module to allow interaction with the simulation build system. This Python module is used in the input Python script for the purpose of building the graph that represents the simulation to be performed. This is done by providing classes and functions to define the elements of the simulation, their parameters, and how they are interconnected. The user can also optionally enable statistics and create a user specified partitioning for the described model. Behind the scenes, these classes will build the C\+\+ data structure that is used by SST to construct the simulation model. 
 
-The SST core Python module is defined in cpython and is only available in the Python interpreter launched within a running SST executable. The module is accessed by importing the sst module. This can be done in a number of ways. The two most common being: 
+The SST-Core Python module is defined in cpython and is only available in the Python interpreter launched within a running SST executable. The module is accessed by importing the `sst` module. This can be done in a number of ways. The two most common being: 
 
 
 ```py
@@ -78,8 +78,6 @@ component0.addParam("eventSize", "32")
 ```
 
 ### Links
----
-
 Links are classes in the `sst` module as well.  They are created with just a user-defined name.
 
 ```py
@@ -206,12 +204,12 @@ compA.enableStatistics(["statname1", "statname4"],
                         "rate" : "100 ns", 
                         "stopat" : "800 ns" })
 
-# Enable all statistics on 'compB' and output them every 500ms in simulated time.
+# Enable all statistics on 'compB' with load level <= 6 and output them every 500ms in simulated time.
 compB.enableAllStatistics({"type" : "sst.AccumulatorStatistic", 
                            "rate" : "500ms" })
 
-# Enable all statistics for components of type 'StatisticComponent3' (i.e., compC-E)
-# All of these statistics will be collected as histograms iwth 41 bins of size 10. 
+# Enable all statistics (with load level <= 6) for components of type 'StatisticComponent3' (i.e., compC-E)
+# All of these statistics will be collected as histograms with 41 bins of size 10. 
 # The min bin is '10-19' and any value above the largest bin will be captured in that bin.
 sst.enableAllStatisticsForComponentType("ElementExample.StatisticsComponent3", 
                                        {"type":"sst.HistogramStatistic",
@@ -221,6 +219,7 @@ sst.enableAllStatisticsForComponentType("ElementExample.StatisticsComponent3",
                                         "IncludeOutOfBounds" : "1"})
 
 # Enable all statistics on the component named 'StatTestF' (i.e., compF)
+# Again, only statistics with load level <= 6 will be enabled
 sst.enableAllStatisticsForComponentName("StatTestF")
 ```
 
@@ -242,27 +241,30 @@ sst.ext()
 This could be the result:
 
 ```sh
-$ sst --model-options="-h -x foo" foo.py
-['sstsim.x', '-h', '-x', 'foo']
+$ sst --model-options="-h -x bar" foo.py
+['sstsim.x', '-h', '-x', 'bar']
 ```
 
 An alternative way to pass command-line arguments is by appending a `--` followed by the arguments to the sst command line, such as:
 ```sh
-$ sst foo.py -- -h -x foo
+$ sst foo.py -- -h -x bar
 ```
 
 ### Discovering available libraries and documentation
-SST Element libraries register information about their components, subcomponents, ports, subcomponent slots, parameters, and statistics with the SST Core. This information can be queried using the command-line utility, `sst-info`. The output can be filtered by passing the name of a library, or specific component/subcomponent in "lib.element" format to the utility.
+SST Element libraries register information about their components, subcomponents, ports, subcomponent slots, parameters, and statistics with the SST-Core. This information can be queried using the command-line utility, `sst-info`. The output can be filtered by passing the name of a library, or specific component/subcomponent in "lib.element" format to the utility.
 
 ```sh
 $ sst-info                                  # Output: All documentation about all libraries registered with the core
 $ sst-info -q                               # Output: (quiet) A list of component and subcomponent names for all libraries registered with the Core
 $ sst-info simpleElementExample             # Output: All documentation about the library 'simpleElementExample'
 $ sst-info simpleElementExample.example0    # Output: All documentation about the component 'simpleElementExample.example0'
+$ sst-info -i                               # Enter an interactive console to query the SST information. Requires the ncurses library.
 ```
 
 ## Element Library Extensions 
 
-Element library writes may choose to add functionality to the Python environment for configuration.  For example, the Merlin element library does this to simplify creation of large, simple networks.  This additional functionality would show up under a sub-module to SST.  For example: `import sst.merlin`.
+Element library developers may choose to add functionality to the Python environment to simplify configuration for specific libraries.  For example, the Merlin element library provides a module to automatically generate components and links for standard network topologies (ring, mesh, dragonfly, etc.). This additional functionality would show up under a sub-module to SST. For example: `import sst.merlin`.
 
 
+## JSON
+JSON can be used instead of Python to describe the simulation configuration. Currently, this method limits the ability to enable statistics. Documentation of JSON configuration files is in progress.

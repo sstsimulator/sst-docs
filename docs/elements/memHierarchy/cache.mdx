@@ -2,7 +2,26 @@
 title: Caches
 ---
 
-All MemHierarchy caches, regardless of level or type (shared, private, inclusive, noninclusive, etc.) use the same component, `memHierarchy.Cache` which is implemented in the `SST::MemHierarchy::CacheController` class. This picture shows the component structure. The light blue boxes show the available subcomponent slots. The cache has a number of ports which are not shown; it is recommended instead to use the `cpulink` and `memlink` subcomponents which have their own ports.
+All MemHierarchy caches, regardless of level or type (shared, private, inclusive, noninclusive, etc.) use the same component, `memHierarchy.Cache` which is implemented in the `SST::MemHierarchy::CacheController` class. This picture shows the component structure. The light blue boxes show the available subcomponent slots. The cache has two ports, `lowlink` and `highlink` which may be used when connecting to another memHierarchy component or subcomponent (e.g., standardInterface, Cache, DirectoryController, etc.). There are also two subcomponent slots `highlink` and `lowlink` which must be used when connecting to a network-type component or subcomponent.
+
+:::warning Deprecation
+MemHierarchy caches previously had several ports as well as a cpulink and memlink subcomponent slot for connecting to other components. In the interest of standardization, names have been changed. It is also now possible to use the `highlink` port and the `lowlink` subcomponent or vice versa. Previously, caches had to use both ports or both subcomponent slots.
+
+| Type | Deprecated name | New name/method | Description |
+| ---  | ---             | ---             | ---                                                                                        |
+| Port | high_network_0  | highlink        | Port to another memHierarchy component on the upper (towards processor) side of the cache. |
+| Port | low_network_0   | lowlink         | Port to another memHierarchy component on the lower (towards memory) side of the cache.    |
+| Port | cache           | load memHierarchy.MemNIC or memHierarchy.MemNICFour into the `highlink` subcomponent slot | Port to a network component on the upper (towards processor) side of the cache. |
+| Port | cache_ack       | load memHierarchy.MemNICFour into the `highlink` subcomponent slot | Port to a network component on the upper (towards processor) side of the cache. |
+| Port | cache_fwd       | load memHierarchy.MemNICFour into the `highlink` subcomponent slot | Port to a network component on the upper (towards processor) side of the cache. |
+| Port | cache_data      | load memHierarchy.MemNICFour into the `highlink` subcomponent slot | Port to a network component on the upper (towards processor) side of the cache. |
+| Port | directory       | load memHierarchy.memNIC or memHierarchy.MemNICFour into the `lowlink` subcomponent slot  | Port to a network component on the lower (towards memory) side of the cache. |
+| Port | directory_ack   | load memHierarchy.MemNICFour into the `lowlink` subcomponent slot  | Port to a network component on the lower (towards memory) side of the cache. |
+| Port | directory_fwd   | load memHierarchy.MemNICFour into the `lowlink` subcomponent slot  | Port to a network component on the lower (towards memory) side of the cache. |
+| Port | directory_data  | load memHierarchy.MemNICFour into the `lowlink` subcomponent slot  | Port to a network component on the lower (towards memory) side of the cache. |
+| SubComponent Slot | cpulink  | highlink  | Port manager on the upper (towards processor) side of the cache. |
+| SubComponent Slot | memlink  | lowlink   | Port manager on the lower (towards memory) side of the cache. |
+:::
 
 ![Cache subcomponent slots](./assets/cache_subcomps.png)
 
@@ -84,23 +103,24 @@ The cache has three parameters related to prefetch performance. The first, `pref
 ## listener
 The `listener` subcomponent is nearly identical to the `prefetcher` and uses the same `CacheListener` API. Both subcomponents receive notification of every request handled by the cache. The difference is that while the `prefetcher` can send requests to the cache, a listener cannot. Listeners can be used to snoop traffic, generate traces, etc. Multiple listeners can be loaded into this slot. 
 
-## cpulink and memlink
-The `cpulink` and `memlink` subcomponent slots each load a memory link manager subcomponent that controls how the cache connects to other memory system components. These are intended to be used *instead of* the cache ports. `cpulink` can be thought of as the link on which requests are received (typically, the link towards a CPU or other processing element) while `memlink` is the link towards the memory, or, where the cache sends requests if the cache cannot handle them itself. Both subcomponents use the `MemHierarchy::MemLinkBase` API. MemHierchy provides three subcomponents that can be loaded into these slots: `MemLink`, `MemNIC`, and `MemNICFour`.
+## highlink and lowlink
+The `highlink` and `lowlink` subcomponent slots (previously named `cpulink` and `memlink`) each load a memory port manager subcomponent that controls how the cache connects to other memory system components. These *may* be used instead of the `highlink` and `lowlink` ports when connecting to another memHierarchy element. They *must* be used instead of the `highlink` and `lowlink` ports when connecting to a network element. Both subcomponent slots use the `MemHierarchy::MemLinkBase` API. MemHierchy provides three subcomponents that can be loaded into these slots: `MemLink`, `MemNIC`, and `MemNICFour`.
 
 ![Configuring memHierarchy cache links](./assets/cache_link_config.png)
 
 The picture above shows the different ways to configure these subcomponent slots. A couple things to note:
-* The cache generally expects requests ***from*** the `cpulink` and will forward requests that miss in the cache ***to*** the `memlink`.
-* "Other Component" means any other memHierarchy component or a non-memHierarchy component that uses the memHierarchy `SST::Interfaces::StandardMem` interface (`memHierarchy.standardInterface`). Any time the cache links to one of these, the `memHierarchy.MemLink` subcomponent should be used. This includes when linking to `memHierarchy.Bus`.
+* The cache generally expects requests ***from*** the `highlink` and will forward requests that miss in the cache ***to*** the `lowlink`.
+* "Other Component" means any other memHierarchy component or a non-memHierarchy component that uses the memHierarchy `SST::Interfaces::StandardMem` interface (`memHierarchy.standardInterface`). Any time the cache links to one of these, the `memHierarchy.MemLink` subcomponent may be used. Loading `memHierarchy.MemLink` into the `highlink` or `lowlink` slot is equivalent to connecting the port of the same name.
 * "Network" means any network model that implements the `SST::Interfaces::SimpleNetwork` interface. Any time the cache links to other components through a network, the `memHierarchy.MemNIC` (or `memHierarchy.MemNICFour`) subcomponent should be used.
 * MemNIC (and MemNICFour) in turn load subcomponent(s) that implement the `SST::Interfaces::SimpleNetwork` interface.
-* If the cache is only connected to other components through a network, put a MemNIC (or MemNICFour) in the `cpulink` slot and leave the `memlink` slot empty. Traffic that the cache would have sent to the `memlink` will be sent through the `cpulink` subcomponent.
+* If the cache is only connected to other components through a network, put a MemNIC (or MemNICFour) in the `highlink` slot and leave the `lowlink` slot empty. Traffic that the cache would have sent to the `lowlink` will be sent through the `highlink` subcomponent.
+* A cache should never use both the `highlink` port and the `highlink` subcomponent slot; similarly use only one of `lowlink` port and `lowlink` subcomponent slot.
 
 ### MemLink
-This is the default link manager, and is used when a cache connects directly to another component rather than over a network. Examples include connecting to the memHierarchy interface loaded by a CPU, another cache, or the memHierarchy Bus component. 
+This is the default port manager, and is used when a cache connects directly to another memHierarchy component rather than over a network. Examples include connecting to the memHierarchy interface loaded by a CPU, another cache, or the memHierarchy Bus component. 
 
 ### MemNIC
-MemNIC is used when the cache is connected to a network. If the cache has a single connection point into the network, the `cpulink` slot should contain the link manager and the `memlink` slot can be left empty.
+MemNIC is used when the cache is connected to a network. If the cache has a single connection point into the network, the `highlink` slot should contain the port manager and the `lowlink` slot can be left empty.
 
 ### MemNICFour
 Like MemNIC, MemNICFour is used to connect the cache to a network. However, it has four separate ports for different coherence traffic classes (request, data, acknowledgement, forward). MemHierarchy does not require coherence classes to be separated for correctness and so either the MemNIC (single network) or MemNICFour (multiple networks) subcomponent can be used depending on the architecture to be modeled. 

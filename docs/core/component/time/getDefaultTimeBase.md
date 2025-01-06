@@ -24,7 +24,7 @@ StandardInterface::StandardInterface(SST::ComponentId_t id, Params& params, Time
 
     // Pass our default time base to our child subcomponent
     //highlight-next-line
-    link_ = loadUserSubComponent<MemLinkBase>("memlink", ComponentInfo::SHARE_NONE, getDefaultTimeBase());
+    link_ = loadUserSubComponent<MemLinkBase>("lowlink", ComponentInfo::SHARE_NONE, getDefaultTimeBase());
 
     /** Remaining configuration here */
 }

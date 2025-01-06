@@ -20,16 +20,18 @@ Links define connectivity between components. Two components can directly exchan
 Ports are defined by components and are attachment points for Links. Ports have names so that components can have multiple ports and differentiate between them. For example, a cache might have two ports, one to an upper level cache and one to a lower level cache.
 
 ### Putting it together: the SST Graph
-The SST configuration file describes the system to be simulated in terms of components and links between those components' ports. If this sounds a little like a graph, that's because it is! SST simulations can be represented as a graph where Components (models) are vertices and Links are edges. In this tutorial, we're going to build a configuration file for this graph.
+The SST configuration file describes the system to be simulated in terms of components and links between those components' ports. If this sounds a little like a graph, that's because it is! SST simulations can be represented as a graph where Components (models) are vertices and Links are edges. In this tutorial, we're going to build a configuration file for the graph shown below.
 
-The configuration file will define a simulation consisting of two components connected via a link. The component we will use is called `example0` and comes from the the `simpleElementExample` library. SST uses a `library.component_name` syntax to identify component types so the full type is `simpleElementExample.example0`. The example0 component sends a certain number of events, controlled by a parameter, and then ends the simulation. 
+import exampleGraph from '../assets/pythonconfig_guide_ex0_graph_basic.png';
 
-import exampleGraph from '../assets/pythonconfig_guide_ex0_graph.png';
+<img src={exampleGraph} alt="The example graph to simulate" style={{maxWidth: "300px"}} />
 
-<img src={exampleGraph} alt="The example graph to simulation" style={{maxWidth: "300px"}} />
+This simulation has two components which send each other messages via the link between them. We will use the `example0` component from [sst-elements'](../../elements/intro.mdx) [`simpleElementExample` library](../../elements/simpleElementExample/intro.md). Each `example0` component sends a certain number of events, controlled by a parameter, to the other component and then ends the simulation. The events have a field specifying a size in bytes which can also be changed via a parameter.
 
-## Step 0: Find out information about the components you want to simulate
-In the configuration file, we'll need to tell SST which components we want (`simpleElementExample.example0`) and parameterize the components. Then we'll need to connect the components by creating Links between each component's ports. You can use SST's `sst-info` tool to find out information about a component, such as the names of its ports and what parameters can be set. 
+## Step 1: Find out information about the components you want to simulate
+In the configuration file, we'll need to tell SST which components we want and parameterize the components. Then we'll need to connect the components by creating Links between each component's ports. You can use SST's `sst-info` tool to find out information about a component, such as the names of its ports and what parameters can be set. 
+
+SST uses a `library.component_name` syntax to uniquely identify component types so the full type for `example0` is `simpleElementExample.example0`.
 
 ```sh
 $ sst-info simpleElementExample.example0
@@ -57,8 +59,11 @@ Components (8 total)
 
 This shows that `simpleElementExample.example0` has two parameters, `eventsToSend` and `eventSize`. We will need to set `eventsToSend` since it is `[<required]`, but eventSize has a default of `16` so we only need to set that if we want a different value. Likewise, when we create a link between our two instances of `simpleElementExample.example0`, we'll connect it to the port named `port` on each component. Given this information, here's a more detailed picture of the configuration we'll create. SST requires each component to have a unique name so we'll use `c0` and `c1`. These names are used by SST when generating statistics and printing output, among other functions.
 
+import exampleGraphDetail from '../assets/pythonconfig_guide_ex0_graph.png';
 
-## Step 1: Create a file and import the SST module
+<img src={exampleGraphDetail} alt="An example graph to simulate showing ports and names" style={{maxWidth: "300px"}} />
+
+## Step 2: Create a file and import the SST module
 Now that we've defined what to simulate, we need to create an input file. We will use Python. Create a file called `tutorial.py` and then add an import statement to import the `sst` module. This will let us use the SST configuration APIs.
 
 ```sh title="Use the editor of your choice, for example 'vi', to open a new file"
@@ -69,7 +74,7 @@ $ vi tutorial.py
 import sst
 ```
 
-## Step 2: Define the components
+## Step 3: Define the components
 Use the [sst.Component()](../../config/component/component.md) function to create the components, providing the name of the component and its type. This call returns an object that we can use in the rest of the script to refer to the component. Here, component `c0` maps to object `component0` and `c1` maps to object `component1`. SST uses a `library_name.component_type` syntax to identify component types, so both components are of type `simpleElementExample.example0`.
 
 ```py title="tutorial.py"
@@ -81,7 +86,7 @@ component1 = sst.Component("c1", "simpleElementExample.example0")
 # highlight-end
 ```
 
-## Step 2: Parameterize the components
+## Step 4: Parameterize the components
 Set the parameters on each component as shown in the figure above. There are a couple ways to do this, we'll do it by passing a dictionary of `parameter : value` pairs to each component we created in step 1. Because we're setting the same parameters on each component, we'll pass the same dictionary to both.
 
 ```py title="tutorial.py"
@@ -97,7 +102,7 @@ component1.addParams(param_set)
 # highlight-end
 ```
 
-## Step 3: Connect the components
+## Step 5: Connect the components
 The last thing we need to do is connect the components so that when `c0` sends an event, it goes to `c1` and vice-versa. To do this, we use SST's [Link](../../config/link/link.md) and [connect](../../config/link/connect.md) calls. Before we get to that though, we need to make one more decision: what the latency between the components should be. A few things to consider:
 * The latency will be the time it takes between when c0 sends an event and c1 receives it and vice-versa. Components can add additional latency when sending events but they cannot reduce the latency beyond what the configuration script defines. 
 *  The latency does not need to be symmetric - we can use a different latency when sending from c0 to c1 than when sending from c1 to c0.
@@ -122,7 +127,7 @@ link0.connect( (component0, "port", "1ns"), (component1, "port", "1ns") )
 # highlight-end
 ```
 
-## Step 4: Run the simulation
+## Step 6: Run the simulation
 Now, run the simulation by passing the Python script you created to sst as shown below. We did not enable any statistics so the only thing SST will return is a statement of how long the simulation took. 
 ```sh
 $ sst tutorial.py
