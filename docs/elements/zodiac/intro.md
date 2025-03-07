@@ -6,7 +6,7 @@ title: zodiac
 
 :::note At a Glance
 
-**Source Code:** [sst-elements/.../zodiac](https::/github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/zodiac) &nbsp;  
+**Source Code:** [sst-elements/.../zodiac](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/zodiac) &nbsp;  
 **SST Name:** `zodiac` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Maintenance &nbsp;  

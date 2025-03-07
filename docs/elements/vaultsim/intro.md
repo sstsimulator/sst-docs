@@ -12,7 +12,7 @@ This element has been renamed from 'VaultSimC' to 'vaultsim' in an effort to sta
 
 :::note At a Glance
 
-**Source Code:** [sst-elements/.../vaultsim](https::/github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/vaultsim) &nbsp;  
+**Source Code:** [sst-elements/.../vaultsim](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/vaultsim) &nbsp;  
 **SST Name:** `vaultsim` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   

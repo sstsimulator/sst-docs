@@ -22,7 +22,7 @@ MemHierarchy memories can optionally use any of the following simulators in plac
 
 * [CramSim](../cramsim/intro); included with sst-elements
 * [DramSim2](https://github.com/dramninjaUMD/DRAMSim2); [Download](https://github.com/dramninjasUMD/DRAMSim2/archive/v2.2.2.tar.gz)
-* [DramSim3](https::/github.com/umd-memsys/dramsim3); [Download](https://github.com/umd-memsys/dramsim3)
+* [DramSim3](https://github.com/umd-memsys/dramsim3); [Download](https://github.com/umd-memsys/dramsim3)
 * [HBMDramSim](https://github.com/tactcomplabs/HBM); [Download](https://github.com/tactcomplabs/HBM/releases/tag/sst-8.0.0-release)
 * [HMCSim](https://github.com/tactcomplabs/gc64-hmcsim); [Download](https://github.com/tactcomplabs/gc64-hmcsim/archive/sst-8.0.0-release.zip)
 * [HybridSim](https://github.com/jimstevens2001/HybridSim); [Download](https://github.com/jimstevens2001/HybridSim/archive/v2.0.1.tar.gz)

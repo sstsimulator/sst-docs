@@ -6,7 +6,7 @@ The *macro* software package provides a simulator for large-scale parallel compu
 
 :::note At a Glance
 
-**Source Code:** [sst-macro](https::/github.com/sstsimulator/sst-macro) &nbsp;  
+**Source Code:** [sst-macro](https://github.com/sstsimulator/sst-macro) &nbsp;  
 **SST Name:** `macro` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
