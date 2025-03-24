@@ -28,7 +28,9 @@ Then to build GPGPU-Sim:
 git clone https://github.com/accel-sim/gpgpu-sim_distribution.git
 cd gpgpu-sim_distribution
 source setup_environment
-make -j4
+cmake -B build
+cmake --build build -j4
+cmake --install build
 ```
 
 ### LLVM + RISCV GNU Toolchain
@@ -116,7 +118,7 @@ There are some subtle details need to be taken care of for *sst-core* and *sst-e
 ```bash
 # For sst-core, you will need to disable MPI and mempools
 cd PATH_TO/SST_CORE_SOURCE/
-./configure --prefix=$SST_CORE_HOME --disable-mpi --disable-mem-pools
+./configure --prefix=$SST_CORE_HOME
 make -j4
 make install
 

@@ -4,7 +4,7 @@ title: balar
 
 The *balar* library provides an interface between SST and [GPGPU-Sim](https://github.com/accel-sim/gpgpu-sim_distribution), a cycle-level simulator modeling contemporary graphics processing units (GPUs) running GPU computing workloads written in CUDA. It supports two execution modes: trace-driven and direct-execution.
 
-- Trace-driven: balar is driven by a test CPU that consume CUDA API traces and launch CUDA calls.
+- Trace-driven: balar is driven by a test CPU that consume **CUDA API traces** (not to be confused with **SASS traces** for Accel-Sim) and launch CUDA calls.
 - Direct-execution: a CPU model execute a CUDA binary linked with custom `libcudart` and dispatch CUDA API calls to balar and GPGPU-Sim.
 
 The *BalarTestCPU* component is a trace-based test CPU that is included inside balar folder (`./testcpu/`) to run simulations with CUDA API call traces and data collected from a real GPU. It works by consuming a trace file and associated CUDA memory copy data files. The `cudaMemcpyH2D` data payload is collected for program correctness. The `cudaMemcpyD2H` data is collected to validate computation.
@@ -32,21 +32,23 @@ We are working on providing a more robust version of this with the new NVBit rel
 :::
 
 ### Required dependencies
+
 * **CUDA** Version 11.0+ is recommended
 * **GPGPUSim** Use the *dev* branch from [accel-sim/gpgpu-sim_distribution](https://github.com/accel-sim/gpgpu-sim_distribution)
 
 ### Optional dependencies
-* [**LLVM**](https://github.com/llvm/llvm-project) For compiling RISCV + CUDA binary
-* [**RISCV GNU Toolchain**](https://github.com/riscv-collab/riscv-gnu-toolchain) For compiling RISCV + CUDA binary
+
+* [**LLVM**](https://github.com/llvm/llvm-project) For compiling RISCV + CUDA binary, 18.x.x+ should work (specifically, builds after resolving [llvm/llvm-project#57544](https://github.com/llvm/llvm-project/issues/57544) should work)
+* [**RISCV GNU Toolchain**](https://github.com/riscv-collab/riscv-gnu-toolchain) For compiling RISCV + CUDA binary. Generally all recent distribution should work, we have only tested on tag `2024.08.06-nightly`.
 * [**gpu-app-collection**](https://github.com/accel-sim/gpu-app-collection/tree/sst_support) For running unittest with Rodinia 2.0 kernels
-* **Test Docker image** You can also opt in the prebuilt docker image with all dependencies setup except for GPGPU-Sim
+* [**Test Docker image**](https://github.com/accel-sim/Dockerfile/pkgs/container/accel-sim-framework/355611743?tag=SST-Integration-Ubuntu-22.04-cuda-11.7-llvm-18.1.8-riscv-gnu-2024.08.06-nightly) You can also opt in the prebuilt docker image with all dependencies installed **except for GPGPU-Sim**:
   * OS: Ubuntu 22.04
   * CUDA: 11.7
   * LLVM: 18.1.8
   * RISCV: 2024.08.06-nightly
   * ```bash
     # Pull prebuilt image
-    docker pull tgrogers/accel-sim_regress:SST-Integration-Ubuntu-22.04-cuda-11.7-llvm-18.1.8-riscv-gnu-2024.08.06-nightly
+    docker pull ghcr.io/accel-sim/accel-sim-framework:SST-Integration-Ubuntu-22.04-cuda-11.7-llvm-18.1.8-riscv-gnu-2024.08.06-nightly
     ```
 
 import DocCardList from '@theme/DocCardList';
