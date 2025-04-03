@@ -274,9 +274,9 @@ public:
 
 Next, if you class inherits from another, call that classes's `serialize_order` function.
 ```cpp
-void MyClass:serialize_order(SST::Core::Serialization::serializer& ser)
+void MyClass::serialize_order(SST::Core::Serialization::serializer& ser)
 {
-    BaseClass::serialize_oder(ser);
+    BaseClass::serialize_order(ser);
 }
 ```
 
@@ -301,7 +301,7 @@ std::string pointedToObj;
 std::string* pointer = &pointedToObj;
 
 /* Serialization function */
-void serialize_order(SST::Core::Serialization::Serializer& ser) override
+void serialize_order(SST::Core::Serialization::serializer& ser)
 {
     BaseClass::serialize_order(ser); // Assuming this class has a base class called 'BaseClass'. ALWAYS call the base class's serialize_order function prior to adding data from this class.
     SST_SER(link)
