@@ -6,6 +6,8 @@ void serialize_order(SST::Core::Serialization::serializer& ser);
 ```
 *Availability*: Component, ComponentExtension, SubComponent
 
+See the [serialization framework](../../serialization/overview.md) for more detail.
+
 This function serializes the base element classes for checkpoint/restart. When implementing support for checkpointing, elements should call this function from their own `serialize_order` function.
 
 ## Parameters

@@ -4,14 +4,15 @@ title: addSendLatency
 
 ```cpp
 void addSendLatency(int cycles, const std::string& timebase);
-void addSendLatency(SimTime_t cycles, TimeConverter* timebase);
+void addSendLatency(SimTime_t cycles, TimeConverter* timebase); // Deprecated in SST 15.0
+void addSendLatency(SimTime_t cycles, TimeConverter timebase);
 ```
 
 Set additional latency to be added to all events that are sent out on this link. 
 
 ## Parameters
 * **cycles** (int or SimTime_t) number of cycles of latency to add
-* **timebase** (std::string or TimeConverter*) Base units for cycles
+* **timebase** (std::string or TimeConverter) Base units for cycles
 * **returns** none
 
 

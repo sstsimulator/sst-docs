@@ -41,6 +41,13 @@ All units can also include standard SI prefixes as follows. UnitAlgebra uses the
 ## Serialization
 The UnitAlgebra class supports serialization and can be used in event serializers.
 
+## Errors and Exceptions
+UnitAlgebra uses the following exceptions when an error is detected.
+* *UnitAlgebra::UnitAlgebraException* A generic exception from which all other UnitAlgebra exceptions inherit. 
+* *UnitAlgebra::InvalidUnitType* Units are not recognized.
+* *UnitAlgebra::InvalidNumberString* A string cannot be parsed as a numeric (after any known units are removed).
+* *UnitAlgebra::NonMatchingUnits* An operation between two UnitAlgebras cannot be completed because their units are incompatible.
+
 :::tip Speed Check
 UnitAlgebra is designed for convenience, not performance. It employs string operations to manipulate units. Use it outside of SST's run phase for things like parsing parameters and calculating values needed for simulation. During the run phase, use this class sparingly or in situations where performance is not a critical concern (e.g., for pretty-printing debug information).
 :::

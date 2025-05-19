@@ -3,10 +3,24 @@ title: getTimeConverter
 ---
 
 ```cpp
+// Deprecated, will be replaced in SST 16.0
 TimeConverter* getTimeConverter(const std::string& base);
 TimeConverter* getTimeConverter(const UnitAlgebra& base);
+// Will replace deprecated functions in SST 16.0
+TimeConverter getTimeConverter(const std::string& base);
+TimeConverter getTimeConverter(const UnitAlgebra& base);
 ```
 *Availability:* Component, SubComponent, ComponentExtension
+
+:::warning Deprecation
+Shared TimeConverters returned by SST-Core APIs will be removed in SST 16.0. All functions accepting TimeConverter* now accept TimeConverter instead. Elements using a TimeConverter* returned by SST-Core should create a local non-shared instance as shown:
+```cpp
+// Old code
+TimeConverter* tc = function_that_returns_tc();
+// New code
+TimeConverter tc = function_that_returns_tc();
+```
+:::
 
 Get a time converter object for the specified time base.
 
@@ -18,9 +32,9 @@ Get a time converter object for the specified time base.
 
 <!--- SOURCE_CODE: None --->
 ```cpp
-TimeConverter* tc0 = getTimeConverter("200ms");
+TimeConverter tc0 = getTimeConverter("200ms");
 UnitAlgebra ua0 = UnitAlgebra("22GHz");
-TimeConverter* tc1 = getTimeConverter(ua0);
+TimeConverter tc1 = getTimeConverter(ua0);
 ```
 
 ## Header

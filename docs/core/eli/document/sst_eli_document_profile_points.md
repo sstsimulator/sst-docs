@@ -28,6 +28,9 @@ This macro must reside in a `public` section of the object's header file.
 * **description** (string) Description of the profiling point. This value is displayed when `sst-info` is run at the command line.
 * **API** (string) The fully qualified name of the profiler API that can be attached to this point. Any profiler loaded into the slot must implement the named API.
 
+:::info
+`point_nameX` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
 
 ## Example
 

@@ -2,7 +2,8 @@
 title: send
 ---
 ```cpp
-void send(SimTime_t delay, TimeConverter* tc, Event* event);
+void send(SimTime_t delay, TimeConverter* tc, Event* event); // Deprecated in SST 15.0
+void send(SimTime_t delay, TimeConverter tc, Event* event);
 void send(SimTime_t delay, Event* event);
 void send(Event* event);
 ```
@@ -12,7 +13,7 @@ Send an event over the link, optionally, with additional latency added to the mi
 
 ## Parameters
 * **delay** (SimTime_t) Additional latency to add, specified as a cycle count
-* **tc** (TimeConverter*) Units of delay. If not specified, the units will be the link's default time base.
+* **tc** (TimeConverter) Units of delay. If not specified, the units will be the link's default time base.
 * **event** (Event*) The event to send.
 * **returns** none
 

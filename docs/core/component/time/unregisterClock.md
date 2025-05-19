@@ -3,7 +3,8 @@ title: unregisterClock
 ---
 
 ```cpp
-void unregisterClock(TimeConverter* freq, Clock::HandlerBase* handler);
+void unregisterClock(TimeConverter* freq, Clock::HandlerBase* handler); // Deprecated in SST 15.0
+void unregisterClock(TimeConverter freq, Clock::HandlerBase* handler);
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
@@ -11,7 +12,7 @@ Remove a clock. SST will no longer call the specified handler at the clock frequ
 
 
 ## Parameters
-* **freq** (TimeConverter*) Frequency of the clock to unregister
+* **freq** (TimeConverter) Frequency of the clock to unregister
 * **handler** (Clock::HandlerBase*) Clock handler that should be unregistered
 * **returns** (TimeConverter*) A time converter representing the clock frequency
 

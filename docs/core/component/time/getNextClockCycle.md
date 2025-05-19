@@ -3,7 +3,8 @@ title: getNextClockCycle
 ---
 
 ```cpp
-Cycle_t getNextClockCycle(TimeConverter* freq);
+Cycle_t getNextClockCycle(TimeConverter* freq); // Deprecated in SST 15.0
+Cycle_t getNextClockCycle(TimeConverter freq);
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
@@ -11,7 +12,7 @@ Return the next cycle count that a clock with the provided frequency would fire.
 
 
 ## Parameters
-* **freq** (TimeConverter*) Frequency of the clock
+* **freq** (TimeConverter) Frequency of the clock
 * **returns** (Cycle_t) Cycle count that the clock would next be fired at 
 
 ## Example

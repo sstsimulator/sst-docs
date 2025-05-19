@@ -3,14 +3,15 @@ title: setDefaultTimeBase
 ---
 
 ```cpp
-void setDefaultTimeBase(TimeConverter* base);
+void setDefaultTimeBase(TimeConverter* base); // Deprecated in SST 15.0
+void setDefaultTimeBase(TimeConverter base);
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
 Sets the calling (Sub)Component's default time base to the specified base.
 
 ## Parameters
-* **base** (TimeConverter*) TimeConverter specifying the new default time base
+* **base** (TimeConverter) TimeConverter specifying the new default time base
 * **returns** None
 
 

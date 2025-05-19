@@ -1,5 +1,5 @@
 module.exports= async function createConfigAsync() {
-    return {
+return {
   "title": "The Structural Simulation Toolkit",
   "tagline": "Using the supercomputers of today to build the supercomputers of tomorrow",
   "url": "https://sstsimulator.github.io",
@@ -69,28 +69,22 @@ module.exports= async function createConfigAsync() {
       },
       "items": [
         {
-          "href": "https://sstsimulator.github.io",
-          "label": "Main",
-          "position": "left"
-        },
-        {
-          "to": "docs/guides/runningSST",
+          "to": "docs/guides/start",
           "label": "Guides",
           "position": "left",
-          sidebarId: 'guides',
-
+          sidebarId: 'guides'
         },
         {
           "to": "docs/core/component/introduction",
           "label": "SST-Core API",
           "position": "left",
-          sidebarId: 'core',
+          sidebarId: 'core'
         },
         {
           "to": "docs/config/",
           "label": "Configuration",
           "position": "left",
-          sidebarId: 'config',
+          sidebarId: 'config'
         },
         {
           "to": "docs/elements/intro",
@@ -111,8 +105,8 @@ module.exports= async function createConfigAsync() {
           sidebarId: 'community'
         },
         {
-          "to": "help",
-          "label": "Help",
+          "href": "https://sstsimulator.github.io",
+          "label": "Main Site",
           "position": "left"
         }
       ]
@@ -121,10 +115,10 @@ module.exports= async function createConfigAsync() {
     "footer": {
       "style" : "dark",
       "links": [],
-      "copyright": "Copyright © 2009-2024 NTESS",
+      "copyright": "Copyright © 2009-2025 NTESS",
       "logo": {
         "src": "img/sst-logo-small.png"
-      }
+      },
     },
     "algolia": {
       "appId": "B6IFEXV9WE",

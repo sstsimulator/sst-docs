@@ -1,24 +1,24 @@
 ---
-title: setSSTThreadCount
+title: setThreadCount
 ---
 
 Sets the number of threads per rank for the simulation. These values can be overwritten by using \-n on the command line. 
 
 ## Syntax
 ```python
-sst.setSSTThreadCount(threads)
+sst.setThreadCount(threads)
 ```
 
 ## Parameters
 * **threads** (type: int) number of threads per MPI rank to use in the simulation 
-* **returns** none
+* **returns** (type: int) number of threads per MPI rank prior to this function call
 
 ## Example
 
 ```python
 import sst
 
-threads = sst.setSSTThreadCount(4)
+old_thread_count = sst.setThreadCount(4)
 ```
 
 ## Import

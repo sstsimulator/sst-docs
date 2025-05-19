@@ -28,6 +28,10 @@ This macro must reside in a `public` section of the object's header file.
 * **description** (string) Description of the parameter. This value is displayed when sst-info is run at the command line.
 * **default_value** (string) Optional, a default value that the object assigns the parameter if the parameter is not given in the SST configuration file. If a parameter is required, make this NULL or omit it.
 
+:::info
+`param_nameX` must follow SST's [element naming conventions](../../../guides/dev/naming).
+:::
+
 ## Examples
 
 ### Example 1

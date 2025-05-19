@@ -11,6 +11,7 @@ Compare if this object is not equal to the argument `v`.
 ## Parameters
 * **v** (UnitAlgebra) Object to compare to  
 * **returns** (bool) Whether this object is not equal to the argument.
+* **throws** *NonMatchingUnits* If the objects' units do not match.
 
 ## Example
 

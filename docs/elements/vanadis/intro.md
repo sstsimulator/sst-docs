@@ -10,7 +10,7 @@ title: vanadis
 **SST Name:** `vanadis` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

@@ -23,6 +23,10 @@ This macro must reside in a `public` section of the object's header file.
 * **description** (string) A description of the purpose and/or use of the slot.
 * **API** (string) The fully qualified name of the SubComponent API that this slot expects. Any subcomponent loaded into the slot must implement the named API.
 
+:::info
+`slot_name_x` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicSubComponent_component.h"

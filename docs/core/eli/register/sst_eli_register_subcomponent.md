@@ -23,6 +23,10 @@ This macro must reside in a `public` section of the SubComponent's header file.
 * **description** (string) A description of the SubComponent.
 * **interface** (fully qualified class name) This is the API that the SubComponent implements.
 
+:::info
+`library` and `name` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ```cpp

@@ -50,7 +50,7 @@ public:
 StandardInterface::StandardInterface(ComponentId_t cid, Params &params, TimeConverter* time, HandlerBase* handler) :
     StandardMem(id, params, time, handler)
     {
-        setDefaultTimeBase(time); // Links are required to have a timebase
+        setDefaultTimeBase(*time); // Links are required to have a timebase
 
         /** Rest of constructor implementation **/
     }
@@ -64,7 +64,7 @@ standardCPU::standardCPU(ComponentId_t id, Params& params) : Component(id), rng(
 
     // Load interface subcomponent
     // clockTC is standardCPU's clock timeconverter
-    memory = loadUserSubComponent<StandardMem>("memory", ComponentInfo::SHARE_NONE, clockTC,
+    memory = loadUserSubComponent<StandardMem>("memory", ComponentInfo::SHARE_NONE, &clockTC,
         new StandardMem::Handler<standardCPU>(this, &standardCPU::handleEvent));
     
     if (!memory) 

@@ -26,7 +26,7 @@ Within this module, there are a number of available classes and global functions
 * [StatisticGroup](../../config/stats/group/statisticGroup.md) (*Create and parameterize groups of statistics*)
 * [UnitAlgebra](../../config/unitalgebra/unitalgebra.md) (*Perform math on values with units*)
 
-# Usage via a simple example
+## Usage via a simple example
 
 *This example is based on sst-elements/src/sst/elements/simpleElementExample/tests/example0.py*
 
@@ -55,8 +55,9 @@ Full documentation can be found at the links above, this section describes basic
 
 Here is a picture of the system created by the script. The link, `component_link`, allows `c0` and `c1` to exchange events with each other during simulation.
 
-![A picture of the system described by the Python file shown above](../assets/pythonconfig_guide_ex0_graph.png)
+import exampleSimulation from '../assets/pythonconfig_guide_ex0_graph.png';
 
+<img src={exampleSimulation} alt="The example graph to simulate" style={{maxWidth: "300px"}} />
 
 ### Imports
 Line 2 above imports the `sst` module. Additional Python modules may be imported if desired.

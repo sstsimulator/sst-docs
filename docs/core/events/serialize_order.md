@@ -6,6 +6,8 @@ title: serialize_order
 virtual void serialize_order(SST::Core::Serialization::serializer& ser) override;
 ```
 
+See the [serialization framework](../serialization/overview.md) for more detail.
+
 This function is used by SST when events need to be serialized for transmission over non-local Links. 
 Events that are serializable *must* implement this function. The function should first call 
 `Event::serialize_order(ser)` and then append any class members that need to be serialized (generally, all of them) 
@@ -48,5 +50,5 @@ public:
 
 ## Header
 ```cpp
-#include <sst/core/component.h>
+#include <sst/core/event.h>
 ```

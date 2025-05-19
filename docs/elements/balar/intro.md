@@ -19,7 +19,7 @@ The *dmaEngine* component performs memory data transfers between SST cache memor
 **SST name:** `balar` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;  
-**Last Released:** SST 14.0
+**Last Released:** SST 15.0
 
 :::
 

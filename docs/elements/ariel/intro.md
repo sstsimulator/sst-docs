@@ -10,7 +10,7 @@ The *ariel* library models a multicore CPU using a dynamic application trace. Th
 **SST Name:** `ariel` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

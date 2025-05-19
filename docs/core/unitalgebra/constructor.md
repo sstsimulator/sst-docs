@@ -20,6 +20,8 @@ SIPREFIX    := {a,f,p,n,u,m,[kKMGTPE]i?}
 BASEUNIT    := {s,B,b,events}
 COMPUNIT    := {Hz,hz,Bps,bps,event}
 ```
+* **throws** *InvalidNumberString* If `<NUMBER>` cannot be parsed as a numeric type.
+* **throws** *InvalidUnitType* If `<UNITS>` does not match a known unit type.
 
 ## Examples
 ### Examples of valid format strings

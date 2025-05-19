@@ -16,7 +16,7 @@ This element has been renamed from 'VaultSimC' to 'vaultsim' in an effort to sta
 **SST Name:** `vaultsim` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

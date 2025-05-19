@@ -13,6 +13,7 @@ Add something to this UnitAlgebra. If the argument is a UnitAlgebra and the unit
 * **v** (UnitAlgebra) value to add.
 * **v** (typename T) value to add
 * **returns** (UnitAlgebra&) This UnitAlgebra after the addition operation.
+* **throws** *NonMatchingUnits* If object `v` is a UnitAlgebra and its units do not match this UnitAlgebra's units.
 
 ## Example
 

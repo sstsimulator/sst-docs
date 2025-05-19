@@ -1,11 +1,11 @@
 :root {
-  --ifm-color-primary: #005376;
-  --ifm-color-primary-dark: #004b6a;
-  --ifm-color-primary-darker: #004764;
-  --ifm-color-primary-darkest: #003a53;
-  --ifm-color-primary-light: #005b82;
-  --ifm-color-primary-lighter: #005f88;
-  --ifm-color-primary-lightest: #006c99;
+  --ifm-color-primary: #006490;
+  --ifm-color-primary-dark: #005376;
+  --ifm-color-primary-darker: #00415d;
+  --ifm-color-primary-darkest: #002f44;
+  --ifm-color-primary-light: #3391ba;
+  --ifm-color-primary-lighter: #99c8dd;
+  --ifm-color-primary-lightest: #cceff6;
   --ifm-code-font-size: 90%;
   --ifm-font-size-base: 95%;
 }
@@ -20,4 +20,25 @@ h2 {
 }
 h3 {
   font-size: 18px;
+}
+
+h1.green {
+  color: #008e74;
+}
+
+h2.green {
+  color: #008e74;
+}
+
+.tagline {
+  background-color: #3a71a9;
+  padding: 48px;
+}
+
+.button.button--main {
+  background-color: #ffcf99;
+}
+
+.button.button--main:hover {
+  background-color: #ffe7cc;
 }

@@ -3,7 +3,8 @@ title: reregisterClock
 ---
 
 ```cpp
-Cycle_t reregisterClock(TimeConverter* freq, Clock::HandlerBase* handler);
+Cycle_t reregisterClock(TimeConverter* freq, Clock::HandlerBase* handler); // Deprecated in SST 15.0
+Cycle_t reregisterClock(TimeConverter freq, Clock::HandlerBase* handler);
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
@@ -13,7 +14,7 @@ Re-register a clock at the specified frequency. On each clock cycle, the associa
 
 
 ## Parameters
-* **freq** (string, UnitAlgebra, TimeConverter*) Frequency of the clock
+* **freq** (string, UnitAlgebra, TimeConverter) Frequency of the clock
 * **handler** (Clock::HandlerBase*) Clock handler function to invoke each cycle
 * **returns** (Cycle_t) Cycle count, in terms of clock frequency, that the re-registered clock handler will next be called at 
 

@@ -10,7 +10,7 @@ title: hermes
 **SST Name:** N/A &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

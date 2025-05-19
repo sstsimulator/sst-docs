@@ -49,5 +49,16 @@ Macros are available to document the following aspects of an SST object. See eac
     * [Statistics](document/sst_eli_document_statistics) - statistics that the object generates
     * [SubComponent slots](document/sst_eli_document_subcomponent_slots) - slots into which subcomponent(s) of a specific type can be loaded
 
+## ELI Inheritance
+ELI documentation (attributes, parameters, etc.) is inherited according to ELI relationships, not C++ class inheritance. A class implementing an ELI API will inherit ELI from that API. Thus, a SubComponent will inherit ELI from the base class API it declares itself as implementing. If a base class does not register itself as an ELI API, any ELI documentation macros in that class will not be inherited by derived classes. 
+
 ## Deleting ELI for SST Objects
 Sometimes it is useful for an inheriting class to not inherit all ELI from its parent. To facilitate those instances, several macros are available for deleting documented ELI from an object.
+
+## Naming Requirements
+String names given to element libraries as well elements and their parameters, ports, statistics, subcomponent slots, etc. must adhere to the [SST element naming conventions.](../../guides/dev/naming.md)
+
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

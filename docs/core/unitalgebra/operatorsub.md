@@ -13,6 +13,7 @@ Subtract something from this UnitAlgebra. If the argument is a UnitAlgebra and t
 * **v** (UnitAlgebra) value to subtract
 * **v** (typename T) value to subtract
 * **returns** (UnitAlgebra&) This UnitAlgebra after the subtraction operation.
+* **throws** *NonMatchingUnits* If object `v` is a UnitAlgebra and its units do not match this UnitAlgebra's units.
 
 ## Example
 

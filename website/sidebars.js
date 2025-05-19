@@ -1,7 +1,8 @@
 const sidebars = {
   /***** GUIDES ******/
   guides: [
-    'guides/runningSST',
+    'guides/start'
+    , 'guides/runningSST',
     {
       type: 'category',
       label: 'Configuring SST',
@@ -13,7 +14,8 @@ const sidebars = {
       type: 'category',
       label: 'Concepts',
       link: { type: 'generated-index' },
-      items: ['guides/concepts/lifecycle'
+      items: ['guides/concepts/elementtypes'
+            , 'guides/concepts/lifecycle'
             ,'guides/concepts/time'
             ,'guides/concepts/glossary']
     },
@@ -22,7 +24,7 @@ const sidebars = {
       label: 'Features',
       link: { type: 'generated-index' },
       items: ['guides/features/checkpoint'
-            ,'guides/features/signal']
+            , 'guides/features/signal']
     },
     {
       type: 'category',
@@ -36,7 +38,10 @@ const sidebars = {
       label: 'Development',
       link: { type: 'generated-index' },
       items: [
-        "guides/dev/autotest"
+        "guides/dev/devtutorial"
+        , "guides/dev/naming"
+        , "guides/dev/contrib"
+        , "guides/dev/autotest"
         , "guides/dev/testing"
         , "guides/dev/testfaq"
         , "guides/dev/testframework"
@@ -65,9 +70,9 @@ const sidebars = {
           items: [
             "core/component/component/constructor"
             , "core/component/component/destructor"
-            , "core/component/component/registerAsPrimaryComponent"
             , "core/component/component/primaryComponentDoNotEndSim"
             , "core/component/component/primaryComponentOKToEndSim"
+            , "core/component/component/registerAsPrimaryComponent"
           ]
         },
         { 
@@ -284,6 +289,7 @@ const sidebars = {
         , "core/events/clone"
         , "core/events/generateUniqueId"
         , "core/events/toString"
+        , "core/events/copyAllDeliveryInfo"
       ]
     },
     {
@@ -349,6 +355,7 @@ const sidebars = {
                 , "core/iface/StandardMem/req/loadlink"
                 , "core/iface/StandardMem/req/storeconditional"
                 , "core/iface/StandardMem/req/flushaddr" 
+                , "core/iface/StandardMem/req/flushcache" 
                 , "core/iface/StandardMem/req/flushresp"
                 , "core/iface/StandardMem/req/movedata"
                 , "core/iface/StandardMem/req/invnotify"
@@ -382,6 +389,15 @@ const sidebars = {
         , "core/link/sendUntimedData"
         , "core/link/recvUntimedData"
         , "core/link/getId"
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Module',
+      link: { type: 'doc', id: 'core/module/class' },
+      items: [
+        "core/module/constructor"
+        , "core/module/destructor"
       ]
     },
     {
@@ -437,6 +453,34 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'PortModule',
+      link: { type: 'doc', id: 'core/portmodule/class' },
+      items: [
+        "core/portmodule/constructor"
+        , "core/portmodule/destructor"
+        , "core/portmodule/eventSent"
+        , "core/portmodule/interceptHandler"
+        , "core/portmodule/installOnReceive"
+        , "core/portmodule/installOnSend"
+        , "core/portmodule/serialize_order"
+        , "core/portmodule/registerHandlerIntercept"
+        , "core/portmodule/registerLinkAttachTool"
+        , "core/portmodule/serializeEventAttachPointKey"
+        , "core/portmodule/serializeHandlerInterceptPointKey"
+        , "core/portmodule/getCoreTimeBase"
+        , "core/portmodule/getCurrentPriority"
+        , "core/portmodule/getCurrentSimCycle"
+        , "core/portmodule/getElapsedSimTime"
+        , "core/portmodule/getCurrentSimTime"
+        , "core/portmodule/getCurrentSimTimeMicro"
+        , "core/portmodule/getCurrentSimTimeMilli"
+        , "core/portmodule/getCurrentSimTimeNano"
+        , "core/portmodule/getSimulationOutput"
+      ]
+     
+    },
+    {
+      type: 'category',
       label: 'Random',
       link: { type: 'doc', id: 'core/rng/rng'  },
       items: [
@@ -461,6 +505,7 @@ const sidebars = {
             , "core/realtime/destructor"
             , "core/realtime/begin"
             , "core/realtime/canInitiateCheckpoint"
+            , "core/realtime/execute"
             , "core/realtime/getCoreTimeBase"
             , "core/realtime/getCurrentSimCycle"
             , "core/realtime/getElapsedSimTime"
@@ -477,16 +522,18 @@ const sidebars = {
             , "core/realtime/simulationSignalShutdown"
         ]
     },
+    'core/serialization/overview',
     {
-        type: 'category',
-        label: 'Shared Objects',
-        link: { type: 'doc', id: 'core/sharedobj/overview' },
-        items: [
-            "core/sharedobj/sharedArray"
-            , "core/sharedobj/sharedMap"
-            , "core/sharedobj/sharedSet"
-        ]
+      type: 'category',
+      label: 'Shared Objects',
+      link: { type: 'doc', id: 'core/sharedobj/overview' },
+      items: [
+        "core/sharedobj/sharedArray"
+        , "core/sharedobj/sharedMap"
+        , "core/sharedobj/sharedSet"
+      ]
     },
+    'core/types/class',
     {
       type: 'category',
       label: 'Statistics',
@@ -494,6 +541,38 @@ const sidebars = {
       items: [
         "core/statistics/addData"
         , "core/statistics/addDataNTimes"
+      ]
+    },
+    {
+      type: 'category',
+      label: 'StatisticOutput',
+      link : { type: 'doc', id: 'core/statoutput/class' },
+      items: [
+        "core/statoutput/constructor"
+        , "core/statoutput/destructor"
+        , "core/statoutput/checkOutputParameters"
+        , "core/statoutput/printUsage"
+        , "core/statoutput/startOfSimulation"
+        , "core/statoutput/endOfSimulation"
+        , "core/statoutput/implStartOutputEntries"
+        , "core/statoutput/implStopOutputEntries"
+        , "core/statoutput/outputField"
+        , "core/statoutput/serialize_order"
+        , "core/statoutput/acceptsGroups"
+        , "core/statoutput/supportsDynamicRegistration"
+        , "core/statoutput/getAbsolutePathForOutputFile"
+        , "core/statoutput/getCurrentSimCycle"
+        , "core/statoutput/getFieldInfoArray"
+        , "core/statoutput/getFieldTypeShortName"
+        , "core/statoutput/getNumRanks"
+        , "core/statoutput/getOutputParameters"
+        , "core/statoutput/getRank"
+        , "core/statoutput/getRegisteredField"
+        , "core/statoutput/getSimulationOutput"
+        , "core/statoutput/getStatisticOutputName"
+        , "core/statoutput/setStatisticOutputName"
+        , "core/statoutput/lock"
+        , "core/statoutput/unlock"
       ]
     },
     {
@@ -507,13 +586,12 @@ const sidebars = {
         , "core/timeconverter/getPeriod"
       ]
     },
-    'core/types/class',
     {
       type: 'category',
       label: 'UnitAlgebra',
       link: { type: 'doc', id: 'core/unitalgebra/class'  },
       items: [
-          "core/unitalgebra/constructor"
+        "core/unitalgebra/constructor"
         , "core/unitalgebra/destructor"
         , "core/unitalgebra/init"
         , "core/unitalgebra/operatoreq"
@@ -554,14 +632,23 @@ const sidebars = {
       },
       items: [
         "config/general/setProgramOption"
+        , "config/general/setProgramOptions"
         , "config/general/getProgramOptions"
         , "config/general/getMPIRankCount"
-        , "config/general/getSSTThreadCount"
-        , "config/general/setSSTThreadCount"
+        , "config/general/getMyMPIRank"
+        , "config/general/getThreadCount"
+        , "config/general/setThreadCount"
         , "config/general/pushNamePrefix"
         , "config/general/popNamePrefix"
         , "config/general/exit"
         , "config/general/findComponentByName"
+        , "config/general/addGlobalParam"
+        , "config/general/addGlobalParams"
+        , "config/general/addSharedParam"
+        , "config/general/addSharedParams"
+        , "config/general/getElapsedExecutionTime"
+        , "config/general/getLocalMemoryUsage"
+        , "config/general/setCallPythonFinalize"
       ]
     },
     {
@@ -573,11 +660,15 @@ const sidebars = {
       items: [
         "config/component/component"
         , "config/component/setSubComponent"
+        , "config/component/addPortModule"
         , "config/component/addParam"
         , "config/component/addParams"
+        , "config/component/addGlobalParamSet"
+        , "config/component/addSharedParamSet"
         , "config/component/addLink"
         , "config/component/getFullName"
         , "config/component/getType"
+        , "config/component/createStatistic"
         , "config/component/setStatistic"
         , "config/component/setStatisticLoadLevel"
         , "config/component/enableAllStatistics"
@@ -685,10 +776,10 @@ const sidebars = {
       label: 'balar',
       link: {type: 'doc', id: 'elements/balar/intro'},
       items: [
-        "elements/balar/QuickStart",
-        "elements/balar/TracingCUDAProgram",
-        "elements/balar/CompilingRISCVCUDA",
-        "elements/balar/BalarInDepth",
+          "elements/balar/QuickStart",
+          "elements/balar/TracingCUDAProgram",
+          "elements/balar/CompilingRISCVCUDA",
+          "elements/balar/BalarInDepth"
       ]
     },
     "elements/cacheTracer/intro",
@@ -701,13 +792,14 @@ const sidebars = {
       link: {type: 'doc', id: 'elements/ember/intro'},
       items: [
         "elements/ember/QuickStart",
-        , "elements/ember/CreatingMotifs"
-        , "elements/ember/RunningMotifs" 
-        , "elements/ember/OTF2Ember" 
+        "elements/ember/CreatingMotifs",
+        "elements/ember/RunningMotifs",
+        "elements/ember/OTF2Ember"
       ]
     },
     "elements/firefly/intro",
     "elements/gensa/intro",
+    "elements/golem/intro",
     "elements/hermes/intro",
     "elements/iris/intro",
     "elements/juno/intro",
@@ -722,6 +814,7 @@ const sidebars = {
       link: {type: 'doc', id: 'elements/memHierarchy/intro'},
       items: [
         "elements/memHierarchy/stdmem",
+        "elements/memHierarchy/connecting",
         "elements/memHierarchy/cache"
       ]
     },

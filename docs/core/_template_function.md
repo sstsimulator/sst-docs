@@ -1,5 +1,4 @@
 ---
-id: function_name
 title: function_name
 ---
 <!---

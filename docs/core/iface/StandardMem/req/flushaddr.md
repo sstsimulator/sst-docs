@@ -79,7 +79,7 @@ virtual std::string getString() =0;
 Returns a formatted string listing all fields of the FlushAddr.
 ```sh
 Example Outputs:
-ID: 133, Type: Read, FlushAddr: [], PhysAddr: 0x13158, VirtAddr: 0x13158, Size: 8, Inv: T, Depth: 2, InstPtr: 0x10176, ThreadID: 0
+ID: 133, Type: FlushAddr, Flags: [], PhysAddr: 0x13158, VirtAddr: 0x13158, Size: 8, Inv: T, Depth: 2, InstPtr: 0x10176, ThreadID: 0
 ```
 
 

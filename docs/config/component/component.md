@@ -19,6 +19,10 @@ Component(name, element_type)
 * **element_type** (type: string) type of the Component in the `lib.element` format (for example, `"merlin.hr_router"`) specified as a string
 * **returns** Component object
 
+:::info
+`name` must follow SST's [element naming conventions](../../guides/dev/naming.md).
+:::
+
 ## Examples
 
 ### Example 1

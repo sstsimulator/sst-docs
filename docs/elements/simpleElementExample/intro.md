@@ -19,7 +19,7 @@ A `README` in the element directory (`sst-elements/src/sst/elements/simpleElemen
 **SST Name:** `simpleElementExample` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

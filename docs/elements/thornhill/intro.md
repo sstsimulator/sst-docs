@@ -10,7 +10,7 @@ title: thornhill
 **SST Name:** `thornhill` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 14.1
+**Last Released:** SST 15.0
 
 :::
 

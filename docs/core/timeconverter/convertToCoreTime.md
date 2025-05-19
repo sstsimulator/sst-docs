@@ -22,7 +22,7 @@ adding extra latency (specified in the local view of time) on an event send.
 void example::exampleClockHandler(Cycle_t cycle) 
 {
     out->output("My clock is at cycle %" PRIu64 " which is %" PRIu64 " in the core time base units.\n",
-        cycle, clockTimeConverter->convertToCoreTime(cycle));
+        cycle, clockTimeConverter.convertToCoreTime(cycle));
 }
 ```
 

@@ -20,12 +20,11 @@ Pull requests on SST Core first go through a Clang-format check. This is run usi
 
 | **OS**  | **Compiler** | **Python** | **OpenMPI** | **Other libraries** | **Run Variant** | **SST Repositories** | **Test Framework(s)** |
 |---------|----------|--------|---------|------------------|--------------------|------------------|-----------------|
-| Rocky 8 | -        | -      | -       | Clang-format v12 | Format             | Core         | sst-core/scripts/clang-format-test.sh |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Serial             | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Threads = 2        | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -t 2`, `sst-test-elements -k -t 2` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -k -r 2` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | -                | Macro              | Core, Macro | In Macro, `make -j4 check` and `make -j4 installcheck` |
+| Rocky 8 | -        | -      | -       | Clang-format v20 | Format             | Core         | sst-core/scripts/clang-format-test.sh |
+| Rocky 8 | GCC 8.5.0 | 3.9   | 4.1.4   | Pin 3.31         | Serial             | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
+| Rocky 8 | GCC 8.5.0 | 3.9   | 4.1.4   | Pin 3.31         | Threads = 2        | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -t 2`, `sst-test-elements -k -t 2` |
+| Rocky 8 | GCC 8.5.0 | 3.9   | 4.1.4   | Pin 3.31         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -k -r 2` |
+| Rocky 8 | GCC 8.5.0 | 3.9   | 4.1.4   | Pin 3.31         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 | OSX 14 | Xcode 14 | 3.10 | 4.1.4 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements -k` |
 
 Note that the "make dist" job first configures and runs make dist on the repositories under test and then runs the test framework on the generated distributions.
@@ -35,10 +34,10 @@ Pull requests on SST Elements are not format checked, as formatting guidelines a
 
 | **OS**  | **Compiler** | **Python** | **OpenMPI** | **Other libraries**  | **Run Variant** | **SST Repositories** | **Test Framework(s)** |
 |---------|----------|--------|---------|------------------|--------------------|------------------|-----------------|
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Serial             | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Threads = 2        | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -t 2`, `sst-test-elements -t 2` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -r 2` |
-| Rocky 8 | GCC 8.5.0 | 3.6.8 | 4.1.4   | Pin 3.30         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements` |
+| Rocky 8 | GCC 8.5.0 | 3.9 | 4.1.4   | Pin 3.31         | Serial             | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements` |
+| Rocky 8 | GCC 8.5.0 | 3.9 | 4.1.4   | Pin 3.31         | Threads = 2        | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -t 2`, `sst-test-elements -t 2` |
+| Rocky 8 | GCC 8.5.0 | 3.9 | 4.1.4   | Pin 3.31         | Ranks = 2          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k -r 2`, `sst-test-elements -r 2` |
+| Rocky 8 | GCC 8.5.0 | 3.9 | 4.1.4   | Pin 3.31         | Make dist          | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements` |
 | OSX 14 | Xcode 14 | 3.10 | 4.1.4 | - | Serial | Core, Elements, Juno, ExternalElementExample | `sst-test-core -k`, `sst-test-elements` |
 
 See the SST-Core section above for a description of "make dist" testing.

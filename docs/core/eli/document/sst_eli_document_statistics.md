@@ -23,6 +23,10 @@ This macro must reside in a `public` section of the object's header file.
 * **units** (string) Units for the statistic's value. For example 'cycles' or 'MB'. This value is displayed when sst-info is run at the command line.
 * **enable_level** (int) Integer between 1 and 7. The statistic will be generated if the user configures the simulation enable level to be greater than or equal to this number.
 
+:::info
+`stat_X` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Examples
 
 ### Example 1

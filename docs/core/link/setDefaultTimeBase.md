@@ -3,7 +3,8 @@ title: setDefaultTimeBase
 ---
 
 ```cpp
-void setDefaultTimeBase(TimeConverter* tc);
+void setDefaultTimeBase(TimeConverter* tc); // Deprecated in SST 15.0
+void setDefaultTimeBase(TimeConverter tc);
 ```
 
 Sets the default time base for the link. This will be the units of send latency if additional latency is added using `send()` without specifying units. 
@@ -13,7 +14,7 @@ Calls to [`registerClock()`](../component/time/registerClock) and [`registerTime
 :::
 
 ## Parameters
-* **tc** (TimeConverter*) A TimeConverter representing the default units of latency to use on the link
+* **tc** (TimeConverter) A TimeConverter representing the default units of latency to use on the link
 * **returns** none
 
 
@@ -38,7 +39,7 @@ void LinkControl::init(unsigned int phase)
             UnitAlgebra link_clock = link_bw / flit_size_ua;
 
             // Set the 'output_timing' link's timebase to match bandwidth
-            TimeConverter* tc = getTimeConverter(link_clock);
+            TimeConverter tc = getTimeConverter(link_clock);
             //highlight-next-line
             output_timing->setDefaultTimeBase(tc);
         

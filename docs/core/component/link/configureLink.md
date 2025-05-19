@@ -3,7 +3,8 @@ title: configureLink
 ---
 
 ```cpp
-Link* configureLink(const std::string& name, TimeConverter* time_base, Event::HandlerBase* handler = nullptr);
+Link* configureLink(const std::string& name, TimeConverter* time_base, Event::HandlerBase* handler = nullptr); // Deprecated in SST 15.0
+Link* configureLink(const std::string& name, TimeConverter time_base, Event::HandlerBase* handler = nullptr);
 Link* configureLink(const std::string& name, const std::string& time_base, Event::HandlerBase* handler = nullptr);
 Link* configureLink(const std::string& name, const UnitAlgebra& time_base, Event::HandlerBase* handler = nullptr);
 Link* configureLink(const std::string& name, Event::HandlerBase* handler = nullptr);
@@ -17,7 +18,7 @@ A return value of nullptr indicates the link could not be configured. A common c
 
 ## Parameters
 * **name** (string) Name of the port to configure the link on
-* **time_base** (TimeConverter*, string, UnitAlgebra) The base time units to use with time-related calls on the link.
+* **time_base** (TimeConverter, string, UnitAlgebra) The base time units to use with time-related calls on the link.
 * **handler** (Event::HandlerBase*) The event handler to use for event arrivals
 * **returns** (Link*) A handle to the configured link. A return value of nullptr indicates the link could not be configured.
 

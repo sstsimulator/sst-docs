@@ -17,6 +17,10 @@ link = sst.Link(name, latency=None)
 * **latency** (type: string or UnitAlgebra) Default latency for the link. This is optional and will be used if no latency is specified in subsequent calls to Link.connect() or (Sub)Component.addLink().
 * **returns** Link object
 
+:::info
+`name` must follow SST's [element naming conventions](../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ```python

@@ -16,6 +16,7 @@ Signals are only detected and handled during SST's [run phase](../concepts/lifec
 * **Simulation Status**(`sst.rt.status.all`) - SST-Core reports the simulated time and [`printStatus()`](../../core/component/lifecycle/printStatus.md) is called on every Component in the simulation.
 * **Heartbeat**(`sst.rt.heartbeat`) - SST-Core reports the simulated time and some profiling metrics (size of memory pools, time in synchronization, etc.)
 * **Checkpoint**(`sst.rt.checkpoint`) - Creates a checkpoint.
+* **Interactive Console**(`sst.rt.interactive`) - Pause simulation and drop into an interactive console to view simulation state. This action requires that an SST console be specified using the command line option `--interactive-console`.
 
 The table below shows the default action for each signal. The "Command line control" column shows command line options that are available to override the default action.
 | Signal  | Default RealTimeAction		| Description									| Command line control  |
@@ -39,7 +40,7 @@ When sent to `mpirun`:
 ## Custom RealTimeActions
 
 :::note
-Custom RealTimeActions were introduced in SST 14.1. The API is evolving and expected to be stable by SST 15.0.
+Custom RealTimeActions were introduced in SST 14.1. The API stable as of SST 15.0 but new functionality will be added as needed.
 :::
 
 ### SIGUSR1/SIGUSR2

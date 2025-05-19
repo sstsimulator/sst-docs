@@ -31,6 +31,11 @@ This macro must reside in a `public` section of the Component's header file.
   * COMPONENT_CATEGORY_NETWORK
   * COMPONENT_CATEGORY_SYSTEM
 
+
+:::info
+`library` and `name` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ```cpp

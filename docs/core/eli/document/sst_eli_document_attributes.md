@@ -27,6 +27,10 @@ This macro must reside in a `public` section of the object's header file.
 * **keyX** (string) A key
 * **valueX** (string) A value
 
+:::info
+`keyX` and `valueX` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ```cpp

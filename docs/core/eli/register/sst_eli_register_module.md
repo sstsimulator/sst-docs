@@ -28,6 +28,10 @@ This macro must reside in a `public` section of the Module's header file.
 * **description** (string) A description of the module
 * **api_class_name** (class) The fully qualified name of the module's API class. This is not a string
 
+:::info
+`library` and `name` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
+
 ## Example
 
 ### Registering a Module

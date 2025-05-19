@@ -14,6 +14,9 @@ RealTimeActions must register themselves with SST using this macro. The library 
 This macro must reside in a `public` section of the RealTimeAction's header file.
 :::
 
+:::info
+`library` and `name` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
+:::
 
 ## Parameters
 

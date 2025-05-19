@@ -8,21 +8,21 @@ import styles from './styles.module.css';
 export default function HomepageFeatures() {
   return (
       <div className={styles.indexButton}>
-      <Link className="button button--primary" to="/sst-docs/getting-started">
+      <Link className="button button--primary" to="/docs/guides/start">
         <Translate>Getting Started</Translate>
       </Link>
       &nbsp;
       &nbsp;
       &nbsp;
       &nbsp;
-      <Link className="button button--primary" to="/sst-docs/docs/core/component/introduction">
+      <Link className="button button--primary" to="/docs/core/component/introduction">
         <Translate>SST Core</Translate>
       </Link>
       &nbsp;
       &nbsp;
       &nbsp;
       &nbsp;
-      <Link className="button button--primary" to="/sst-docs/docs/elements/intro">
+      <Link className="button button--primary" to="/docs/elements/ember/QuickStart">
         <Translate>SST Elements</Translate>
       </Link>
       </div>

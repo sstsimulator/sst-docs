@@ -1,12 +1,12 @@
 ---
-title: getSSTThreadCount
+title: getThreadCount
 ---
 
 Returns the threads per rank specified for the simulation.
 
 ## Syntax
 ```python
-sst.getSSTThreadCount()
+sst.getThreadCount()
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ sst.getSSTThreadCount()
 ```python
 import sst
 
-threads = sst.getSSTThreadCount()
+threads = sst.getThreadCount()
 ```
 
 ## Import
