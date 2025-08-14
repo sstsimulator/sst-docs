@@ -2,7 +2,7 @@
 title: "JSON simulation configuration file"
 ---
 
-In addition to the SST Python module interface, SST also provides a standard JSON interface for which to build configuration files.  The JSON SST configuration files support all the standard features of a Python configuration file a set of *name-value* pairs or *arrays* of values.  The JSON configuration format contains the following major sections:
+In addition to the SST Python module interface, SST also provides a standard JSON interface for which to build configuration files.  The JSON SST configuration files support all the standard features of a Python configuration file as a set of *name-value* pairs or *arrays* of name-value pairs.  The JSON configuration format contains the following major sections:
 
 * **Program Options**: Configures general simulation options
 * **Shared Parameter Sets**: Creates shared parameter sets for use with components/subcomponents
