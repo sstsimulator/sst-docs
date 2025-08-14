@@ -56,7 +56,7 @@ The following types will be utilized to describe the *value* of each potential c
     "params": {
       "outputrank": "Bool",
       "outputsimtime": "Bool",
-      "paramN": "Type,
+      "paramN": "Type",
       ...
     }
   },
@@ -70,7 +70,7 @@ The following types will be utilized to describe the *value* of each potential c
         "type": "String",    // this is the fully qualified simulation output type, eg "sst.statOutputConsole"
         "params": {
           "param1": "Type",
-          "param2": "Type".
+          "param2": "Type",
           ...
         }
       },
@@ -159,7 +159,7 @@ The following types will be utilized to describe the *value* of each potential c
       "right": {
         "component": "String",
         "port": "string",
-        "latency: "UnitAlgebra"
+        "latency": "UnitAlgebra"
       }
     }
   ]
