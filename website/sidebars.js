@@ -8,7 +8,8 @@ const sidebars = {
       label: 'Configuring SST',
       link: { type: 'generated-index' },
       items: ['guides/configuration/configTutorial'
-              ,'guides/configuration/pythonConfigGuide']
+              ,'guides/configuration/pythonConfigGuide'
+              ,'guides/configuration/jsonConfigGuide']
     },
     {
       type: 'category',
