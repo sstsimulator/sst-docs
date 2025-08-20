@@ -268,4 +268,6 @@ Element library developers may choose to add functionality to the Python environ
 
 
 ## JSON
-JSON can be used instead of Python to describe the simulation configuration. Currently, this method limits the ability to enable statistics. Documentation of JSON configuration files is in progress.
+JSON can be used instead of Python to describe the simulation configuration. 
+* [JSON Configuration](./jsonConfigGuide.md) (*JSON Configuration guide*)
+
