@@ -7,6 +7,12 @@ SST handles the `SIGINT`, `SIGTERM`, `SIGUSR1`, and `SIGUSR2` signals and also u
 
 Signals are only detected and handled during SST's [run phase](../concepts/lifecycle.mdx). Signals sent earlier may be missed. Signals sent later will be ignored.
 
+:::info
+
+To prevent SST from installing its own signal handlers, use the `--disable-signal-handlers` command-line option.
+
+:::
+
 ## The `RealTimeAction` class
 `RealTimeAction` objects are actions that execute in response to a signal. SST provides several actions and element libraries may additionally provide their own custom actions. The actions provided by SST are:
 

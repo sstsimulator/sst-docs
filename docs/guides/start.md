@@ -20,17 +20,17 @@ We also publish materials from in-person tutorials in SST's [tutorial repository
 
 
 ## Getting SST
-Download the latest [release](http://sst-simulator.org/SSTPages/SSTMainDownloads/) or clone the [github repositories](https://github.com/sstsimulator). You will need *sst-core* (the simulation framework) and simulation libraries, typically *sst-elements*. When cloning repositories, use the `master` branch for greatest stability or the `devel` branch to get the very latest features. The `master` branch usually lags `devel` by a few days.
+Download the latest [release](https://sst-simulator.org/SSTPages/SSTMainDownloads/) or clone the [github repositories](https://github.com/sstsimulator). You will need *sst-core* (the simulation framework) and simulation libraries, typically *sst-elements*. When cloning repositories, use the `master` branch for greatest stability or the `devel` branch to get the very latest features. The `master` branch usually lags `devel` by a few days.
 
 
 ## Dependencies
-SST has two major dependencies: Python and OpenMPI. OpenMPI is optional but highly recommended. SST is tested with gcc and llvm (Linux) and clang (macOS). If you are installing from the github repositories, you will also need autotools installed. Consult the [compatibility page](http://sst-simulator.org/SSTPages/SSTElementReleaseMatrix/) for specific version information and see [SST build prerequisites](https://sst-simulator.org/SSTPages/SSTUserSSTBuildPrerequisites) for the latest instructions on acquiring dependencies.
+SST has two major dependencies: Python and OpenMPI. OpenMPI is optional but highly recommended. SST is tested with gcc and llvm (Linux) and clang (macOS). If you are installing from the github repositories, you will also need autotools installed. Consult the [compatibility page](https://sst-simulator.org/SSTPages/SSTElementReleaseMatrix/) for specific version information and see [SST build prerequisites](https://sst-simulator.org/SSTPages/SSTUserSSTBuildPrerequisites) for the latest instructions on acquiring dependencies.
 
 
 ## Building SST
-* [Detailed build instructions including required dependencies](http://sst-simulator.org/SSTPages/SSTBuildAndInstall_15dot0dot0_SeriesDetailedBuildInstructions/)
-* [Instructions for older releases](http://sst-simulator.org/SSTPages/SSTBuildAndInstall_older_release_documentation/)
-* [Supported platforms and tested versions of dependencies](http://sst-simulator.org/SSTPages/SSTElementReleaseMatrix/)
+* [Detailed build instructions including required dependencies](https://sst-simulator.org/SSTPages/SSTBuildAndInstall_15dot0dot0_SeriesDetailedBuildInstructions/)
+* [Instructions for older releases](https://sst-simulator.org/SSTPages/SSTBuildAndInstall_older_release_documentation/)
+* [Supported platforms and tested versions of dependencies](https://sst-simulator.org/SSTPages/SSTElementReleaseMatrix/)
 
 If you have dependencies installed already, select your SST source below for quick-start instructions. For sst-macro, [see the macro user manual.](https://github.com/sstsimulator/sst-macro/blob/v15.0.0_beta/docs/manual/manual.md)
 
@@ -39,6 +39,8 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="repo" label="GitHub" default>
+
+  Replace `<CORE_INSTALL_PATH>` and `<ELEM_INSTALL_PATH>` with the directories where you want to install sst-core and sst-elements respectively. For example, `$HOME/mysst/build/sst-core` and `$HOME/mysst/build/sst-elements`.
 ```sh
 $ git clone git@github.com:sstsimulator/sst-core
 $ cd sst-core
@@ -47,13 +49,16 @@ $ ./configure --prefix=<CORE_INSTALL_PATH>
 $ make -j install
 
 $ cd ..
-$ git clone git@github.com:sstsimulator-sst-elements
+$ git clone git@github.com:sstsimulator/sst-elements
+$ cd sst-elements
 $ ./autogen.sh
 $ ./configure --prefix=<ELEM_INSTALL_PATH> --with-sst-core=<CORE_INSTALL_PATH>
 $ make -j install
 ```
   </TabItem>
   <TabItem value="release" label="Release" default>
+  
+  Replace `<CORE_INSTALL_PATH>` and `<ELEM_INSTALL_PATH>` with the directories where you want to install sst-core and sst-elements respectively. For example, `$HOME/mysst/build/sst-core` and `$HOME/mysst/build/sst-elements`.
 ```sh
 $ tar -xz sstcore.tar.gz
 $ cd sst-core
@@ -68,6 +73,11 @@ $ make -j install
 ```
 </TabItem>
 </Tabs>
+
+After installing, you can add `<CORE_INSTALL_PATH>/bin` to your `$PATH`.
+```
+$ export PATH=<CORE_INSTALL_PATH>/bin:$PATH
+```
 
 
 ## Running a simulation

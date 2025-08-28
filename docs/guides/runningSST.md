@@ -15,7 +15,7 @@ $ <SST binary> [SST options] <config file>
 ### SST Options 
 Running SST with the "--help" flag prints a help message that includes all of the supported simulator options. Here's a snippet:
 
-```sh
+```text
 Usage: sst [options] config-file
   Arguments to options contained in [] are optional
   Notes on flag options (options that take an optional BOOL value):
@@ -191,7 +191,7 @@ Because the random number generator seed is a hardcoded value in the example1 co
 ### Running Example0 in Parallel
 SST can be run in parallel using MPI:
 ```sh
-$ mpirun -n 2 sst example0.py
+$ mpirun -np 2 sst example0.py
 ```
 
 Using threads:
@@ -201,5 +201,5 @@ $ sst -n 2 example0.py
 
 Or using both, (although the example here has only two components so SST will warn about not using all four threads/ranks):
 ```sh
-$ mpirun -n 2 sst -n 2 example0.py
+$ mpirun -np 2 sst -n 2 example0.py
 ```
