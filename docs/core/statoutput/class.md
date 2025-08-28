@@ -56,7 +56,7 @@ StatisticOutput types derived from `StatisticFieldOutput` should implement the f
 * [implStopOutputEntries](./implStopOutputEntries)
 * [checkOutputParameters](./checkOutputParameters)
 * [printUsage](./printUsage)
-* [startOfSimulation()](./startOfSimulatin)
+* [startOfSimulation()](./startOfSimulation)
 * [endOfSimulation()](./endOfSimulation)
 * [outputField()](./outputField)
 * [serialize_order](./serialize_order)
@@ -66,7 +66,7 @@ Outputs may also need to implement these.
 * [supportsDynamicRegistration](./supportsDynamicRegistration)
 
 These additional functions are available for use by StatisticFieldsOutput objects.
-* [getAbsolutePathForOutputFile](./getAbsolutePathForOutputFiel)
+* [getAbsolutePathForOutputFile](./getAbsolutePathForOutputFile.md)
 * [getCurrentSimCycle](./getCurrentSimCycle)
 * [getFieldInfoArray](./getFieldInfoArray)
 * [getFieldTypeShortName](./getFieldTypeShortName)
