@@ -7,9 +7,10 @@ In addition to the SST Python module interface, SST also provides a standard JSO
 * **Program Options**: Configures general simulation options
 * **Shared Parameter Sets**: Creates shared parameter sets for use with components/subcomponents
 * **Global Statistics**: Enables global statistics and statistics options
-* **Statistics Groups**: Creates and parameterizes groups of statistics
 * **Components (and subcomponents)**: Creates and parameterizes components and subcomponents
+* **Statistics Groups**: Creates and parameterizes groups of statistics
 * **Links**: Creates and connects links between component/subcomponent ports
+
 
 ## Value Types
 
@@ -20,6 +21,12 @@ The following types will be utilized to describe the *value* of each potential c
 * **String**: describes a value as a string
 * **Type**: describes the values for parameter names that can be any of the aforementioned types
 
+## Ordering Constraints
+
+The JSON reader streams objects and arrays iteratively in order of their discovery.  As a result, there are number of ordering constraints that must be adhered to in order to successfully parse and create the SST configuration graph from JSON.  We denote the ordering constraints as follows:
+* `statistics_group` must appear *after* `components`.  The `statistics_group` reference component objects that must be present in the SST config graph
+* For each `component` or `subcomponent` object, the `name` and `type` values must appear before any other values.  This ensures that the parser can create the component or subcomponet objects before adding parameters or statistics values to the resident config graph object.
+
 ## JSON Configuration Format
 
 ```json
@@ -29,7 +36,7 @@ The following types will be utilized to describe the *value* of each potential c
     "verbose": "Integer",
     "stop-at": "UnitAlgebra",
     "print-timing-info": "Bool",
-    "heartbeat-sim-period": "UnitAlgebra"
+    "heartbeat-sim-period": "UnitAlgebra",
     "heartbeat-wall-period": "UnitAlgebra",
     "timebase": "UnitAlgebra",
     "partitioner": "String",
@@ -60,36 +67,6 @@ The following types will be utilized to describe the *value* of each potential c
       ...
     }
   },
-  
-  // Statistics Groups
-  "statistics_group": [
-    {
-      "name": "String",
-      "frequency": "UnitAlgebra",
-      "output": {
-        "type": "String",    // this is the fully qualified simulation output type, eg "sst.statOutputConsole"
-        "params": {
-          "param1": "Type",
-          "param2": "Type",
-          ...
-        }
-      },
-      "statistics": [
-        {
-          "name": "String",
-          "params": {
-            "resetOnOutput": "Bool",
-            "type": "String"                    // this is the fully qualified statistic type, eg "sst.AccumulatorStatistic"
-          }
-        }
-      ],
-      "components": [   // contains a list of components for which the enclosing stat group applies
-        "component0",
-        "component1",
-        ....
-      ]
-    },
-  ]
   
   // Components
   "components" : [
@@ -143,7 +120,37 @@ The following types will be utilized to describe the *value* of each potential c
       }
     }
   ],
-  
+ 
+ // Statistics Groups
+  "statistics_group": [
+    {
+      "name": "String",
+      "frequency": "UnitAlgebra",
+      "output": {
+        "type": "String",    // this is the fully qualified simulation output type, eg "sst.statOutputConsole"
+        "params": {
+          "param1": "Type",
+          "param2": "Type",
+          ...
+        }
+      },
+      "statistics": [
+        {
+          "name": "String",
+          "params": {
+            "resetOnOutput": "Bool",
+            "type": "String"                    // this is the fully qualified statistic type, eg "sst.AccumulatorStatistic"
+          }
+        }
+      ],
+      "components": [   // contains a list of components for which the enclosing stat group applies
+        "component0",
+        "component1",
+        ....
+      ]
+    },
+  ],
+
   // Links
   "links": [
     {
@@ -327,133 +334,6 @@ The following types will be utilized to describe the *value* of each potential c
       "outputsimtime": "True"
     }
   },
-  "statistics_group": [
-    {
-      "name": "StatGroup0",
-      "frequency": "19 ns",
-      "output": {
-        "type": "sst.statOutputConsole",
-        "params": {
-          "outputrank": "False",
-          "outputsimtime": "True"
-        }
-      },
-      "statistics": [
-        {
-          "name": "stat1_U32",
-          "params": {
-            "type": "sst.AccumulatorStatistic"
-          }
-        },
-        {
-          "name": "stat2_U64",
-          "params": {
-            "resetOnOutput": "True",
-            "type": "sst.AccumulatorStatistic"
-          }
-        }
-      ],
-      "components": [
-        "StatGroupObj0",
-        "StatGroupObj1",
-        "StatGroupObj2"
-      ]
-    },
-    {
-      "name": "StatGroup1",
-      "frequency": "23 ns",
-      "output": {
-        "type": "sst.statOutputCSV",
-        "params": {
-          "outputrank": "0",
-          "filepath": "test_StatisticsComponent_basic_group_stats.csv",
-          "separator": ", "
-        }
-      },
-      "statistics": [
-        {
-          "name": "stat1_U32",
-          "params": {
-            "type": "sst.AccumulatorStatistic"
-          }
-        },
-        {
-          "name": "stat2_U64",
-          "params": {
-            "resetOnOutput": "True",
-            "type": "sst.AccumulatorStatistic"
-          }
-        }
-      ],
-      "components": [
-        "StatGroupObj3",
-        "StatGroupObj4",
-        "StatGroupObj5"
-      ]
-    },
-    {
-      "name": "StatGroup2",
-      "frequency": "27 ns",
-      "output": {
-        "type": "sst.statOutputTXT",
-        "params": {
-          "outputrank": "0",
-          "filepath": "test_StatisticsComponent_basic_group_stats.txt"
-        }
-      },
-      "statistics": [
-        {
-          "name": "stat1_U32",
-          "params": {
-            "type": "sst.AccumulatorStatistic"
-          }
-        },
-        {
-          "name": "stat2_U64",
-          "params": {
-            "resetOnOutput": "True",
-            "type": "sst.AccumulatorStatistic"
-          }
-        }
-      ],
-      "components": [
-        "StatGroupObj6",
-        "StatGroupObj7",
-        "StatGroupObj8"
-      ]
-    },
-    {
-      "name": "StatGroup3",
-      "frequency": "29 ns",
-      "output": {
-        "type": "sst.statOutputTXT",
-        "params": {
-          "outputrank": "0",
-          "filepath": "test_StatisticsComponent_basic_group_stats.txt"
-        }
-      },
-      "statistics": [
-        {
-          "name": "stat1_F32",
-          "params": {
-            "type": "sst.AccumulatorStatistic"
-          }
-        },
-        {
-          "name": "stat2_F64",
-          "params": {
-            "resetOnOutput": "True",
-            "type": "sst.AccumulatorStatistic"
-          }
-        }
-      ],
-      "components": [
-        "StatGroupObj9",
-        "StatGroupObj10",
-        "StatGroupObj11"
-      ]
-    }
-  ],
   "components": [
     {
       "name": "StatGlobal0",
@@ -1255,6 +1135,133 @@ The following types will be utilized to describe the *value* of each potential c
             "type": "sst.AccumulatorStatistic"
           }
         }
+      ]
+    }
+  ],
+  "statistics_group": [
+    {
+      "name": "StatGroup0",
+      "frequency": "19 ns",
+      "output": {
+        "type": "sst.statOutputConsole",
+        "params": {
+          "outputrank": "False",
+          "outputsimtime": "True"
+        }
+      },
+      "statistics": [
+        {
+          "name": "stat1_U32",
+          "params": {
+            "type": "sst.AccumulatorStatistic"
+          }
+        },
+        {
+          "name": "stat2_U64",
+          "params": {
+            "resetOnOutput": "True",
+            "type": "sst.AccumulatorStatistic"
+          }
+        }
+      ],
+      "components": [
+        "StatGroupObj0",
+        "StatGroupObj1",
+        "StatGroupObj2"
+      ]
+    },
+    {
+      "name": "StatGroup1",
+      "frequency": "23 ns",
+      "output": {
+        "type": "sst.statOutputCSV",
+        "params": {
+          "outputrank": "0",
+          "filepath": "test_StatisticsComponent_basic_group_stats.csv",
+          "separator": ", "
+        }
+      },
+      "statistics": [
+        {
+          "name": "stat1_U32",
+          "params": {
+            "type": "sst.AccumulatorStatistic"
+          }
+        },
+        {
+          "name": "stat2_U64",
+          "params": {
+            "resetOnOutput": "True",
+            "type": "sst.AccumulatorStatistic"
+          }
+        }
+      ],
+      "components": [
+        "StatGroupObj3",
+        "StatGroupObj4",
+        "StatGroupObj5"
+      ]
+    },
+    {
+      "name": "StatGroup2",
+      "frequency": "27 ns",
+      "output": {
+        "type": "sst.statOutputTXT",
+        "params": {
+          "outputrank": "0",
+          "filepath": "test_StatisticsComponent_basic_group_stats.txt"
+        }
+      },
+      "statistics": [
+        {
+          "name": "stat1_U32",
+          "params": {
+            "type": "sst.AccumulatorStatistic"
+          }
+        },
+        {
+          "name": "stat2_U64",
+          "params": {
+            "resetOnOutput": "True",
+            "type": "sst.AccumulatorStatistic"
+          }
+        }
+      ],
+      "components": [
+        "StatGroupObj6",
+        "StatGroupObj7",
+        "StatGroupObj8"
+      ]
+    },
+    {
+      "name": "StatGroup3",
+      "frequency": "29 ns",
+      "output": {
+        "type": "sst.statOutputTXT",
+        "params": {
+          "outputrank": "0",
+          "filepath": "test_StatisticsComponent_basic_group_stats.txt"
+        }
+      },
+      "statistics": [
+        {
+          "name": "stat1_F32",
+          "params": {
+            "type": "sst.AccumulatorStatistic"
+          }
+        },
+        {
+          "name": "stat2_F64",
+          "params": {
+            "resetOnOutput": "True",
+            "type": "sst.AccumulatorStatistic"
+          }
+        }
+      ],
+      "components": [
+        "StatGroupObj9",
+        "StatGroupObj10",
+        "StatGroupObj11"
       ]
     }
   ],
