@@ -9,7 +9,7 @@ SimTime_t convertFromCoreTime (SimTime_t time);
 This function converts a count from the global view of time to a count in the local view. This
 function is used to get elapsed simulation time in the local view. For example, if a
 Component has a clock frequency of 2GHz, the local time base would be 500ps (period of a 2GHz
-clock). If the clock timeconverter was used to convert a simulation time of 2ms to the local clock 
+clock). If the clock TimeConverter was used to convert a simulation time of 2ms to the local clock 
 frequency, this call would return 4,000 (2ms / 500ps).
 
 ## Parameters

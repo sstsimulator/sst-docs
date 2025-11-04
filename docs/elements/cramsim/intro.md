@@ -6,7 +6,7 @@ The *cramSim* element implements a memory controller and memory models for DDR a
 
 :::info
 
-This element was been renamed from 'CramSim' to 'cramSim' in an effort to standardize library naming conventions in SST Elements (lowercase or camelcase). Input files from pre-SST 13.1 need to be updated accordingly.
+This element has been renamed from 'CramSim' to 'cramSim' in an effort to standardize library naming conventions in SST Elements (lowercase or camelcase). Input files from pre-SST 13.1 need to be updated accordingly.
 
 :::
 
@@ -16,7 +16,7 @@ This element was been renamed from 'CramSim' to 'cramSim' in an effort to standa
 **SST Name:** `cramSim` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 15.0
+**Last Released:** SST 15.1
 
 :::
 

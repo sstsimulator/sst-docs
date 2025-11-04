@@ -2,7 +2,7 @@
 title: simpleSimulation
 ---
 
-The *simpleSimulation* library consists of a 'simpleCarWash' component which can be used to simulate the throughput of cars through a carwash. This element is provided as an example of discrete event simulation and the SST APIs.
+The *simpleSimulation* library consists of two examples that model the throughput of cars going through a carwash. `simpleCarWash` models the carwash in a single monolithic component. `distCarWash` separates the carwash operation into two components that interact with each other: a car generator (`distCarGenerator`)and a carwash (`distCarWash`). This element is provided as an example of discrete event simulation and the SST APIs.
 
 :::note At a Glance
 
@@ -10,8 +10,7 @@ The *simpleSimulation* library consists of a 'simpleCarWash' component which can
 **SST Name:** `simpleSimulation` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 12.1
-
+**Last Released:** SST 15.1
 :::
 
 ### Required dependencies

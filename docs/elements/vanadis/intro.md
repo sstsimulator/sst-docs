@@ -10,7 +10,7 @@ title: vanadis
 **SST Name:** `vanadis` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 15.0
+**Last Released:** SST 15.1
 
 :::
 
@@ -18,4 +18,4 @@ title: vanadis
 *None*
 
 ### Optional dependencies
-Vanadis has been tested with the [musl](https://musl.cc) toolchain for cross-compiling MIPS and RISCV-64 binaries. 
+See [Compiling for Vanadis](./compiler.md) for information on cross-compiling MIPS and RISCV-64 binaries for use with Vanadis.

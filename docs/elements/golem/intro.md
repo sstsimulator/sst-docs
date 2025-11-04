@@ -13,7 +13,7 @@ Golem searches the `PYTHONPATH` for CrossSim by default. This means CrossSim sho
 **SST Name:** `golem` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** 15.0
+**Last Released:** 15.1
 
 :::
 

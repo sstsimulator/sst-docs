@@ -4,7 +4,7 @@ title: Connecting to MemHierarchy
 
 To connect a processor, MMIO device, or other component to memHierarchy, load MemHierarchy's `memHierarchy.StandardInterface` into a [SubComponent Slot](../../core/eli/document/sst_eli_document_subcomponent_slots.md). Once it is loaded, you can interact with the interface using function calls to send and receive memory requests. Additionally, you may register your endpoint as an MMIO device if you wish which allows other components that are reachable from your device to interact with it via Read and Write requests.
 
-For more detail on `memHierarchy.StandardInterface`'s implementation of `SST::Interfaces::StandardMem` [see the guide here.](./stdmem.mdx). For API documentation of `SST::Interfaces::StandardMem` [see the documentation page.](../../core/iface/StandardMem/class.md)
+For more detail on `memHierarchy.StandardInterface`'s implementation of `SST::Interfaces::StandardMem` [see the guide here.](./stdmem.mdx). For API documentation of `SST::Interfaces::StandardMem` [see the documentation page](../../core/iface/StandardMem/class.md).
 
 ### Direct, Bus, and Network connectivity
 The StandardInterface subcomponent needs to be connected to a memHierarchy subsystem. It can be connected directly to a memHierarchy component (Bus, Cache, MemoryController, etc) or it can be connected to a network that implements the `SST::Core::SimpleNetwork` API and has memHierarchy components on it. The decision can be made at runtime using by configuring the StandardInterface differently in an SST input file.

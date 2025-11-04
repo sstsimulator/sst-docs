@@ -92,11 +92,11 @@ Most of the elements below reside in the sst-elements repository, but a few are 
 All are available via the sstsimulator repositories while only the "released" libraries are available from the release tarballs.
 
 ### Examples
-| Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
-| ---                               | ---       | ---           | ---           | ---           |
-| [simpleElementExample](simpleElementExample/intro)    | 3   | Active        | 15.0          | Examples for building, running, parameterizing, etc. simulations and elements | 
-| [simpleExternalElement](simpleExternalElement/intro)  | 3   | Active        | 15.0          | Example of an element library external to the sst-elements repository |
-| [simpleSimulation](simpleSimulation/intro)            | 3   | Maintenance   | 12.1          | Example simulation components that simulate cars going through a carwash |
+| Element Name                                         | Maturity          | Dev Path      | Last Release  | Description   |
+| ---                                                  | ---               | ---           | ---           | ---           |
+| [simpleElementExample](simpleElementExample/intro)   | 3   | Active      | 15.1          | Examples for building, running, parameterizing, etc. simulations and elements | 
+| [simpleExternalElement](simpleExternalElement/intro) | 3   | Active      | 15.1          | Example of an element library external to the sst-elements repository |
+| [simpleSimulation](simpleSimulation/intro)           | 3   | Maintenance | 15.1          | Example simulation components that simulate cars going through a carwash |
 
 ### Network Endpoints
 
@@ -104,52 +104,52 @@ These models are generally used to drive networks at system scales where detaile
 
 | Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
 | ---                               | ---       | ---           | ---           | ---           |
-| [ember](ember/intro)              | 3 	      | Active        | 15.0          | Communication motifs for network simulations |
-| [firefly](firefly/intro)          | 3 	      | Active        | 15.0          | Low-level communication protocol for use with system network simulations |
-| [hermes](hermes/intro)            | 3 	      | Active        | 15.0          | Interface to message passing functions for system network simulations |
-| [iris](iris/intro)                | 1 	      | Active        | 15.0          | Communication middleware targeting the Mercury simulation environment |
-| [macro](macro/intro)              | 3               | Maintenance   | 15.0          | Simulation of coarse-grain distributed memory applications |
-| [mask-mpi](maskmpi/intro)         | 3 	      | Active        | 15.0          | An MPI implementation which targets the SUMI (see Iris) interface |
-| [mercury](mercury/intro)          |	1 	      | Active        | 15.0          | Support for workload/application models |
-| [thornhill](thornhill/intro)      |	1 	      | Maintenance   | 15.0          | Support library for detailed endpoint models in Ember | 
-| [zodiac](zodiac/intro) 	    |	1 	      | Maintenance   | 15.0          | Trace-based endpoints for network simulation |
+| [ember](ember/intro)              | 3 	      | Active        | 15.1          | Communication motifs for network simulations |
+| [firefly](firefly/intro)          | 3 	      | Active        | 15.1          | Low-level communication protocol for use with system network simulations |
+| [hermes](hermes/intro)            | 3 	      | Active        | 15.1          | Interface to message passing functions for system network simulations |
+| [iris](iris/intro)                | 1 	      | Active        | 15.1          | Communication middleware targeting the Mercury simulation environment |
+| [macro](macro/intro)              | 3         | Maintenance   | 15.1          | Simulation of coarse-grain distributed memory applications |
+| [mask-mpi](maskmpi/intro)         | 3 	      | Active        | 15.1          | An MPI implementation which targets the SUMI (see Iris) interface |
+| [mercury](mercury/intro)          |	1 	      | Active        | 15.1          | Support for workload/application models |
+| [thornhill](thornhill/intro)      |	1 	      | Maintenance   | 15.1          | Support library for detailed endpoint models in Ember | 
+| [zodiac](zodiac/intro) 	          |	1 	      | Maintenance   | 15.1          | Trace-based endpoints for network simulation |
 
 ### Networks
 | Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
 | ---                               | ---       | ---           | ---           | ---           |
-| [kingsley](kingsley/intro)        |	2 	| Active        | 15.0          | Simulates a mesh network-on-chip |
-| [merlin](merlin/intro)            |	3 	| Active        | 15.0          | Router model with flexible topology modules to simulate networks. |
-| [shogun](shogun/intro)            | 2 	| Active        | 15.0          | Provides a simple crossbar model | 
+| [kingsley](kingsley/intro)        |	2 	      | Active        | 15.1          | Simulates a mesh network-on-chip |
+| [merlin](merlin/intro)            |	3 	      | Active        | 15.1          | Router model with flexible topology modules to simulate networks. |
+| [shogun](shogun/intro)            | 2 	      | Active        | 15.1          | Provides a simple crossbar model | 
 
 ### Processors and Accelerators
 | Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
 | ---                               | ---       | ---           | ---           | ---           |
-| [ariel](ariel/intro) 	            | 3 	| Active        | 15.0          | Dynamic trace-based model leveraging PIN to execute x86 binaries |
-| [balar](balar/intro) 	            | 2 	| Active        | 15.0          | GPU component based on GPGPU-Sim |
-| [gensa](gensa/intro)              | 1         | Active        | 15.0          | Neuromorphic processor |
-| [golem](golem/intro)              | 2         | Active        | 15.0          | Simulation of array-based in situ computing components with optional integration with CrossSim |
-| [juno](juno/intro)                | 2         | Maintenance   | 15.0          | Example pipeline processor model with a custom ISA |
+| [ariel](ariel/intro) 	            | 3 	      | Active        | 15.1          | Dynamic trace-based model leveraging PIN and PEBIL to execute x86 binaries |
+| [balar](balar/intro) 	            | 2 	      | Active        | 15.1          | GPU component based on GPGPU-Sim |
+| [gensa](gensa/intro)              | 1         | Active        | 15.1          | Neuromorphic processor |
+| [golem](golem/intro)              | 2         | Active        | 15.1          | Simulation of array-based in situ computing components with optional integration with CrossSim |
+| [juno](juno/intro)                | 2         | Maintenance   | 15.1          | Example pipeline processor model with a custom ISA |
 | [llyr](llyr/intro)                | 1         | Active        | Never         | A spatial compute accelerator model |
-| [miranda](miranda/intro)          | 3         | Active        | 15.0          | Processor driven by a state machine to generate memory instructions |
-| [prospero](prospero/intro)        | 2 	| Active        | 15.0          | Processor that reads a trace from file |
+| [miranda](miranda/intro)          | 3         | Active        | 15.1          | Processor driven by a state machine to generate memory instructions |
+| [prospero](prospero/intro)        | 2 	      | Active        | 15.1          | Processor that reads a trace from file |
 | [serrano](serrano/intro)          | 1         | Experimental  | Never         | Coarse-grain reconfigurable processor model |
-| [vanadis](vanadis/intro)          | 2 	| Active        | 15.0          | Core pipeline model supporting RISC-V and MIPS |
+| [vanadis](vanadis/intro)          | 2 	      | Active        | 15.1          | Core pipeline model supporting RISC-V and MIPS |
 
 ### Cache and Memory System
 | Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
 | ---                               | ---       | ---           | ---           | ---           |
-| [cacheTracer](cacheTracer/intro)  | 1 	| Maintenance   | 15.0          | Intercepts cache accesses for observation |
-| [cassini](cassini/intro)          | 2 	| Active        | 15.0          | Prefetchers and other memory system plug-in modules |
-| [cramSim](cramsim/intro)          | 2 	| Maintenance   | 15.0          | Memory model from IBM - DDR, HBM |
-| [memHierarchy](memHierarchy/intro)| 3 	| Active        | 15.0          | Memory system components including caches, directories, and memory controllers and models |
-| [messier](messier/intro)          | 2 	| Active        | 15.0          | Provides a detailed model for NVM-based DIMMs with high-end internal controller |
-| [mmu](mmu/intro)                  | 1 	| Active        | 15.0          | A basic TLB/MMU implementation that works with Vanadis |
+| [cacheTracer](cacheTracer/intro)  | 1 	      | Maintenance   | 15.1          | Intercepts cache accesses for observation |
+| [cassini](cassini/intro)          | 2 	      | Active        | 15.1          | Prefetchers and other memory system plug-in modules |
+| [cramSim](cramsim/intro)          | 2 	      | Maintenance   | 15.1          | Memory model from IBM - DDR, HBM |
+| [memHierarchy](memHierarchy/intro)| 3 	      | Active        | 15.1          | Memory system components including caches, directories, and memory controllers and models |
+| [messier](messier/intro)          | 2 	      | Active        | 15.1          | Provides a detailed model for NVM-based DIMMs with high-end internal controller |
+| [mmu](mmu/intro)                  | 1 	      | Active        | 15.1          | A basic TLB/MMU implementation that works with Vanadis |
 | [opal](opal/intro)                | 1         | Active        | Never         | Memory allocation support for multi-node simulations using Ariel |
-| [rdmaNic](rdmaNic/intro)          | 1 	| Active        | 15.0          | Facilitates RDMA in conjunction with Vanadis | 
-| [samba](samba/intro)              | 2         | Maintenance   | 15.0          | A detailed memory management unit (MMU) model |
-| [vaultsim](vaultsim/intro)        | 3 	| Maintenance   | 15.0          | Models a vaulted memory architecture | 
+| [rdmaNic](rdmaNic/intro)          | 1 	      | Active        | 15.1          | Facilitates RDMA in conjunction with Vanadis | 
+| [samba](samba/intro)              | 2         | Maintenance   | 15.1          | A detailed memory management unit (MMU) model |
+| [vaultsim](vaultsim/intro)        | 3 	      | Maintenance   | 15.1          | Models a vaulted memory architecture | 
 
 ### Other/Miscellaneous
 | Element Name                      | Maturity  | Dev Path      | Last Release  | Description   |
 | ---                               | ---       | ---           | ---           | ---           |
-| [osseous](osseous/intro)          | 1 	| Active        | 15.0         | Supports generation of SST components from RTL via [Essent](https://github.com/ucsc-vama/essent) |
+| [osseous](osseous/intro)          | 1 	      | Active        | 15.1          | Supports generation of SST components from RTL via [Essent](https://github.com/ucsc-vama/essent) |

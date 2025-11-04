@@ -6,12 +6,17 @@ title: PortModule
 The PortModule API has not been finalized and may be changed without notice in subsequent versions of SST.
 :::
 
-PortModules can be attached to the send and/or receive side of a port. The module intercepts the event stream through that port and can monitor, modify, replace, and delete events. A PortModule is always co-located with the Component whose port it is attached to. PortModules have limited access to SST APIs although the API is evolving and some extension (e.g., adding access to Statistics) is planned. For more complex needs, consider using a [SubComponent](../component/subcomponent/class.md) instead.
+PortModules can be attached to the send and/or receive side of a port. The module intercepts the event stream through that port and can monitor, modify, replace, and delete events. A PortModule is always co-located with the Component whose port it is attached to. PortModules have limited access to SST APIs. For more complex needs, consider using a [SubComponent](../component/subcomponent/class.md) instead.
 
 :::warning
-Attaching a PortModule to a port on the send side (i.e., to monitor outgoing traffic) has known performance issues. We recommend attaching to the receive side (input port) when possible or using a SubComponent instead to avoid perturbing the SST::Link send path.
+Attaching a PortModule to a port on the send side (i.e., to monitor outgoing traffic) has known performance issues. We recommend attaching to the receive side (input port) when possible or using a SubComponent instead to avoid perturbing the `SST::Link` send path.
 :::
 
+## PortModule names
+As with SubComponents, PortModules are unnamed. When needed (such as for statistic output), a PortModule will be assigned a name that indicates its location: "component_name.port_name.module_index".
+* "component_name" : Name of the component to which the PortModule is attached
+* "port_name" : Name of the port that the PortModule was attached to
+* "port_index" : A vector index indicating which PortModule on the attached port corresponds to this PortModule. If only one PortModule is attached to a port then the index will be 0.
 
 ## PortModule Implementation
 PortModules inherit the following functions from the base PortModule and *must* override them.
@@ -31,7 +36,6 @@ PortModules share base APIs with other tools that attach to various places ("Att
 * [`serializeEventAttachPointKey`](./serializeEventAttachPointKey.md)
 * [`serializeHandlerInterceptPointKey`](./serializeHandlerInterceptPointKey.md)
 
-
 ## Access to SST-Core APIs
 PortModules also have the following functions available to access SST-Core state.
 * [`getCoreTimeBase`](./getCoreTimeBase.md)
@@ -39,10 +43,14 @@ PortModules also have the following functions available to access SST-Core state
 * [`getCurrentPriority`](./getCurrentPriority.md)
 * [`getElapsedSimTime`](./getElapsedSimTime.md)
 * [`getSimulationOutput`](./getSimulationOutput.md)
+* [`fatal`](./fatal.md)
+* [`sst_assert`](./fatal.md)
+* [`getName`](./getName.md)
 * [`getCurrentSimTime`](./getCurrentSimTime.md)
 * [`getCurrentSimTimeNano`](./getCurrentSimTimeNano.md)
 * [`getCurrentSimTimeMicro`](./getCurrentSimTimeMicro.md)
 * [`getCurrentSimTimeMilli`](./getCurrentSimTimeMilli.md)
+* [`registerStatistic`](./registerStatistic.md)
 
 
 ## Example

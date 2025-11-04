@@ -20,6 +20,8 @@ Calling this function invokes SST's emergency shutdown procedure which calls [em
 * **...** (variable) Arguments for format string
 * **returns** none
 
+The `CALL_INFO` and `CALL_INFO_LONG` macros can be used to easily provide the first three parameters.
+
 ## Examples
 
 ### Example 1

@@ -118,10 +118,10 @@ function ReleaseBar() {
       <span className={styles.releaseTitle}>Latest Release:</span>
       
       <Link className="button button--main" to="https://sst-simulator.org/SSTPages/SSTMainDownloads/">
-        <Translate>Download SST 15.0</Translate>
+        <Translate>Download SST 15.1</Translate>
       </Link>
 
-      <Link className="button button--main" to="https://sst-simulator.org/SSTPages/SSTmicroRelease_V15dot0dot0/">
+      <Link className="button button--main" to="https://sst-simulator.org/SSTPages/SSTmicroRelease_V15dot1dot0/">
         <Translate>Release Notes</Translate>
       </Link>
       </div>

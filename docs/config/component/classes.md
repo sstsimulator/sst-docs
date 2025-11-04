@@ -15,3 +15,4 @@ The figures below show the main structures of the Component/SubComponent objects
 
 * [Create a Component](../component)
 * [Create a SubComponent](setSubComponent)
+* [Create a PortModule](addPortModule)

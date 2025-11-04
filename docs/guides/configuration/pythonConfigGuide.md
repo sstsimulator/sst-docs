@@ -181,7 +181,7 @@ Enabling statistics must occur after the related components are created in the P
 :::
 
 
-An example of a more complex statistic enables might look like this:
+An example of a more complex statistic configuration might look like this:
 
 ```py
 # These components don't actually exist in SST: example only!

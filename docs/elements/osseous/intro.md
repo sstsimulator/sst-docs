@@ -11,7 +11,7 @@ title: osseous
 **SST Name:** `osseous` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** 15.0
+**Last Released:** 15.1
 
 :::
 

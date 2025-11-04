@@ -15,8 +15,6 @@ component.addSharedParamSet(set_name)
 
 ## Example
 
-
-## Import
 ```python
 import sst
 

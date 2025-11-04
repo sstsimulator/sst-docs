@@ -17,7 +17,7 @@ This is part of a gradual ending of macro support and a move of its differentiat
 **SST Name:** `macro` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 15.0
+**Last Released:** SST 15.1
 
 :::
 
@@ -34,4 +34,4 @@ This is part of a gradual ending of macro support and a move of its differentiat
 * **Clang development libraries** To enable SST source-to-source compiler
 
 ## Additional Documentation
-Macro includes [user](https://github.com/sstsimulator/sst-macro/blob/v13.1.0_beta/docs/manual/manual.md) and [developer](https://github.com/sstsimulator/sst-macro/blob/v13.1.0_beta/docs/developer/developer.md) guides. 
+Macro includes [user](https://github.com/sstsimulator/sst-macro/blob/v15.1.0_beta/docs/manual/manual.md) and [developer](https://github.com/sstsimulator/sst-macro/blob/v15.1.0_beta/docs/developer/developer.md) guides. 

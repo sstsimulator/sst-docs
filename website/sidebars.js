@@ -464,10 +464,12 @@ const sidebars = {
         , "core/portmodule/installOnReceive"
         , "core/portmodule/installOnSend"
         , "core/portmodule/serialize_order"
+        , "core/portmodule/registerStatistic"
         , "core/portmodule/registerHandlerIntercept"
         , "core/portmodule/registerLinkAttachTool"
         , "core/portmodule/serializeEventAttachPointKey"
         , "core/portmodule/serializeHandlerInterceptPointKey"
+        , "core/portmodule/getName"
         , "core/portmodule/getCoreTimeBase"
         , "core/portmodule/getCurrentPriority"
         , "core/portmodule/getCurrentSimCycle"
@@ -477,6 +479,8 @@ const sidebars = {
         , "core/portmodule/getCurrentSimTimeMilli"
         , "core/portmodule/getCurrentSimTimeNano"
         , "core/portmodule/getSimulationOutput"
+        , "core/portmodule/fatal"
+        , "core/portmodule/sst_assert"
       ]
      
     },
@@ -692,6 +696,20 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'PortModule',
+      link: { type: 'doc', id: 'config/portmodule/overview'},
+      items: [
+        "config/portmodule/addParam"
+        , "config/portmodule/addParams"
+        , "config/portmodule/addSharedParamSet"
+        , "config/portmodule/enableAllStatistics"
+        , "config/portmodule/enableStatistic"
+        , "config/portmodule/enableStatistics"
+        , "config/portmodule/setStatisticLoadLevel"
+      ]
+    },
+    {
+      type: 'category',
       label: 'Statistics',
       link: {
         type: 'doc', id: 'config/stats/overview'
@@ -835,7 +853,15 @@ const sidebars = {
     "elements/simpleExternalElement/intro",
     "elements/simpleSimulation/intro",
     "elements/thornhill/intro",
-    "elements/vanadis/intro",
+    /* Vanadis */
+    {
+      type: 'category',
+      label: 'vanadis',
+      link: { type: 'doc', id: 'elements/vanadis/intro'},
+      items: [
+        "elements/vanadis/compiler"
+      ]
+    },
     "elements/vaultsim/intro",
     "elements/zodiac/intro"
   ],

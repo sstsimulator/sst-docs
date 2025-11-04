@@ -9,7 +9,7 @@ The *balar* library provides an interface between SST and [GPGPU-Sim](https://gi
 
 The *BalarTestCPU* component is a trace-based test CPU that is included inside balar folder (`./testcpu/`) to run simulations with CUDA API call traces and data collected from a real GPU. It works by consuming a trace file and associated CUDA memory copy data files. The `cudaMemcpyH2D` data payload is collected for program correctness. The `cudaMemcpyD2H` data is collected to validate computation.
 
-*BalarMMIO* is responsible for relaying CUDA API requests from SST to GPGPU-Sim. Currently it supports running with CUDA traces without a real CPU model (with BalarTestCPU) or with a [Vanadis](../vanadis/intro) core running RISCV + CUDA binary with a custom CUDA runtime (`libcudart_vanadis` inside `./tests/vanadisLLVMRISCV/`). This mode has been tested with a subset of Rodinia 2.0 benchmark kernels in unittest.
+*BalarMMIO* is responsible for relaying CUDA API requests from SST to GPGPU-Sim. Currently it supports running with CUDA traces without a real CPU model (with BalarTestCPU) or with a [Vanadis](../vanadis/intro) core running RISCV + CUDA binary with a custom CUDA runtime (`libcudart_vanadis` inside `./tests/vanadis_llvm_rv64/`). This mode has been tested with a subset of Rodinia 2.0 benchmark kernels in unittest.
 
 The *dmaEngine* component performs memory data transfers between SST cache memory space and simulator memory space. It is required as balar will read/write the CPU data (i.e. `cudaMemcpy()` with vanadis) and place them into GPGPU-Sim's memory space for functional simulation. In addition, dmaEngine is also used to read CUDA dispatch packet and write return value for the custom CUDA runtime.
 
@@ -19,7 +19,7 @@ The *dmaEngine* component performs memory data transfers between SST cache memor
 **SST name:** `balar` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;  
-**Last Released:** SST 15.0
+**Last Released:** SST 15.1
 
 :::
 
@@ -27,7 +27,7 @@ The *dmaEngine* component performs memory data transfers between SST cache memor
 
 Support for trace-driven mode currently is limited as it was used as early stage validation for balar implementation. It has only been tested with a simple integer vector add example.
 
-We are working on providing a more robust version of this with the new NVBit release. Including better trace format and better computation validation.
+We are working on providing a more robust version of this with the new NVBit release, including better trace format and better computation validation.
 
 :::
 
@@ -37,6 +37,8 @@ We are working on providing a more robust version of this with the new NVBit rel
 * **GPGPUSim** Use the *dev* branch from [accel-sim/gpgpu-sim_distribution](https://github.com/accel-sim/gpgpu-sim_distribution)
 
 ### Optional dependencies
+
+LLVM and the RISCV GNU Toolchain can be used to compile applications for Balar/Vanadis.
 
 * [**LLVM**](https://github.com/llvm/llvm-project) For compiling RISCV + CUDA binary, 18.x.x+ should work (specifically, builds after resolving [llvm/llvm-project#57544](https://github.com/llvm/llvm-project/issues/57544) should work)
 * [**RISCV GNU Toolchain**](https://github.com/riscv-collab/riscv-gnu-toolchain) For compiling RISCV + CUDA binary. Generally all recent distribution should work, we have only tested on tag `2024.08.06-nightly`.

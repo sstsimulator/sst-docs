@@ -125,7 +125,7 @@ void BalarMMIO::SST_callback_event_done(const char* event_name, cudaStream_t str
 
 ## Custom CUDA runtime library
 
-Located in `src/sst/elements/balar/tests/vanadisLLVMRISCV`, the custom runtime lib `cuda_runtime_api_vanadis.cc` will be linked with CUDA programs. For most CUDA APIs, it will create `SST::BalarComponent::BalarCudaCallPacket_t` packets and send pointers to the packets to *balar*.
+Located in `src/sst/elements/balar/tests/vanadis_llvm_rv64`, the custom runtime lib `cuda_runtime_api_vanadis.cc` will be linked with CUDA programs. For most CUDA APIs, it will create `SST::BalarComponent::BalarCudaCallPacket_t` packets and send pointers to the packets to *balar*.
 
 For each CUDA call using `makeCudaCall()`, *balar* will first map its MMIO into *vanadis*'s virtual memory with memory fencing ops first. The actual `mmap` call is performed via inline assembly code to avoid invalid accesses into *balar*'s MMIO address due to OoO execution. *Balar* will unmap immediately after pointer is written for the same reason.
 

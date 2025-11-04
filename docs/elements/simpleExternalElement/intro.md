@@ -10,7 +10,7 @@ title: simpleExternalElement
 **SST Name:** `simpleExternalElement` &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 15.0
+**Last Released:** SST 15.1
 
 :::
 
