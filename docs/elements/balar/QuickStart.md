@@ -23,24 +23,14 @@ First, we shall install the prerequisites for GPGPU-Sim:
 sudo apt-get install cmake build-essential xutils-dev bison zlib1g-dev flex libglu1-mesa-dev
 ```
 
-GPGPU-Sim can be built with make or cmake. To build GPGPU-Sim:
+GPGPU-Sim can be built with make or cmake, however, for SST you must use the `make` build system. To build GPGPU-Sim:
 ```bash
-# Always do the following
 git clone https://github.com/accel-sim/gpgpu-sim_distribution.git
 cd gpgpu-sim_distribution
 source setup_environment sst
 # Match with the GPU config file we have (V100)
 export GPU_ARCH=sm_70
-
-# Do the following to build with CMake
-cmake -B build
-cmake --build build -j4
-cmake --install build
-
-# Do the following to build with make
 make -j
-
-
 ```
 
 :::note Important
@@ -111,7 +101,7 @@ If you want to compile the Rodinia benchmarks manually or want to test out other
 export SST_CUSTOM_CUDA_LIB_PATH=SST_ELEMENTS_SRC/src/sst/elements/balar/tests/vanadis_llvm_rv64
 
 # Build custom CUDA runtime
-cd SST_ELEMENTS_SRC/src/sst/elements/balar/tests/vanadis_llvm_rv64
+cd SST_ELEMENTS_SRC/src/sst/elements/balar/tests/libcudart
 make
 
 # Compile Rodinia 2.0 and pull data
@@ -176,6 +166,9 @@ Recall that anything after a `--` in the sst command line will be passed to the 
 ```bash
 # cd into balar's tests folder
 cd SST_ELEMENT_SOURCE/src/sst/elements/balar/tests
+
+# Build custom CUDA runtime if you have not already done so
+make -C libcudart
 
 # Compile test programs
 make -C vanadis_llvm_rv64
