@@ -18,7 +18,6 @@ return {
     "repoUrl": "https://github.com/sstsimulator/sst-core"
   },
   "onBrokenLinks": "log",
-  "onBrokenMarkdownLinks": "log",
   "presets": [
     [
       "@docusaurus/preset-classic",
@@ -131,6 +130,9 @@ return {
     },
   },
   markdown: {
+    hooks: {
+        "onBrokenMarkdownLinks": "log"
+    },
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
