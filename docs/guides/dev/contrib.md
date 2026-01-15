@@ -35,7 +35,7 @@ Before contributing, read the [Contributing Guide](https://github.com/sstsimulat
 SST-Core follows more strict developer guidelines, including code formatting and testing, than the other SST repositories. Read the [Contributing Guide](https://github.com/sstsimulator/sst-core/blob/master/CONTRIBUTING.md) before contributing. A few key notes:
 
 1. **Discussion** Major new features require opening an issue to discuss the feature at least two weeks prior to submitting a pull request. It is helpful to include use case as well as a description of the proposed implementation. All SST community members are welcome (and encouraged) to contribute to these discussions. Early discussion of the feature helps collect use cases that can be used to make the feature more broadly useful, as well as ensure the implementation will work well with the codebase.
-1. **Style** PRs must pass a clang-format check (see sst-core/scripts/clang-format-test.sh).
+1. **Style** PRs must pass a clang-format check (see [sst-core/scripts/clang-format-test.sh](https://github.com/sstsimulator/sst-core/blob/master/scripts/clang-format-test.sh)).
 1. **Standards** Commits must adhere to the standards outlined in the [Contributing Guide](https://github.com/sstsimulator/sst-core/blob/master/CONTRIBUTING.md)
 1. **Deprecation** Changes that break public APIs (i.e., those visible to element libraries) require a [deprecation period of one major release cycle](#deprecation).
 1. **Testing** New features must be accompanied by new tests. Major modifications of untested existing features should also be accompanied by tests.
