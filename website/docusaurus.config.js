@@ -32,6 +32,8 @@ return {
           rehypePlugins: [(await import('rehype-katex')).default]
         },
         "blog": {
+          "onInlineAuthors": "ignore",
+          "onUntruncatedBlogPosts": "ignore",
           "path": "blog"
         },
         "theme": {
