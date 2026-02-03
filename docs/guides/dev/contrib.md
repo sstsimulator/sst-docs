@@ -40,6 +40,96 @@ SST-Core follows more strict developer guidelines, including code formatting and
 1. **Deprecation** Changes that break public APIs (i.e., those visible to element libraries) require a [deprecation period of one major release cycle](#deprecation).
 1. **Testing** New features must be accompanied by new tests. Major modifications of untested existing features should also be accompanied by tests.
 
+#### Coding Standards
+Basic coding standards, particularly C++ formatting, are handled by [clang-format](https://clang.llvm.org/docs/ClangFormat.html). A check for adherence to [the core formatting configuration](https://github.com/sstsimulator/sst-core/blob/master/.clang-format) is performed on the latest commit to every PR and must pass. To make any necessary fixes, run pre-commit or the standalone `clang-format-test.sh` script.
+
+##### Null and Boolean
+
+1. The null pointer value should be written as ```nullptr```, not ```NULL```.
+1. bool values should be written as ```true``` and ```false```, not the integers zero and one (or another non-zero value).
+
+##### Conditionals
+
+1. Tests for true/false should be done without equality comparisons:
+
+```c++
+if (condition) return true;
+```
+
+1. Tests for null/non-null and zero/non-zero should be explicit:
+
+```c++
+if (nullptr != ptr) return;
+if (0 == value) return;
+```
+
+1. When comparing against a constant, the constant should be the first operand:
+
+```c++
+if (nullptr != ptr) return;
+```
+
+##### Names
+
+1. Getters and setters in C++ classes should be uniformly named to be getFOO and setFOO, with appropriate use of ```const```:
+
+```c++
+std::string getFoo() const;
+void setFoo(std::string const& val);
+```
+
+1. Variable, class, and function names should be descriptive, even if that results in a longer name.
+1. Function names should start with a lower case letter and then use CamelCase (not underscores).
+1. Class names should start with an upper case letter and then use CamelCase (not underscores).
+
+##### Header Files 
+For core, which uses clang-format to enforce formatting, most of these conditions are automatically enforced.
+
+1. All implementation files must ```#include "sst_config.h"``` before any other statements.
+1. All implementation files must ```#include``` their associated header file second, just after ```sst_config.h```.  For example, ```factory.c``` must include ```factory.h``` before any other headers.  This helps ensure that each header file can stand on its own without silent dependencies.
+1. After the config file and primary header, headers should be included in three sections and ordered alphabetical within a section:
+  1. system headers
+  1. core headers
+  1. element library headers (if in an element library)
+1. Headers should only include other headers necessary for the compilation of that header.  They should not include headers only necessary for the compilation of the implementation file.
+1. Whenever possible, a header should forward declare a class rather than include the header for that class [see cplusplus article](http://www.cplusplus.com/forum/articles/10627/).
+1. Core header files should provide multiple-include protection with a define name of the format ```SST_CORE_<header>_H```.  There should not be proceeding and trailing includes.
+<!-- TODO this can be enforced with clang-tidy. -->
+1. Element header files should provide multiple-include protection with a define name of the format ```SST_<element_library_name>_<element_name>_H```.
+
+##### Comments 
+
+1. Prefer comments above a statement instead of after the statement:
+  
+```c++
+// Only create an initialization checkpoint if explicitly requested.
+if (checkpoint_enabled) checkpoint();
+```
+
+1. Non-trivial functions should be preceded with a comment block explaining the purpose of the function.
+  
+```c++
+// clock tick function.  Progresses the state machine one cycle.
+state_machine_cpu::tick(...)
+{
+    ...
+}
+
+state_machine_cpu::isDone()
+{
+    return (cycle < max_cycle) ? false : true;
+}
+```
+
+1. Comments should be in sentence form.
+1. Use ```FIXME: ``` without attribution to denote items which should be fixed.
+  
+```c++
+abort(); // FIXME: The code should gracefully clean up and end simulation here.
+```
+
+1. All non-file local functions in the core should be commented with Doxygen comments.  Doxygen comments should use the ```/**``` notation.
+
 ### SST-Elements Guidelines
 Contributions to individual libraries are managed by the library owners. The application of coding standards, testing, etc. varies based on the library's maturity and usage. In general:
 1. **Discussion** For large, breaking, or otherwise potentially intrusive changes, we encourage opening an issue to discuss prior to submitting a PR.
