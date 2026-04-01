@@ -16,7 +16,7 @@ SST_ELI_DOCUMENT_PARAMS	(
 
 *Availability:* Component, SubComponent, Module, ProfilePoint
 
-Use this macro to register the parameters that an SST object accepts. The macro accepts a list of triples where each triple contains the name of the parameter, a description of the parameter, and, optionally a default value. All fields are provided as strings.
+Use this macro to register the parameters that an SST object accepts. The macro accepts a list of triples where each triple contains the name of the parameter, a description of the parameter, and, optionally a default value to communicate to the user what will happen if they don't provide a value. All fields are provided as strings.
 
 :::info Important
 This macro must reside in a `public` section of the object's header file.
@@ -26,7 +26,7 @@ This macro must reside in a `public` section of the object's header file.
 
 * **param_nameX** (string) The name of the parameter.
 * **description** (string) Description of the parameter. This value is displayed when sst-info is run at the command line.
-* **default_value** (string) Optional, a default value that the object assigns the parameter if the parameter is not given in the SST configuration file. If a parameter is required, make this NULL or omit it.
+* **default_value** (string) Optional, a default value to communicate to the user what will happen if they do not pass a value for the component. If a parameter is required, make this NULL or omit it. **Note:** this is informational only; defaults must be set in code by the component author.
 
 :::info
 `param_nameX` must follow SST's [element naming conventions](../../../guides/dev/naming).
