@@ -18,7 +18,6 @@ return {
     "repoUrl": "https://github.com/sstsimulator/sst-core"
   },
   "onBrokenLinks": "log",
-  "onBrokenMarkdownLinks": "log",
   "presets": [
     [
       "@docusaurus/preset-classic",
@@ -33,6 +32,8 @@ return {
           rehypePlugins: [(await import('rehype-katex')).default]
         },
         "blog": {
+          "onInlineAuthors": "ignore",
+          "onUntruncatedBlogPosts": "ignore",
           "path": "blog"
         },
         "theme": {
@@ -131,6 +132,9 @@ return {
     },
   },
   markdown: {
+    hooks: {
+        "onBrokenMarkdownLinks": "log"
+    },
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
