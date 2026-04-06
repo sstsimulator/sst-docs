@@ -73,26 +73,40 @@ The generated `test_StatisticsComponent_basic.json` corresponds to [JSON Configu
 
 ### Multi-Rank Examples
 
-#### test_ParallelLoad.py
+For simulations that use multiple MPI ranks, inputs can be either loaded on rank 0 and distributed by SST (default) or, if correctly configured, each rank can directly load the relevant part of the input through parallel loading. Below are examples showcasing both methods.
 
-For simulations that use multiple MPI ranks, JSON files can be generated using `mpirun` with the `--parallel-load=SINGLE` option. This ensures all ranks process the same Python configuration file and the resulting JSON captures the full partitioned configuration graph.
+#### Single Rank Load
 
-When using `--parallel-output`, each MPI rank will generate its own JSON file with a rank number suffix (e.g., `test_ParallelLoad0.json`, `test_ParallelLoad1.json`). Each file contains only the components and links assigned to that specific rank.
+The below will generate a single file (see [JSON Configuration Example 3](#json-configuration-example-3)).
+
+```bash
+mpirun -np 2 sst --run-mode=init --output-json=test_MessageMesh.json test_MessageMesh.py -- 2 2
+```
+
+The below will load the file in with rank 0 and partition it across all the ranks in the simulation. 
+
+```bash
+mpirun -np 2 sst test_MessageMesh.json
+```
+
+#### Multiple Rank Load
+
+When using `--parallel-output`, each MPI rank will generate its own JSON file with a rank number suffix (e.g., `test_MessageMesh0.json`, `test_MessageMesh1.json`). Each file contains only the components and links assigned to that specific rank.
 
 Generate JSON configuration files with 2 MPI ranks:
 
 ```bash
-mpirun -np 2 sst --parallel-load=SINGLE --parallel-output --output-json=test_ParallelLoad.json --run-mode=init test_ParallelLoad.py
+mpirun -np 2 sst --run-mode=init --output-json=test_MessageMesh.json --parallel-output test_MessageMesh.py -- 2 2
 ```
 
 This will create two files:
-- `test_ParallelLoad0.json` - Contains components assigned to rank 0 (see [JSON Configuration Example 3](#json-configuration-example-3))
-- `test_ParallelLoad1.json` - Contains components assigned to rank 1 (see [JSON Configuration Example 4](#json-configuration-example-4))
+- `test_MessageMesh0.json` - Contains components assigned to rank 0 (see [JSON Configuration Example 4](#json-configuration-example-4))
+- `test_MessageMesh1.json` - Contains components assigned to rank 1 (see [JSON Configuration Example 4](#json-configuration-example-5))
 
 Run the simulation using the generated JSON files with 2 MPI ranks:
 
 ```bash
-mpirun -np 2 sst --parallel-load test_ParallelLoad.json
+mpirun -np 2 sst --parallel-load test_MessageMesh.json
 ```
 
 Note: When loading in parallel, SST will automatically append the rank number to find the correct JSON file for each rank.
@@ -1352,7 +1366,7 @@ Note: When loading in parallel, SST will automatically append the rank number to
 
 ## JSON Configuration Example 3
 
-*This example shows the JSON configuration file generated for rank 0 from sst-core/tests/test_ParallelLoad.py using 2 MPI ranks*
+*This example shows the JSON configuration file generated from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
 
 ```json
 {
@@ -1364,7 +1378,7 @@ Note: When loading in parallel, SST will automatically append the rank number to
   "heartbeat-sim-period": "",
   "heartbeat-wall-period": "0",
   "timebase": "1ps",
-  "partitioner": "sst.self",
+  "partitioner": "sst.linear",
   "timeVortex": "sst.timevortex.priority_queue",
   "interthread-links": "false",
   "output-prefix-core": "@x SST Core: ",
@@ -1372,21 +1386,20 @@ Note: When loading in parallel, SST will automatically append the rank number to
   "checkpoint-wall-period": "0"
 },
 "statistics_options":{
-  "statisticOutput": "sst.statOutputConsole"
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
 },
 "components": [
 {
-  "name": "comp_x0_y0",
+  "name": "component0",
   "type": "coreTestElement.message_mesh.enclosing_component",
   "params": {
-    "id": "0"
+    "id": "0",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
   },
   "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1400,31 +1413,44 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x0_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "8"
-  },
-  "subcomponents": [
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
     {
       "slot_name": "route",
       "slot_number": 0,
       "type": "coreTestElement.message_mesh.route_message"
-    },
+    }
+  ]
+},
+{
+  "name": "component1",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "1",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1438,31 +1464,44 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x1_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "1"
-  },
-  "subcomponents": [
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
     {
       "slot_name": "route",
       "slot_number": 0,
       "type": "coreTestElement.message_mesh.route_message"
-    },
+    }
+  ]
+},
+{
+  "name": "component2",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "2",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1476,31 +1515,44 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x1_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "9"
-  },
-  "subcomponents": [
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
     {
       "slot_name": "route",
       "slot_number": 0,
       "type": "coreTestElement.message_mesh.route_message"
-    },
+    }
+  ]
+},
+{
+  "name": "component3",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "3",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1514,31 +1566,197 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x2_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "2"
-  },
-  "subcomponents": [
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
     {
       "slot_name": "route",
       "slot_number": 0,
       "type": "coreTestElement.message_mesh.route_message"
-    },
+    }
+  ]
+}
+],
+"statistics_group": null,
+"links": [
+{
+  "name": "link_x0y0_x1y0",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y0_x0y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y0_x0y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component2:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y1_x0y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component2:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y0_x1y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component1:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y1_x1y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component1:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y1_x1y1",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y1_x0y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+}
+]
+}
+```
+
+## JSON Configuration Example 4
+
+*This example shows the JSON configuration file generated for rank 0 from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
+
+```json
+{
+"program_options":{
+  "verbose": "0",
+  "stop-at": "10us",
+  "print-timing-info": "0",
+  "timing-info-json": "",
+  "heartbeat-sim-period": "",
+  "heartbeat-wall-period": "0",
+  "timebase": "1ps",
+  "partitioner": "sst.linear",
+  "timeVortex": "sst.timevortex.priority_queue",
+  "interthread-links": "false",
+  "output-prefix-core": "@x SST Core: ",
+  "checkpoint-sim-period": "",
+  "checkpoint-wall-period": "0"
+},
+"statistics_options":{
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
+},
+"components": [
+{
+  "name": "component0",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "0",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1552,12 +1770,31 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
     }
   ],
   "partition": {
@@ -1566,17 +1803,15 @@ Note: When loading in parallel, SST will automatically append the rank number to
   }
 },
 {
-  "name": "comp_x2_y1",
+  "name": "component1",
   "type": "coreTestElement.message_mesh.enclosing_component",
   "params": {
-    "id": "10"
+    "id": "1",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
   },
   "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1590,39 +1825,32 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
     }
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x3_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "3"
-  },
-  "subcomponents": [
-  ],
-  "partition": {
-    "rank": 0,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x3_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "11"
-  },
-  "subcomponents": [
   ],
   "partition": {
     "rank": 0,
@@ -1634,30 +1862,30 @@ Note: When loading in parallel, SST will automatically append the rank number to
 "links": [
 {
   "name": "link_x0y0_x1y0",
-  "noCut": false,
+  "noCut": true,
   "nonlocal": false,
   "left": {
-    "component": "comp_x0_y0",
+    "component": "component0:ports[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x1_y0",
+    "component": "component1:ports[1]",
     "port": "port0",
     "latency": "1 ns"
   }
 },
 {
-  "name": "link_x7y0_x0y0",
+  "name": "link_x1y0_x0y0",
   "noCut": false,
-  "nonlocal": true,
+  "nonlocal": false,
   "left": {
-    "component": "comp_x7_y0",
+    "component": "component0:ports[1]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x0_y0",
+    "component": "component1:ports[0]",
     "port": "port0",
     "latency": "1 ns"
   }
@@ -1665,250 +1893,66 @@ Note: When loading in parallel, SST will automatically append the rank number to
 {
   "name": "link_x0y0_x0y1",
   "noCut": false,
-  "nonlocal": false,
+  "nonlocal": true,
   "left": {
-    "component": "comp_x0_y0",
+    "component": "component0:ports[2]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x0_y1",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 1,
+    "thread": 0
   }
 },
 {
   "name": "link_x0y1_x0y0",
   "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x0_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x0_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x0y1_x1y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x0_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x1_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x7y1_x0y1",
-  "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x7_y1",
+    "component": "component0:ports[3]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x0_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x1y0_x2y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x1_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x2_y0",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 1,
+    "thread": 0
   }
 },
 {
   "name": "link_x1y0_x1y1",
   "noCut": false,
-  "nonlocal": false,
+  "nonlocal": true,
   "left": {
-    "component": "comp_x1_y0",
+    "component": "component1:ports[2]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x1_y1",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 1,
+    "thread": 0
   }
 },
 {
   "name": "link_x1y1_x1y0",
   "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x1_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x1_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x1y1_x2y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x1_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x2_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x2y0_x3y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x2_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x3_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x2y0_x2y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x2_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x2_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x2y1_x2y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x2_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x2_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x2y1_x3y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x2_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x3_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x3y0_x4y0",
-  "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x3_y0",
+    "component": "component1:ports[3]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x4_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x3y0_x3y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x3_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x3_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x3y1_x3y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x3_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x3_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x3y1_x4y1",
-  "noCut": false,
-  "nonlocal": true,
-  "left": {
-    "component": "comp_x3_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x4_y1",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 1,
+    "thread": 0
   }
 }
 ]
 }
 ```
 
-## JSON Configuration Example 4
+## JSON Configuration Example 5
 
-*This example shows the JSON configuration file generated for rank 1 from sst-core/tests/test_ParallelLoad.py using 2 MPI ranks*
+*This example shows the JSON configuration file generated for rank 1 from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
 
 ```json
 {
@@ -1920,7 +1964,7 @@ Note: When loading in parallel, SST will automatically append the rank number to
   "heartbeat-sim-period": "",
   "heartbeat-wall-period": "0",
   "timebase": "1ps",
-  "partitioner": "sst.self",
+  "partitioner": "sst.linear",
   "timeVortex": "sst.timevortex.priority_queue",
   "interthread-links": "false",
   "output-prefix-core": "@x SST Core: ",
@@ -1928,21 +1972,20 @@ Note: When loading in parallel, SST will automatically append the rank number to
   "checkpoint-wall-period": "0"
 },
 "statistics_options":{
-  "statisticOutput": "sst.statOutputConsole"
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
 },
 "components": [
 {
-  "name": "comp_x4_y0",
+  "name": "component2",
   "type": "coreTestElement.message_mesh.enclosing_component",
   "params": {
-    "id": "4"
+    "id": "2",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
   },
   "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1956,12 +1999,31 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
     }
   ],
   "partition": {
@@ -1970,17 +2032,15 @@ Note: When loading in parallel, SST will automatically append the rank number to
   }
 },
 {
-  "name": "comp_x4_y1",
+  "name": "component3",
   "type": "coreTestElement.message_mesh.enclosing_component",
   "params": {
-    "id": "12"
+    "id": "3",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
   },
   "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
     {
       "slot_name": "ports",
       "slot_number": 0,
@@ -1994,191 +2054,32 @@ Note: When loading in parallel, SST will automatically append the rank number to
     {
       "slot_name": "ports",
       "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
     },
     {
       "slot_name": "ports",
       "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x5_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "5"
-  },
-  "subcomponents": [
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
     {
       "slot_name": "route",
       "slot_number": 0,
       "type": "coreTestElement.message_mesh.route_message"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 1,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
     }
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x5_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "13"
-  },
-  "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 1,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x6_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "6"
-  },
-  "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 1,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x6_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "14"
-  },
-  "subcomponents": [
-    {
-      "slot_name": "route",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.route_message"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 0,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 1,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 2,
-      "type": "coreTestElement.message_mesh.message_port"
-    },
-    {
-      "slot_name": "ports",
-      "slot_number": 3,
-      "type": "coreTestElement.message_mesh.message_port"
-    }
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x7_y0",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "7"
-  },
-  "subcomponents": [
-  ],
-  "partition": {
-    "rank": 1,
-    "thread": 0
-  }
-},
-{
-  "name": "comp_x7_y1",
-  "type": "coreTestElement.message_mesh.enclosing_component",
-  "params": {
-    "id": "15"
-  },
-  "subcomponents": [
   ],
   "partition": {
     "rank": 1,
@@ -2189,271 +2090,87 @@ Note: When loading in parallel, SST will automatically append the rank number to
 "statistics_group": null,
 "links": [
 {
-  "name": "link_x7y0_x0y0",
+  "name": "link_x0y0_x0y1",
   "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x7_y0",
+    "component": "component2:ports[3]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x0_y0",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 0,
+    "thread": 0
   }
 },
 {
-  "name": "link_x7y1_x0y1",
+  "name": "link_x0y1_x0y0",
   "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x7_y1",
+    "component": "component2:ports[2]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x0_y1",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 0,
+    "thread": 0
   }
 },
 {
-  "name": "link_x3y0_x4y0",
+  "name": "link_x1y0_x1y1",
   "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x3_y0",
+    "component": "component3:ports[3]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x4_y0",
-    "port": "port0",
-    "latency": "1 ns"
+    "rank": 0,
+    "thread": 0
   }
 },
 {
-  "name": "link_x3y1_x4y1",
+  "name": "link_x1y1_x1y0",
   "noCut": false,
   "nonlocal": true,
   "left": {
-    "component": "comp_x3_y1",
+    "component": "component3:ports[2]:port[0]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x4_y1",
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x0y1_x1y1",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[1]",
     "port": "port0",
     "latency": "1 ns"
   }
 },
 {
-  "name": "link_x4y0_x5y0",
+  "name": "link_x1y1_x0y1",
   "noCut": false,
   "nonlocal": false,
   "left": {
-    "component": "comp_x4_y0",
+    "component": "component2:ports[1]",
     "port": "port0",
     "latency": "1 ns"
   },
   "right": {
-    "component": "comp_x5_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x4y0_x4y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x4_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x4_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x4y1_x4y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x4_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x4_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x4y1_x5y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x4_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x5_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x5y0_x6y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x5_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x6_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x5y0_x5y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x5_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x5_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x5y1_x5y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x5_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x5_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x5y1_x6y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x5_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x6_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x6y0_x7y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x6_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x7_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x6y0_x6y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x6_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x6_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x6y1_x6y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x6_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x6_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x6y1_x7y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x6_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x7_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x7y0_x7y1",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x7_y0",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x7_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  }
-},
-{
-  "name": "link_x7y1_x7y0",
-  "noCut": false,
-  "nonlocal": false,
-  "left": {
-    "component": "comp_x7_y1",
-    "port": "port0",
-    "latency": "1 ns"
-  },
-  "right": {
-    "component": "comp_x7_y0",
+    "component": "component3:ports[0]",
     "port": "port0",
     "latency": "1 ns"
   }
