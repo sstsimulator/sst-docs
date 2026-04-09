@@ -27,6 +27,90 @@ The JSON reader streams objects and arrays iteratively in order of their discove
 * `statistics_group` must appear *after* `components`.  The `statistics_group` reference component objects that must be present in the SST config graph
 * For each `component` or `subcomponent` object, the `name` and `type` values must appear before any other values.  This ensures that the parser can create the component or subcomponet objects before adding parameters or statistics values to the resident config graph object.
 
+## Generating JSON Configuration Files
+
+SST can output its configuration graph as a JSON file from any Python configuration script using the `--output-json` option. This is useful for inspecting the configuration, reproducing runs without the Python interpreter, or loading configurations in parallel. The `--run-mode=init` option can be used in conjunction to build the configuration graph and write the JSON file without executing the simulation. This is optional, but may result in faster JSON file generation.
+
+All of the examples below assume you have first changed to the SST core tests directory:
+
+```bash
+cd path/to/sst-core/tests/
+```
+
+### Single Rank Examples
+
+#### test_Links.py
+
+Generate a JSON configuration file from `test_Links.py`:
+
+```bash
+sst --output-json=test_Links.json --run-mode=init test_Links.py
+```
+
+Run the simulation using the generated JSON file:
+
+```bash
+sst test_Links.json
+```
+
+The generated `test_Links.json` corresponds to [JSON Configuration Example 1](#json-configuration-example-1) below.
+
+#### test_StatisticsComponent_basic.py
+
+Generate a JSON configuration file from `test_StatisticsComponent_basic.py`:
+
+```bash
+sst --output-json=test_StatisticsComponent_basic.json --run-mode=init test_StatisticsComponent_basic.py
+```
+
+Run the simulation using the generated JSON file:
+
+```bash
+sst test_StatisticsComponent_basic.json
+```
+
+The generated `test_StatisticsComponent_basic.json` corresponds to [JSON Configuration Example 2](#json-configuration-example-2) below.
+
+### Multi-Rank Examples
+
+For simulations that use multiple MPI ranks, inputs can be either loaded on rank 0 and distributed by SST (default) or, if correctly configured, each rank can directly load the relevant part of the input through parallel loading. Below are examples showcasing both methods.
+
+#### Single Rank Load
+
+The below will generate a single file (see [JSON Configuration Example 3](#json-configuration-example-3)).
+
+```bash
+mpirun -np 2 sst --run-mode=init --output-json=test_MessageMesh.json test_MessageMesh.py -- 2 2
+```
+
+The below will load the file in with rank 0 and partition it across all the ranks in the simulation. 
+
+```bash
+mpirun -np 2 sst test_MessageMesh.json
+```
+
+#### Multiple Rank Load
+
+When using `--parallel-output`, each MPI rank will generate its own JSON file with a rank number suffix (e.g., `test_MessageMesh0.json`, `test_MessageMesh1.json`). Each file contains only the components and links assigned to that specific rank.
+
+Generate JSON configuration files with 2 MPI ranks:
+
+```bash
+mpirun -np 2 sst --run-mode=init --output-json=test_MessageMesh.json --parallel-output test_MessageMesh.py -- 2 2
+```
+
+This will create two files:
+- `test_MessageMesh0.json` - Contains components assigned to rank 0 (see [JSON Configuration Example 4](#json-configuration-example-4))
+- `test_MessageMesh1.json` - Contains components assigned to rank 1 (see [JSON Configuration Example 4](#json-configuration-example-5))
+
+Run the simulation using the generated JSON files with 2 MPI ranks:
+
+```bash
+mpirun -np 2 sst --parallel-load test_MessageMesh.json
+```
+
+Note: When loading in parallel, SST will automatically append the rank number to find the correct JSON file for each rank.
+
 ## JSON Configuration Format
 
 ```json
@@ -179,129 +263,140 @@ The JSON reader streams objects and arrays iteratively in order of their discove
 
 ```json
 {
-  "program_options": {
-    "verbose": "0",
-    "stop-at": "0ns",
-    "print-timing-info": "false",
-    "timing-info-json": "",
-    "heartbeat-sim-period": "",
-    "heartbeat-wall-period": "0",
-    "timebase": "1ps",
-    "partitioner": "sst.single",
-    "timeVortex": "sst.timevortex.priority_queue",
-    "interthread-links": "false",
-    "output-prefix-core": "@x SST Core: ",
-    "checkpoint-sim-period": "",
-    "checkpoint-wall-period": "0"
+"program_options":{
+  "verbose": "0",
+  "stop-at": "0ns",
+  "print-timing-info": "0",
+  "timing-info-json": "",
+  "heartbeat-sim-period": "",
+  "heartbeat-wall-period": "0",
+  "timebase": "1ps",
+  "partitioner": "sst.single",
+  "timeVortex": "sst.timevortex.priority_queue",
+  "interthread-links": "false",
+  "output-prefix-core": "@x SST Core: ",
+  "checkpoint-sim-period": "",
+  "checkpoint-wall-period": "0"
+},
+"statistics_options":{
+  "statisticOutput": "sst.statOutputConsole"
+},
+"components": [
+{
+  "name": "c1",
+  "type": "coreTestElement.coreTestLinks",
+  "params": {
+    "id": "0",
+    "link_time_base": "1 ns"
+  }
+},
+{
+  "name": "c0_1",
+  "type": "coreTestElement.coreTestLinks",
+  "params": {
+    "id": "1",
+    "link_time_base": "2 ns",
+    "added_send_latency": "10 ns"
+  }
+},
+{
+  "name": "c1_0",
+  "type": "coreTestElement.coreTestLinks",
+  "params": {
+    "id": "2",
+    "link_time_base": "3 ns",
+    "added_recv_latency": "15 ns"
+  }
+},
+{
+  "name": "c1_1",
+  "type": "coreTestElement.coreTestLinks",
+  "params": {
+    "id": "3",
+    "link_time_base": "4 ns",
+    "added_send_latency": "20 ns",
+    "added_recv_latency": "25 ns"
+  }
+}
+],
+"statistics_group": null,
+"links": [
+{
+  "name": "link_0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "c1",
+    "port": "Wlink",
+    "latency": "2 ns"
   },
-  "statistics_options": {
-    "statisticOutput": "sst.statOutputConsole"
+  "right": {
+    "component": "c1",
+    "port": "Wlink",
+    "latency": "2 ns"
+  }
+},
+{
+  "name": "link_0_1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "c1",
+    "port": "Elink",
+    "latency": "4 ns"
   },
-  "components": [
-    {
-      "name": "c1",
-      "type": "coreTestElement.coreTestLinks",
-      "params": {
-        "id": "0",
-        "link_time_base": "1 ns"
-      }
-    },
-    {
-      "name": "c0_1",
-      "type": "coreTestElement.coreTestLinks",
-      "params": {
-        "id": "1",
-        "link_time_base": "2 ns",
-        "added_send_latency": "10 ns"
-      }
-    },
-    {
-      "name": "c1_0",
-      "type": "coreTestElement.coreTestLinks",
-      "params": {
-        "id": "2",
-        "link_time_base": "3 ns",
-        "added_recv_latency": "15 ns"
-      }
-    },
-    {
-      "name": "c1_1",
-      "type": "coreTestElement.coreTestLinks",
-      "params": {
-        "id": "3",
-        "link_time_base": "4 ns",
-        "added_send_latency": "20 ns",
-        "added_recv_latency": "25 ns"
-      }
-    }
-  ],
-  "links": [
-    {
-      "name": "link_0",
-      "left": {
-        "component": "c1",
-        "port": "Wlink",
-        "latency": "2 ns"
-      },
-      "right": {
-        "component": "c1",
-        "port": "Wlink",
-        "latency": "2 ns"
-      }
-    },
-    {
-      "name": "link_0_1",
-      "left": {
-        "component": "c1",
-        "port": "Elink",
-        "latency": "4 ns"
-      },
-      "right": {
-        "component": "c0_1",
-        "port": "Wlink",
-        "latency": "4 ns"
-      }
-    },
-    {
-      "name": "link_1_1",
-      "left": {
-        "component": "c0_1",
-        "port": "Elink",
-        "latency": "8 ns"
-      },
-      "right": {
-        "component": "c1_0",
-        "port": "Wlink",
-        "latency": "8 ns"
-      }
-    },
-    {
-      "name": "link_2_3",
-      "left": {
-        "component": "c1_0",
-        "port": "Elink",
-        "latency": "12 ns"
-      },
-      "right": {
-        "component": "c1_1",
-        "port": "Wlink",
-        "latency": "12 ns"
-      }
-    },
-    {
-      "name": "link_3",
-      "left": {
-        "component": "c1_1",
-        "port": "Elink",
-        "latency": "16 ns"
-      },
-      "right": {
-        "component": "c1_1",
-        "port": "Elink",
-        "latency": "16 ns"
-      }
-    }
-  ]
+  "right": {
+    "component": "c0_1",
+    "port": "Wlink",
+    "latency": "4 ns"
+  }
+},
+{
+  "name": "link_1_1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "c0_1",
+    "port": "Elink",
+    "latency": "8 ns"
+  },
+  "right": {
+    "component": "c1_0",
+    "port": "Wlink",
+    "latency": "8 ns"
+  }
+},
+{
+  "name": "link_2_3",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "c1_0",
+    "port": "Elink",
+    "latency": "12 ns"
+  },
+  "right": {
+    "component": "c1_1",
+    "port": "Wlink",
+    "latency": "12 ns"
+  }
+},
+{
+  "name": "link_3",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "c1_1",
+    "port": "Elink",
+    "latency": "16 ns"
+  },
+  "right": {
+    "component": "c1_1",
+    "port": "Elink",
+    "latency": "16 ns"
+  }
+}
+]
 }
 ```
 
@@ -314,7 +409,7 @@ The JSON reader streams objects and arrays iteratively in order of their discove
   "program_options": {
     "verbose": "0",
     "stop-at": "0ns",
-    "print-timing-info": "false",
+    "print-timing-info": "0",
     "timing-info-json": "",
     "heartbeat-sim-period": "",
     "heartbeat-wall-period": "0",
@@ -1266,5 +1361,820 @@ The JSON reader streams objects and arrays iteratively in order of their discove
     }
   ],
   "links": null
+}
+```
+
+## JSON Configuration Example 3
+
+*This example shows the JSON configuration file generated from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
+
+```json
+{
+"program_options":{
+  "verbose": "0",
+  "stop-at": "10us",
+  "print-timing-info": "0",
+  "timing-info-json": "",
+  "heartbeat-sim-period": "",
+  "heartbeat-wall-period": "0",
+  "timebase": "1ps",
+  "partitioner": "sst.linear",
+  "timeVortex": "sst.timevortex.priority_queue",
+  "interthread-links": "false",
+  "output-prefix-core": "@x SST Core: ",
+  "checkpoint-sim-period": "",
+  "checkpoint-wall-period": "0"
+},
+"statistics_options":{
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
+},
+"components": [
+{
+  "name": "component0",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "0",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ]
+},
+{
+  "name": "component1",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "1",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ]
+},
+{
+  "name": "component2",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "2",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ]
+},
+{
+  "name": "component3",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "3",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ]
+}
+],
+"statistics_group": null,
+"links": [
+{
+  "name": "link_x0y0_x1y0",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y0_x0y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y0_x0y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component2:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y1_x0y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component2:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y0_x1y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component1:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y1_x1y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component1:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y1_x1y1",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y1_x0y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+}
+]
+}
+```
+
+## JSON Configuration Example 4
+
+*This example shows the JSON configuration file generated for rank 0 from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
+
+```json
+{
+"program_options":{
+  "verbose": "0",
+  "stop-at": "10us",
+  "print-timing-info": "0",
+  "timing-info-json": "",
+  "heartbeat-sim-period": "",
+  "heartbeat-wall-period": "0",
+  "timebase": "1ps",
+  "partitioner": "sst.linear",
+  "timeVortex": "sst.timevortex.priority_queue",
+  "interthread-links": "false",
+  "output-prefix-core": "@x SST Core: ",
+  "checkpoint-sim-period": "",
+  "checkpoint-wall-period": "0"
+},
+"statistics_options":{
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
+},
+"components": [
+{
+  "name": "component0",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "0",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ],
+  "partition": {
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "component1",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "1",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ],
+  "partition": {
+    "rank": 0,
+    "thread": 0
+  }
+}
+],
+"statistics_group": null,
+"links": [
+{
+  "name": "link_x0y0_x1y0",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y0_x0y0",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component0:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component1:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x0y0_x0y1",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component0:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 1,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x0y1_x0y0",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component0:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 1,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x1y0_x1y1",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component1:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 1,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x1y1_x1y0",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component1:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 1,
+    "thread": 0
+  }
+}
+]
+}
+```
+
+## JSON Configuration Example 5
+
+*This example shows the JSON configuration file generated for rank 1 from sst-core/tests/test_MessageMesh.py using 2 MPI ranks*
+
+```json
+{
+"program_options":{
+  "verbose": "0",
+  "stop-at": "10us",
+  "print-timing-info": "0",
+  "timing-info-json": "",
+  "heartbeat-sim-period": "",
+  "heartbeat-wall-period": "0",
+  "timebase": "1ps",
+  "partitioner": "sst.linear",
+  "timeVortex": "sst.timevortex.priority_queue",
+  "interthread-links": "false",
+  "output-prefix-core": "@x SST Core: ",
+  "checkpoint-sim-period": "",
+  "checkpoint-wall-period": "0"
+},
+"statistics_options":{
+  "statisticLoadLevel": 2,
+  "statisticOutput": "sst.statOutputCSV"
+},
+"components": [
+{
+  "name": "component2",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "2",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ],
+  "partition": {
+    "rank": 1,
+    "thread": 0
+  }
+},
+{
+  "name": "component3",
+  "type": "coreTestElement.message_mesh.enclosing_component",
+  "params": {
+    "id": "3",
+    "mod": "1",
+    "verbose": "True",
+    "stats": "0"
+  },
+  "subcomponents": [
+    {
+      "slot_name": "ports",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 1,
+      "type": "coreTestElement.message_mesh.message_port"
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 2,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "ports",
+      "slot_number": 3,
+      "type": "coreTestElement.message_mesh.port_slot",
+      "subcomponents": [
+        {
+          "slot_name": "port",
+          "slot_number": 0,
+          "type": "coreTestElement.message_mesh.message_port"
+        }
+      ]
+    },
+    {
+      "slot_name": "route",
+      "slot_number": 0,
+      "type": "coreTestElement.message_mesh.route_message"
+    }
+  ],
+  "partition": {
+    "rank": 1,
+    "thread": 0
+  }
+}
+],
+"statistics_group": null,
+"links": [
+{
+  "name": "link_x0y0_x0y1",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component2:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x0y1_x0y0",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component2:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x1y0_x1y1",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component3:ports[3]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x1y1_x1y0",
+  "noCut": false,
+  "nonlocal": true,
+  "left": {
+    "component": "component3:ports[2]:port[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "rank": 0,
+    "thread": 0
+  }
+},
+{
+  "name": "link_x0y1_x1y1",
+  "noCut": true,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+},
+{
+  "name": "link_x1y1_x0y1",
+  "noCut": false,
+  "nonlocal": false,
+  "left": {
+    "component": "component2:ports[1]",
+    "port": "port0",
+    "latency": "1 ns"
+  },
+  "right": {
+    "component": "component3:ports[0]",
+    "port": "port0",
+    "latency": "1 ns"
+  }
+}
+]
 }
 ```
