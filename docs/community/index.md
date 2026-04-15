@@ -9,6 +9,9 @@ Many community SST developers maintain additional element libraries and tools. W
 ### [BE-SST](https://github.com/SHREC-DOE-UF/BE-SST "BE-SST Github")
 BE-SST is a coarse-grained parallel discrete-event simulator, developed at the PSAAP II Center for Compressible Multiphase Turbulence at the University of Florida, used for system-level modeling and simulation of existing and notional HPC systems.
 
+### [Mordred](https://github.com/tactcomplabs/mordred "Mordred GitHub" )
+The Mordred element library is designed to model NoCs. There is an introductory presentation from the 2025 SST User Group meeting on Mordred in the repo.
+
 ### [REV](https://github.com/tactcomplabs/rev "Rev GitHub" )
 The Rev SST component is designed to provide cycle-based simulation capabilities of an arbitrary RISC-V core or cores.
 
