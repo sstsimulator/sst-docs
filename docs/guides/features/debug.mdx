@@ -640,7 +640,7 @@ There may be reasons to protect data members from writing or even visiblity in t
 One important consideration for the current debugger is that watchpoint and trace variables must have persistent references. Using a data member that may be deleted will lead to unpredictable behavior including crashing the simulator. This includes any new/deleted objects as well as elements in resizable containers. 
 
 :::important
-Never attempt to use data members that may be deleted in watchpoints or traces
+Never attempt to use data members that may be deleted in watchpoints or traces.
 :::
 
 During the design process, it is generally a good idea to consider providing additional instrumentation code that makes key states available to the debugger in a safe and obvious way.  For example, indicating when queues are written, when events are received, and providing safe copies of temporary data can significantly improve debug productivity.
