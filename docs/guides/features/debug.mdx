@@ -697,15 +697,15 @@ Notes:
 * A `trigger` can be a comparison or sequence of comparisons combined with a logic operation.
 * A `comparison` can be `var op val` which compares a variable to a given value.
 * A `comparison` can also be `var changed` which checks when a value changes.
-* An `op` can be `<`, `<=`,`>`,`>=`,`==`, or '!='
-* A `logicOp` can be `&&` or `||`
+* An `op` can be `<`, `<=`,`>`,`>=`,`==`, or '!='.
+* A `logicOp` can be `&&` or `||`.
 * The `watch` command creates a default watchpoint that breaks into interactive debug when triggered.
-* The `trace` command creates a watchpoint with a trace buffer to trace a set of variables and trigger an `action`
-* Supported `actions` are: `interactive`, `printTrace`, `checkpoint`, `set var val`, `printStatus`, and `shutdown`
-* `setHandler` may set the following: `bc`(before clock) `ac` (after clock) `be` (before event) `ae` (after event)
-* `setHandler may also set `all` to select all handlers (default)
-* *Use the `--checkpoint-enable` SST command line option when using `checkpoint` actions*
-* *Only data members with persistent references should be used in watchpoints*
+* The `trace` command creates a watchpoint with a trace buffer to trace a set of variables and trigger an `action`.
+* Supported `actions` are: `interactive`, `printTrace`, `checkpoint`, `set var val`, `printStatus`, and `shutdown`.
+* `setHandler` may set the following: `bc`(before clock) `ac` (after clock) `be` (before event) `ae` (after event).
+* `setHandler may also set `all` to select all handlers (default).
+* Use the `--checkpoint-enable` SST command line option when using `checkpoint` actions.
+* Only data members with persistent references should be used in watchpoints.
 
 **Simulation**
 
