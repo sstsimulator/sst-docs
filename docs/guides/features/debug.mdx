@@ -277,7 +277,7 @@ Using `quit` will only clear watchpoints if selected by the user. Any other even
 
 ## Watchpoints and tracing
 
-Watchpoints provide the ability to define and detect events resulting in breaking into the interactive debug console at simulation synchronization points. A synchronization point is a point in time of the SST simulation where all threads and processes are at a stable state during which the main thread can safely perform information exchange across all partitions (like generation of a checkpoint). 
+Watchpoints provide the ability to define and detect events which will cause SST to break into the interactive debug console at the next simulation synchronization point. A synchronization point is a point in time of the SST simulation where all threads and processes are at a stable state during which the main thread can safely perform information exchange across all partitions (like generation of a checkpoint). 
 
 Watchpoints are defined using simple sequences of boolean operations. For SST 16, the operations are parsed from left to right with no support for conventional order of operations or grouping using parenthesis. Since multiple watchpoints can be defined, grouping of operations can be done by defining multiple watchpoints. During execution, the result will effectively be an 'OR'ing of all watchpoint conditions.
 
