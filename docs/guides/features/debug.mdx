@@ -68,7 +68,7 @@ It is often convenient to save commands to a file and replay them upon entering 
 
 ## Debug session example
 
-The following example demonstrates debugging a simulation with 2 ranks with 2 threads per rank. This example is applicable to SST 16.0 or newer releases. On SST 15.1, the interaction console options will be ignored for simulations using more than 1 thread or rank. 
+The following example demonstrates debugging a simulation with 2 ranks with 2 threads per rank. This example is applicable to SST 16.0 or newer releases. On SST 15.1, the interactive console options will be ignored for simulations using more than 1 thread or rank. 
 
 ```sh title="Entering the debug console for a multi-rank / multi-threaded simulation"
  $ mpirun -np 2 sst -n 2 --interactive-start=1us configuration.py
