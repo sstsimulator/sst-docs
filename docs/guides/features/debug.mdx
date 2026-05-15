@@ -1,0 +1,774 @@
+---
+sidebar_label: Debug
+title: SST Console Debugger
+---
+
+This guide discusses SST's built-in interactive debugging capability starting with SST 16.0. The SST debugger enables users to stop a simulation, navigate the element hierarchy, and interrogate internal state using an interactive console. Facilities are provided to trace data and create event triggers that can induce a variety of actions such as breaking into interactive mode or generating a checkpoint.
+
+Like checkpointing support, elements are not automatically accessible in the debugger. Generally speaking, however, any data member that has been serialized using the serialization macros used for checkpointing will also be available in the debug session.
+
+See the [general debugging tips](../tips/debugging.md) for additional ways to debug simulations.
+
+This guide describes 
+1. [Support status](#support-status)
+2. [Enabling the interactive console](#enabling-the-interactive-console) and a [debug session example](#debug-session-example)
+3. [Watchpoints and tracing](#watchpoints-and-tracing)
+4. [Defining custom commands](#custom-commands)
+5. [Recording and replaying commands](#record-and-replay)
+6. [History and command line editing](#history-and-command-line-editing)
+7. [Designing for debug](#designing-for-debug)
+8. [Command Reference](#command-reference)
+9. [Known Issues](#known-issues)
+10. [Planned improvements](#planned-improvements)
+
+## Support status
+Early support for debugging was introduced in SST 14.0 but was signficantly expanded in SST 15.1 to support a single threaded debug console. With SST 16, the debug console was extended to support multi-thread and multi-rank debug. 
+
+This document will focus on the SST 16 debug console which is nearly identical to SST 15.1 with the exception of the following features provided by SST 16:
+- New console commands to support navigating threads and ranks
+- User control for large output streams using pagination
+
+The debug console command line interface will be subject to changes in upcoming releases. The currently planned CLI changes are noted in the examples.
+
+## Enabling the interactive console
+
+There are two primary methods to enable an interactive console from the command line: (1) specify the simulation time and (2) specify a signal handler
+
+To start an SST debug session using the simulation time use `--interactive-start=[TIME]` option. If `TIME` is omitted, then the interactive console will be active at 0ns. 
+
+The commands below are compatible starting with with SST 15.1 unless otherwise noted.
+
+```sh title="Invoking the interactive console using simulation time"
+ $ sst --interactive-start configuration.py
+ $ sst --interactive-start=1us configuration.py
+ $ sst --interactive-start=1us --replay-file=init.sstdbg configuration.py
+```
+
+To enable entering the debug console in response to a signal use `--sigusr1=sst.rt.interactive` or `--sigusr2=sst.rt.interactive`
+
+```sh title="Invoking the interactive console using a signal handler"
+ $ sst --sigusr1=sst.rt.interactive configuration.py
+ $ sst --sigusr2=sst.rt.interactive configuration.py
+```
+
+When the SST process is running, enter the interactive console by sending the appropriate signal to its process ID.
+
+```sh title="Example sending signal to SST from a bash shell"
+ $ kill -s sigusr1 $pid
+ $ kill -s sigusr2 $pid
+```
+
+For more information on using signal handlers with SST see [Signal Handling](signal.md) 
+
+It is often convenient to save commands to a file and replay them upon entering the debug console. The command line option `--replay-file=FILE` is provided for this purpose.
+
+```sh title="Replaying debug commands when entering the interactive console"
+ $ sst --interactive-start=1us --replay-file=init.sstdbg configuration.py
+```
+
+## Debug session example
+
+The following example demonstrates debugging a simulation with 2 ranks with 2 threads per rank. This example is applicable to SST 16.0 or newer releases. On SST 15.1, the interaction console options will be ignored for simulations using more than 1 thread or rank. 
+
+```sh title="Entering the debug console for a multi-rank / multi-threaded simulation"
+ $ mpirun -np 2 sst -n 2 --interactive-start=1us configuration.py
+
+    INTERACTIVE CONSOLE
+    -- Rank:0/2 Thread:0/2 (Triggered)
+    -- Component Summary
+    cp_0_0/ (SST::GridNode::GridNode)
+    cp_0_1/ (SST::GridNode::GridNode)
+    cp_1_0/ (SST::GridNode::GridNode)
+    cp_1_1/ (SST::GridNode::GridNode)
+
+    -- Rank:0/2 Thread:1/2 (Triggered)
+    -- Component Summary
+    cp_2_0/ (SST::GridNode::GridNode)
+    cp_2_1/ (SST::GridNode::GridNode)
+    cp_3_0/ (SST::GridNode::GridNode)
+    cp_3_1/ (SST::GridNode::GridNode)
+
+    -- Rank:1/2 Thread:0/2 (Triggered)
+    -- Component Summary
+    cp_4_0/ (SST::GridNode::GridNode)
+    cp_4_1/ (SST::GridNode::GridNode)
+    cp_5_0/ (SST::GridNode::GridNode)
+    cp_5_1/ (SST::GridNode::GridNode)
+
+    -- Rank:1/2 Thread:1/2 (Triggered)
+    -- Component Summary
+    cp_6_0/ (SST::GridNode::GridNode)
+    cp_6_1/ (SST::GridNode::GridNode)
+    cp_7_0/ (SST::GridNode::GridNode)
+    cp_7_1/ (SST::GridNode::GridNode)
+
+    ---- Rank0:Thread0: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+>
+```
+
+The debugger uses a bash-like directory navigation features such as `pwd`, `cd`, and `ls`.
+
+```sh title="Basic navigation (SST 16.0)"
+> pwd
+    ()
+> ls
+    cp_0_0/ (SST::GridNode::GridNode)
+    cp_0_1/ (SST::GridNode::GridNode)
+    cp_1_0/ (SST::GridNode::GridNode)
+    cp_1_1/ (SST::GridNode::GridNode)
+> pwd
+    ()
+> ls
+    cp_0_0/ (SST::GridNode::GridNode)
+    cp_0_1/ (SST::GridNode::GridNode)
+    cp_1_0/ (SST::GridNode::GridNode)
+    cp_1_1/ (SST::GridNode::GridNode)
+> cd cp_0_1
+> cd state
+> pwd
+    cp_0_1/state (std::vector<unsigned int, std::allocator<unsigned int> >)
+> 
+```
+
+:::info
+On SST 16, the `cd` command can only navigate up or down one level. 
+
+Planned navigation improvements include:
+- The top level directory will be references using a forward slash ('/')
+- Support use of full and relative paths to elements
+:::
+
+Navigation between ranks and threads is supported using the 'info', 'thread', and 'rank' commands.
+
+```sh title="Navigating between ranks and threads"
+> info all
+    Rank 0/2 Thread 0/2 (Process 52704)
+    Rank 0/2 Thread 1/2 (Process 52704)
+    Rank 1/2 Thread 0/2 (Process 52705)
+    Rank 1/2 Thread 1/2 (Process 52705)
+
+> info current
+    Rank 0/2 Thread 0/2 (Process 52704)
+
+> rank 1
+    ---- Rank1:Thread0: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+
+> thread 1
+    ---- Rank1:Thread1: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+> ls
+    cp_6_0/ (SST::GridNode::GridNode)
+    cp_6_1/ (SST::GridNode::GridNode)
+    cp_7_0/ (SST::GridNode::GridNode)
+    cp_7_1/ (SST::GridNode::GridNode)
+```
+
+Data members of the objects can be viewed using the `print -rN` command, where `N` refers to the maximum number of levels in the object's hierarchy (defaults to 4). Members that are fundamental types can be modified using the `set` command.
+
+```sh title="Printing and setting a variable"
+> print dataMax
+dataMax = 33554431 (unsigned long)
+> set dataMax 64 
+> print dataMax
+    dataMax = 64 (unsigned long)
+```
+
+:::info
+The `print` command will be changing to `print [-r N] [-v N] [-f <base>] [<obj>][[idx][idx]]`.
+
+This planned improvement supports data formatting,  verbosity controls, and the ability to specify multiple array indices
+:::
+
+To continue the simulation use the `run [TIME]` command. The simulation will continue for the duration of time specified unless a `watchpoint` condition is detected.  If `TIME` is omitted then the simulator may run until completion.
+
+```sh title="Continuing a simulation and using simple watchpoints"
+> run 1ns
+
+    INTERACTIVE CONSOLE
+    -- Rank:0/1 Thread:0/2 (Triggered)
+    -- Component Summary
+    cp_0_0/ (SST::GridNode::GridNode)
+    cp_0_1/ (SST::GridNode::GridNode)
+    cp_1_0/ (SST::GridNode::GridNode)
+    cp_1_1/ (SST::GridNode::GridNode)
+    cp_2_0/ (SST::GridNode::GridNode)
+    cp_2_1/ (SST::GridNode::GridNode)
+    cp_3_0/ (SST::GridNode::GridNode)
+    cp_3_1/ (SST::GridNode::GridNode)
+
+    -- Rank:0/1 Thread:1/2 (Not Triggered)
+    -- Component Summary
+    cp_4_0/ (SST::GridNode::GridNode)
+    cp_4_1/ (SST::GridNode::GridNode)
+    cp_5_0/ (SST::GridNode::GridNode)
+    cp_5_1/ (SST::GridNode::GridNode)
+    cp_6_0/ (SST::GridNode::GridNode)
+    cp_6_1/ (SST::GridNode::GridNode)
+    cp_7_0/ (SST::GridNode::GridNode)
+    cp_7_1/ (SST::GridNode::GridNode)
+
+    ---- Rank0:Thread0: Entering interactive mode at time 2000000
+    Ran clock for 1000 sim cycles
+> cd cp_0_0
+
+> print curCycle
+    curCycle = 86 (unsigned long)
+
+> watch curCycle < 10
+    Added watchpoint #0
+
+> run
+    INTERACTIVE CONSOLE
+    -- Rank:0/1 Thread:0/2 (Triggered)
+    -- Component Summary
+    cp_0_0/ (SST::GridNode::GridNode)
+    cp_0_1/ (SST::GridNode::GridNode)
+    cp_1_0/ (SST::GridNode::GridNode)
+    cp_1_1/ (SST::GridNode::GridNode)
+    cp_2_0/ (SST::GridNode::GridNode)
+    cp_2_1/ (SST::GridNode::GridNode)
+    cp_3_0/ (SST::GridNode::GridNode)
+    cp_3_1/ (SST::GridNode::GridNode)
+
+    -- Rank:0/1 Thread:1/2 (Not Triggered)
+    -- Component Summary
+    cp_4_0/ (SST::GridNode::GridNode)
+    cp_4_1/ (SST::GridNode::GridNode)
+    cp_5_0/ (SST::GridNode::GridNode)
+    cp_5_1/ (SST::GridNode::GridNode)
+    cp_6_0/ (SST::GridNode::GridNode)
+    cp_6_1/ (SST::GridNode::GridNode)
+    cp_7_0/ (SST::GridNode::GridNode)
+    cp_7_1/ (SST::GridNode::GridNode)
+
+    ---- Rank0:Thread0: Entering interactive mode at time 3000000
+    Last Trigger: WP0: BC : cp_0_0/curCycle ...
+
+> print curCycle
+    curCycle = 41 (unsigned long)
+```
+
+:::important
+In parallel simulations, the interactive console is invoked only at simulator synchronization points. Therefore, the value of the watched variable at the synchronization point may be different from the watchpoint trigger condition. To deal with this sampling issue, the debugger supports tracing variables associated with watchpoint triggers. See [Watchpoint and tracing](#watchpoints-and-tracing) for more details.
+:::
+
+Finally, to cleanly exit an interactive console session there are 2 options: (1) Use the `quit` command to exit the debugger but continue the simulation and (2) Use the `shutdown` command to exit the debugger and perform an immediate shutdown of the simulation.
+
+```sh title="Exiting the interactive console using 'quit'"
+> quit
+Do you want to delete all watchpoints? [yes, no]
+yes
+Removing all watchpoints and exiting ObjectExplorer
+Simulation is complete, simulated time: 10 us
+```
+
+```sh title="Exiting the interactive console using 'shutdown'"
+> shutdown
+Simulation shutdown
+R0, T0: Exiting ObjectExplorer and shutting down simulation
+Simulation is complete, simulated time: 0 s
+```
+
+:::info
+Using `quit` will only clear watchpoints if selected by the user. Any other event (e.g. a prior `run \[TIME]`]) that is already scheduled will still execute normally.
+:::
+
+## Watchpoints and tracing
+
+Watchpoints provide the ability to define and detect events resulting in breaking into the interactive debug console at simulation synchronization points. A synchronization point is a point in time of the SST simulation where all threads and processes are at a stable state during which the main thread can safely perform information exchange across all partitions (like generation of a checkpoint). 
+
+Watchpoints are defined using simple sequences of boolean operations. For SST 16, the operations are parsed from left to right with no support for conventional order of operations or grouping using parenthesis. Since multiple watchpoints can be defined, grouping of operations can be done by defining multiple watchpoints. During execution, the result will effectively be an 'OR'ing of all watchpoint conditions.
+
+```sh title="Defining watchpoints for multiple partitions"
+> info current
+    Rank 0/2 Thread 0/2 (Process 79336)
+
+> watch curCycle > 50 && curCycle < 60
+    Added watchpoint #0
+
+> watch component_state_ changed
+    Added watchpoint #1
+
+> rank 1
+> thread 1
+> info current
+    Rank 1/2 Thread 1/2 (Process 79337)
+
+> watch component_state_ changed
+    Added watchpoint #0
+
+```
+
+Watchpoints and are managed in a per partition `watchlist`. Watchpoints are restricted to use variables local to a single component. There is essentially no practical limit on the size of the watchlist. Several watchlist management commands are provided: `watch`, `watchlist`, `printWatchPoint`, and `unwatch`. 
+
+```sh title="Watchlist management commands"
+> watchlist
+    R0,T0: Current watch points:
+    0: TriggerCount 0 : ALL : cp_1_0/curCycle > 50 cp_1_0/curCycle < 60  : interactive
+    1: TriggerCount 0 : ALL : cp_1_0/component_state_ CHANGED  : interactive
+    R0,T1: Current watch points:
+    R1,T0: Current watch points:
+    R1,T1: Current watch points:
+    0: TriggerCount 0 : ALL : cp_6_0/component_state_ CHANGED  : interactive
+
+> info current
+    Rank 1/2 Thread 1/2 (Process 79337)
+> printWatchPoint 0
+    WP0: TriggerCount 0 : ALL : cp_6_0/component_state_ CHANGED  : interactive
+
+> rank 0
+> thread 0
+> info current
+    Rank 0/2 Thread 0/2 (Process 79336)
+> printWatchPoint 0
+    WP0: TriggerCount 0 : ALL : cp_1_0/curCycle > 50 cp_1_0/curCycle < 60  : interactive
+> printWatchPoint 1
+    WP1: TriggerCount 0 : ALL : cp_1_0/component_state_ CHANGED  : interactive 
+
+> unwatch 1
+> watchlist
+    R0,T0: Current watch points:
+    0: TriggerCount 0 : ALL : cp_1_0/curCycle > 50 cp_1_0/curCycle < 60  : interactive
+    R0,T1: Current watch points:
+    R1,T0: Current watch points:
+    R1,T1: Current watch points:
+    0: TriggerCount 0 : ALL : cp_6_0/component_state_ CHANGED  : interactive
+
+> unwatch
+    Do you want to delete all watchpoints? [yes, no]
+yes
+    Watchlist cleared
+    Watchlist cleared
+    Watchlist cleared
+    Watchlist cleared
+    > watchlist
+    R0,T0: Current watch points:
+    R0,T1: Current watch points:
+    R1,T0: Current watch points:
+    R1,T1: Current watch points:
+> 
+
+```
+
+The tracing feature builds on watchpoints to provide the following powerful capabilities:
+    1. High fidelity data capture during thread execution
+    2. Control of circular buffering of sampled data
+    3. Flexible trigger controls for starting and ending sampling
+    4. A variety of trigger actions
+
+The key concept of tracing revolves around the use of a circular trace buffer associated with each trace. The size, data, and sampling controls for the trace buffers are established using the `trace` command.
+
+```sh title="The trace command"
+syntax: trace <trigger> : <bufferSize> <postDelay> : <var1> ... <varN> : <action>
+```
+
+```sh title="The trace buffer"
+
+> trace curCycle == 5 : 8 5 : curCycle component_state_ : interactive
+
+Time:   0   0   0   0   0   0   0   0   0   0   1   1   1   1   1   1   1   1   1   1 
+        0   1   2   3   4   5   6   7   8   9   0   1   2   3   4   5   6   7   8   9    
+
+Trigger                             ^   
+Buffer Entries              -   -   !   +  +   +   +   + 
+Synchronization Point                                                           X
+```
+
+```sh title="Basic trace example"
+> trace curCycle == 5 : 8 5 : curCycle component_state_ : interactive
+    Added watchpoint #0
+
+> run
+    INTERACTIVE CONSOLE
+
+    -- Rank:1/2 Thread:1/2 (Triggered)
+    -- Component Summary
+    cp_6_0/ (SST::GridNode::GridNode)
+    cp_6_1/ (SST::GridNode::GridNode)
+    cp_7_0/ (SST::GridNode::GridNode)
+    cp_7_1/ (SST::GridNode::GridNode)
+
+    ---- Rank1:Thread1: Entering interactive mode at time 2000000
+    Interactive start at 1000000
+
+> printtrace 0
+    TriggerCount=28
+    LastTriggerRecord:@cycle1021000: SamplesLost=0: cp_6_0/curCycle=5 cp_6_0/component_state_=3 
+    buf[7] AC @1019000 (-) cp_6_0/curCycle=4 cp_6_0/component_state_=3 
+    buf[0] BC @1020000 (-) cp_6_0/curCycle=4 cp_6_0/component_state_=3 
+    buf[1] AC @1020000 (!) cp_6_0/curCycle=5 cp_6_0/component_state_=3 
+    buf[2] BC @1021000 (+) cp_6_0/curCycle=5 cp_6_0/component_state_=3 
+    buf[3] AC @1021000 (+) cp_6_0/curCycle=6 cp_6_0/component_state_=3 
+    buf[4] BC @1022000 (+) cp_6_0/curCycle=6 cp_6_0/component_state_=3 
+    buf[5] AC @1022000 (+) cp_6_0/curCycle=7 cp_6_0/component_state_=3 
+    buf[6] BC @1023000 (+) cp_6_0/curCycle=7 cp_6_0/component_state_=3 
+> time
+    current time = 2000000
+
+```
+
+The `printtrace` provides the captured buffer data and some additional information described below.
+
+    |   |   |
+    |---|---|
+    | TriggerCount | The number of times the trigger condition was detected during the entire run interval |
+    | LastTriggerRecord |  Indicates the last occurance of the trigger condition in the buffer | 
+    | buf[n]| The circular trace buffer Entries |
+    | BC,AC | Before/After clock handler sample |
+    | (-) | Pre-trigger sample |
+    | (!) | Trigger sample |
+    | (+) | Post-trigger sample |
+
+Trace definitions can be modified by the following commands: `sethandler`, `resettrace`, and `addtracevar`.
+
+```sh title="Trace modification commands"
+> trace curCycle == 5 : 8 5 : curCycle : interactive
+    Added watchpoint #0
+
+# Only capture samples after the clock handler
+> sethandler 0 AC
+> printwatchpoint 0
+    WP0: TriggerCount 0 : AC : cp_6_0/curCycle < 10  : bufsize = 8 postDelay = 5 : cp_6_0/curCycle : interactive
+> printtrace 0
+    TriggerCount=140
+    LastTriggerRecord:@cycle1020000: SamplesLost=0: cp_6_0/curCycle=5 
+    buf[5] AC @1013000 (-) cp_6_0/curCycle=87
+    buf[6] AC @1014000 (-) cp_6_0/curCycle=88
+    buf[7] AC @1015000 (!) cp_6_0/curCycle=0
+    buf[0] AC @1016000 (+) cp_6_0/curCycle=1
+    buf[1] AC @1017000 (+) cp_6_0/curCycle=2
+    buf[2] AC @1018000 (+) cp_6_0/curCycle=3
+    buf[3] AC @1019000 (+) cp_6_0/curCycle=4
+    buf[4] AC @1020000 (+) cp_6_0/curCycle=5
+
+# Reset the circular buffer state
+> resettrace 0
+    Reset Trace Buffer
+> printtrace 0
+    No trace samples in current buffer
+
+# add a trace variable
+> addtracevar 0 componenent_state_
+> run
+> printtrace 0
+> printtrace 0
+    TriggerCount=130
+    LastTriggerRecord:@cycle2049000: SamplesLost=0: cp_6_0/curCycle=5 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[2] AC @2042000 (-) cp_6_0/curCycle=82 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[3] AC @2043000 (-) cp_6_0/curCycle=83 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[4] AC @2044000 (!) cp_6_0/curCycle=0 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[5] AC @2045000 (+) cp_6_0/curCycle=1 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[6] AC @2046000 (+) cp_6_0/curCycle=2 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[7] AC @2047000 (+) cp_6_0/curCycle=3 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[0] AC @2048000 (+) cp_6_0/curCycle=4 cp_6_0/component_state_=3 cp_6_0/component_state_=3 
+    buf[1] AC @2049000 (+) cp_6_0/curCycle=5 cp_6_0/component_state_=3 cp_6_0/component_state_=3
+```
+
+## Custom commands
+
+Simple sequences of commands can be saved as custom commands using the `define` and `document` commands.
+
+```sh title="Defining and documenting a custom command"
+> define runprint
+> run 10ns
+> print curCycle
+> end
+
+> document runprint
+> Run 10ns and print current cycle counter
+> end
+
+> help
+    ... normal help info
+    --- User Defined ---
+    runprint (runprint) Run 10ns and print current cycle counter
+
+> runprint
+    ---- Rank1:Thread1: Entering interactive mode at time 2000000
+    Ran clock for 10000 sim cycles
+    curCycle = 39 (unsigned long)
+```
+
+## Record and replay
+
+The commands for a debug session can be written to a file using the `logging [filepath]` command. When `filepath` is omitted, the output will be written to `sst-console.out`.
+
+```sh title="Logging interactive console commands"
+> logging
+    sst console commands will be logged to sst-console.out
+> rank 1
+> thread 1
+> cd cp_6_0
+> print curCycle
+    curCycle = 73 (unsigned long)
+> shutdown
+Simulation shutdown
+    R0, T0: Exiting ObjectExplorer and shutting down simulation
+    Simulation is complete, simulated time: 0 s
+
+$ cat sst-console.out 
+rank 1
+thread 1
+cd cp_6_0
+print curCycle
+shutdown
+```
+
+This file can be renamed and edited for replaying in another simulation. Any line starting with `#` will be treated as a comment.
+
+```sh title="Logging interactive console commands"
+$ cat sst-console.in
+# disable user confirmation prompts
+confirm false
+# Enter rank 2 thread 1
+rank 1
+thread 1
+cd cp_6_0
+# Print values
+print curCycle
+print component_state_
+# Run 10ns and print values again
+run 10ns
+print curCycle
+print component_state_
+# All done
+shutdown
+```
+
+:::info
+The `confirm false` command is provided to enable  replay files and user defined commands to execute without pausing for confirmation prompts.
+:::
+
+The file can now be replayed by either using the SST command line option, '--replay-file' or using the interactive console's `replay` command.
+
+```sh title="Replaying commands from a file"
+
+> mpirun -np 2 sst -n 2 --interactive-start=1us configuration.py --replay-file=sst-console.in
+    INTERACTIVE CONSOLE
+    ... lines skipped
+
+    ---- Rank0:Thread0: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+    > replay sst-console.in
+
+    > # disable user confirmation prompts
+    > confirm false
+    > # Enter rank 2 thread 1
+    > rank 1
+    ---- Rank1:Thread0: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+    > thread 1
+    ---- Rank1:Thread1: Entering interactive mode at time 1000000
+    Interactive start at 1000000
+    > cd cp_6_0
+    > # Print values
+    > print curCycle
+    curCycle = 73 (unsigned long)
+    > print component_state_
+    component_state_ = 3 (SST::BaseComponent::ComponentState)
+    > # Run 10ns and print values again
+    > run 10ns
+
+    INTERACTIVE CONSOLE
+    ... lines skipped
+
+    ---- Rank1:Thread1: Entering interactive mode at time 2000000
+    Ran clock for 10000 sim cycles
+    > print curCycle
+    curCycle = 39 (unsigned long)
+    > print component_state_
+    component_state_ = 3 (SST::BaseComponent::ComponentState)
+    > # All done
+    > shutdown
+    Simulation shutdown
+    R0, T0: Exiting ObjectExplorer and shutting down simulation
+    Simulation is complete, simulated time: 0 s   
+```
+
+:::info
+Invoking the replay file from the SST command line will causes `replay` command to be invoked upon the first entry into to the debug console.
+```
+ > replay sst-console.in
+```
+This command can, of course, be manually entered by the user at any point in a debug session.
+:::
+
+## History and command line editing
+
+The interactive console support a bash-like command line history feature.
+
+```sh title="Command history"
+history [N]: list previous N instructions. If N is not set list all
+        Supports bash-style commands:
+        !!   execute previous command
+        !n   execute command at index n
+        !-n  execute commad n lines back in history
+        !string  execute the most recent command starting with `string`
+        ?string execute the most recent command containing `string`
+        !...:p  print the instruction but not execute it.
+```
+Additionally, similar control keys can be used to retrieve and edit the previous command lines.
+
+```sh title="Command line editor"
+editing : bash style command line editing using arrow and control keys:
+        Up/Down keys: navigate command history
+        Left/Right keys: navigate command string
+        backspace: delete characters to the left
+        tab: auto-completion
+        ctrl-a: move cursor to beginning of line
+        ctrl-b: move cursor to the left
+        ctrl-d: delete character at cursor or quit debugger
+        ctrl-e: move cursor to end of line
+        ctrl-f: move cursor to the right
+        Note: this functionality is not available when using mpi
+```
+
+:::warning
+Command line editing has not been rigorously tested on all platform configurations. On SST 16.0, command line editing will not work with simulations invoked using `mpirun`. 
+:::
+
+## Designing for debug
+
+The SST debugger leverages the same serialization macros used for checkpointing to make most variables accessible in the interactive console. If a design supports checkpointing and restart then it should also support debugging.  However, a design does not need to be checkpointable to support debugging. Serialization macros can be added incrementally to provide visibility into variables of interest to the designer. See [checkpoint and restart](checkpoint.mdx) for details on using serialization macros.
+
+There may be reasons to protect data members from writing or even visiblity in the debugger. To support this there are two mapping options provided with the `SST_SER` macro:
+  * `SerOption::map_read_only`: Do not allow a user to modify this object in an interactive console
+  * `SerOption::no_map`: Do not serialize this object when mapping
+
+One important consideration for the current debugger is that watchpoint and trace variables must have persistent references. Using a data member that may be deleted will lead to unpredictable behavior including crashing the simulator. This includes any new/deleted objects as well as elements in resizable containers. 
+
+:::important
+Never attempt to use data members that may be deleted in watchpoints or traces
+:::
+
+During the design process, it is generally a good idea to consider providing additional instrumentation code that makes key states available to the debugger in a safe and obvious way.  For example, indicating when queues are written, when events are received, and providing safe copies of temporary data can significantly improve debug productivity.
+
+## Command reference
+
+**General**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| help | ? | \[command] | show help summary or help on specific command |
+| confirm | cfm | \[true\|false] | set confirmation request on (default) or off |
+
+**Thread Navigation**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| info |   | current\|all | print summary for current thread or all threads | SST16.0 |
+| thread | thd | threadID | switch to a specific thread | SST 16.0 |
+| rank | | rankID | switch to a specific rank, same thread | SST 16.0 |
+
+
+**Object Navigation**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| pwd |  |  | print the current working directory in the object tree |
+| chdir | cd | change 1 directory level in the object tree |
+| list | ls | \[-l] \[-ll] | list objects at the current level |
+
+**State**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| time | tm |  | print current simulation time in cycles |
+| print | p | \[-r N] obj | print objects for N levels of hierarchy (4 default) |
+| set | s | var value | set the value of a variable |
+
+**Watch/Trace**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| watch | w | trigger | add a watchpoint to the watchlist |
+| trace | t | trigger : bufSize postDelay : v1 \[...vN] : action |
+| watchList | wl | prints the current list of watchpoints |
+| addTraceVar | add | index var1 \[...varN] | adds additional trace variables to existing watchpoint |
+| printWatchPoint | prw | index | prints a watchpoint |
+| printTrace | prt | index | prints trace buffer for a watchpoint |
+| resetTrace | rst | index | reset trace buffer for a watchpoint |
+| setHandler | shn | index t1 \[... tN] | set a watchpoint's handler location(s) for trigger check and sampling |
+| unwatch | uw | \[index] | remove 1 or all watchpoints |
+
+Notes:
+* A `trigger` can be a comparison or sequence of comparisons combined with a logic operation.
+* A `comparison` can be `var op val` which compares a variable to a given value.
+* A `comparison` can also be `var changed` which checks when a value changes.
+* An `op` can be `<`, `<=`,`>`,`>=`,`==`, or '!='
+* A `logicOp` can be `&&` or `||`
+* The `watch` command creates a default watchpoint that breaks into interactive debug when triggered.
+* The `trace` command creates a watchpoint with a trace buffer to trace a set of variables and trigger an `action`
+* Supported `actions` are: `interactive`, `printTrace`, `checkpoint`, `set var val`, `printStatus`, and `shutdown`
+* `setHandler` may set the following: `bc`(before clock) `ac` (after clock) `be` (before event) `ae` (after event)
+* `setHandler may also set `all` to select all handlers (default)
+* *Use the `--checkpoint-enable` SST command line option when using `checkpoint` actions*
+* *Only data members with persistent references should be used in watchpoints*
+
+**Simulation**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| run | r | \[time] | continues the simulation |
+| continue | c | \[time] | same as run |
+| exit | e | exit the debugger and continue simulation |
+| quit | q | same as exit |
+| shutdown | shutd | exit the debugger and cleanly shutdown the simulation |
+
+**Logging**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| logging | log | \[filepath] | log command line entries to file |
+| replay | rep | \[filepath] | replay commands from a file |
+| history | h | \[N] | display all or last N unique commands |
+
+**Custom Commands**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| define | def | | define a user command sequence |
+| document | doc | | document help for a user defined sequence |
+
+**Terminal Controls**
+
+| Command | Alias | Options | Description | Notes |
+|---------|-------|---------|-------------|-------|
+| autocomplete | ac | | toggle command line auto-completion enable |
+| clear | clr | | reset terminal |
+
+
+## Known Issues
+- Command-line auto-completion is not available when running SST with MPI
+- Watchpoints must be assigned only to persistent data members or results will be  unpredictable
+
+## Planned improvements
+This sections defines some of the improvements which may appear in future releases of SST.
+
+- Seamless integration of the interactive console with component debug extensions
+    - Standard method for defining and accessing component debug extensions
+    - Support for built-in `help` command
+- Command line interface changes to become more 'Bash'-like
+    - Allow use of fully qualified path names in all commands
+    - Use of wildcards for search, print, and set operations
+    - Multiple commands in a single command line
+- Commands for visualizing and managing very large scale simulations
+    - Advanced search operations
+    - Broadcasting commands
+    - Design tree explorer with collapsable branches
+- More flexible Watch and trace
+    - Multiple actions on a single trigger
+    - Sample filtering conditions (currently every cycle)
+    - Support conventional order of operations and grouping in watchpoint conditions
+    - Allow more complex operations for watchpoints ( e.g. var % 4 == 0 )
+    - Provide method to watch the size of a container
+- Event tracing
+    - Built-in support for setting watches and traces on events
+    - Ability to inspect event queues
+- Enhanced custom commands
+    - Parameter passing to/from user defined command
+    - Support for if/then/else
+
+
