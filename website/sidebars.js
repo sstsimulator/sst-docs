@@ -25,7 +25,8 @@ const sidebars = {
       label: 'Features',
       link: { type: 'generated-index' },
       items: ['guides/features/checkpoint'
-            , 'guides/features/signal']
+            , 'guides/features/signal'
+            , 'guides/features/debug']
     },
     {
       type: 'category',
