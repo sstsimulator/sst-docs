@@ -835,13 +835,30 @@ const sidebars = {
         "elements/ember/QuickStart",
         "elements/ember/CreatingMotifs",
         "elements/ember/RunningMotifs",
+        "elements/ember/NetworkIO",
         "elements/ember/OTF2Ember"
       ]
     },
-    "elements/firefly/intro",
+    /* Firefly */
+    {
+      type: 'category',
+      label: 'firefly',
+      link: {type: 'doc', id: 'elements/firefly/intro'},
+      items: [
+        "elements/firefly/NetworkIO"
+      ]
+    },
     "elements/gensa/intro",
     "elements/golem/intro",
-    "elements/hermes/intro",
+    /* Hermes */
+    {
+      type: 'category',
+      label: 'hermes',
+      link: {type: 'doc', id: 'elements/hermes/intro'},
+      items: [
+        "elements/hermes/NetworkIO"
+      ]
+    },
     "elements/iris/intro",
     "elements/juno/intro",
     "elements/kingsley/intro",

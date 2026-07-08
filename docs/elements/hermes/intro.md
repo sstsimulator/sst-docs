@@ -14,8 +14,16 @@ title: hermes
 
 :::
 
+Hermes also declares the **NetworkIO** storage-I/O interface
+(`SST::Hermes::NetworkIO`) used by the ember/firefly storage feature. See
+[NetworkIO API](./NetworkIO).
+
 ### Required dependencies
 *None*
 
 ### Optional dependencies
 *None*
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

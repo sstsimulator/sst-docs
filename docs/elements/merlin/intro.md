@@ -19,3 +19,24 @@ title: merlin
 
 ### Optional dependencies
 *None*
+
+### Allocating I/O nodes
+
+The Merlin Python `System` class supports reserving a subset of network endpoints
+as dedicated storage (I/O) nodes for the NetworkIO storage feature:
+
+```py
+io_nid_list = system.allocateIoNodes(count, method, *args, pool="default")
+```
+
+* `count` — number of I/O nodes to reserve.
+* `method` — allocation strategy: `"linear"`, `"random"`, or `"random_linear"`.
+* `pool` — keyword-only pool name (default `"default"`), allowing disjoint pools
+  for isolating jobs.
+
+I/O nodes are drawn from the **same endpoint pool** as compute nodes (allocated via
+`allocateNodes`), so the two never overlap. The companion method
+`System.setIoNodeJobFactory(factory)` registers the library-specific job that owns
+the reserved nodes; [ember](../ember/intro) registers a default factory at import
+time. For complete usage see the
+[ember NetworkIO Storage Guide](../ember/NetworkIO#allocating-io-nodes).

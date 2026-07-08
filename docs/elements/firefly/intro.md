@@ -14,9 +14,17 @@ The *firefly* library provides network data movement modeling functionality for 
 
 :::
 
+Firefly also implements the **NetworkIO** storage feature: a compute-side
+`firefly.hadesNetworkIO` API, striping mappers, storage pools, and a `SimpleSSD`
+backing model. See [NetworkIO Components](./NetworkIO).
+
 ### Required dependencies
 *None*
 
 ### Optional dependencies
 *None*
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
 
