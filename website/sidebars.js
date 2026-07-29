@@ -860,7 +860,15 @@ const sidebars = {
       ]
     },
     "elements/mercury/intro",
-    "elements/merlin/intro",
+    {
+      type: 'category',
+      label: 'merlin',
+      link: {type: 'doc', id: 'elements/merlin/intro'},
+      items: [
+        "elements/merlin/InNetworkCompute",
+        "elements/merlin/INCQuickStart"
+      ]
+    },
     "elements/messier/intro",
     "elements/miranda/intro",
     "elements/mmu/intro",
