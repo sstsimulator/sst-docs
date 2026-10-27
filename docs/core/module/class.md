@@ -21,7 +21,7 @@ public:
     SST_ELI_REGISTER_MODULE_API(SST::HashFunction)
 
     HashFunction(Params& params) : Module() {}
-    virtual ~Module() {}
+    virtual ~HashFunction() {}
 
     virtual uint64_t hash(uint64_t value) =0;
 };

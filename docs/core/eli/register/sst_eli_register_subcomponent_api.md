@@ -5,6 +5,7 @@ sidebar_label: SubComponent API
 
 ```cpp
 SST_ELI_REGISTER_SUBCOMPONENT_API(class_name)
+SST_ELI_REGISTER_SUBCOMPONENT_API(class_name, ...)
 ```
 
 SubComponents implement a specific API and SubComponent slots require any SubComponents loaded into them to implement a specific API. This macro registers SubComponent APIs with SST Core. If a SubComponent API inherits from another registered SubComponent API (as opposed to, for example, SST::SubComponent directly), the API should instead register using the [`SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API`](sst_eli_register_subcomponent_derived_api) macro.
@@ -17,6 +18,7 @@ This macro must reside in a `public` section of the SubComponent API's header fi
 ## Parameters
 
 * **class_name** (class) The name of the SubComponent API class. This is not a string.
+* **...** (types, optional) Additional constructor argument types, after the required `SST::ComponentId_t` and `SST::Params&`, that every SubComponent implementing this API must accept. Loaders pass the values as the trailing `args` of [`loadUserSubComponent`](../../component/load/loadUserSubComponent) or [`loadAnonymousSubComponent`](../../component/load/loadAnonymousSubComponent). For example, `SST_ELI_REGISTER_SUBCOMPONENT_API(SST::Merlin::Topology, int, int, int)` requires constructors of the form `(ComponentId_t id, Params& params, int, int, int)`.
 
 ## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/basicSubComponent_subcomponent.h --->

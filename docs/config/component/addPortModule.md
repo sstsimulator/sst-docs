@@ -2,16 +2,17 @@
 title: addPortModule
 ---
 
-Places a PortModule on a port.
+Places a PortModule on a port. This function is only available on Components, not SubComponents.
 
 ## Syntax
 ```python
-component.addPortModule(port_name, port_module_type, params)
+component.addPortModule(port_name, port_module_type, params=None)
 ```
 
 ## Parameters
 * **port_name** (type: string) name of the port to place the PortModule on.
 * **port_module_type** (type: string) type of the PortModule in the `lib.element` format (for example, `"sst.portmodules.random_drop"`).
+* **params** (type: dict) OPTIONAL. Python dictionary of parameters to pass to the PortModule.
 * **returns** PortModule object 
 
 

@@ -22,7 +22,7 @@ To prevent SST from installing its own signal handlers, use the `--disable-signa
 * **Simulation Status**(`sst.rt.status.all`) - SST-Core reports the simulated time and [`printStatus()`](../../core/component/lifecycle/printStatus.md) is called on every Component in the simulation.
 * **Heartbeat**(`sst.rt.heartbeat`) - SST-Core reports the simulated time and some profiling metrics (size of memory pools, time in synchronization, etc.)
 * **Checkpoint**(`sst.rt.checkpoint`) - Creates a checkpoint.
-* **Interactive Console**(`sst.rt.interactive`) - Pause simulation and drop into an interactive console to view simulation state. This action requires that an SST console be specified using the command line option `--interactive-console`.
+* **Interactive Console**(`sst.rt.interactive`) - Pause simulation and drop into an interactive console to view simulation state. The console can be selected with the command line option `--interactive-console`; if none is specified, SST uses the default console, `sst.interactive.debugger`. This action can be bound to SIGUSR1 or SIGUSR2 but not to SIGALRM.
 
 The table below shows the default action for each signal. The "Command line control" column shows command line options that are available to override the default action.
 | Signal  | Default RealTimeAction		| Description									| Command line control  |

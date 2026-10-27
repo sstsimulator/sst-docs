@@ -14,7 +14,7 @@ Load an SST Module.
 * **type** (string) Module type
 * **params** (Params) Set of parameters to pass to the module's constructor
 * **args** (ARGS) Additional module-specific arguments for the module's constructor
-* **returns** (bool) A pointer to the newly-created module
+* **returns** (T*) A pointer to the newly-created module
 
 ## Example
 

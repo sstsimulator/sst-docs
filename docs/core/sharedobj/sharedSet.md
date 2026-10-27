@@ -154,5 +154,5 @@ Returns the size of the set. Thread safe.
 
 ## Header
 ```cpp
-#include <sst/core/shared/sharedSet.h
+#include <sst/core/shared/sharedSet.h>
 ```

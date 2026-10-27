@@ -40,7 +40,7 @@ $ sst-register SST_ELEMENT_TESTS simpleExternalElement=$(SRCDIR)/tests
 ## Registering source directories
 Register the location of SST element source code as follows. These paths are not currently used by SST tools but they are registered by convention in anticipation of using the paths in the future. Tool developers may use this information if needed.
 ```bash
-$ sst-register SST_ELEMENT_SOURCE <libname>=/path/to/tests/for/library
+$ sst-register SST_ELEMENT_SOURCE <libname>=/path/to/source/for/library
 ```
 
 ## Example: Registering libExample.so
@@ -52,14 +52,14 @@ Assume:
 * The tests for the library are at `/home/usr1/source/example/tests/`.
 
 ```sh title="Steps to register libExample.so"
-$ sst-register Example Example_LIBDR=/home/usr1/install/libExample.so
-$ sst-register SST_ELEMENT_TESTS=/home/usr1/source/example/tests
-$ sst-register SST_ELEMENT_SOURCE=/home/usr1/source/example/src
+$ sst-register Example Example_LIBDIR=/home/usr1/install
+$ sst-register SST_ELEMENT_TESTS Example=/home/usr1/source/example/tests
+$ sst-register SST_ELEMENT_SOURCE Example=/home/usr1/source/example/src
 ```
 
 ## Other uses of sst-register
 ### Uninstall element libraries.
-`sst-register -u <libname>` can be used to uninstall an element library as follows. This does *not* remove the paths from from `SST_ELEMENT_TESTS` or `SST_ELEMENT_SOURCE`. `sst-register -m` will alternately enter an interactive unregister mode where the installed libraries will be listed followed by a prompt to provide the libraries to delete. Finally, providing the `-au` option causes any invalid libraries to be removed. Invalid libraries are those that have invalid paths.
+`sst-register -u <libname>` can be used to uninstall an element library as follows. This does *not* remove the paths from `SST_ELEMENT_TESTS` or `SST_ELEMENT_SOURCE`. `sst-register -m` will alternately enter an interactive unregister mode where the installed libraries will be listed followed by a prompt to provide the libraries to delete. Finally, providing the `-au` option causes any invalid libraries to be removed. Invalid libraries are those that have invalid paths.
 
 ```sh title="Uninstall an element library"
 $ sst-register -u <libname> # Unregister libname
@@ -150,14 +150,14 @@ Other sections are named for libraries. SST searches these sections for a `libna
 Following the example above, registering the `libExample.so` library makes the following modifications to `sstsimulator.conf`.
 
 ```sh title="Registering libExample.so"
-$ sst-register Example Example_LIBDR=/home/usr1/install/libExample.so
-$ sst-register SST_ELEMENT_TESTS=/home/usr1/source/example/tests
-$ sst-register SST_ELEMENT_SOURCE=/home/usr1/source/example/src
+$ sst-register Example Example_LIBDIR=/home/usr1/install
+$ sst-register SST_ELEMENT_TESTS Example=/home/usr1/source/example/tests
+$ sst-register SST_ELEMENT_SOURCE Example=/home/usr1/source/example/src
 ```
 
 ```sh title="sstsimulator.conf modifications after libExample.so is registered"
 [Example]
-Example_LIBDIR=/home/usr1/install/libExample.so
+Example_LIBDIR=/home/usr1/install
 
 [SST_ELEMENT_TESTS]
 Example=/home/usr1/source/example/tests

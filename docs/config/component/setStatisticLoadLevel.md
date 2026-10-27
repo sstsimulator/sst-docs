@@ -12,13 +12,17 @@ Sets the load level for this component. This overrides the default or global loa
 
 ## Syntax
 ```python
-component.setStatisticLoadLevel(level, include_children=False)
+component.setStatisticLoadLevel(level, apply_to_children=False)
 ```
 
 ## Parameters
 * **level** (type: int) statistic load level for the component 
-* **include_children** (type: bool) If set to True, will recursively set the specified load level on all currently instanced SubComponent descendants. SubComponents created after this call will not have their load level set. 
+* **apply_to_children** (type: bool) OPTIONAL. If set to True, will recursively set the specified load level on all currently instanced SubComponent descendants. SubComponents created after this call will not have their load level set. 
 * **returns** none
+
+:::note
+This function only accepts positional arguments. Calling it with keyword arguments (e.g., `apply_to_children=True`) raises a `TypeError`.
+:::
 
 ## Example
 
@@ -26,7 +30,7 @@ component.setStatisticLoadLevel(level, include_children=False)
 import sst
 
 component0 = sst.Component("c0", "simpleElementExample.example1")
-component0.setStatisticLoadLevel(4, include_children=True)
+component0.setStatisticLoadLevel(4, True)
 
 ```
 

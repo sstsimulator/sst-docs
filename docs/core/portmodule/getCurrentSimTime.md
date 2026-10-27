@@ -3,8 +3,8 @@ title: getCurrentSimTime
 ---
 
 ```cpp
-SimTime_t getCurrentSimTime(TimeConverter tc) const;
-SimTime_t getCurrentSimTIme(const std::string& base)const;
+SimTime_t getCurrentSimTime(TimeConverter& tc) const;
+SimTime_t getCurrentSimTime(const std::string& base) const;
 ```
 
 Returns the current simulation time as a cycle count relative to the clock frequency provided via the TimeConverter `tc` or string `base`.

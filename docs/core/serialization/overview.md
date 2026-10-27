@@ -58,8 +58,8 @@ OR
 
 Many classes can be made serializable by adding a `serialize_order` function. This function serializes and deserializes all data members belonging to the class using a special `SST_SER` macro. The macro accepts data of many types including:
 * All POD types (`bool`, `int`, etc.) and `std::string`
-* All standard library containers (`std::vector`, `std::map`, `std::array`, etc.)
-* Several standard library types: `std::atomic`, `std::pair`, `std::tuple`, `std::unique_ptr`
+* All standard library containers, including container adapters (`std::vector`, `std::map`, `std::array`, `std::queue`, etc.)
+* Several standard library types: `std::atomic`, `std::bitset`, `std::optional`, `std::pair`, `std::shared_ptr`, `std::tuple`, `std::unique_ptr`, `std::valarray`, `std::variant`, `std::weak_ptr`
 * SST types: `Link`, `TimeConverter`, `Output`, `RNG:Random`, `RNG:RandomDistribution`, `SharedArray`, `SharedMap`, `SharedSet`, `UnitAlgebra`, `Statistic`, `StatisticOutput`
 * SST Handlers: `Clock::Handler`, `Event::Handler`, `Clock::Handler2` (deprecated), `Event::Handler2` (deprecated)
 * SST Interfaces: `SimpleNetwork`, `StandardMem`

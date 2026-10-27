@@ -6,12 +6,12 @@ Enables a single statistic for the PortModule on which the call is made. To enab
 
 ## Syntax
 ```python
-portmodule.enableStatistic(stat, stat_params_dict)
+portmodule.enableStatistic(stat, stat_params_dict=None)
 ```
 
 ## Parameters
 * **stat** (type: string) Name of statistic to enable.
-* **stat_params_dict** (type: dict) Python dictionary that specifies the statistic parameters.
+* **stat_params_dict** (type: dict) OPTIONAL. Python dictionary that specifies the statistic parameters.
 * **returns** none
 
 ## Example
@@ -23,7 +23,7 @@ component = sst.Component( ... )
 portmodule = component.addPortModule("port0", "sst.portmodules.random_drop" )
 
 #highlight-next-line
-component.enableStatistic("dropped")
+portmodule.enableStatistic("dropped")
 ```
 
 ## Import

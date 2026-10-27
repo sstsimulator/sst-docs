@@ -4,7 +4,7 @@ title: sst_assert
 
 ```cpp
 void sst_assert(bool condition, uint32_t line, const char* file, const char* func, 
-    int exit_code, const char* format, ...) const __attribute__((format(printf, 6, 7)));
+    int exit_code, const char* format, ...) const __attribute__((format(printf, 7, 8)));
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 

@@ -6,7 +6,7 @@ title: getId
 LinkId_t getId();
 ```
 
-Returns the unique ID assigned to the Link. LinkId_t is a uint32_t.
+Returns the unique ID assigned to the Link. LinkId_t is a uint64_t.
 
 ## Parameters
 * **returns** The ID assigned to the Link.
@@ -19,7 +19,7 @@ SST::Link* link = configureLink("port", new Event::Handler<example,&example::han
 
 Output* out = getSimulationOutput();
 //highlight-next-line
-out->output("The link connected to 'port' has id %u\n", link->getId());
+out->output("The link connected to 'port' has id %" PRIu64 "\n", link->getId());
 ```
 
 ## Header

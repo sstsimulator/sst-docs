@@ -190,5 +190,5 @@ Write the key-value pair to the map. This function can be used after calling ini
 
 ## Header
 ```cpp
-#include <sst/core/shared/sharedMap.h
+#include <sst/core/shared/sharedMap.h>
 ```

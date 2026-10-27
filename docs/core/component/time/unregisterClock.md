@@ -13,7 +13,7 @@ Remove a clock. SST will no longer call the specified handler at the clock frequ
 ## Parameters
 * **freq** (TimeConverter) Frequency of the clock to unregister
 * **handler** (Clock::HandlerBase*) Clock handler that should be unregistered
-* **returns** (TimeConverter) A time converter representing the clock frequency
+* **returns** None
 
 
 ## Example

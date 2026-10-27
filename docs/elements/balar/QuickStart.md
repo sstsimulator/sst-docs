@@ -89,7 +89,7 @@ git checkout sst_support
 # If you plan to compile the apps directly, you will 
 # also need to set SST_CUSTOM_CUDA_LIB_PATH to 
 # the directory of the custom CUDA library,
-# which normally will be `SST_ELEMENTS_SRC/src/sst/elements/balar/tests/vanadis_llvm_rv64`
+# which normally will be `SST_ELEMENTS_SRC/src/sst/elements/balar/tests/libcudart`
 source ./src/setup_environment sst
 ```
 
@@ -98,7 +98,7 @@ If you want to compile the Rodinia benchmarks manually or want to test out other
 
 ```bash
 # Set SST_CUSTOM_CUDA_LIB_PATH
-export SST_CUSTOM_CUDA_LIB_PATH=SST_ELEMENTS_SRC/src/sst/elements/balar/tests/vanadis_llvm_rv64
+export SST_CUSTOM_CUDA_LIB_PATH=SST_ELEMENTS_SRC/src/sst/elements/balar/tests/libcudart
 
 # Build custom CUDA runtime
 cd SST_ELEMENTS_SRC/src/sst/elements/balar/tests/libcudart
@@ -155,7 +155,7 @@ $SST_CORE_HOME/bin/sst-test-elements -c 4 -w "*balar*long*"
 $SST_CORE_HOME/bin/sst-test-elements -c 8 -w "*balar*"
 ```
 
-When running each testsuite, the custom CUDA library under at `SST_ELEMENT_SOURCE/src/sst/elements/balar/tests/vanadis_llvm_rv64/` will be compiled and then linked with the Rodinia 2.0 kernels in [gpu-app-collection](https://github.com/accel-sim/gpu-app-collection/tree/sst_support).
+When running each testsuite, the custom CUDA library at `SST_ELEMENT_SOURCE/src/sst/elements/balar/tests/libcudart/` will be compiled and then linked with the Rodinia 2.0 kernels in [gpu-app-collection](https://github.com/accel-sim/gpu-app-collection/tree/sst_support).
 
 ## Running examples
 

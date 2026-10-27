@@ -1,9 +1,9 @@
 ---
-title: getEndTime
+title: getEndSimTime
 ---
 
 ```cpp
-UnitAlgebra getEndTime() const;
+UnitAlgebra getEndSimTime() const;
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 
@@ -17,7 +17,7 @@ Returns the time that simulation ended with units. This function is for use in t
 
 <!--- SOURCE_CODE: None --->
 ```cpp
-output.output("The simulation ended after %s.\n", getEndTime().toStringBestSI().c_str());
+output.output("The simulation ended after %s.\n", getEndSimTime().toStringBestSI().c_str());
 ```
 
 ## Header

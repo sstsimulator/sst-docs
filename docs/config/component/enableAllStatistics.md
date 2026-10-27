@@ -15,9 +15,13 @@ component.enableAllStatistics(stat_params_dict={}, apply_to_children=False)
 ```
 
 ## Parameters
-* **stat_params_dict** (type: dict) Python dictionary that specifies the statistic parameters. All statistics will get the same set of parameters.
-* **include_children** (type: bool) If set to True, will recursively enable all statistics on all currently instanced SubComponent descendants. SubComponents created after this call will not have their statistics enabled. 
+* **stat_params_dict** (type: dict) OPTIONAL. Python dictionary that specifies the statistic parameters. All statistics will get the same set of parameters.
+* **apply_to_children** (type: bool) OPTIONAL. If set to True, will recursively enable all statistics on all currently instanced SubComponent descendants. SubComponents created after this call will not have their statistics enabled. 
 * **returns** none
+
+:::note
+This function only accepts positional arguments. Calling it with keyword arguments (e.g., `apply_to_children=True`) raises a `TypeError`.
+:::
 
 ## Examples
 

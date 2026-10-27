@@ -10,7 +10,7 @@ This documentation assumes you have followed the [QuickStart](./QuickStart.md#ll
 
 :::
 
-Since no real GPU will be used during the simulation, a custom CUDA runtime library is used to intercept the CUDA API calls from CPU code and dispatch those to *balar* and GPGPU-Sim. You can find the source code for the custom CUDA runtime at `src/sst/elements/balar/tests/vanadis_llvm_rv64/cuda_runtime_api_vanadis.cc`
+Since no real GPU will be used during the simulation, a custom CUDA runtime library is used to intercept the CUDA API calls from CPU code and dispatch those to *balar* and GPGPU-Sim. You can find the source code for the custom CUDA runtime at `src/sst/elements/balar/tests/libcudart/cuda_runtime_api_vanadis.cc`.
 
 In the same folder, there is a Makefile handling compiling the custom runtime and a simple vector add program.
 

@@ -6,7 +6,7 @@ See the below table for information on deprecations in current and past SST-Core
 
 | Item                                    | Deprecated | Removed          | Suggested alternative | Note   |
 | ---                                     | ---           | ---           | ---                   | -----  |
-| `StatisticBase::statistic_type_name_`   | 15.1          | 17.0          | `StatisticBase::getStatisticTypeName()`| The StatisticBase class will no longer store type names. Statistic classes are required to implement `getStatisticTypeName()` instead. This change only affects custom statistic types. |
+| `StatisticBase::stat_type_name_`        | 15.1          | 17.0          | `StatisticBase::getStatTypeName()`| The StatisticBase class will no longer store type names. Statistic classes are required to override `getStatTypeName()` instead. This change only affects custom statistic types. |
 | `StatisticBase::setStatisticTypeName()` | 15.1          | 17.0          | None | StatisticTypeNames will be constant for a given Statistic type and no longer be modifiable on a per-statistic basis. |
 | `Event::Handler2<Class, Func>`          | 16.0          | 17.0          | `Event::Handler<Class, Func>` | The temporary type `Handler2` is renamed to 'Handler' in SST 16.0. |
 | `Clock::Handler2<Class, Func>`          | 16.0          | 17.0          | `Clock::Handler<Class, Func>` | The temporary type `Handler2` is renamed to 'Handler' in SST 16.0. |

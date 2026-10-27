@@ -34,7 +34,8 @@ const sidebars = {
       label: 'Tips and Tricks',
       link: { type: 'generated-index' },
       items: ['guides/tips/compilation'
-             ,'guides/tips/debugging']
+             ,'guides/tips/debugging'
+             ,'guides/tips/performance']
     },
     {
       type: 'category',
@@ -159,7 +160,7 @@ const sidebars = {
             , "core/component/time/getCurrentSimTimeNano"
             , "core/component/time/getElapsedSimTime"
             , "core/component/time/getEndSimCycle"
-            , "core/component/time/getEndTime"
+            , "core/component/time/getEndSimTime"
             , "core/component/time/getInitPhaseElapsedRealTime"
             , "core/component/time/getRunPhaseElapsedRealTime"
             , "core/component/time/getCompletePhaseElapsedRealTime"
@@ -744,7 +745,6 @@ const sidebars = {
         , "config/stats/enableStatisticForComponentType"
         , "config/stats/enableStatisticsForComponentType"
         , "config/stats/setStatisticLoadLevel"
-        , "config/stats/getStatisticLoadLevel"
         , "config/stats/setStatisticLoadLevelForComponentName"
         , "config/stats/setStatisticLoadLevelForComponentType"
         , "config/stats/setStatisticOutput"
@@ -856,6 +856,7 @@ const sidebars = {
       items: [
         "elements/memHierarchy/stdmem",
         "elements/memHierarchy/connecting",
+        "elements/memHierarchy/addressing",
         "elements/memHierarchy/cache"
       ]
     },
@@ -907,7 +908,10 @@ const sidebars = {
   ],
 
   /***** COMMUNITY *****/
-  community: []
+  community: [
+    'community/index'
+    , 'contribute/get-involved'
+  ]
 }
   module.exports = sidebars;
   /*

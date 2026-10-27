@@ -7,9 +7,9 @@ FILL_ELEMENT_SUMMARY
 
 :::note At a Glance
 
-**Source Code:** [sst-elements/.../ELEMDIR](https://github.com/sstsimulator/sst-elements/src/sst/elements/ELEMDIR) &nbsp;  
+**Source Code:** [sst-elements/.../ELEMDIR](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/ELEMDIR) &nbsp;  
 **SST Name:** `ELEMLOOKUPNAME`  &nbsp;  
-**Maturity Level** Early Development (1) &nbsp;  
+**Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Experimental &nbsp;  
 **Last Released:** Never
 

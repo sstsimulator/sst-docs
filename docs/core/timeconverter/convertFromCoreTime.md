@@ -3,7 +3,7 @@ title: convertFromCoreTime
 ---
 
 ```cpp
-SimTime_t convertFromCoreTime (SimTime_t time);
+SimTime_t convertFromCoreTime(SimTime_t time) const;
 ```
 
 This function converts a count from the global view of time to a count in the local view. This
@@ -30,7 +30,8 @@ void Cache::checkTimeout() {
         SimTime_t curTime = getCurrentSimTimeNano();
         // Convert the arrival time for the oldest active event to ns and compute how long it has been waiting in ns
         //highlight-next-line
-        SimTime_t startTime = getTimeConverter("1ns")->convertFromCoreTime(entry->getStartTime());
+        TimeConverter tc = getTimeConverter("1ns");
+        SimTime_t startTime = tc.convertFromCoreTime(entry->getStartTime());
         SimTime_t waitTime = curTime - startTime;
 
         // If the event has been stalled for more than timeout_ ns, end the simulation with an error
@@ -44,5 +45,5 @@ void Cache::checkTimeout() {
 
 ## Header
 ```cpp
-#include <sst/core/timeConverter.h
+#include <sst/core/timeConverter.h>
 ```

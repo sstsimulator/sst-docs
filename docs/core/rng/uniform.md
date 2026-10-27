@@ -12,7 +12,7 @@ UniformDistribution(const uint32_t probsCount, SST::RNG::Random* baseRNG);
 ```
 
 #### Parameters
-* **probsCount** (double) The number of possible outcomes in the distribution.
+* **probsCount** (uint32_t) The number of possible outcomes in the distribution.
 * **baseRNG** (SST::RNG::Random*) A random number generator for sampling the distribution
 
 
@@ -28,7 +28,7 @@ Return the next double in the distribution. This is a double converted from the 
 ## Example
 
 ```cpp
-SST::RNG::UniformDistribution* dist = new SST::RNG::UniformDistribution(5.0);
+SST::RNG::UniformDistribution* dist = new SST::RNG::UniformDistribution(5);
 
 double next;
 next = dist->getNextDouble();

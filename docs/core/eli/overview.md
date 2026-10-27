@@ -28,7 +28,7 @@ Replace `SST_ELI_REGISTER_SUBCOMPONENT_DERIVED` with `SST_ELI_REGISTER_SUBCOMPON
 
 
 ### Modules
-Modules must use the [`SST_ELI_REGISTER_MODULE`](register/sst_eli_register_module) macro to register with the SST Core. Like SubComponents, Modules should implement an API that has also been registered with the SST Core. The API must use the [`SST_ELI_REGISTER_MODULE_API`](register/sst_eli_register_module_api) or [`SST_ELI_REGISTER_MODULE_DERIVED_API`](register/sst_eli_register_module_derived_api) macro to register itself. Modules cannot have links, statistics, subcomponents, or parameters and so they may not use the documentation macros. 
+Modules must use the [`SST_ELI_REGISTER_MODULE`](register/sst_eli_register_module) macro to register with the SST Core. Like SubComponents, Modules should implement an API that has also been registered with the SST Core. The API must use the [`SST_ELI_REGISTER_MODULE_API`](register/sst_eli_register_module_api) or [`SST_ELI_REGISTER_MODULE_DERIVED_API`](register/sst_eli_register_module_derived_api) macro to register itself. Modules can have parameters, documented with [`SST_ELI_DOCUMENT_PARAMS`](document/sst_eli_document_params). Modules cannot have links, statistics, or subcomponents, so they may not use the other documentation macros.
 
 :::warning Deprecation
 Replace `SST_ELI_REGISTER_MODULE_DERIVED` with `SST_ELI_REGISTER_MODULE`. `SST_ELI_REGISTER_MODULE_DERIVED` was deprecated in SST 13 and removed in SST 14.

@@ -151,5 +151,5 @@ Write `value` to the specified index. This function can be used after calling in
 
 ## Header
 ```cpp
-#include <sst/core/shared/sharedArray.h
+#include <sst/core/shared/sharedArray.h>
 ```
