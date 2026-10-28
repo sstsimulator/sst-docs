@@ -112,7 +112,3 @@ CXX=$(shell sst-config --CXX)
 CXXFLAGS=$(shell sst-config --ELEMENT_CXXFLAGS)
 LDFLAGS=$(shell sst-config --ELEMENT_LDFLAGS)
 ```
-
-## See Also
-
-- [Basics: Makefile](guides/files/basics_makefile.md)

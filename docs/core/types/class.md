@@ -24,7 +24,7 @@ A unique identifier assigned to each component and subcomponent in the simulatio
 An identifier assigned to explicitly-enabled statistics in the simulation. Statistics enabled by enabling all statistics in the simulation, component, etc. may have an ID set to `STATALL_ID`. Uninitialized IDs are initialized to `UNSET_STATISTIC_ID`.
 
 ### LinkId_t
-`uint32_t`
+`uint64_t`
 
 A unique identifier assigned to each link in the simulation.
 

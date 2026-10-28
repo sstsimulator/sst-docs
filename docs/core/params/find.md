@@ -47,7 +47,7 @@ basicParams::basicParams(ComponentId_t id, Params& params) : Component(id)
     bool param0 = params.find<bool>("bool_param", false);
     uint32_t param1 = params.find<uint32_t>("uint32_param", 400);
     double param2 = params.find<double>("double_param", 12.5);
-    std:;string param3 = params.find>std::string>("string_param", "hello");
+    std::string param3 = params.find<std::string>("string_param", "hello");
     //highlight-end
 
     out->output("Found basic parameters: bool_param = %d, uint32_param = %" PRIu32 ", double_param = %f, string_param = %s\n",

@@ -16,7 +16,7 @@ sst.enableAllStatisticsForComponentName(name, stat_params_dict, apply_to_childre
 ```
 
 ## Parameters
-* **name** (type: string) name of the Component or SubComponent on which to enable all statistics. The name for SubComponents is described above. Slot indexes are optional in cases where only one SubComponent has been added to a slot, but you can also use [0] in all cases, even when the actual name will not display this way. If component with the provided name not found, the function will call fatal(). 
+* **name** (type: string) name of the Component or SubComponent on which to enable all statistics. The name for SubComponents is described above. Slot indexes are optional in cases where only one SubComponent has been added to a slot, but you can also use [0] in all cases, even when the actual name will not display this way. Make sure the name matches an existing Component or SubComponent; SST does not currently report a clear error for an unrecognized name. 
 * **stat_params_dict** (type: dict) OPTIONAL. Python dictionary that specified the statistic parameters. All statistics will get the same set of parameters 
 * **apply_to_children** (type: bool) OPTIONAL. If set to True, will recursively enable all statistics on all SubComponent descendants of named element. 
 * **returns** none

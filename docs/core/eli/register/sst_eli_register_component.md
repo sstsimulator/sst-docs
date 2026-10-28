@@ -59,5 +59,5 @@ public:
 
 ## Header
 ```cpp
-#include <src/sst/component.h>
+#include <sst/core/component.h>
 ```

@@ -18,7 +18,7 @@ Load an SST SubComponent anonymously, that is, not via the simulation configurat
 * **share_flags** (uint64_t) SST flags that indicate how statistics, ports, and other ELI properties should be shared between parent (Sub)Component and child SubComponent
 * **params** (Params) Set of parameters to pass to the SubComponent's constructor
 * **args** (ARGS) Additional SubComponent API-specific arguments for the SubComponent's constructor
-* **returns** (bool) A pointer to the newly-created SubComponent
+* **returns** (T*) A pointer to the newly-created SubComponent
 
 ## Example
 

@@ -12,7 +12,7 @@ Generators include:
     - `SST::RNG::MersenneRNG`
     - A Mersenne-based RNG. This provides better "randomness" compared to Marsaglia but is more computationally expensive.
 * **XOR-Shift**
-    - `SST::RNG::XORShift`
+    - `SST::RNG::XORShiftRNG`
     - A lightweight and computationally inexpensive RNG based on xor-shift operations. Implements the algorithm described [here](http://en.wikipedia.org/wiki/Xorshift).
 
 ## API
@@ -26,13 +26,13 @@ Return the next random number in the range[0,1).
 
 ### generateNextUInt32
 ```cpp
-virtual uint32_t generateNextUint32();
+virtual uint32_t generateNextUInt32();
 ```
 Generate the next random number as a 32-bit unsigned integer.
 
 ### generateNextUInt64
 ```cpp
-virtual uint64_t generateNextUint64();
+virtual uint64_t generateNextUInt64();
 ```
 Generate the next random number as a 64-bit unsigned integer.
 
@@ -51,5 +51,5 @@ Generate the next random number as a 64-bit signed integer.
 
 ## Header
 ```cpp
-#include <sst/core/rng.h>
+#include <sst/core/rng/rng.h>
 ```

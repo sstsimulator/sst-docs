@@ -28,5 +28,5 @@ example::example(ComponentId_t id, Params& params) : Component(id)
 
 ## Header
 ```cpp
-#include <sst/core/timeConverter.h
+#include <sst/core/timeConverter.h>
 ```

@@ -15,10 +15,9 @@ Load a User-defined SST SubComponent, that is, one that was defined in the simul
 
 ## Parameters
 * **slot_name** (string) Name of the slot to load into
-* **slot_num** (int) Index in the slot to load into
 * **share_flags** (uint64_t) SST flags that indicate how statistics, ports, and other ELI properties should be shared between parent (Sub)Component and child SubComponent. If not provided, no sharing will be enabled.
 * **args** (ARGS) Additional SubComponent API-specific arguments for the SubComponent's constructor
-* **returns** (bool) A pointer to the newly-created SubComponent
+* **returns** (T*) A pointer to the newly-created SubComponent
 
 ## Example
 

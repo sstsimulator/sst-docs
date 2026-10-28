@@ -26,5 +26,5 @@ void example::doSomethingWithTimeConverter(TimeConverter tc)
 
 ## Header
 ```cpp
-#include <sst/core/timeConverter.h
+#include <sst/core/timeConverter.h>
 ```

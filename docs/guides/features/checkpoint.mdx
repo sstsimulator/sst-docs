@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
               * The checkpoint directory will be placed in SST's output directory. By default, this is the current working directory. It can be modified using `--output-directory`.
             * Within the directory, there is a subdirectory for each checkpoint which is named `<checkpoint_name>`. The default `<checkpoint_name>` is `<prefix>_<id>_<simulated_time>` where `<id>` is an incrementing integer and `<simulated_time>` is the simulated time at checkpoint. `<checkpoint_name>` name can be modified using `--checkpoint-name-format`.
             * Within the checkpoint subdirectory are a number of files.
-                * Registry: A plaintext file named `<checkpoint_name>.sstcpt>`. This is the file to specify when restarting.
+                * Registry: A plaintext file named `<checkpoint_name>.sstcpt`. This is the file to specify when restarting.
                 * Globals: A binary file containing global checkpoint data named `<checkpoint_name>_globals.bin`
                 * Data files: One per thread/rank and named `<checkpoint_name>_<rank>_<thread>.bin`
     </TabItem>
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
               * The checkpoint directory will be placed in SST's output directory. By default, this is the current working directory. It can be modified using `--output-directory`.
             * Within the directory, there is a subdirectory for each checkpoint which is named `<checkpoint_name>`. The default `<checkpoint_name>` is `<prefix>_<id>_<simulated_time>` where `<id>` is an incrementing integer and `<simulated_time>` is the simulated time at checkpoint. `<checkpoint_name>` name can be modified using `--checkpoint-name-format`.
             * Within the checkpoint subdirectory are a number of files.
-                * Registry: A plaintext file named `<checkpoint_name>.sstcpt>`. This is the file to specify when restarting.
+                * Registry: A plaintext file named `<checkpoint_name>.sstcpt`. This is the file to specify when restarting.
                 * Globals: A binary file containing global checkpoint data named `<checkpoint_name>_globals.bin`
                 * Data files: One per thread/rank and named `<checkpoint_name>_<rank>_<thread>.bin`
         * **Restart**
@@ -93,7 +93,7 @@ import TabItem from '@theme/TabItem';
               * The checkpoint directory will be placed in SST's output directory. By default, this is the current working directory. It can be modified using `--output-directory`.
             * Within the directory, there is a subdirectory for each checkpoint which is named `<checkpoint_name>`. The default `<checkpoint_name>` is `<prefix>_<id>_<simulated_time>` where `<id>` is an incrementing integer and `<simulated_time>` is the simulated time at checkpoint. `<checkpoint_name>` name can be modified using `--checkpoint-name-format`.
             * Within the checkpoint subdirectory are a number of files.
-                * Registry: A plaintext file named `<checkpoint_name>.sstcpt>`. This is the file to specify when restarting.
+                * Registry: A plaintext file named `<checkpoint_name>.sstcpt`. This is the file to specify when restarting.
                 * Globals: A binary file containing global checkpoint data named `<checkpoint_name>_globals.bin`
                 * Data files: One per thread/rank and named `<checkpoint_name>_<rank>_<thread>.bin`
                 * Graph: A file capturing the simulation graph structure to allow restarting with a new partition named `<checkpoint name>_config_graph.bin`
@@ -122,7 +122,7 @@ import TabItem from '@theme/TabItem';
               * The checkpoint directory will be placed in SST's output directory. By default, this is the current working directory. It can be modified using `--output-directory`.
             * Within the directory, there is a subdirectory for each checkpoint which is named `<checkpoint_name>`. The default `<checkpoint_name>` is `<prefix>_<id>_<simulated_time>` where `<id>` is an incrementing integer and `<simulated_time>` is the simulated time at checkpoint. `<checkpoint_name>` name can be modified using `--checkpoint-name-format`.
             * Within the checkpoint subdirectory are a number of files.
-                * Registry: A plaintext file named `<checkpoint_name>.sstcpt>`. This is the file to specify when restarting.
+                * Registry: A plaintext file named `<checkpoint_name>.sstcpt`. This is the file to specify when restarting.
                 * Globals: A binary file containing global checkpoint data named `<checkpoint_name>_globals.bin`
                 * Data files: One per thread/rank and named `<checkpoint_name>_<rank>_<thread>.bin`
                 * Graph: A file capturing the simulation graph structure to allow restarting with a new partition named `<checkpoint name>_config_graph.bin`

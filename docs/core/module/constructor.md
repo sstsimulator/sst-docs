@@ -30,7 +30,7 @@ public:
 
     //highlight-next-line
     HashFunction(Params& params) : Module() {}
-    virtual ~Module() {}
+    virtual ~HashFunction() {}
 
     virtual uint64_t hash(uint64_t value) =0;
 };

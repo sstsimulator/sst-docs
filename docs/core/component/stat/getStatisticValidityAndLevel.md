@@ -3,7 +3,7 @@ title: getStatisticValidityAndLevel
 ---
 
 ```cpp
-uint8_t getStatisticValdityAndLevel(const std::string& statistic_name) const;
+uint8_t getStatisticValidityAndLevel(const std::string& statistic_name) const;
 ```
 *Availability:* Component, SubComponent, ComponentExtension
 

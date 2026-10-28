@@ -25,7 +25,7 @@ public:
 
     HashFunction(Params& params) : Module() {}
     //highlight-next-line
-    virtual ~Module() {}
+    virtual ~HashFunction() {}
 
     virtual uint64_t hash(uint64_t value) =0;
 };

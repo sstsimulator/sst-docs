@@ -91,12 +91,19 @@ sst-info [<element[.component|subcomponent]>]  [options]
 
 **options**:
 - **-h, --help** - Print help message.
-- **-v, --version** - Print SST Package Release Version.
-- **-l, --libs=LIBS** - \{all, \<element\>, \<element[.component|subcomponent]\>\} - Element Library9(s) to process.
+- **-V, --version** - Print SST Package Release Version.
+- **-v, --verbose[=level]** - Set the verbosity level. If no level is given, increments the verbosity level.
+- **-q, --quiet** - Quiet mode; print a summary only.
+- **-d, --debug** - Enable debugging messages.
 - **-n, --nodisplay** - Do not display output. Default is off.
+- **-i, --interactive** - (Experimental) Enable interactive command line mode.
 - **-x, --xml** - Generate XML data. Default is off.
 - **-o, --outputxml=FILE** - File path to XML file. Default is SSTInfo.xml.
-- **-d, --debug** - Enabled debugging messages.
+- **-l, --libs=LIBS** - \{all, \<element\>, \<element[.component|subcomponent]\>\} - Element Library(s) to process. Default is all.
+- **--lib-path=LIBPATH** - Component library path (overwrites the default path).
+- **--add-lib-path=LIBPATH** - Component library path (appends to the main path).
+- **--print-env** - Print the environment variables SST will see.
+- **--no-env-config** - Disable SST environment configuration.
 
 ## Examples
 

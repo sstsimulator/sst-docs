@@ -20,7 +20,6 @@ component.addGlobalParamSet(set_name)
 ## Example
 
 
-## Import
 ```python
 import sst
 

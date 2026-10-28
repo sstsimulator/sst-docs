@@ -12,7 +12,7 @@ Load an SST ComponentExtension. The extension will be loaded as if it were part 
 
 ## Parameters
 * **args** (ARGS) ComponentExtension-specific arguments for the extension's constructor
-* **returns** (bool) A pointer to the newly-created extension
+* **returns** (T*) A pointer to the newly-created extension
 
 ## Example
 

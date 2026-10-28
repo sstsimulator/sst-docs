@@ -13,12 +13,12 @@ Adds a statistic to the group. The specified statistic names must exist in all c
 
 ## Syntax
 ```python
-group.addStatistic(stat, stat_params_dict)
+group.addStatistic(stat, stat_params_dict=None)
 ```
 
 ## Parameters
 * **stat** (type: string) Name of statistic to add to the group 
-* **stat_params_dict** (type: dict) Python dictionary that specifies the statistic parameters 
+* **stat_params_dict** (type: dict) OPTIONAL. Python dictionary that specifies the statistic parameters 
 * **returns** none
 
 

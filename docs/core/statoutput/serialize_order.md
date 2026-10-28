@@ -33,5 +33,5 @@ void serialize_order(SST::Core::Serialization::serializer& ser) override
 
 ## Header
 ```cpp
-#include <sst/core/statapi/statoutput.h
+#include <sst/core/statapi/statoutput.h>
 ```

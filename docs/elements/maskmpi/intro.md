@@ -6,9 +6,9 @@ title: mask-mpi
 
 :::note At a Glance
 
-**Source Code:** [sst-elements/.../mask-mpi](https://github.com/sstsimulator/sst-elements/src/sst/elements/mask-mpi) &nbsp;  
+**Source Code:** [sst-elements/.../mask-mpi](https://github.com/sstsimulator/sst-elements/tree/master/src/sst/elements/mask-mpi) &nbsp;  
 **SST Name:** `mask-mpi`  &nbsp;  
-**Maturity Level** Mature (3) &nbsp;  
+**Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;  
 **Last Released:** 16.0
 
@@ -20,14 +20,3 @@ title: mask-mpi
 
 ### Optional dependencies
 *None*
-
-
-<!--- Optional content - list of elements provided in this library --->
-
-
-<!--- Uncomment these lines to add a "card index" to each of the pages in the section  --->
-<!---
-import DocCardList from '@theme/DocCardList';
-
-<DocCardList />
---->

@@ -4,7 +4,6 @@ title: getDefaultTimeBase
 
 ```cpp
 TimeConverter getDefaultTimeBase();
-const TimeConverter getDefaultTimeBase() const;
 ```
 
 ## Parameters

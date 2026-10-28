@@ -19,9 +19,10 @@ import sst
 from sst import *
 ```
 
-In addition to general functions, there are seven classes available in SST: 
+In addition to general functions, there are eight classes available in SST: 
 * [Component and SubComponent](./component/classes.md) (*Create and parameterize Components and SubComponents*)
 * [Link](./link/link.md) (*Create and connect Links*)
+* [PortModule](./portmodule/overview.md) (*Parameterize PortModules and enable their statistics*)
 * [Statistic](./stats/overview.md) (*Enable statistics, set options on statistic output, etc.*)
 * [StatisticObject](./stats/object/statisticObject.md) (*Parameterize a specific statistic*)
 * [StatisticOutput](./stats/output/statisticOutput.md) (*Parameterize the output format for statistics*)

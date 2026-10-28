@@ -6,6 +6,7 @@ sidebar_label: SubComponent Derived API
 
 ```cpp
 SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API(class_name, parent_class_name)
+SST_ELI_REGISTER_SUBCOMPONENT_DERIVED_API(class_name, parent_class_name, ...)
 ```
 
 If a subcomponent API inherits from another subcomponent API, the "derived" or child API should use this macro to register itself. SubComponents that implement the API registered in this call will inherit all ELI documented by this API as well as any the API inherits from.
@@ -17,6 +18,7 @@ This macro must reside in a `public` section of the SubComponent API's header fi
 ## Parameters
 * **class_name** (class) The fully qualified name of the calling class. This is not a string.
 * **parent_class_name** (class) The fully qualified name of the parent class. This API should also be registered with the SST Core.
+* **...** (types, optional) Additional constructor argument types, after the required `SST::ComponentId_t` and `SST::Params&`, that every SubComponent implementing this API must accept. Loaders pass the values as the trailing `args` of [`loadUserSubComponent`](../../component/load/loadUserSubComponent) or [`loadAnonymousSubComponent`](../../component/load/loadAnonymousSubComponent). For example, `SST_ELI_REGISTER_SUBCOMPONENT_API(SST::Merlin::Topology, int, int, int)` requires constructors of the form `(ComponentId_t id, Params& params, int, int, int)`. The derived API does not inherit the parent API's extra argument types; it declares its own list. A SubComponent is also registered under the parent API only if it is constructible with the parent's argument list as well.
 
 ## Example
 

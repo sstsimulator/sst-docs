@@ -16,7 +16,7 @@ Register a statistic with the statistics engine. The returned statistic handle c
 * **statistic_name** (string) Name of the statistic
 * **statistic_sub_id** (string) An optional identifier for the statistic if multiple copies of the same statistic will be tracked separately
 * **params** (Params) Parameters for the statistic if the statistic type requires it.
-* **returns** (bool) A handle to the statistic
+* **returns** (`Statistics::Statistic<T>*`) A handle to the statistic
 
 ## Example
 

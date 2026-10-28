@@ -9,7 +9,7 @@ std::string& getStatisticOutputName();
 Returns the name of the statistic output. StatisticOutput objects should give themselves a name in their constructor, using [`setStatisticOutputName()`](./setStatisticOutputName.md). The default name is `"StatisticOutput"`.
 
 ## Parameters
-* **returns** (bool) The name of this output object
+* **returns** (std::string&) The name of this output object
 
 ## Example
 

@@ -3,7 +3,7 @@ title: convertToCoreTime
 ---
 
 ```cpp
-SimTime_t convertToCoreTime (SimTime_t time);
+SimTime_t convertToCoreTime(SimTime_t time) const;
 ```
 
 This function converts from the local view of time to the count in the global view. For
@@ -28,5 +28,5 @@ void example::exampleClockHandler(Cycle_t cycle)
 
 ## Header
 ```cpp
-#include <sst/core/timeConverter.h
+#include <sst/core/timeConverter.h>
 ```

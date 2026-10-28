@@ -17,8 +17,8 @@ component.setSubComponent(slot_name, element_type, slot_index = 0)
 
 ## Parameters
 * **slot_name** (type: string) name of the slot in which the SubComponent should be loaded. 
-* **element_type** type of the SubComponent in the `lib.element` format (for example, `"merlin.linkcontrol"`) 
-* **slot_index** (type: string) slot index in which the SubComponent should be inserted. This defaults to 0 and is not required if only one SubComponent is being loaded into the specified slot. Each SubComponent must be loaded into a unique slot\_index and some (Sub)Components will require the indexes to be linear with no gaps. 
+* **element_type** (type: string) type of the SubComponent in the `lib.element` format (for example, `"merlin.linkcontrol"`) 
+* **slot_index** (type: int) slot index in which the SubComponent should be inserted. This defaults to 0 and is not required if only one SubComponent is being loaded into the specified slot. Each SubComponent must be loaded into a unique slot\_index and some (Sub)Components will require the indexes to be linear with no gaps. 
 * **returns** SubComponent object 
 
 

@@ -18,7 +18,7 @@ Add the same data to a statistic repeatedly (N times). This is often used to mor
 
 ```cpp
 // Add mshr->getSize() to the statistic 20 times
-stat_MSHROccupancy->addData(20, mshr->getSize()); 
+stat_MSHROccupancy->addDataNTimes(20, mshr->getSize()); 
 ```
 
 ## Header

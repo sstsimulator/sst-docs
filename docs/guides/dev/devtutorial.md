@@ -184,7 +184,7 @@ Sender::~Sender() { }
 ```
 
 ### Step 2: Create the Responder component
-Repeat Step 2 for the Responder component to create the files `responder.h` and `responder.cc`. Use the following substitutions in the header boilerplate:
+Repeat Step 1 for the Responder component to create the files `responder.h` and `responder.cc`. Use the following substitutions in the header boilerplate:
 * Replace "LIBRARYNAME" with "PINGPONG"
 * Replace "LibraryNamespace" and "LibraryName" with "PingPong"
 * Replace "CLASSNAME" with "RESPONDER"
@@ -575,7 +575,7 @@ The Sender needs to let SST know that it is responsible for detecting the end of
 
 ```cpp title="sender.cc" showLineNumbers
 Sender::Sender(SST::ComponentId_t id, SST::Params& UNUSED(params)) : SST::Component(id) { 
-    link = configureLink("send_port", new Event::Handler<Sender, &Sender::handle>(this));
+    link = configureLink("send_port", new SST::Event::Handler<Sender, &Sender::handle>(this));
     sst_assert( link != nullptr, CALL_INFO, -1, "Error: 'send_port' is not connected to a link\n");
 
     //highlight-start

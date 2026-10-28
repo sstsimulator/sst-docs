@@ -5,7 +5,6 @@ title: constructor
 ```cpp
 // StatisticOutput constructor
 StatisticOutputClassName(SST::Params& params);
-SST::PortModule();
 ```
 This constructor is called when a StatisticOutput is created by the simulation engine. Each rank in SST has its own instance of the StatisticOutput object; threads share an Output.
 

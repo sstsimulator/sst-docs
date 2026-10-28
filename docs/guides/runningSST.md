@@ -125,7 +125,7 @@ SST contains an example Element library (simpleElementExample) that is made up o
 $ sst myConfig.py 
 ```
 ```sh
-$ sst $SST_ELEMENTS_HOME/sst/elements/simpleElementExample/tests/example0.py
+$ sst $SST_ELEMENTS_HOME/src/sst/elements/simpleElementExample/tests/example0.py
 ```
 
 The configuration file specifies the simulation setup (refer to [Python Configuration](configuration/pythonConfigGuide)).

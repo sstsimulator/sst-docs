@@ -3,7 +3,7 @@ title: setStatisticOutputName
 ---
 
 ```cpp
-void getStatisticOutputName(const std::string& name);
+void setStatisticOutputName(const std::string& name);
 ```
 
 Set the name of the statistic output. StatisticOutput objects should use this function to give themselves a name in their constructor. The default name is `"StatisticOutput"`.
