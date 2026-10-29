@@ -10,7 +10,7 @@ title: iris
 **SST Name:** `iris`  &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;  
-**Last Released:** 16.0
+**Last Released:** SST 16.0
 
 :::
 

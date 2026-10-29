@@ -26,7 +26,7 @@ title: prospero
 Each line of a text trace represents a separate memory access. The format is `cycles type address length` where:
 * **cycles** Minimum cycle count at which the request can be issued
 * **type** `R` (read) or `W` (write). Not case-sensitive.
-* **address** Memory address
+* **address** Memory address, as a decimal integer
 * **length** Number of bytes to read or write
 
 ### Binary

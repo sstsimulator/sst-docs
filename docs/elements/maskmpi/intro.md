@@ -10,7 +10,7 @@ title: mask-mpi
 **SST Name:** `mask-mpi`  &nbsp;  
 **Maturity Level:** Mature (3) &nbsp;  
 **Development Path:** Active &nbsp;  
-**Last Released:** 16.0
+**Last Released:** SST 16.0
 
 :::
 
