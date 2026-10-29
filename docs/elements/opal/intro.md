@@ -10,7 +10,7 @@ The *opal* library provides memory allocation support for simulations of multi-n
 **SST Name:** `Opal` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** Never
+**Last Released:** SST 9.1
 
 :::
 
