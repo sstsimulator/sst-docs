@@ -26,9 +26,10 @@ MemHierarchy memories can optionally use any of the following simulators in plac
 * [Ramulator](https://github.com/CMU-SAFARI/ramulator/); configure with `--with-ramulator=/path/to/ramulator`; [Download](https://github.com/CMU-SAFARI/ramulator/archive/master.zip) *Deprecated as of SST 16.0; will be removed in SST 17.0. Use Ramulator2 instead.*
 * [Ramulator2](https://github.com/CMU-SAFARI/ramulator2/); configure with `--with-ramulator2=/path/to/ramulator2`; Ramulator2 does not have releases; SST tests against commit `011ccd7` **New in SST 15.0**
 
-The following dependencies are no longer supported as of SST 15.0:
+The following dependencies were removed in SST 16.1:
 * [DramSim2](https://github.com/dramninjaUMD/DRAMSim2); [Download](https://github.com/dramninjasUMD/DRAMSim2/archive/v2.2.2.tar.gz)
 * [DramSim3](https://github.com/umd-memsys/dramsim3); [Download](https://github.com/umd-memsys/dramsim3)
+* FDSim (FlashDIMMSim)
 * [HBMDramSim](https://github.com/tactcomplabs/HBM); [Download](https://github.com/tactcomplabs/HBM/releases/tag/sst-8.0.0-release)
 * [NVDIMMSim](https://github.com/jimstevens2001/NVDIMMSim/); [Download](https://github.com/jimstevens2001/NVDIMMSIM/archive/v2.0.0.tar.gz)
 * [HybridSim](https://github.com/jimstevens2001/HybridSim); [Download](https://github.com/jimstevens2001/HybridSim/archive/v2.0.1.tar.gz)
