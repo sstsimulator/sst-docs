@@ -28,11 +28,11 @@ SST has two major dependencies: Python and OpenMPI. OpenMPI is optional but high
 
 
 ## Building SST
-* [Detailed build instructions including required dependencies](https://sst-simulator.org/SSTPages/SSTBuildAndInstall_16dot0dot0_SeriesDetailedBuildInstructions/)
+* [Detailed build instructions including required dependencies](https://sst-simulator.org/SSTPages/SSTBuildAndInstall_16dot1dot0_SeriesDetailedBuildInstructions/)
 * [Instructions for older releases](https://sst-simulator.org/SSTPages/SSTBuildAndInstall_older_release_documentation/)
 * [Supported platforms and tested versions of dependencies](https://sst-simulator.org/SSTPages/SSTElementReleaseMatrix/)
 
-If you have dependencies installed already, select your SST source below for quick-start instructions. For sst-macro, [see the macro user manual.](https://github.com/sstsimulator/sst-macro/blob/v16.0.0_beta/docs/manual/manual.md)
+If you have dependencies installed already, select your SST source below for quick-start instructions. For sst-macro, [see the macro user manual.](https://github.com/sstsimulator/sst-macro/blob/v16.1.0_beta/docs/manual/manual.md)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

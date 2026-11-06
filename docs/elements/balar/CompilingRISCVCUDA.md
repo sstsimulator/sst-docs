@@ -12,68 +12,71 @@ This documentation assumes you have followed the [QuickStart](./QuickStart.md#ll
 
 Since no real GPU will be used during the simulation, a custom CUDA runtime library is used to intercept the CUDA API calls from CPU code and dispatch those to *balar* and GPGPU-Sim. You can find the source code for the custom CUDA runtime at `src/sst/elements/balar/tests/libcudart/cuda_runtime_api_vanadis.cc`.
 
-In the same folder, there is a Makefile handling compiling the custom runtime and a simple vector add program.
+Building a CUDA program for *vanadis* takes two steps, each with its own Makefile:
 
-```Makefile title="Makefile"
+1. Build the custom CUDA runtime (`libcudart_vanadis.a`) in `balar/tests/libcudart/`.
+2. Build the CUDA program and link it against that runtime. The example programs in `balar/tests/vanadis_llvm_rv64/` (`helloworld`, `vecadd`, `simpleStreams`) show how.
+
+```bash
+cd SST_ELEMENTS_SRC/src/sst/elements/balar/tests/libcudart
+make
+cd ../vanadis_llvm_rv64
+make
+```
+
+### Custom CUDA runtime
+
+The `libcudart/Makefile` compiles the runtime with the RISCV GNU toolchain into both a static and a shared library. The CUDA version is embedded in the library so that GPGPU-Sim can find it.
+
+```Makefile title="balar/tests/libcudart/Makefile (excerpt)"
 # Custom Vanadis CUDA lib
 CUSTOM_CUDA_LIB_SRC := cuda_runtime_api_vanadis.cc
 CUSTOM_CUDA_LIB := cudart_vanadis
 
-# Clang prefix
-CLANG_PREFIX := $(LLVM_INSTALL_PATH)/bin/
-
 # RISCV Toolchain path
 # Need to set RISCV_TOOLCHAIN_INSTALL_PATH env variable
 RISCV_PREFIX := $(RISCV_TOOLCHAIN_INSTALL_PATH)/bin/riscv64-unknown-linux-gnu-
-RISCV_SYSROOT := $(RISCV_TOOLCHAIN_INSTALL_PATH)/sysroot/
-RISCV_CXX := $(wildcard $(RISCV_TOOLCHAIN_INSTALL_PATH)/riscv64-unknown-linux-gnu/include/c++/*/)
 
-# Clang flags
-C_FLAGS_RISCV_LINUX := --target=riscv64-unknown-linux-gnu -march=rv64gc -static-libgcc --gcc-toolchain=$(RISCV_TOOLCHAIN_INSTALL_PATH) --sysroot=$(RISCV_SYSROOT) 
-CXX_FLAGS_RISCV_LINUX := -static-libgcc -static-libstdc++ -static --gcc-toolchain=$(RISCV_TOOLCHAIN_INSTALL_PATH) --sysroot=$(RISCV_SYSROOT) -nostdlibinc -stdlib++-isystem$(RISCV_CXX)/ -stdlib++-isystem$(RISCV_SYSROOT)/usr/include -stdlib++-isystem$(RISCV_CXX)/riscv64-unknown-linux-gnu --target=riscv64-unknown-linux-gnu  -march=rv64gc
-CXX_FLAGS_RISCV_LINUX_CLANG_ONLY := --gcc-toolchain=$(RISCV_TOOLCHAIN_INSTALL_PATH) --sysroot=$(RISCV_SYSROOT) -I$(RISCV_SYSROOT)/usr/include --target=riscv64 -march=rv64gc
-CXX_FLAGS_CUDA := --cuda-gpu-arch=$(GPU_ARCH) --cuda-path=$(CUDA_INSTALL_PATH) -L$(CUDA_INSTALL_PATH)/lib64 -lcudart -ldl -lrt -pthread
-CXX_FLAGS_RISCV_CUDA := -static --cuda-gpu-arch=$(GPU_ARCH) --cuda-path=$(CUDA_INSTALL_PATH) -L. -Wl,-static -l$(CUSTOM_CUDA_LIB) -L$(CUDA_INSTALL_PATH)/lib64 -Wl,-static -ldl -lrt -pthread
-CXX_FLAGS_CUDA_WRAPPER := -include __clang_cuda_runtime_wrapper.h
+all: vanadis_cuda
 
-all: helloworld vecadd
-
-test_llvm_env:
-ifeq ($(LLVM_INSTALL_PATH),)
-	$(error env LLVM_INSTALL_PATH is not set)
-endif
-
-test_vanadis_envs:
-ifeq ($(RISCV_TOOLCHAIN_INSTALL_PATH),)
-	$(error env RISCV_TOOLCHAIN_INSTALL_PATH is not set)
-endif
-ifeq ($(GPU_ARCH),)
-	$(error env GPU_ARCH is not set)
-endif
-
-# Sample helloworld program, pure CPU code
-# test if clang is working properly
-helloworld: helloworld.c test_llvm_env
-	$(CLANG_PREFIX)clang -static -mno-relax $(C_FLAGS_RISCV_LINUX) $< -o $@
-
-# Custom CUDA runtime target
-# Have to embed the CUDA version information for GPGPU-Sim
 vanadis_cuda: $(CUSTOM_CUDA_LIB_SRC) test_vanadis_envs
 	$(RISCV_PREFIX)gcc -c -static -I$(CUDA_INSTALL_PATH)/include -I. -DBALAR_CUDA_VERSION=\"libcudart_vanadis.a.$(shell echo $$CUDA_VERSION_NUMBER | cut -c 1-2)\" -fpic $<
 	$(RISCV_PREFIX)gcc -shared -o lib$(CUSTOM_CUDA_LIB).so $(CUSTOM_CUDA_LIB_SRC:.cc=.o)
 	$(RISCV_PREFIX)ar rcs lib$(CUSTOM_CUDA_LIB).a $(CUSTOM_CUDA_LIB_SRC:.cc=.o)
+```
+
+### CUDA program
+
+The `vanadis_llvm_rv64/Makefile` compiles CUDA sources with Clang, targeting RISCV for the host code. It links statically against the custom runtime, which it finds through `CUSTOM_CUDA_LIB_PATH`.
+
+```Makefile title="balar/tests/vanadis_llvm_rv64/Makefile (excerpt)"
+# Custom Vanadis CUDA lib
+CUSTOM_CUDA_LIB_PATH := ../libcudart
+CUSTOM_CUDA_LIB := cudart_vanadis
+
+# Clang path
+CLANG_PREFIX := $(LLVM_INSTALL_PATH)/bin/
+
+# RISCV Toolchain path
+# Need to set RISCV_TOOLCHAIN_INSTALL_PATH env variable
+RISCV_SYSROOT := $(RISCV_TOOLCHAIN_INSTALL_PATH)/sysroot/
+RISCV_CXX := $(wildcard $(RISCV_TOOLCHAIN_INSTALL_PATH)/riscv64-unknown-linux-gnu/include/c++/*/)
+
+# Clang flags
+CXX_FLAGS_RISCV_LINUX := -static-libgcc -static-libstdc++ -static --gcc-toolchain=$(RISCV_TOOLCHAIN_INSTALL_PATH) --sysroot=$(RISCV_SYSROOT) -nostdlibinc -stdlib++-isystem$(RISCV_CXX)/ -stdlib++-isystem$(RISCV_SYSROOT)/usr/include -stdlib++-isystem$(RISCV_CXX)/riscv64-unknown-linux-gnu --target=riscv64-unknown-linux-gnu  -march=rv64gc
+CXX_FLAGS_RISCV_CUDA := -static --cuda-gpu-arch=$(GPU_ARCH) --cuda-path=$(CUDA_INSTALL_PATH) -L${CUSTOM_CUDA_LIB_PATH} -Wl,-static -l$(CUSTOM_CUDA_LIB) -L$(CUDA_INSTALL_PATH)/lib64 -Wl,-static -ldl -lrt -pthread
+CXX_FLAGS_CUDA_WRAPPER := -include __clang_cuda_runtime_wrapper.h
 
 # RISCV + CUDA binary
-vecadd: vecadd.cu test_vanadis_envs test_llvm_env vanadis_cuda
+vecadd: vecadd.cu test_vanadis_envs test_llvm_env
 	$(CLANG_PREFIX)clang++ $< -o $@ $(CXX_FLAGS_RISCV_CUDA) $(CXX_FLAGS_CUDA_WRAPPER) $(CXX_FLAGS_RISCV_LINUX)
-
-# x86 + CUDA binary
-vecadd_normal: vecadd.cu
-	$(CLANG_PREFIX)clang++ $< -o $@ $(CXX_FLAGS_CUDA_WRAPPER) $(CXX_FLAGS_CUDA) 
-
-clean:
-	rm -f lib$(CUSTOM_CUDA_LIB).so lib$(CUSTOM_CUDA_LIB).a $(CUSTOM_CUDA_LIB_SRC:.cc=.o) vecadd helloworld
 ```
+
+:::note
+
+`vecadd` doesn't depend on the runtime target, so build `libcudart` first, or the link fails with a missing `-lcudart_vanadis`.
+
+:::
 
 For more complicated CUDA program, you can refer to the flags and CC setup in [gpu-app-collection's Makefile](https://github.com/accel-sim/gpu-app-collection/blob/7db54738af0aed3760f496f6c968ee5a40c0ee46/src/cuda/common/common.mk#L77-L106).
 

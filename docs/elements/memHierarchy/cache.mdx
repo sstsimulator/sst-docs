@@ -25,6 +25,52 @@ MemHierarchy caches previously had several ports as well as a `cpulink` and `mem
 
 ![Cache subcomponent slots](./assets/cache_subcomps.png)
 
+## Parameters
+These are the parameters for the `memHierarchy.Cache` component itself. Parameters for the subcomponents described below (replacement policies, hash functions, prefetchers, etc.) are passed to the cache as well. Run `sst-info memHierarchy.Cache` for the full list, including those subcomponents' parameters.
+
+### Required
+`L1` has a default, but must be set to `true` for L1 caches.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cache_frequency` | string |  | Clock frequency or period with units (Hz or s; SI units OK). For L1s, this is usually the same as the CPU's frequency. |
+| `cache_size` | string |  | Cache size with units. E.g., 4KiB or 1MiB |
+| `associativity` | int |  | Associativity of the cache. In set associative mode, this is the number of ways. |
+| `access_latency_cycles` | int |  | Latency (in cycles) to access the cache data array. This latency is paid by cache hits and coherence requests that need to return data. |
+| `L1` | bool | `false` | Specifies whether cache is an L1. Options: 0[not L1], 1[L1] |
+
+### Optional
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `debug_addr` | comma separated uint |  | Address(es) to be debugged. Leave empty for all, otherwise specify one or more, comma-separated values. Start and end string with brackets |
+| `cache_line_size` | uint | `64` | Size of a cache line (aka cache block) in bytes. |
+| `coherence_protocol` | string | `MESI` | Coherence protocol. Options: MESI, MSI, NONE |
+| `cache_type` | string | `inclusive` | Cache type. Options: inclusive cache ('inclusive', required for L1s), non-inclusive cache ('noninclusive') or non-inclusive cache with a directory ('noninclusive_with_directory', required for non-inclusive caches with multiple upper level caches directly above them) |
+| `max_requests_per_cycle` | int | `-1` | Maximum number of requests to accept per cycle. 0 or negative is unlimited. |
+| `request_link_width` | string | `0B` | Limits number of request bytes sent per cycle. Use 'B' units. '0B' is unlimited. |
+| `response_link_width` | string | `0B` | Limits number of response bytes sent per cycle. Use 'B' units. '0B' is unlimited. |
+| `noninclusive_directory_entries` | uint | `0` | Number of entries in the directory. Must be at least 1 if the non-inclusive directory exists. |
+| `noninclusive_directory_associativity` | uint | `1` | For a set-associative directory, number of ways. |
+| `mshr_num_entries` | int | `-1` | Number of MSHR entries. Not valid for L1s because L1 MSHRs assumed to be sized for the CPU's load/store queue. Setting this to -1 will create a very large MSHR. |
+| `tag_access_latency_cycles` | uint | Same as `access_latency_cycles` | Latency (in cycles) to access tag portion only of cache. Paid by misses and coherence requests that don't need data. |
+| `mshr_latency_cycles` | uint | See description | Latency (in cycles) to process responses in the cache and replay requests. Paid on the return/response path for misses instead of `access_latency_cycles`. If not set (or set to 0), L1s use 1 cycle and other caches estimate it from `access_latency_cycles`; in that case, `access_latency_cycles` must be 200 or less. |
+| `prefetch_delay_cycles` | uint | `1` | Delay prefetches from prefetcher by this number of cycles. |
+| `max_outstanding_prefetch` | uint | Half of `mshr_num_entries` | Maximum number of prefetch misses that can be outstanding, additional prefetches will be dropped/NACKed. |
+| `drop_prefetch_mshr_level` | uint | `mshr_num_entries` - 2 | Drop/NACK prefetches if the number of in-use mshrs is greater than or equal to this number. |
+| `num_cache_slices` | uint | `1` | For a distributed, shared cache, total number of cache slices |
+| `slice_id` | uint | `0` | For distributed, shared caches, unique ID for this cache slice |
+| `slice_allocation_policy` | string | `rr` | Policy for allocating addresses among distributed shared cache. Options: rr[round-robin] |
+| `maxRequestDelay` | uint | `0` | Set an error timeout if memory requests take longer than this in ns (0: disable) |
+| `snoop_l1_invalidations` | bool | `false` | Forward invalidations from L1s to processors. Options: 0[off], 1[on] |
+| `llsc_block_cycles` | uint64_t | `0` | Number of cycles to prevent competing access to an LL/LR line. Encourages forward progress |
+| `debug` | uint | `0` | Where to send output. Options: 0[no output], 1[stdout], 2[stderr], 3[file] |
+| `debug_level` | uint | `0` | Debugging level: 0 to 10. Must configure sst-core with '--enable-debug'. 1=info, 2-10=debug output |
+| `verbose` | uint | `1` | Output verbosity for warnings/errors. 0[fatal error only], 1[warnings], 2[full state dump on fatal error] |
+| `force_noncacheable_reqs` | bool | `false` | Used for verification purposes. All requests are considered to be 'noncacheable'. Options: 0[off], 1[on] |
+| `min_packet_size` | string | `8B` | Number of bytes in a request/response not including payload (e.g., addr + cmd). Specify in B. |
+| `banks` | uint | `0` | Number of cache banks: One access per bank per cycle. Use '0' to simulate no bank limits (only limits on bandwidth then are max_requests_per_cycle and `*_link_width`) |
+| `node` | uint | `0` | Node number in multinode environment |
+
 ## coherence
 This subcomponent handles incoming events and sends outgoing ones according to the configured coherence protocol (or lack thereof). The cache component decides which coherence subcomponent to load depending on the parameters `L1`, `coherence_protocol`, and `cache_type`. Users should not explicitly load a subcomponent into this slot in the SST input file. The table below shows different combinations of parameters and which subcomponent gets loaded. Any combination of parameters not listed (for example, `L1=true`, `coherence_protocol="mesi"` and `cache_type="noninclusive"`) is an invalid combination.
 

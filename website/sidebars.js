@@ -61,7 +61,7 @@ const sidebars = {
       type: 'category',
       label: 'Clocks',
       link: { type: 'doc', id: 'core/clock/class'  },
-      items: ["core/clock/clock_handler"]
+      items: ["core/clock/clock_handler", "core/clock/activate", "core/clock/deactivate", "core/clock/isActive"]
     },
     {
       type: 'category',
@@ -145,6 +145,7 @@ const sidebars = {
           link: { type: 'generated-index' },
           items: [
             "core/component/time/registerClock"
+            , "core/component/time/registerOrderedClock"
             , "core/component/time/unregisterClock"
             , "core/component/time/reregisterClock"
             , "core/component/time/getNextClockCycle"
@@ -398,12 +399,14 @@ const sidebars = {
         , "core/link/recv"
         , "core/link/setFunctor"
         , "core/link/replaceFunctor"
+        , "core/link/getFunctor"
         , "core/link/addSendLatency"
         , "core/link/addRecvLatency"
         , "core/link/getDefaultTimeBase"
         , "core/link/setDefaultTimeBase"
         , "core/link/sendUntimedData"
         , "core/link/recvUntimedData"
+        , "core/link/isConfigured"
         , "core/link/getId"
       ]
     },
@@ -525,11 +528,13 @@ const sidebars = {
             , "core/realtime/destructor"
             , "core/realtime/begin"
             , "core/realtime/canInitiateCheckpoint"
+            , "core/realtime/canInitiateInteractive"
             , "core/realtime/execute"
             , "core/realtime/getCoreTimeBase"
             , "core/realtime/getCurrentSimCycle"
             , "core/realtime/getElapsedSimTime"
             , "core/realtime/getEndSimCycle"
+            , "core/realtime/getEndSimTime"
             , "core/realtime/getMemPoolUsage"
             , "core/realtime/getNumRanks"
             , "core/realtime/getRank"
@@ -537,6 +542,7 @@ const sidebars = {
             , "core/realtime/getSyncQueueDataSize"
             , "core/realtime/getTimeVortexMaxDepth"
             , "core/realtime/initiateInteractive"
+            , "core/realtime/isValidSigalrmAction"
             , "core/realtime/simulationCheckpoint"
             , "core/realtime/simulationPrintStatus"
             , "core/realtime/simulationSignalShutdown"
@@ -699,6 +705,7 @@ const sidebars = {
         , "config/component/setStatistic"
         , "config/component/setStatisticLoadLevel"
         , "config/component/enableAllStatistics"
+        , "config/component/enableStatistic"
         , "config/component/enableStatistics"
         , "config/component/setCoordinates"
         , "config/component/setRank"
@@ -713,6 +720,8 @@ const sidebars = {
       },
       items: [
         "config/link/connect"
+        , "config/link/connectNonLocal"
+        , "config/link/setNonLocal"
         , "config/link/setNoCut"
       ]
     },
@@ -860,7 +869,15 @@ const sidebars = {
         "elements/memHierarchy/cache"
       ]
     },
-    "elements/mercury/intro",
+    /* Mercury */
+    {
+      type: 'category',
+      label: 'mercury',
+      link: {type: 'doc', id: 'elements/mercury/intro'},
+      items: [
+        "elements/mercury/hgcc"
+      ]
+    },
     "elements/merlin/intro",
     "elements/messier/intro",
     "elements/miranda/intro",

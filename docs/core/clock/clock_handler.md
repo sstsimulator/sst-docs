@@ -47,6 +47,10 @@ SST::Handler* handler = new Clock::Handler2<class, &class::func, dataT>(this, da
 
 :::
 
+:::warning
+Register each handler with only one clock. If a component uses several clocks, give each clock its own handler. Several handlers can point to the same function. Starting in SST 16.1, registering a handler with a second clock prints a warning, and in SST 17.0 it becomes a fatal error. See [Deprecation history](../deprecations.md).
+:::
+
 ## Example
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicClocks.h --->
 <!--- SOURCE_CODE: sst-elements/src/sst/elements/simpleElementExample/basicClocks.cc --->

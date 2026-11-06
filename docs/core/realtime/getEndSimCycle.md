@@ -14,7 +14,7 @@ Returns the time that simulation ended. The time will be incorrect unless simula
 
 ## Example
 ```cpp
-SimTime_t time = getEndSymCycle();
+SimTime_t time = getEndSimCycle();
 ```
 
 ## Header

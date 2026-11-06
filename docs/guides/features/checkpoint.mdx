@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
           * Serial simulations can only be restarted in serial.
           * The `--load-checkpoint` flag is no longer required for SST to correctly detect a restart.
     </TabItem>
-    <TabItem value="16.0" label="16.0 Release" default>
+    <TabItem value="16.x" label="16.x Releases" default>
         * **Parallel support:** All simulations, parallel and serial, can be checkpointed. Checkpointed simulations can be restarted with different parallelism than they were checkpointed with.
         * **Serializable types**
             * API available: Component, SubComponent, ComponentExtension, Module, PortModule
@@ -135,7 +135,7 @@ import TabItem from '@theme/TabItem';
 
 
 ## Creating a checkpoint
-The following instructions are valid for SST 16.0 and the repository.
+The following instructions are valid for SST 16.x and the repository.
 
 There are three options for triggering checkpoints: (1) on a simulation time interval, (2) on a wall (real) time interval, and (3) by sending SST a signal. A prefix to use for checkpoint directories and file names can also be given (default is "checkpoint").
 

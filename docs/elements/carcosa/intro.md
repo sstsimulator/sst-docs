@@ -10,7 +10,7 @@ The *carcosa* element is designed to model complex, safety-critical compute syst
 **SST Name:** `carcosa` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;   
-**Last Released:** SST 16.0
+**Last Released:** SST 16.1
 
 :::
 
@@ -19,3 +19,18 @@ The *carcosa* element is designed to model complex, safety-critical compute syst
 
 ### Optional dependencies
 *None* 
+
+## Elements
+Use `sst-info carcosa` or `sst-info carcosa.<element>` to see each element's parameters, ports, and statistics.
+
+| Library | Element | Type | Description |
+|---------|---------|------|-------------|
+| `carcosa` | `Hali` | Component | Interface layer that routes data among sensors, CPUs, and the memory controller and coordinates fault injection; Halis connect to each other in a ring (`left`/`right` ports) |
+| `carcosa` | `SensorComponent` | Component | Sensor that sends a set number of events to its `Hali` (`ifl` port), as in a vehicle simulation |
+| `carcosa` | `CarcosaCPU` | Component | Simple test CPU that issues random reads and writes through a `StandardMem` interface and connects to a `Hali` |
+| `carcosa` | `FaultInjCPU` | Component | Test CPU like `CarcosaCPU` that also receives fault-injection events from its `Hali` |
+| `carcosa` | `CarcosaMemCtrl` | Component | memHierarchy-style memory controller that also connects to Halis (`haliLinks_<N>` ports) so faults can be injected into memory |
+| `carcosa` | `FaultInjManager` | SubComponent | Manages fault injection for a `Hali`; loaded automatically by each `Hali` |
+| `carcosa` | `PingPongAgent` | SubComponent | Interception agent for a `Hali`'s `interceptionAgent` slot; exchanges command and status values with a Vanadis guest program through memory-mapped registers |
+
+See `carcosa/tests` for complete configurations, e.g. `testhaliBacking.py` (a ring of Halis with CPUs and caches), the `testStuckAt*`, `testRandomFlip`, `testRandomDrop`, and `testCorruptMem*` fault-injection tests, and `testcarcosaPingPong.py` (Vanadis with a `PingPongAgent`).

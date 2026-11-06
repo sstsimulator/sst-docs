@@ -6,8 +6,9 @@ See the below table for information on deprecations in current and past SST-Core
 
 | Item                                    | Deprecated | Removed          | Suggested alternative | Note   |
 | ---                                     | ---           | ---           | ---                   | -----  |
+| Registering one `Clock::Handler` with more than one clock | 16.1 | 17.0 | Create a separate handler for each clock. Several handlers can call the same function. | SST 16.1 prints a warning and moves the handler to the new clock. In SST 17.0 this becomes a fatal error. |
 | `StatisticBase::stat_type_name_`        | 15.1          | 17.0          | `StatisticBase::getStatTypeName()`| The StatisticBase class will no longer store type names. Statistic classes are required to override `getStatTypeName()` instead. This change only affects custom statistic types. |
-| `StatisticBase::setStatisticTypeName()` | 15.1          | 17.0          | None | StatisticTypeNames will be constant for a given Statistic type and no longer be modifiable on a per-statistic basis. |
+| `StatisticBase::setStatisticTypeName()` | 15.1          | 17.0          | None | StatisticTypeNames will be constant for a given Statistic type and no longer be modifiable on a per-statistic basis. As of SST 16.1, calling it causes a compiler deprecation warning. |
 | `Event::Handler2<Class, Func>`          | 16.0          | 17.0          | `Event::Handler<Class, Func>` | The temporary type `Handler2` is renamed to 'Handler' in SST 16.0. |
 | `Clock::Handler2<Class, Func>`          | 16.0          | 17.0          | `Clock::Handler<Class, Func>` | The temporary type `Handler2` is renamed to 'Handler' in SST 16.0. |
 | All BaseComponent functions that return a TimeConverter* | 15.0 | 16.0 | In SST 16.0, these functions return a TimeConverter (no pointer). Construct a local TimeConverter from the returned TimeConverter* to avoid code breaks. | Applies to `getDefaultTimeBase`, `getTimeConverter`, `registerClock`, `registerTimeBase`, `reregisterClock`, `unregisterClock` |

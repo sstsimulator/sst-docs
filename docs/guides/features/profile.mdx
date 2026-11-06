@@ -24,10 +24,12 @@ In addition to simulation-level profiling, SST can also collect information abou
 The API for ProfileTools is not yet finalized and may change between releases. Additional ProfilePoints may be added and the syntax for enabling tools may change. See `$ sst --help=enable-profiling` for the most up-to-date usage and information.
 :::
 
-SST provides three profiling points:
+SST provides three built-in profiling points:
 * **clock** profiles calls to clock handlers
 * **event** profiles calls to event handlers
 * **sync** profiles calls to SST's SyncManager (only valid for parallel simulations)
+
+Components and SubComponents can also define their own profiling points around code segments of interest. See [Component-defined profiling points](#component-defined-profiling-points) below.
 
 ### Enabling ProfileTools
 You can connect one of the built-in profiling tools to these points, or you can connect a custom profile tool if you have one in your own element library. Multiple tools can be connected to a single point. 
@@ -38,7 +40,7 @@ The format for enabling ProfileTools is a semicolon separated list where each it
 * **name** name of tool to be shown in output
 * **type** type of profiling tool in ELI format (`lib.type`)
 * **params** optional parameters to pass to profiling tool, format is `key=value,key=value...`
-* **point** profiling point to load the tool into (i.e. clock, event, or sync)
+* **point** profiling point to load the tool into (i.e., clock, event, sync, or a component-defined point in the form `lib.type.point`)
 
 ```title="Example options for enabling ProfileTools"
   --enable-profiling="events:sst.profile.handler.event.time.high_resolution(level=component)[event]"
@@ -87,3 +89,68 @@ Three tools are available. They do not take any parameters.
 * **profile.sync.count** Counts the number of times the SyncManager is called
 * **profile.sync.time.high_resolution** Times calls to the SyncManager using the high resolution clock
 * **profile.sync.time.steady** Times calls to the SyncManager using the steady clock (note that for many systems, the high resolution and steady clocks are the same)
+
+#### Component-defined points
+Three tools are available for profiling points defined by Components and SubComponents. They accept the parameters listed below.
+* **profile.component.codesegment.count** Counts the number of times the code segment was entered
+* **profile.component.codesegment.time.high_resolution** Times the code segment using the high resolution clock
+* **profile.component.codesegment.time.steady** Times the code segment using the steady clock (note that for many systems, the high resolution and steady clocks are the same)
+
+**Parameters**
+* **level** Level at which to track the profile data (default: `type`).
+  Level can be one of the following:
+  * `global` all data will be tracked globally in a single value
+  * `type` data will be tracked by Component/SubComponent type.  All elements of the same type (lib.element) will be tracked in a single value
+  * `component` data will be tracked as one value for an instance of a Component and all of its SubComponents
+  * `subcomponent` data will be tracked independently for each instance of a Component or SubComponent
+* **track_points** Controls whether each profiling point is tracked separately (default: `true`). If `false`, data from different points at the same level is combined.
+
+## Component-defined profiling points
+Element developers can add profiling points to their own Components and SubComponents to measure specific sections of code, such as an expensive function or one branch of an event handler. Users can then attach one of the `profile.component.codesegment` tools to the point at runtime. When no tool is attached, the point costs only a null-pointer check.
+
+Adding a profiling point takes three steps:
+
+1. Document the point in the element's ELI with [`SST_ELI_DOCUMENT_PROFILE_POINTS`](../../core/eli/document/sst_eli_document_profile_points.md). The API must be `SST::Profile::ComponentCodeSegmentProfileTool`. SST uses this list to check the point names given on the command line, and `sst-info` displays it.
+2. In the constructor, register the point with [`registerProfilePoint()`](../../core/component/load/registerProfilePoint.md). It returns `nullptr` if no tool is attached to the point.
+3. Wrap the code to measure with `codeSegmentStart()` and `codeSegmentEnd()` on the returned point.
+
+```cpp title="Adding a profiling point to a component"
+#include <sst/core/component.h>
+#include <sst/core/profile/componentProfileTool.h>
+
+class example : public SST::Component
+{
+public:
+    /* Other ELI omitted */
+    SST_ELI_DOCUMENT_PROFILE_POINTS(
+        { "compute", "Time spent computing results", "SST::Profile::ComponentCodeSegmentProfileTool" }
+    )
+
+    example(SST::ComponentId_t id, SST::Params& params) : Component(id)
+    {
+        /* Other configuration here */
+        //highlight-next-line
+        compute_point = registerProfilePoint<SST::Profile::ComponentCodeSegmentProfileTool>("compute");
+    }
+
+    bool clockTic(SST::Cycle_t cycle)
+    {
+        //highlight-next-line
+        if ( compute_point ) compute_point->codeSegmentStart();
+        computeResults();
+        //highlight-next-line
+        if ( compute_point ) compute_point->codeSegmentEnd();
+        return false;
+    }
+
+private:
+    SST::Profile::ComponentCodeSegmentProfileTool::ProfilePoint* compute_point = nullptr;
+    void computeResults();
+};
+```
+
+To attach a tool, give the point as `lib.type.point`, where `lib.type` is the element's type as used in the Python configuration file. SST reports an error if the point is not documented in the element's ELI.
+
+```title="Enabling a tool on a component-defined profiling point"
+  --enable-profiling="compute:sst.profile.component.codesegment.time.steady(level=component)[mylib.example.compute]"
+```

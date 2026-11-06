@@ -32,13 +32,15 @@ This macro must reside in a `public` section of the object's header file.
 `point_nameX` must follow SST's [element naming conventions](../../../guides/dev/naming.md).
 :::
 
+For code-segment profiling points registered with [`registerProfilePoint()`](../../component/load/registerProfilePoint.md), the API is `SST::Profile::ComponentCodeSegmentProfileTool`. SST uses the documented names to check the profiling points that users give with the `--enable-profiling` command-line option. See [Component-defined profiling points](../../../guides/features/profile.mdx#component-defined-profiling-points).
+
 ## Example
 
-```cpp title="Excerpt from sst-elements/src/sst/elements/simpleElementExample/basicParams.h"
-/* simpleElementExample/basicParams.h */
- SST_ELI_DOCUMENT_PROFILE_POINTS(
-    { "clock_profiler", "A profiler to track time spent in clock handling", "SST::Profile::ClockHandlerProfileTool" }
- )
+<!--- SOURCE_CODE: None --->
+```cpp
+SST_ELI_DOCUMENT_PROFILE_POINTS(
+    { "compute", "Time spent computing results", "SST::Profile::ComponentCodeSegmentProfileTool" }
+)
 ```
 
 ## Header
