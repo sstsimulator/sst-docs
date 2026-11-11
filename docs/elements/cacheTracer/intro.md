@@ -13,7 +13,7 @@ The *cacheTracer* can be used to generate a trace of events between any CPU and 
 **SST Name:** `cacheTracer` &nbsp;  
 **Maturity Level:** Early Development (1) &nbsp;  
 **Development Path:** Maintenance &nbsp;   
-**Last Released:** SST 16.0
+**Last Released:** SST 16.1
 
 ::: 
 
@@ -23,12 +23,61 @@ The *cacheTracer* can be used to generate a trace of events between any CPU and 
 ### Optional dependencies
 *None*
 
-### Parameters
-`cacheTracer` accepts the following parameters.
-* **clock** Frequency for port (should be set to be same as CPU frequency).
-* **debug** Print out debug info with increasing verbosity. To generate an address trace of events, set debug=8 and provide filename in tracePrefix.
-* **tracePrefix** Filename for output trace-file generated when debug=8 is set. If no value is set, a trace will NOT be written.
-* **statistics** Flag indicating whether to print stats at the end of the execution. 1= print stats, 0-don't print stats.
-* **statsPrefix** Filename for output file where statistics will be dumped if "statistics" is set. If filename is NOT provided and "statistics" is set, stats will be printed to stdout.
-* **pageSize** This value is used to set size of an individual bin in address histogram. Default value is 4096 (4k).
-* **accessLatencyBins** This value is used to set total number of bins for access-latency histogram. Default value is 10.
+## Elements
+Use `sst-info cacheTracer` or `sst-info cacheTracer.cacheTracer` to see its ports and statistics.
+
+| Library | Element | Type | Description |
+|---------|---------|------|-------------|
+| `cacheTracer` | `cacheTracer` | Component | Sits on a link between two memHierarchy components (`northBus` toward the CPU, `southBus` toward memory), counts and optionally traces the events that pass through, and records address and access-latency histograms |
+
+<!--- SOURCE_CODE: sst-elements/src/sst/elements/cacheTracer/tests/test_cacheTracer_1.py --->
+```python title="Tracing the events between a CPU and its L1 cache (based on cacheTracer/tests/test_cacheTracer_1.py)"
+import sst
+
+sst.setProgramOption("stop-at", "1ms")
+
+# Test CPU
+cpu = sst.Component("cpu0", "memHierarchy.standardCPU")
+cpu.addParams({
+    "memFreq" : 5,
+    "memSize" : "100KiB",
+    "clock" : "2GHz",
+    "rngseed" : 111,
+    "maxOutstanding" : 16,
+    "opCount" : 1000,
+    "reqsPerIssue" : 2,
+    "write_freq" : 35,
+    "read_freq" : 65,
+})
+iface = cpu.setSubComponent("memory", "memHierarchy.standardInterface")
+
+# Tracer between the CPU and the L1 cache
+tracer = sst.Component("tracer", "cacheTracer.cacheTracer")
+tracer.addParams({
+    "clock" : "2 Ghz",
+    "statistics" : 1,       # print statistics at the end of the run
+    "pageSize" : 4096,
+    "accessLatencyBins" : 10,
+})
+
+# L1 cache and memory
+l1cache = sst.Component("l1cache", "memHierarchy.Cache")
+l1cache.addParams({
+    "access_latency_cycles" : "5",
+    "cache_frequency" : "2 Ghz",
+    "replacement_policy" : "lru",
+    "coherence_protocol" : "MSI",
+    "associativity" : "4",
+    "cache_line_size" : "64",
+    "L1" : "1",
+    "cache_size" : "4 KB",
+})
+memctrl = sst.Component("memory", "memHierarchy.MemController")
+memctrl.addParams({ "clock" : "2 Ghz" })
+memory = memctrl.setSubComponent("backend", "memHierarchy.simpleMem")
+memory.addParams({ "mem_size" : "1024MiB" })
+
+sst.Link("cpu_tracer").connect((iface, "lowlink", "100ps"), (tracer, "northBus", "100ps"))
+sst.Link("tracer_l1").connect((tracer, "southBus", "100ps"), (l1cache, "highlink", "100ps"))
+sst.Link("l1_mem").connect((l1cache, "lowlink", "100ps"), (memctrl, "highlink", "100ps"))
+```

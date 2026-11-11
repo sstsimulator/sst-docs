@@ -19,7 +19,7 @@ The *dmaEngine* component performs memory data transfers between SST cache memor
 **SST name:** `balar` &nbsp;  
 **Maturity Level:** Prototype (2) &nbsp;  
 **Development Path:** Active &nbsp;  
-**Last Released:** SST 16.0
+**Last Released:** SST 16.1
 
 :::
 
@@ -52,6 +52,17 @@ LLVM and the RISCV GNU Toolchain can be used to compile applications for Balar/V
     # Pull prebuilt image
     docker pull ghcr.io/accel-sim/accel-sim-framework:SST-Integration-Ubuntu-22.04-cuda-11.7-llvm-18.1.8-riscv-gnu-2024.08.06-nightly
     ```
+
+## Elements
+Use `sst-info balar` or `sst-info balar.<element>` to see each element's parameters, ports, and statistics. The components are described in more detail above.
+
+| Library | Element | Type | Description |
+|---------|---------|------|-------------|
+| `balar` | `balarMMIO` | Component | Relays CUDA API calls, received through memory-mapped I/O, to GPGPU-Sim |
+| `balar` | `dmaEngine` | Component | Copies data between SST's memory system and GPGPU-Sim's memory space |
+| `balar` | `BalarTestCPU` | Component | Trace-driven test CPU that replays CUDA API call traces |
+
+See [QuickStart](./QuickStart.md) for running balar.
 
 import DocCardList from '@theme/DocCardList';
 
