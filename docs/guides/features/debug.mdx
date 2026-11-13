@@ -51,6 +51,13 @@ To enable entering the debug console in response to a signal use `--sigusr1=sst.
  $ sst --sigusr2=sst.rt.interactive configuration.py
 ```
 
+:::tip
+For some versions of MPI, it may be necessary to clear stream buffering for the interactive console to behave correctly. For example:
+```
+mpirun --stream-buffering=0 -np=4 sst configuration.py --interactive-start=0
+```
+:::
+
 When the SST process is running, enter the interactive console by sending the appropriate signal to its process ID.
 
 ```sh title="Example sending signal to SST from a bash shell"
